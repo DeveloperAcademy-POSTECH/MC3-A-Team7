@@ -1,7 +1,7 @@
 ---
 name: "✅ Feature request"
 about: Feature 작업사항을 입력해주세요
-title: ''
+title: "[Feat]"
 labels: enhancement
 assignees: ''
 
