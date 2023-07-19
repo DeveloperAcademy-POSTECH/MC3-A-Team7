@@ -14,6 +14,12 @@
 		5171D97F2A5BA8B400A962A4 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5171D97E2A5BA8B400A962A4 /* Persistence.swift */; };
 		5171D9822A5BA8B400A962A4 /* SikSa.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5171D9802A5BA8B400A962A4 /* SikSa.xcdatamodeld */; };
 		5171D98A2A5BAA9000A962A4 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 5171D9892A5BAA9000A962A4 /* .swiftlint.yml */; };
+		A381AE132A67B306000AE8E8 /* MC3ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A381AE0A2A67B306000AE8E8 /* MC3ViewModel.swift */; };
+		A381AE142A67B306000AE8E8 /* MC3View.swift in Sources */ = {isa = PBXBuildFile; fileRef = A381AE0B2A67B306000AE8E8 /* MC3View.swift */; };
+		A381AE152A67B306000AE8E8 /* BottomTextLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A381AE0D2A67B306000AE8E8 /* BottomTextLineView.swift */; };
+		A381AE182A67B306000AE8E8 /* TabViewFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A381AE112A67B306000AE8E8 /* TabViewFile.swift */; };
+		A381AE192A67B306000AE8E8 /* ButtonComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A381AE122A67B306000AE8E8 /* ButtonComponentView.swift */; };
+		A381AE1C2A67B329000AE8E8 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = A381AE1B2A67B329000AE8E8 /* Color.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +31,12 @@
 		5171D97E2A5BA8B400A962A4 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		5171D9812A5BA8B400A962A4 /* SikSa.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SikSa.xcdatamodel; sourceTree = "<group>"; };
 		5171D9892A5BAA9000A962A4 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		A381AE0A2A67B306000AE8E8 /* MC3ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MC3ViewModel.swift; sourceTree = "<group>"; };
+		A381AE0B2A67B306000AE8E8 /* MC3View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MC3View.swift; sourceTree = "<group>"; };
+		A381AE0D2A67B306000AE8E8 /* BottomTextLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomTextLineView.swift; sourceTree = "<group>"; };
+		A381AE112A67B306000AE8E8 /* TabViewFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabViewFile.swift; sourceTree = "<group>"; };
+		A381AE122A67B306000AE8E8 /* ButtonComponentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonComponentView.swift; sourceTree = "<group>"; };
+		A381AE1B2A67B329000AE8E8 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Color.swift; path = ../../../../../Color.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +70,7 @@
 		5171D9742A5BA8B300A962A4 /* SikSa */ = {
 			isa = PBXGroup;
 			children = (
+				A381AE092A67B306000AE8E8 /* MC3 */,
 				5171D9752A5BA8B300A962A4 /* SikSaApp.swift */,
 				5171D9772A5BA8B300A962A4 /* ContentView.swift */,
 				5171D9792A5BA8B400A962A4 /* Assets.xcassets */,
@@ -74,6 +87,43 @@
 				5171D97C2A5BA8B400A962A4 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A381AE092A67B306000AE8E8 /* MC3 */ = {
+			isa = PBXGroup;
+			children = (
+				A381AE0A2A67B306000AE8E8 /* MC3ViewModel.swift */,
+				A381AE0B2A67B306000AE8E8 /* MC3View.swift */,
+				A381AE1A2A67B317000AE8E8 /* Utils */,
+				A381AE0C2A67B306000AE8E8 /* Components */,
+			);
+			path = MC3;
+			sourceTree = "<group>";
+		};
+		A381AE0C2A67B306000AE8E8 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				A381AE0D2A67B306000AE8E8 /* BottomTextLineView.swift */,
+				A381AE122A67B306000AE8E8 /* ButtonComponentView.swift */,
+				A381AE0E2A67B306000AE8E8 /* TabView */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		A381AE0E2A67B306000AE8E8 /* TabView */ = {
+			isa = PBXGroup;
+			children = (
+				A381AE112A67B306000AE8E8 /* TabViewFile.swift */,
+			);
+			path = TabView;
+			sourceTree = "<group>";
+		};
+		A381AE1A2A67B317000AE8E8 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A381AE1B2A67B329000AE8E8 /* Color.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -171,9 +221,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				5171D97F2A5BA8B400A962A4 /* Persistence.swift in Sources */,
+				A381AE182A67B306000AE8E8 /* TabViewFile.swift in Sources */,
 				5171D9822A5BA8B400A962A4 /* SikSa.xcdatamodeld in Sources */,
+				A381AE192A67B306000AE8E8 /* ButtonComponentView.swift in Sources */,
+				A381AE1C2A67B329000AE8E8 /* Color.swift in Sources */,
 				5171D9782A5BA8B300A962A4 /* ContentView.swift in Sources */,
+				A381AE132A67B306000AE8E8 /* MC3ViewModel.swift in Sources */,
+				A381AE142A67B306000AE8E8 /* MC3View.swift in Sources */,
 				5171D9762A5BA8B300A962A4 /* SikSaApp.swift in Sources */,
+				A381AE152A67B306000AE8E8 /* BottomTextLineView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
