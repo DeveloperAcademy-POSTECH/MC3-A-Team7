@@ -19,7 +19,7 @@
 		A381AE152A67B306000AE8E8 /* BottomTextLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A381AE0D2A67B306000AE8E8 /* BottomTextLineView.swift */; };
 		A381AE182A67B306000AE8E8 /* TabViewComponentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A381AE112A67B306000AE8E8 /* TabViewComponentsView.swift */; };
 		A381AE192A67B306000AE8E8 /* ButtonComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A381AE122A67B306000AE8E8 /* ButtonComponentView.swift */; };
-		A381AE1C2A67B329000AE8E8 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = A381AE1B2A67B329000AE8E8 /* Color.swift */; };
+		A381AE1E2A67BFCF000AE8E8 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = A381AE1D2A67BFCF000AE8E8 /* Color.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,7 +36,7 @@
 		A381AE0D2A67B306000AE8E8 /* BottomTextLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomTextLineView.swift; sourceTree = "<group>"; };
 		A381AE112A67B306000AE8E8 /* TabViewComponentsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabViewComponentsView.swift; sourceTree = "<group>"; };
 		A381AE122A67B306000AE8E8 /* ButtonComponentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonComponentView.swift; sourceTree = "<group>"; };
-		A381AE1B2A67B329000AE8E8 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Color.swift; path = ../../../../../Color.swift; sourceTree = "<group>"; };
+		A381AE1D2A67BFCF000AE8E8 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,7 +121,7 @@
 		A381AE1A2A67B317000AE8E8 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				A381AE1B2A67B329000AE8E8 /* Color.swift */,
+				A381AE1D2A67BFCF000AE8E8 /* Color.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -223,8 +223,8 @@
 				5171D97F2A5BA8B400A962A4 /* Persistence.swift in Sources */,
 				A381AE182A67B306000AE8E8 /* TabViewComponentsView.swift in Sources */,
 				5171D9822A5BA8B400A962A4 /* SikSa.xcdatamodeld in Sources */,
+				A381AE1E2A67BFCF000AE8E8 /* Color.swift in Sources */,
 				A381AE192A67B306000AE8E8 /* ButtonComponentView.swift in Sources */,
-				A381AE1C2A67B329000AE8E8 /* Color.swift in Sources */,
 				5171D9782A5BA8B300A962A4 /* ContentView.swift in Sources */,
 				A381AE132A67B306000AE8E8 /* MC3ViewModel.swift in Sources */,
 				A381AE142A67B306000AE8E8 /* MC3View.swift in Sources */,
