@@ -14,6 +14,10 @@
 		5171D97F2A5BA8B400A962A4 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5171D97E2A5BA8B400A962A4 /* Persistence.swift */; };
 		5171D9822A5BA8B400A962A4 /* SikSa.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5171D9802A5BA8B400A962A4 /* SikSa.xcdatamodeld */; };
 		5171D98A2A5BAA9000A962A4 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 5171D9892A5BAA9000A962A4 /* .swiftlint.yml */; };
+		B2CBF8032A67B27500E6202A /* Persistence+Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2CBF8022A67B27500E6202A /* Persistence+Injection.swift */; };
+		B2CBF8062A67B2A600E6202A /* Injection+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2CBF8042A67B2A600E6202A /* Injection+CoreDataClass.swift */; };
+		B2CBF8072A67B2A600E6202A /* Injection+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2CBF8052A67B2A600E6202A /* Injection+CoreDataProperties.swift */; };
+		B2CBF8092A67B33500E6202A /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2CBF8082A67B33500E6202A /* CoreDataHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +29,10 @@
 		5171D97E2A5BA8B400A962A4 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		5171D9812A5BA8B400A962A4 /* SikSa.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SikSa.xcdatamodel; sourceTree = "<group>"; };
 		5171D9892A5BAA9000A962A4 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		B2CBF8022A67B27500E6202A /* Persistence+Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Persistence+Injection.swift"; sourceTree = "<group>"; };
+		B2CBF8042A67B2A600E6202A /* Injection+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Injection+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B2CBF8052A67B2A600E6202A /* Injection+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Injection+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B2CBF8082A67B33500E6202A /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +69,7 @@
 				5171D9752A5BA8B300A962A4 /* SikSaApp.swift */,
 				5171D9772A5BA8B300A962A4 /* ContentView.swift */,
 				5171D9792A5BA8B400A962A4 /* Assets.xcassets */,
-				5171D97E2A5BA8B400A962A4 /* Persistence.swift */,
+				B2CBF8012A67B24C00E6202A /* data */,
 				5171D9802A5BA8B400A962A4 /* SikSa.xcdatamodeld */,
 				5171D97B2A5BA8B400A962A4 /* Preview Content */,
 			);
@@ -74,6 +82,18 @@
 				5171D97C2A5BA8B400A962A4 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B2CBF8012A67B24C00E6202A /* data */ = {
+			isa = PBXGroup;
+			children = (
+				5171D97E2A5BA8B400A962A4 /* Persistence.swift */,
+				B2CBF8022A67B27500E6202A /* Persistence+Injection.swift */,
+				B2CBF8042A67B2A600E6202A /* Injection+CoreDataClass.swift */,
+				B2CBF8052A67B2A600E6202A /* Injection+CoreDataProperties.swift */,
+				B2CBF8082A67B33500E6202A /* CoreDataHelper.swift */,
+			);
+			path = data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,9 +190,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2CBF8072A67B2A600E6202A /* Injection+CoreDataProperties.swift in Sources */,
 				5171D97F2A5BA8B400A962A4 /* Persistence.swift in Sources */,
+				B2CBF8092A67B33500E6202A /* CoreDataHelper.swift in Sources */,
+				B2CBF8062A67B2A600E6202A /* Injection+CoreDataClass.swift in Sources */,
 				5171D9822A5BA8B400A962A4 /* SikSa.xcdatamodeld in Sources */,
 				5171D9782A5BA8B300A962A4 /* ContentView.swift in Sources */,
+				B2CBF8032A67B27500E6202A /* Persistence+Injection.swift in Sources */,
 				5171D9762A5BA8B300A962A4 /* SikSaApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
