@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 class MC3ViewModel: ObservableObject {
+    static var preview = MC3ViewModel()
     @Published var page = 0
     @Published var isTabbed0: [Bool] = []
     @Published var isTabbed1: [Bool] = []
