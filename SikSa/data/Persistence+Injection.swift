@@ -15,7 +15,7 @@ extension PersistenceController {
             let injection = Injection(context: context)
             injection.id = Int64(UUID().hashValue)
             injection.timestamp = time
-            injection.position = Int64(position)
+            injection.position = Int16(position)
             context.save(with: .addInjection)
         }
     }
@@ -31,7 +31,7 @@ extension PersistenceController {
         if let context = injection.managedObjectContext {
             context.performAndWait {
                 injection.timestamp = time
-                injection.position = Int64(position)
+                injection.position = Int16(position)
                 context.save(with: .updateInjection)
             }
         }
