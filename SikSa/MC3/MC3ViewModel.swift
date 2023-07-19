@@ -1,6 +1,6 @@
 //
 //  MC3ViewModel.swift
-//  leejisu
+//  SikSa
 //
 //  Created by 채영민 on 2023/07/18.
 //
@@ -17,41 +17,37 @@ class MC3ViewModel: ObservableObject {
     @Published var arr1: [Int] = []
     @Published var recomNum: Int = 1
     @Published var pickedNum: Int = 0
-    
     @Published var randomArr: [Int] = []
     @Published var randomInt = 0
-    
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible()),
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
-    
     var isNoTabSelected: Bool {
         return isTabbed0.filter({ $0 == true }).count == 0 && isTabbed1.filter({ $0 == true }).count == 0
     }
-    
     func arrFunc1() -> Int {
-        var arr2:[Int] = [1,2,3,4]
-        var arr3:[Int] = []
-        
+        var arr2: [Int] = [1, 2, 3, 4]
+        var arr3: [Int] = []
+
         for _ in 0...2 {
-            for i in arr2.sorted(by: >)[0...3] {
-                arr2.append(i + 8)
+            for iNumber in arr2.sorted(by: >)[0...3] {
+                arr2.append(iNumber + 8)
             }
         }
-        
-        for j in arr2.sorted() {
-            arr3.append(j + 4)
+
+        for jNumber in arr2.sorted() {
+            arr3.append(jNumber + 4)
         }
-        
+
         arr0 = arr2.sorted(by: <)
         arr1 = arr3
-        
+
         return max(arr0.count, arr1.count)
     }
-    
+
     func nextNumRecom() {
         if recomNum == 32 {
             recomNum = 1
@@ -63,24 +59,25 @@ class MC3ViewModel: ObservableObject {
             recomNum += 8
         }
     }
-    
+
     func tabViewIndicatorDot() {
         UIPageControl.appearance().currentPageIndicatorTintColor = .systemBlue
         UIPageControl.appearance().pageIndicatorTintColor = UIColor.black.withAlphaComponent(0.2)
     }
-    
+
     func resetAllTabbedStates() {
         let maxIndex = arrFunc1()
         isTabbed0 = Array(repeating: false, count: maxIndex)
         isTabbed1 = Array(repeating: false, count: maxIndex)
     }
-    
+
     func recommendationNum() -> some View {
         VStack(alignment: .leading, spacing: 0) {
             Spacer()
-            Text(isNoTabSelected || !isClicked ? "이번 권장 주사 부위는" : "선택하신 주사 부위는").font(.system(size: 22, weight: .semibold))
+        Text(isNoTabSelected || !isClicked ? "이번 권장 주사 부위는" : "선택하신 주사 부위는").font(.system(size: 22, weight: .semibold))
             HStack(alignment: .bottom) {
-                Text(isNoTabSelected ? "\(recomNum)" : "\(pickedNum)").font(.system(size: 28, weight: .semibold)).foregroundColor(.blue)
+            Text(isNoTabSelected ? "\(recomNum)" : "\(pickedNum)")
+                    .font(.system(size: 28, weight: .semibold)).foregroundColor(.blue)
                 Text("번 입니다.").font(.system(size: 22, weight: .semibold))
             }
         }

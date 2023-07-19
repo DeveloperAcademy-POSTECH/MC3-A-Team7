@@ -1,6 +1,6 @@
 //
 //  MC3.swift
-//  leejisu
+//  SikSa
 //
 //  Created by 채영민 on 2023/07/17.
 //
@@ -11,28 +11,27 @@ struct MC3View: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            
+
             viewModel.recommendationNum()
-            
-            tabViewComponentsView(viewModel: viewModel)
-            
+
+            TabViewComponentsView(viewModel: viewModel)
+
             VStack {
                 BottomTextLineView(viewModel: viewModel)
-                
+
                 Spacer()
                 ButtonComponentView(viewModel: viewModel)
 
                 Spacer()
             }
             .padding(.leading, 21)
-            
+
         }
-        .onAppear() {
+        .onAppear {
             viewModel.resetAllTabbedStates()
             viewModel.tabViewIndicatorDot()
         }
     }
-    
 }
 
 struct MC3View_Previews: PreviewProvider {
