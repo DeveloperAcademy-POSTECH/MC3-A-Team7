@@ -25,7 +25,7 @@ struct ButtonComponentView: View {
 
         } label: {
             Rectangle()
-                .foregroundColor(Color(hex: viewModel.isNoTabSelected ? "CECECE" : "4579FF"))
+                .foregroundColor(Color(hex: viewModel.isNoTabSelected ? "CECECE" : "5887FF"))
                 .frame(width: 350, height: 81)
                 .cornerRadius(50)
                 .overlay(

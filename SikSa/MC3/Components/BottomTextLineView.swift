@@ -20,7 +20,7 @@ struct BottomTextLineView: View {
         .padding()
         .background(
             Rectangle()
-                .foregroundColor(Color(hex: "007AFF")).opacity(0.19)
+                .foregroundColor(Color(hex: "5987FE")).opacity(0.19)
                 .frame(minWidth: 350)
                 .cornerRadius(12)
         )
