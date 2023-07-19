@@ -15,7 +15,7 @@ struct PersistenceController {
         let viewContext = result.container.viewContext
         for position in 1...10 {
             let newInjection = Injection(context: viewContext)
-            newInjection.timestamp = Date()
+            newInjection.timestamp = Date() - position
             newInjection.position = Int16(position)
         }
         do {

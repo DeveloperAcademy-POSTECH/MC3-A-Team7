@@ -17,7 +17,7 @@ class MC3ViewModel: ObservableObject {
     @Published var isClicked: Bool = false
     @Published var recomNum: Int = 1
     @Published var pickedNum: Int?
-    @Published var randomArr: [Int] = []
+    @Published var under7DaysArr: [Int] = []
     @Published var randomInt = 0
 //    @Published var selected
 
@@ -72,12 +72,16 @@ class MC3ViewModel: ObservableObject {
         isTabbed1 = Array(repeating: false, count: arrayLength)
     }
 
-    func randomeIntArrFunc() {
-        for _ in 1...5 {
-            randomInt = Int.random(in: 2..<33)
-            if !randomArr.contains(randomInt) {
-                randomArr.append(randomInt)
+    func under7DaysArrFunc() -> [Int] {
+        let injectionsArray = PersistenceController.shared.injectionsByPositionArray
+        for item2 in injectionsArray {
+            if let injection = item2 {
+                under7DaysArr.append(Int(injection.position))
             }
         }
+
+        NotificationCenter.default.post(name: NSNotification.Name("RefreshInjectionPoint"), object: nil)
+        return under7DaysArr
+
     }
 }

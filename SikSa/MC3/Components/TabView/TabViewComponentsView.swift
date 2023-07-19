@@ -9,9 +9,8 @@ import SwiftUI
 
 struct TabViewComponentsView: View {
     @ObservedObject var viewModel: MC3ViewModel
-    var body: some View {
-        let injectionsArray = PersistenceController.shared.injectionsByPositionArray
 
+    var body: some View {
         TabView(selection: $viewModel.page) {
             ForEach((0..<2), id: \.self) { page in
                 Rectangle()
@@ -29,8 +28,10 @@ struct TabViewComponentsView: View {
 
                                     ZStack {
                                         Circle()
-                                            .stroke(Color(hex: viewModel.randomArr.contains(number) ?  "A8C5FF"
-                                                          : viewModel.recomNum != number ?  "B3B3BF" : "326BFF"),
+                                            .stroke(
+                                                Color(hex: viewModel.recomNum == number ? "5987FE"
+                                                      : !viewModel.under7DaysArr.contains(number)
+                                                      ?  "C9DBFF" :  "E8E8EA" ),
                                                     lineWidth: 3)
                                             .opacity(page == 0 && viewModel.isTabbed0[index] ? 1 :
                                                         page == 1 && viewModel.isTabbed1[index] ? 1 : 0)
@@ -53,15 +54,17 @@ struct TabViewComponentsView: View {
                                             }
                                             .frame(width: 60, height: 60)
                                             .foregroundColor(
-                                                Color(hex: viewModel.randomArr.contains(number) ?  "C9DBFF"
-                                                      : viewModel.recomNum != number ?  "E8E8EA" : "5987FE"))
+                                                Color(hex: viewModel.recomNum == number ? "5987FE"
+                                                      : !viewModel.under7DaysArr.contains(number)
+                                                      ?  "C9DBFF" :  "E8E8EA" ))
                                             .overlay {
                                                 Text(String(number))
                                                     .font(Font.custom("SF Pro Text", size: 19))
                                                     .multilineTextAlignment(.center)
-                                                    .foregroundColor(Color(hex:
-                                                        viewModel.randomArr.contains(number) ? "326BFF"
-                                                           : viewModel.recomNum == number ? "ffffff" : "ABA1A1"))
+                                                    .foregroundColor(
+                                                        Color(hex: viewModel.recomNum == number ? "ffffff"
+                                                              : !viewModel.under7DaysArr.contains(number)
+                                                              ? "326BFF" : "ABA1A1"))
                                             }
                                     }
                                     .padding(-8)
@@ -77,7 +80,13 @@ struct TabViewComponentsView: View {
         }
         .frame(height: 428)
         .onAppear {
-            viewModel.randomeIntArrFunc()
+            viewModel.under7DaysArr = viewModel.under7DaysArrFunc()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("RefreshInjectionPoint"))) { _ in
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1 ) {
+                viewModel.under7DaysArr = viewModel.under7DaysArrFunc()
+
+            }
         }
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
     }
