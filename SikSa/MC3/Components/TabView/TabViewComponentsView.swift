@@ -10,6 +10,8 @@ import SwiftUI
 struct TabViewComponentsView: View {
     @ObservedObject var viewModel: MC3ViewModel
     var body: some View {
+        let injectionsArray = PersistenceController.shared.injectionsByPositionArray
+
         TabView(selection: $viewModel.page) {
             ForEach((0..<2), id: \.self) { page in
                 Rectangle()
