@@ -9,43 +9,44 @@ import Foundation
 import SwiftUI
 
 class MC3ViewModel: ObservableObject {
+    static var preview: MC3ViewModel = MC3ViewModel()
+
     @Published var page = 0
     @Published var isTabbed0: [Bool] = []
     @Published var isTabbed1: [Bool] = []
     @Published var isClicked: Bool = false
-    @Published var arr0: [Int] = []
-    @Published var arr1: [Int] = []
     @Published var recomNum: Int = 1
-    @Published var pickedNum: Int = 0
+    @Published var pickedNum: Int?
     @Published var randomArr: [Int] = []
     @Published var randomInt = 0
+//    @Published var selected
+
+    var leftArray: [Int] {
+        [1, 9, 17, 25].flatMap { number in
+             (0...3).map({ $0 + number })
+        }
+    }
+    var rightArray: [Int] {
+        [1, 9, 17, 25]
+            .map({$0 + 4})
+            .flatMap { number in
+             (0...3).map({ $0 + number })
+        }
+    }
+
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible()),
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
+
     var isNoTabSelected: Bool {
         return isTabbed0.filter({ $0 == true }).count == 0 && isTabbed1.filter({ $0 == true }).count == 0
     }
-    func arrFunc1() -> Int {
-        var arr2: [Int] = [1, 2, 3, 4]
-        var arr3: [Int] = []
 
-        for _ in 0...2 {
-            for iNumber in arr2.sorted(by: >)[0...3] {
-                arr2.append(iNumber + 8)
-            }
-        }
-
-        for jNumber in arr2.sorted() {
-            arr3.append(jNumber + 4)
-        }
-
-        arr0 = arr2.sorted(by: <)
-        arr1 = arr3
-
-        return max(arr0.count, arr1.count)
+    var positionNumberToKnow: Int {
+        pickedNum ?? recomNum
     }
 
     func nextNumRecom() {
@@ -66,22 +67,9 @@ class MC3ViewModel: ObservableObject {
     }
 
     func resetAllTabbedStates() {
-        let maxIndex = arrFunc1()
-        isTabbed0 = Array(repeating: false, count: maxIndex)
-        isTabbed1 = Array(repeating: false, count: maxIndex)
-    }
-
-    func recommendationNum() -> some View {
-        VStack(alignment: .leading, spacing: 0) {
-            Spacer()
-        Text(isNoTabSelected || !isClicked ? "이번 권장 주사 부위는" : "선택하신 주사 부위는").font(.system(size: 22, weight: .semibold))
-            HStack(alignment: .bottom) {
-            Text(isNoTabSelected ? "\(recomNum)" : "\(pickedNum)")
-                    .font(.system(size: 28, weight: .semibold)).foregroundColor(.blue)
-                Text("번 입니다.").font(.system(size: 22, weight: .semibold))
-            }
-        }
-        .padding(.leading, 21)
+        let arrayLength = leftArray.count
+        isTabbed0 = Array(repeating: false, count: arrayLength)
+        isTabbed1 = Array(repeating: false, count: arrayLength)
     }
 
     func randomeIntArrFunc() {

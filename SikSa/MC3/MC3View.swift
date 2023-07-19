@@ -7,26 +7,26 @@
 import SwiftUI
 
 struct MC3View: View {
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \Injection.timestamp, ascending: true)],
+        animation: .default)
+    private var injections: FetchedResults<Injection>
+
     @StateObject private var viewModel = MC3ViewModel()
 
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .center) {
 
-            viewModel.recommendationNum()
-
-            TabViewComponentsView(viewModel: viewModel)
-
-            VStack {
-                BottomTextLineView(viewModel: viewModel)
-
-                Spacer()
-                ButtonComponentView(viewModel: viewModel)
-
+            HStack {
+                TopMainTextView(viewModel: viewModel)
                 Spacer()
             }
-            .padding(.leading, 21)
 
+            TabViewComponentsView(viewModel: viewModel)
+            BottomTextLineView(viewModel: viewModel)
+            ButtonComponentView(viewModel: viewModel)
         }
+        .padding(.horizontal)
         .onAppear {
             viewModel.resetAllTabbedStates()
             viewModel.tabViewIndicatorDot()
@@ -36,6 +36,7 @@ struct MC3View: View {
 
 struct MC3View_Previews: PreviewProvider {
     static var previews: some View {
+        let _ = print(MC3ViewModel.preview.rightArray)
         MC3View()
     }
 }

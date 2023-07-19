@@ -14,7 +14,7 @@ struct TabViewComponentsView: View {
             ForEach((0..<2), id: \.self) { page in
                 Rectangle()
                     .foregroundColor(.clear)
-                    .frame(width: 350)
+                    .frame(minWidth: 350)
                     .background(Color(red: 0.95, green: 0.95, blue: 0.97))
                     .cornerRadius(12)
                     .overlay {
@@ -23,28 +23,28 @@ struct TabViewComponentsView: View {
                             Text("아래").font(.system(size: 17, weight: .semibold))
 
                             LazyVGrid(columns: viewModel.columns, spacing: 20) {
-                                ForEach(Array(page == 0 ? viewModel.arr0.indices : viewModel.arr1.indices)
-                                        , id: \.self) { iNumber in
-                                    let index = page == 0 ? viewModel.arr0[iNumber] : viewModel.arr1[iNumber]
+//                                ForEach(Array(page == 0 ? viewModel.arr0.indices : viewModel.arr1.indices)
+                                ForEach(viewModel.leftArray.indices, id: \.self) { index in
+                                    let number = page == 0 ? viewModel.leftArray[index] : viewModel.rightArray[index]
 
                                     ZStack {
                                         Circle()
-                                            .stroke(Color(hex: viewModel.randomArr.contains(index) ?  "5AC8FA"
-                                                          : viewModel.recomNum != index ?  "8E8E93" : "007AFF"),
+                                            .stroke(Color(hex: viewModel.randomArr.contains(number) ?  "5AC8FA"
+                                                          : viewModel.recomNum != number ?  "8E8E93" : "007AFF"),
                                                     lineWidth: 3)
-                                        .opacity(page == 0 && viewModel.isTabbed0[iNumber] ? 1 :
-                                                 page == 1 && viewModel.isTabbed1[iNumber] ? 1 : 0)
+                                        .opacity(page == 0 && viewModel.isTabbed0[index] ? 1 :
+                                                 page == 1 && viewModel.isTabbed1[index] ? 1 : 0)
                                             .frame(width: 71, height: 71)
                                             .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
 
                                         Circle()
-                                            .id(iNumber)
+                                            .id(index)
                                             .onTapGesture {
                                                 func nextNumRecom() {
-                                                    _ = page == 0 ? viewModel.isTabbed0[iNumber].toggle()
-                                                    : viewModel.isTabbed1[iNumber].toggle()
+                                                    _ = page == 0 ? viewModel.isTabbed0[index].toggle()
+                                                    : viewModel.isTabbed1[index].toggle()
 
-                                                    viewModel.pickedNum = index
+                                                    viewModel.pickedNum = number
                                                     viewModel.isClicked = true
                                                 }
 
@@ -57,16 +57,16 @@ struct TabViewComponentsView: View {
                                             }
                                             .frame(width: 60, height: 60)
                                             .foregroundColor(
-                                                Color(hex: viewModel.randomArr.contains(index) ?  "5AC8FA"
-                                                      : viewModel.recomNum != index ?  "8E8E93" : "007AFF"))
+                                                Color(hex: viewModel.randomArr.contains(number) ?  "5AC8FA"
+                                                      : viewModel.recomNum != number ?  "8E8E93" : "007AFF"))
                                             .overlay {
-                                    if page == 0 && viewModel.isTabbed0[iNumber] ||
-                                        page == 1 && viewModel.isTabbed1[iNumber] {
+                                    if page == 0 && viewModel.isTabbed0[index] ||
+                                        page == 1 && viewModel.isTabbed1[index] {
                                                     Image(systemName: "checkmark")
                                                         .bold()
                                                         .foregroundColor(.white)
                                                 } else {
-                                                    Text(String(index))
+                                                    Text(String(number))
                                                 }
                                             }
                                     }
