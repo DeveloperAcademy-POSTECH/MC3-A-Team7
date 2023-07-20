@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 class MC3ViewModel: ObservableObject {
-    static var preview: MC3ViewModel = MC3ViewModel()
+    static var preview = MC3ViewModel()
 
     @Published var page = 0
     @Published var isTabbed0: [Bool] = []
@@ -18,8 +18,7 @@ class MC3ViewModel: ObservableObject {
     @Published var recomNum: Int = 1
     @Published var pickedNum: Int?
     @Published var under7DaysArr: [Int] = []
-    @Published var randomInt = 0
-//    @Published var selected
+    @Published var listOfDateArr: [Date] = []
 
     var leftArray: [Int] {
         [1, 9, 17, 25].flatMap { number in
@@ -84,4 +83,16 @@ class MC3ViewModel: ObservableObject {
         return under7DaysArr
 
     }
+
+    func listOfDate() -> [Date] {
+        let injectionsArray = PersistenceController.shared.injectionsByPositionArray
+        for date in injectionsArray {
+            if let injectionDate = date {
+                listOfDateArr.append(injectionDate.timestamp ?? Date())
+            }
+        }
+
+        return listOfDateArr
+    }
+
 }

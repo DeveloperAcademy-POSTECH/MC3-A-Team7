@@ -81,11 +81,11 @@ struct TabViewComponentsView: View {
         .frame(height: 428)
         .onAppear {
             viewModel.under7DaysArr = viewModel.under7DaysArrFunc()
+            viewModel.listOfDateArr = viewModel.listOfDate()
         }
         .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("RefreshInjectionPoint"))) { _ in
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1 ) {
                 viewModel.under7DaysArr = viewModel.under7DaysArrFunc()
-
             }
         }
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
