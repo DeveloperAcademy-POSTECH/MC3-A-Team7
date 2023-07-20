@@ -1,5 +1,5 @@
 //
-//  CardView.swift
+//  HistoryCardView.swift
 //  SikSa
 //
 //  Created by chaekie on 2023/07/19.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CardView: View {
+struct HistoryCardView: View {
     var dateString: String
     var injections: [InjectionModel]
     @Binding var previousSelectedDate: String
@@ -89,9 +89,9 @@ struct NumberingButton: View {
     }
 }
 
-struct CardView_Previews: PreviewProvider {
+struct HistoryCardView_Previews: PreviewProvider {
     static var previews: some View {
-        CardView(dateString: "2023년 07월 13일",
+        HistoryCardView(dateString: "2023년 07월 13일",
                  injections: [InjectionModel(id: UUID().hashValue, timestamp: Date(), position: 1)],
                  previousSelectedDate: .constant("2023년 07월 13일"),
                  previousSelectedPositions: .constant([5, 6]))

@@ -27,7 +27,7 @@ struct HistoryView: View {
                     Section(header: SectionHeaderView(previousSelectedPositions: previousSelectedPositions)) {
                         ForEach(InjectionModel.previewDataDictionary.keys.sorted(by: >), id: \.self) { key in
                             if let value = InjectionModel.previewDataDictionary[key] {
-                                CardView(dateString: key,
+                                HistoryCardView(dateString: key,
                                          injections: value,
                                          previousSelectedDate: $previousSelectedDate,
                                          previousSelectedPositions: $previousSelectedPositions
