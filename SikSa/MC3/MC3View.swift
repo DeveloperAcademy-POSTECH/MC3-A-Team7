@@ -10,23 +10,18 @@ struct MC3View: View {
     @StateObject private var viewModel = MC3ViewModel()
 
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .center) {
 
-            viewModel.recommendationNum()
-
-            TabViewComponentsView(viewModel: viewModel)
-
-            VStack {
-                BottomTextLineView(viewModel: viewModel)
-
-                Spacer()
-                ButtonComponentView(viewModel: viewModel)
-
+            HStack {
+                TopMainTextView(viewModel: viewModel)
                 Spacer()
             }
-            .padding(.leading, 21)
 
+            TabViewComponentsView(viewModel: viewModel)
+            BottomTextLineView(viewModel: viewModel)
+            ButtonComponentView(viewModel: viewModel)
         }
+        .padding(.horizontal)
         .onAppear {
             viewModel.resetAllTabbedStates()
             viewModel.tabViewIndicatorDot()

@@ -36,4 +36,14 @@ extension PersistenceController {
             }
         }
     }
+
+    var injectionsByPositionArray: [Injection?] {
+        return (0...32).map { position in
+            if position == 0 { return nil }
+            let injectionRequest: NSFetchRequest<Injection> = Injection.fetchRequest()
+            injectionRequest.predicate = .injected(at: position)
+            injectionRequest.sortDescriptors = [.byTimestamp(ascending: false)]
+            return try? container.viewContext.fetch(injectionRequest).first
+        }
+    }
 }

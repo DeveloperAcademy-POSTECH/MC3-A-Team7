@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 extension Injection {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Injection> {
