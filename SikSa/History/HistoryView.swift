@@ -11,28 +11,28 @@ struct HistoryView: View {
     @Environment(\.dismiss) private var dismiss
     @State var previousSelectedDate = "2023년 07월 10일"
     @State var previousSelectedPositions = [5, 6]
+
     var body: some View {
         VStack {
-            VStack {
-                HStack {
-                    Text("주사부위")
-                        .bold()
-                    Spacer()
-                }
-                InjectionSitesView(previousSelectedPositions: previousSelectedPositions,
-                    selectPosition: selectPosition)
-            }
-            .padding()
-            Divider()
             ScrollView {
-                VStack(alignment: .leading) {
-                    ForEach(Array(InjectionModel.previewDataDictionary.keys), id: \.self) { key in
-                        if let value = InjectionModel.previewDataDictionary[key] {
-                            CardView(dateString: key,
-                                     injections: value,
-                                     previousSelectedDate: $previousSelectedDate,
-                                     previousSelectedPositions: $previousSelectedPositions
-                            )
+                LazyVStack(pinnedViews: [.sectionHeaders]) {
+                    HStack {
+                        Text("주사부위")
+                            .font(.title2)
+                            .bold()
+                        Spacer()
+                    }
+                    .padding(.top)
+                    .padding(.horizontal)
+                    Section(header: SectionHeaderView(previousSelectedPositions: previousSelectedPositions)) {
+                        ForEach(InjectionModel.previewDataDictionary.keys.sorted(by: >), id: \.self) { key in
+                            if let value = InjectionModel.previewDataDictionary[key] {
+                                CardView(dateString: key,
+                                         injections: value,
+                                         previousSelectedDate: $previousSelectedDate,
+                                         previousSelectedPositions: $previousSelectedPositions
+                                )
+                            }
                         }
                     }
                 }
@@ -56,10 +56,21 @@ struct HistoryView: View {
         }
     }
     private func addRecord() {
-        print("수정하기 모달 띄우기")
+        print(InjectionModel.previewData)
+        print("생성하기 모달 띄우기")
     }
-    private func selectPosition() {
-        print("날짜 선택2")
+}
+
+struct SectionHeaderView: View {
+    var previousSelectedPositions: [Int]
+    var body: some View {
+        VStack {
+            InjectionSitesView(previousSelectedPositions: previousSelectedPositions)
+                .padding(.horizontal)
+                .padding(.vertical, 10)
+            Divider()
+        }
+        .background(Color(.systemGroupedBackground))
     }
 }
 

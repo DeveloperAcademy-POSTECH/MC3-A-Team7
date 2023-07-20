@@ -9,7 +9,6 @@ import SwiftUI
 
 struct InjectionSitesView: View {
     var previousSelectedPositions: [Int]
-    var selectPosition: () -> Void
     var body: some View {
         HStack {
             VStack {
@@ -89,7 +88,6 @@ struct NumberingCircle: View {
 
 struct InjectionSitesView_Previews: PreviewProvider {
     static var previews: some View {
-        InjectionSitesView(previousSelectedPositions: [1, 2, 3],
-                           selectPosition: {})
+        InjectionSitesView(previousSelectedPositions: [1, 2, 3])
     }
 }

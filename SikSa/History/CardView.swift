@@ -39,8 +39,7 @@ struct CardView: View {
     private func selectDate () {
         if previousSelectedDate != dateString {
             previousSelectedDate = dateString
-            previousSelectedPositions = injections.map{ $0.position }
-//            print(injections.map{ $0.position })
+            previousSelectedPositions = injections.map { $0.position }
         }
     }
 }
