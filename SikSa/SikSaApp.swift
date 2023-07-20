@@ -13,7 +13,8 @@ struct SikSaApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            ContentView()
+            MC3View()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

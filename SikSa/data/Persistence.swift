@@ -13,9 +13,10 @@ struct PersistenceController {
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
-        for _ in 0..<10 {
+        for position in 1...10 {
             let newInjection = Injection(context: viewContext)
-            newInjection.timestamp = Date()
+            newInjection.timestamp = Date() - position 
+            newInjection.position = Int16(position)
         }
         do {
             try viewContext.save()

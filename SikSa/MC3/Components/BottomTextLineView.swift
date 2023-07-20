@@ -10,20 +10,25 @@ import SwiftUI
 struct BottomTextLineView: View {
     @ObservedObject var viewModel: MC3ViewModel
     var body: some View {
-        Rectangle()
-            .foregroundColor(Color(hex: "007AFF")).opacity(0.19)
-            .frame(width: 350, height: 34)
-            .cornerRadius(12)
-            .overlay(
-                HStack(alignment: .center, spacing: 5) {
-                    if viewModel.isNoTabSelected {
-                        Text("\(viewModel.recomNum)번 부위의 마지막 투여일은")
-                    } else {
-                        Text("\(viewModel.pickedNum)번 부위의 마지막 투여일은")
-                    }
-                    Text("8일 전").font(.system(size: 15, weight: .bold))
-                    Text("입니다.")
-                }.font(.system(size: 15)).foregroundColor(.black)
-            )
+        HStack(alignment: .center, spacing: 5) {
+            Text("\(viewModel.positionNumberToKnow)번 부위의 마지막 투여일은")
+            Text("8일 전").font(.system(size: 15, weight: .bold))
+            Text("입니다.")
+        }
+        .font(.system(size: 15))
+        .foregroundColor(.black)
+        .padding()
+        .background(
+            Rectangle()
+                .foregroundColor(Color(hex: "5987FE")).opacity(0.19)
+                .frame(minWidth: 350)
+                .cornerRadius(12)
+        )
+    }
+}
+
+struct BottomTextLineView_Previews: PreviewProvider {
+    static var previews: some View {
+        BottomTextLineView(viewModel: MC3ViewModel.preview)
     }
 }

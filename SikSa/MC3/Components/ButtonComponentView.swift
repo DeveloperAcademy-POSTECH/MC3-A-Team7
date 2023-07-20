@@ -15,9 +15,17 @@ struct ButtonComponentView: View {
             viewModel.nextNumRecom()
             viewModel.isClicked = false
             viewModel.resetAllTabbedStates()
+            if let pickedNumber = viewModel.pickedNum {
+                PersistenceController.shared
+                    .addInjection(
+                        time: Date(),
+                        position: pickedNumber
+                    )
+            }
+
         } label: {
             Rectangle()
-                .foregroundColor(Color(hex: viewModel.isNoTabSelected ? "CECECE" : "4579FF"))
+                .foregroundColor(Color(hex: viewModel.isNoTabSelected ? "CECECE" : "5887FF"))
                 .frame(width: 350, height: 81)
                 .cornerRadius(50)
                 .overlay(
@@ -25,5 +33,11 @@ struct ButtonComponentView: View {
                 )
         }
         .disabled(viewModel.isNoTabSelected ? true : false)
+    }
+}
+
+struct ButtonComponentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ButtonComponentView(viewModel: MC3ViewModel())
     }
 }
