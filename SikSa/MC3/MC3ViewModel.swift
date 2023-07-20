@@ -20,6 +20,7 @@ class MC3ViewModel: ObservableObject {
     @Published var pickedNum: Int = 0
     @Published var randomArr: [Int] = []
     @Published var randomInt = 0
+    
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible()),

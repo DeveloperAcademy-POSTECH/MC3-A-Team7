@@ -10,10 +10,10 @@ import SwiftUI
 struct DatePickerView: View {
     @State private var date = Date()
     
-    // TODO: - DatePicker 날짜 데이터 수정
+    // TODO: - DatePicker 날짜 데이터 받아오는 값 수정
     let dateRange: ClosedRange<Date> = {
         let calendar = Calendar.current
-        let startComponents = DateComponents(year: 2023, month: 7, day: 19)
+        let startComponents = DateComponents(year: 2022, month: 7, day: 19)
         let endComponents = DateComponents(year: 2023, month: 12, day: 31, hour: 23, minute: 59, second: 59)
         return calendar.date(from:startComponents)!
             ...

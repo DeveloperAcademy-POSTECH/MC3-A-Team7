@@ -26,7 +26,7 @@ struct UpdateCardView: View {
                             Text("아래").font(.system(size: 17, weight: .semibold))
                         
                             
-                            LazyVGrid(columns: viewModel.columns, spacing: 20) {
+                            LazyVGrid(columns: viewModel.columns, spacing: 10) {
                                 ForEach(Array(page == 0 ? viewModel.arr0.indices : viewModel.arr1.indices)
                                         , id: \.self) { iNumber in
                                     let index = page == 0 ? viewModel.arr0[iNumber] : viewModel.arr1[iNumber]
@@ -89,7 +89,7 @@ struct UpdateCardView: View {
     }
 }
 
-struct CardView_Previews: PreviewProvider {
+struct UpdateCardView_Previews: PreviewProvider {
     static var previews: some View {
         UpdateCardView(viewModel: MC3ViewModel.preview, selectedNum: SelectedData())
     }

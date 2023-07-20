@@ -10,9 +10,12 @@
 		3607189C2A67C57D00D492E8 /* DeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3607189B2A67C57D00D492E8 /* DeleteButton.swift */; };
 		3607189E2A67C5A000D492E8 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3607189D2A67C5A000D492E8 /* DatePickerView.swift */; };
 		360718A02A67C5D600D492E8 /* UpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3607189F2A67C5D600D492E8 /* UpdateView.swift */; };
-		360718A22A67C5E800D492E8 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360718A12A67C5E800D492E8 /* CardView.swift */; };
+		360718A22A67C5E800D492E8 /* UpdateCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360718A12A67C5E800D492E8 /* UpdateCardView.swift */; };
 		360718A42A67C64E00D492E8 /* ModalTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360718A32A67C64E00D492E8 /* ModalTestView.swift */; };
 		360718A82A6803C500D492E8 /* UpdateCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360718A72A6803C500D492E8 /* UpdateCircleView.swift */; };
+		360718AA2A68FDA200D492E8 /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360718A92A68FDA100D492E8 /* CreateView.swift */; };
+		360718AC2A6900A200D492E8 /* CreateCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360718AB2A6900A200D492E8 /* CreateCircleView.swift */; };
+		360718AE2A69053000D492E8 /* CreateCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360718AD2A69053000D492E8 /* CreateCardView.swift */; };
 		5171D9762A5BA8B300A962A4 /* SikSaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5171D9752A5BA8B300A962A4 /* SikSaApp.swift */; };
 		5171D9782A5BA8B300A962A4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5171D9772A5BA8B300A962A4 /* ContentView.swift */; };
 		5171D97A2A5BA8B400A962A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5171D9792A5BA8B400A962A4 /* Assets.xcassets */; };
@@ -36,9 +39,12 @@
 		3607189B2A67C57D00D492E8 /* DeleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteButton.swift; sourceTree = "<group>"; };
 		3607189D2A67C5A000D492E8 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		3607189F2A67C5D600D492E8 /* UpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateView.swift; sourceTree = "<group>"; };
-		360718A12A67C5E800D492E8 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		360718A12A67C5E800D492E8 /* UpdateCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCardView.swift; sourceTree = "<group>"; };
 		360718A32A67C64E00D492E8 /* ModalTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalTestView.swift; sourceTree = "<group>"; };
 		360718A72A6803C500D492E8 /* UpdateCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCircleView.swift; sourceTree = "<group>"; };
+		360718A92A68FDA100D492E8 /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
+		360718AB2A6900A200D492E8 /* CreateCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCircleView.swift; sourceTree = "<group>"; };
+		360718AD2A69053000D492E8 /* CreateCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCardView.swift; sourceTree = "<group>"; };
 		5171D9722A5BA8B300A962A4 /* SikSa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SikSa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5171D9752A5BA8B300A962A4 /* SikSaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SikSaApp.swift; sourceTree = "<group>"; };
 		5171D9772A5BA8B300A962A4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -73,10 +79,12 @@
 		3607189A2A67C54C00D492E8 /* UpdateViewComponents */ = {
 			isa = PBXGroup;
 			children = (
-				360718A12A67C5E800D492E8 /* CardView.swift */,
+				360718A12A67C5E800D492E8 /* UpdateCardView.swift */,
+				360718AD2A69053000D492E8 /* CreateCardView.swift */,
+				360718A72A6803C500D492E8 /* UpdateCircleView.swift */,
+				360718AB2A6900A200D492E8 /* CreateCircleView.swift */,
 				3607189D2A67C5A000D492E8 /* DatePickerView.swift */,
 				3607189B2A67C57D00D492E8 /* DeleteButton.swift */,
-				360718A72A6803C500D492E8 /* UpdateCircleView.swift */,
 			);
 			path = UpdateViewComponents;
 			sourceTree = "<group>";
@@ -126,6 +134,7 @@
 				A381AE0A2A67B306000AE8E8 /* MC3ViewModel.swift */,
 				A381AE0B2A67B306000AE8E8 /* MC3View.swift */,
 				360718A32A67C64E00D492E8 /* ModalTestView.swift */,
+				360718A92A68FDA100D492E8 /* CreateView.swift */,
 				3607189F2A67C5D600D492E8 /* UpdateView.swift */,
 				A381AE1A2A67B317000AE8E8 /* Utils */,
 				A381AE0C2A67B306000AE8E8 /* Components */,
@@ -268,8 +277,10 @@
 			files = (
 				B2CBF8072A67B2A600E6202A /* Injection+CoreDataProperties.swift in Sources */,
 				360718A82A6803C500D492E8 /* UpdateCircleView.swift in Sources */,
+				360718AC2A6900A200D492E8 /* CreateCircleView.swift in Sources */,
 				5171D97F2A5BA8B400A962A4 /* Persistence.swift in Sources */,
 				A381AE182A67B306000AE8E8 /* TabViewComponentsView.swift in Sources */,
+				360718AA2A68FDA200D492E8 /* CreateView.swift in Sources */,
 				B2CBF8092A67B33500E6202A /* CoreDataHelper.swift in Sources */,
 				360718A02A67C5D600D492E8 /* UpdateView.swift in Sources */,
 				B2CBF8062A67B2A600E6202A /* Injection+CoreDataClass.swift in Sources */,
@@ -278,11 +289,12 @@
 				A381AE1E2A67BFCF000AE8E8 /* Color.swift in Sources */,
 				360718A42A67C64E00D492E8 /* ModalTestView.swift in Sources */,
 				A381AE192A67B306000AE8E8 /* ButtonComponentView.swift in Sources */,
-				360718A22A67C5E800D492E8 /* CardView.swift in Sources */,
+				360718A22A67C5E800D492E8 /* UpdateCardView.swift in Sources */,
 				5171D9782A5BA8B300A962A4 /* ContentView.swift in Sources */,
 				A381AE132A67B306000AE8E8 /* MC3ViewModel.swift in Sources */,
 				A381AE142A67B306000AE8E8 /* MC3View.swift in Sources */,
 				B2CBF8032A67B27500E6202A /* Persistence+Injection.swift in Sources */,
+				360718AE2A69053000D492E8 /* CreateCardView.swift in Sources */,
 				5171D9762A5BA8B300A962A4 /* SikSaApp.swift in Sources */,
 				A381AE152A67B306000AE8E8 /* BottomTextLineView.swift in Sources */,
 				3607189C2A67C57D00D492E8 /* DeleteButton.swift in Sources */,

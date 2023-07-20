@@ -9,7 +9,7 @@ import SwiftUI
 
 struct UpdateView: View {
     @Environment(\.presentationMode) var presentationMode
-    @ObservedObject var selectedNum: SelectedNum
+    @ObservedObject var selectedNum: SelectedData
     @StateObject private var viewModel = MC3ViewModel()
     
     
@@ -25,7 +25,7 @@ struct UpdateView: View {
                         Spacer()
                     }
                     
-                    CardView(viewModel: viewModel, selectedNum: selectedNum)
+                    UpdateCardView(viewModel: viewModel, selectedNum: selectedNum)
                     
                     Spacer()
                     
@@ -36,8 +36,6 @@ struct UpdateView: View {
                         Spacer()
                     }
                    
-                    
-                    Spacer()
                     DatePickerView()
                     DeleteButton()
                 }
@@ -51,6 +49,7 @@ struct UpdateView: View {
                                 .foregroundColor(.red)
                         }
                     }
+                    // TODO: - 완료 버튼 클릭 시 해당 데이터 수정
                     ToolbarItem(placement: .navigationBarTrailing){
                         Button(action:
                                 {self.presentationMode.wrappedValue.dismiss()})
@@ -64,6 +63,6 @@ struct UpdateView: View {
 
 struct UpdateView_Previews: PreviewProvider {
     static var previews: some View {
-        UpdateView(selectedNum: SelectedNum())
+        UpdateView(selectedNum: SelectedData())
     }
 }
