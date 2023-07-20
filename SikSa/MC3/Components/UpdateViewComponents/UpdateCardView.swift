@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct CardView: View {
+struct UpdateCardView: View {
     @ObservedObject var viewModel: MC3ViewModel
-    @ObservedObject var selectedNum: SelectedNum
+    @ObservedObject var selectedNum: SelectedData
     @State var selectedIndex: Int = 1
 
     var body: some View {
@@ -91,6 +91,6 @@ struct CardView: View {
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
-        CardView(viewModel: MC3ViewModel.preview, selectedNum: SelectedNum())
+        UpdateCardView(viewModel: MC3ViewModel.preview, selectedNum: SelectedData())
     }
 }
