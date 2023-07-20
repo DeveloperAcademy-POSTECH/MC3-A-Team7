@@ -39,6 +39,8 @@
 		B2CBF8062A67B2A600E6202A /* Injection+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2CBF8042A67B2A600E6202A /* Injection+CoreDataClass.swift */; };
 		B2CBF8072A67B2A600E6202A /* Injection+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2CBF8052A67B2A600E6202A /* Injection+CoreDataProperties.swift */; };
 		B2CBF8092A67B33500E6202A /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2CBF8082A67B33500E6202A /* CoreDataHelper.swift */; };
+		B2CEFBAA2A6975D300E19B72 /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2CEFBA92A6975D300E19B72 /* CustomColor.swift */; };
+		B2CEFBAC2A69764400E19B72 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2CEFBAB2A69764400E19B72 /* Color+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +77,8 @@
 		B2CBF8042A67B2A600E6202A /* Injection+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Injection+CoreDataClass.swift"; sourceTree = "<group>"; };
 		B2CBF8052A67B2A600E6202A /* Injection+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Injection+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B2CBF8082A67B33500E6202A /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
+		B2CEFBA92A6975D300E19B72 /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
+		B2CEFBAB2A69764400E19B72 /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +123,7 @@
 		5171D9742A5BA8B300A962A4 /* SikSa */ = {
 			isa = PBXGroup;
 			children = (
+				B2CEFBA82A6975C400E19B72 /* constant */,
 				51F8EF2E2A680760008758ED /* temp */,
 				51F8EF272A6754A5008758ED /* History */,
 				5171D9752A5BA8B300A962A4 /* SikSaApp.swift */,
@@ -207,6 +212,7 @@
 				A37D69372A6829D8006546FB /* Date+.swift */,
 				B281BEED2A67F38900889A29 /* NSPredicate+.swift */,
 				B281BEEF2A67F4AD00889A29 /* NSSortDescriptor+.swift */,
+				B2CEFBAB2A69764400E19B72 /* Color+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -221,6 +227,14 @@
 				B2CBF8082A67B33500E6202A /* CoreDataHelper.swift */,
 			);
 			path = data;
+			sourceTree = "<group>";
+		};
+		B2CEFBA82A6975C400E19B72 /* constant */ = {
+			isa = PBXGroup;
+			children = (
+				B2CEFBA92A6975D300E19B72 /* CustomColor.swift */,
+			);
+			path = constant;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -325,6 +339,7 @@
 				360718A02A67C5D600D492E8 /* UpdateView.swift in Sources */,
 				B2CBF8062A67B2A600E6202A /* Injection+CoreDataClass.swift in Sources */,
 				B281BEEE2A67F38900889A29 /* NSPredicate+.swift in Sources */,
+				B2CEFBAA2A6975D300E19B72 /* CustomColor.swift in Sources */,
 				5171D9822A5BA8B400A962A4 /* SikSa.xcdatamodeld in Sources */,
 				3607189E2A67C5A000D492E8 /* DatePickerView.swift in Sources */,
 				B281BEE92A67CA9F00889A29 /* CircleView.swift in Sources */,
@@ -342,6 +357,7 @@
 				A381AE142A67B306000AE8E8 /* MC3View.swift in Sources */,
 				B2CBF8032A67B27500E6202A /* Persistence+Injection.swift in Sources */,
 				A37D69382A6829D8006546FB /* Date+.swift in Sources */,
+				B2CEFBAC2A69764400E19B72 /* Color+.swift in Sources */,
 				5171D9762A5BA8B300A962A4 /* SikSaApp.swift in Sources */,
 				51F8EF2D2A6755B7008758ED /* InjectionSitesView.swift in Sources */,
 				A381AE152A67B306000AE8E8 /* BottomTextLineView.swift in Sources */,
