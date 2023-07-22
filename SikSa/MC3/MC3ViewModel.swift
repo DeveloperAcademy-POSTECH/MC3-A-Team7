@@ -27,7 +27,6 @@ class MC3ViewModel: ObservableObject {
     }
 
     var positionNumberToKnow: Int {
-        print(#function)
         if pickedPosition == nil {
             return recommendedPosition
 
@@ -38,7 +37,7 @@ class MC3ViewModel: ObservableObject {
 
     var leftArray: [Int] {
         [1, 9, 17, 25].flatMap { number in
-             (0...3).map({ $0 + number })
+            (0...3).map({ $0 + number })
         }
     }
 
@@ -46,8 +45,8 @@ class MC3ViewModel: ObservableObject {
         [1, 9, 17, 25]
             .map({$0 + 4})
             .flatMap { number in
-             (0...3).map({ $0 + number })
-        }
+                (0...3).map({ $0 + number })
+            }
     }
 
     func setRecommendedPosition() {
@@ -92,17 +91,22 @@ class MC3ViewModel: ObservableObject {
         }
         return .over7days
     }
-//
-//    var under7DayPositions: [Int] {
-//        let injectionsArray = PersistenceController.shared.injectionsByPositionArray
-//        let oneWeekAgo = Date() - 7
-//        let eventsWithin7Days = injectionsArray.filter { injection in
-//            if let injection {
-//                return injection.wrappedTimestamp >= oneWeekAgo
-//            }
-//            return false
-//        }
-//        NotificationCenter.default.post(name: NSNotification.Name("RefreshInjectionPoint"), object: nil)
-//        return eventsWithin7Days.compactMap { $0?.position } .map { Int($0) }
-//    }
+
+    func getDateCalculator(of position: Int, using injections: [Injection?]) -> Int {
+        if let injection = injections[position] {
+            let offsetComps =
+            Calendar.current.dateComponents([.year, .month, .day], from: injection.timestamp ?? Date(), to: Date())
+            if case let (day?) = (offsetComps.day) {
+                return day
+            }
+       }
+        return 0
+    }
+
+    func formatDate(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy.M.dd"
+        dateFormatter.timeZone = TimeZone.current
+        return dateFormatter.string(from: date)
+    }
 }

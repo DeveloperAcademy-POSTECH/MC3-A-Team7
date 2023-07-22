@@ -9,11 +9,20 @@ import SwiftUI
 
 struct BottomTextLineView: View {
     @ObservedObject var viewModel: MC3ViewModel
+    let injections = PersistenceController.shared.injectionsByPositionArray
+
     var body: some View {
+        let getDate =
+        viewModel.getDateCalculator(of: viewModel.positionNumberToKnow, using: injections)
+
         HStack(alignment: .center, spacing: 5) {
-            Text("\(viewModel.positionNumberToKnow)번 부위의 마지막 투여일은")
-            Text("8일 전").font(.system(size: 15, weight: .bold))
-            Text("입니다.")
+            if getDate != 0 {
+                Text("\(viewModel.positionNumberToKnow)번 부위의 마지막 투여일은")
+                Text("\(getDate)일 전").font(.system(size: 15, weight: .bold))
+                Text("입니다.")
+            } else {
+                Text("\(viewModel.positionNumberToKnow)번 부위의 투여기록이 없습니다.")
+            }
         }
         .font(.system(size: 15))
         .foregroundColor(.black)
@@ -24,11 +33,5 @@ struct BottomTextLineView: View {
                 .frame(minWidth: 350)
                 .cornerRadius(12)
         )
-    }
-}
-
-struct BottomTextLineView_Previews: PreviewProvider {
-    static var previews: some View {
-        BottomTextLineView(viewModel: MC3ViewModel.preview)
     }
 }
