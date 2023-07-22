@@ -23,7 +23,6 @@ struct MC3View: View {
         }
         .padding(.horizontal)
         .onAppear {
-            viewModel.resetAllTabbedStates()
             viewModel.tabViewIndicatorDot()
         }
     }
