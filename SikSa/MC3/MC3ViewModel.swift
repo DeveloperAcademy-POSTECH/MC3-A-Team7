@@ -9,26 +9,61 @@ import Foundation
 import SwiftUI
 
 class MC3ViewModel: ObservableObject {
+
     static var preview = MC3ViewModel()
     @Published var page = 0
-    @Published var isTabbed0: [Bool] = []
-    @Published var isTabbed1: [Bool] = []
-    @Published var isClicked: Bool = false
-    @Published var recomNum: Int = 1
-    @Published var pickedNum: Int?
-    @Published var under7DaysArr: [Int] = []
+    @Published var recommendedPosition: Int = 0
+    @Published var pickedPosition: Int?
+    @Published var under7DaysArrPositions: [Int16] = []
+    @Published var under7DaysArrTimestamps: [Date] = []
     @Published var listOfDateArr: [Date] = []
+
+    init() {
+        setRecommendedPosition()
+    }
+
+    var isPositionSelected: Bool {
+        pickedPosition != nil
+    }
+
+    var positionNumberToKnow: Int {
+        print(#function)
+        if pickedPosition == nil {
+            return recommendedPosition
+
+        } else {
+            return pickedPosition ?? 1
+        }
+    }
 
     var leftArray: [Int] {
         [1, 9, 17, 25].flatMap { number in
              (0...3).map({ $0 + number })
         }
     }
+
     var rightArray: [Int] {
         [1, 9, 17, 25]
             .map({$0 + 4})
             .flatMap { number in
              (0...3).map({ $0 + number })
+        }
+    }
+
+    func setRecommendedPosition() {
+        print(#function)
+        let injectionsArray = PersistenceController.shared.injectionsByPositionArray
+
+        if injectionsArray.contains(nil) {
+            for (index, injection) in injectionsArray.enumerated() where index != 0 && injection == nil {
+                recommendedPosition = index
+                return
+            }
+        } else {
+            // nil이 아닐 시,injectionsArray중 가장 오래된 포지션을 리턴
+            recommendedPosition = Int(injectionsArray.compactMap { $0 }
+                .sorted { $0.wrappedTimestamp > $1.wrappedTimestamp }
+                .first?.position ?? 1)
         }
     }
 
@@ -39,59 +74,35 @@ class MC3ViewModel: ObservableObject {
         GridItem(.flexible())
     ]
 
-    var isNoTabSelected: Bool {
-        return isTabbed0.filter({ $0 == true }).count == 0 && isTabbed1.filter({ $0 == true }).count == 0
-    }
-
-    var positionNumberToKnow: Int {
-        pickedNum ?? recomNum
-    }
-
-    func nextNumRecom() {
-        if recomNum == 32 {
-            recomNum = 1
-            return
-        }
-        if recomNum + 8 > 32 {
-            recomNum = (recomNum + 8) - 31
-        } else {
-            recomNum += 8
-        }
-    }
-
     func tabViewIndicatorDot() {
         UIPageControl.appearance().currentPageIndicatorTintColor = .systemBlue
         UIPageControl.appearance().pageIndicatorTintColor = UIColor.black.withAlphaComponent(0.2)
     }
 
-    func resetAllTabbedStates() {
-        let arrayLength = leftArray.count
-        isTabbed0 = Array(repeating: false, count: arrayLength)
-        isTabbed1 = Array(repeating: false, count: arrayLength)
-    }
-
-    func under7DaysArrFunc() -> [Int] {
-        let injectionsArray = PersistenceController.shared.injectionsByPositionArray
-        for item2 in injectionsArray {
-            if let injection = item2 {
-                under7DaysArr.append(Int(injection.position))
+    func getCircleStatus(of position: Int, using injections: [Injection?]) -> TabViewCircleView.Status {
+        print(injections)
+        if let injection = injections[position] {
+            let oneWeekAgo = Date() - 7
+            if injection.wrappedTimestamp < oneWeekAgo {
+                return .over7days
             }
+            return .under7days
+        } else if position == recommendedPosition {
+            return .recommendation
         }
-
-        NotificationCenter.default.post(name: NSNotification.Name("RefreshInjectionPoint"), object: nil)
-        return under7DaysArr
-
+        return .over7days
     }
-
-    func listOfDate() -> [Date] {
-        let injectionsArray = PersistenceController.shared.injectionsByPositionArray
-        for date in injectionsArray {
-            if let injectionDate = date {
-                listOfDateArr.append(injectionDate.timestamp ?? Date())
-            }
-        }
-
-        return listOfDateArr
-    }
-
+//
+//    var under7DayPositions: [Int] {
+//        let injectionsArray = PersistenceController.shared.injectionsByPositionArray
+//        let oneWeekAgo = Date() - 7
+//        let eventsWithin7Days = injectionsArray.filter { injection in
+//            if let injection {
+//                return injection.wrappedTimestamp >= oneWeekAgo
+//            }
+//            return false
+//        }
+//        NotificationCenter.default.post(name: NSNotification.Name("RefreshInjectionPoint"), object: nil)
+//        return eventsWithin7Days.compactMap { $0?.position } .map { Int($0) }
+//    }
 }
