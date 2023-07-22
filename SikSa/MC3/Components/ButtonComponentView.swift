@@ -21,7 +21,6 @@ struct ButtonComponentView: View {
             }
             viewModel.pickedPosition = nil
             viewModel.setRecommendedPosition()
-
         } label: {
             Rectangle()
                 .foregroundColor(Color(hex: viewModel.isPositionSelected ? "5887FF" : "CECECE"))
