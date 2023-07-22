@@ -48,7 +48,7 @@ struct CreateCardView: View {
         }
         .frame(height: 428)
         .onAppear {
-            viewModel.resetAllTabbedStates()
+//            viewModel.resetAllTabbedStates()
         }
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
     }
