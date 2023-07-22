@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct CardView: View {
+struct UpdateCardView: View {
     @ObservedObject var viewModel: MC3ViewModel
-    @ObservedObject var selectedNum: SelectedNum
+    @ObservedObject var selectedNum: SelectedData
     @State var selectedIndex: Int = 1
 
     var body: some View {
@@ -24,19 +24,22 @@ struct CardView: View {
                         VStack(alignment: .center, spacing: 20) {
                             Spacer()
                             Text("아래").font(.system(size: 17, weight: .semibold))
-                            LazyVGrid(columns: viewModel.columns, spacing: 20) {
-                                ForEach(viewModel.leftArray, id: \.self) { iNumber in
+                        
+                            
+                            LazyVGrid(columns: viewModel.columns, spacing: 10) {
+                                ForEach(viewModel.leftArray.indices, id: \.self) { iNumber in
                                     let index = page == 0 ? viewModel.leftArray[iNumber] : viewModel.rightArray[iNumber]
+                                    
                                     ZStack {
                                         Button {
                                             print("hi")
                                             selectedIndex = index
                                         } label: {
-                                    UpdateCircleView(
-                                        selected: selectedIndex == index, index: index,
-                                        isPreviousNumber: selectedNum.selectedIndex == index
-                                    )}
+                                            UpdateCircleView(selected: selectedIndex == index, index: index, isPreviousNumber: selectedNum.selectedIndex == index)
+                                        }
                                     }
+                                    
+
 //                                    ZStack {
 //                                        Circle()
 //                                            .id(iNumber)
@@ -77,12 +80,15 @@ struct CardView: View {
                 }
         }
         .frame(height: 428)
+        .onAppear {
+            viewModel.resetAllTabbedStates()
+        }
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
     }
 }
 
-struct CardView_Previews: PreviewProvider {
+struct UpdateCardView_Previews: PreviewProvider {
     static var previews: some View {
-        CardView(viewModel: MC3ViewModel.preview, selectedNum: SelectedNum())
+        UpdateCardView(viewModel: MC3ViewModel.preview, selectedNum: SelectedData())
     }
 }

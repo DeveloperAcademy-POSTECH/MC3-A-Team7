@@ -9,22 +9,23 @@ import SwiftUI
 
 struct UpdateCircleView: View {
     var selected: Bool = false
-    var index: Int = 3
+    var index: Int = 1
     var isPreviousNumber: Bool = false
     
     var body: some View {
         let backgroundColor = selected ? "0055B1" :
-        isPreviousNumber ? "000000" : "E8E8EA"
-        Text(String(index))
-            .foregroundColor(.white)
-            .font(.system(size: 20))
-            .padding(20)
-            .bold()
-            .background(
-                Circle()
-                    .fill(Color(hex: backgroundColor))
-        //                                                .fill(Color(hex: "0055B1"))/
-            )
+        isPreviousNumber ? "CECECE" : "E8E8EA"
+        let foregroundColor = selected ? "F2F2F7" :
+        isPreviousNumber ? "000000" : "ABA1A1"
+        ZStack {
+            Circle()
+                .fill(Color(hex: backgroundColor))
+            Text(String(index))
+                .foregroundColor(Color(hex: foregroundColor))
+                .font(.title3)
+                .padding(20)
+                .bold()
+        }
     }
 }
 
