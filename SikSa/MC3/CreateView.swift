@@ -1,20 +1,19 @@
 //
-//  UpdateView.swift
+//  CreateView.swift
 //  SikSa
 //
-//  Created by 김수인 on 2023/07/19.
+//  Created by 김수인 on 2023/07/20.
 //
 
 import SwiftUI
 
-struct UpdateView: View {
+struct CreateView: View {
     @Environment(\.presentationMode) var presentationMode
-    @ObservedObject var selectedNum: SelectedData
     @StateObject private var viewModel = MC3ViewModel()
-    
+    @State var createNumber: Int = 0
+//    @Binding var selectedIndex: Int?
     
     var body: some View {
-        
         NavigationView {
             ScrollView {
                 VStack {
@@ -25,7 +24,7 @@ struct UpdateView: View {
                         Spacer()
                     }
                     
-                    UpdateCardView(viewModel: viewModel, selectedNum: selectedNum)
+                    CreateCardView(viewModel: viewModel)
                     
                     Spacer()
                     
@@ -37,23 +36,20 @@ struct UpdateView: View {
                     }
                    
                     DatePickerView()
-                    DeleteButton()
                 }
-                .navigationTitle("수정하기")
+                .navigationTitle("생성하기")
                 .navigationBarTitleDisplayMode(.inline)
-                .toolbar{
-                    ToolbarItem(placement: .navigationBarLeading){
-                        Button(action:
-                        {self.presentationMode.wrappedValue.dismiss()})
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button(action: {self.presentationMode.wrappedValue.dismiss()})
                         {Text("취소")
                                 .foregroundColor(.red)
                         }
                     }
-                    // TODO: - 완료 버튼 클릭 시 해당 데이터 수정
-                    ToolbarItem(placement: .navigationBarTrailing){
-                        Button(action:
-                                {self.presentationMode.wrappedValue.dismiss()})
-                        {Text("완료")}
+                    // TODO: - 추가 버튼 클릭 시 새로운 데이터 추가
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button(action: {self.presentationMode.wrappedValue.dismiss()})
+                        {Text("추가")}   
                     }
                 }
             }
@@ -61,8 +57,8 @@ struct UpdateView: View {
     }
 }
 
-struct UpdateView_Previews: PreviewProvider {
+struct CreateView_Previews: PreviewProvider {
     static var previews: some View {
-        UpdateView(selectedNum: SelectedData())
+        CreateView()
     }
 }
