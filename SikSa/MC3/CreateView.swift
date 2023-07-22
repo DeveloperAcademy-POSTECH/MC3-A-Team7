@@ -10,6 +10,8 @@ import SwiftUI
 struct CreateView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject private var viewModel = MC3ViewModel()
+    @State var createNumber: Int = 0
+//    @Binding var selectedIndex: Int?
     
     var body: some View {
         NavigationView {
@@ -47,7 +49,7 @@ struct CreateView: View {
                     // TODO: - 추가 버튼 클릭 시 새로운 데이터 추가
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button(action: {self.presentationMode.wrappedValue.dismiss()})
-                        {Text("추가")}
+                        {Text("추가")}   
                     }
                 }
             }

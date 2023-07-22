@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CreateCardView: View {
     @ObservedObject var viewModel: MC3ViewModel
-    @State var selectedIndex: Int = 1
+    @State var selectedIndex: Int = 0
     
     var body: some View {
         TabView(selection: $viewModel.page) {
@@ -25,8 +25,8 @@ struct CreateCardView: View {
                             Text("아래").font(.system(size: 17, weight: .semibold))
                             
                             LazyVGrid(columns: viewModel.columns, spacing: 10) {
-                                ForEach(Array(page == 0 ? viewModel.arr0.indices : viewModel.arr1.indices), id: \.self) { iNumber in
-                                    let index = page == 0 ? viewModel.arr0[iNumber] : viewModel.arr1[iNumber]
+                                ForEach(viewModel.leftArray.indices) { iNumber in
+                                    let index = page == 0 ? viewModel.leftArray[iNumber] : viewModel.rightArray[iNumber]
                                     
                                     // TODO: - 처음 들어왔을 때 아무 버튼도 선택되어있지 않게 바꾸기
                                     ZStack {

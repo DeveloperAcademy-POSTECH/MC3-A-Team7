@@ -27,9 +27,8 @@ struct UpdateCardView: View {
                         
                             
                             LazyVGrid(columns: viewModel.columns, spacing: 10) {
-                                ForEach(Array(page == 0 ? viewModel.arr0.indices : viewModel.arr1.indices)
-                                        , id: \.self) { iNumber in
-                                    let index = page == 0 ? viewModel.arr0[iNumber] : viewModel.arr1[iNumber]
+                                ForEach(viewModel.leftArray.indices, id: \.self) { iNumber in
+                                    let index = page == 0 ? viewModel.leftArray[iNumber] : viewModel.rightArray[iNumber]
                                     
                                     ZStack {
                                         Button {
@@ -83,7 +82,6 @@ struct UpdateCardView: View {
         .frame(height: 428)
         .onAppear {
             viewModel.resetAllTabbedStates()
-            viewModel.randomeIntArrFunc()
         }
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
     }
