@@ -131,6 +131,7 @@
 				A381AE092A67B306000AE8E8 /* MC3 */,
 				5171D9772A5BA8B300A962A4 /* ContentView.swift */,
 				5171D9792A5BA8B400A962A4 /* Assets.xcassets */,
+				A35BF6082A6BC25200B2478C /* New Group */,
 				B2CBF8012A67B24C00E6202A /* data */,
 				5171D9802A5BA8B400A962A4 /* SikSa.xcdatamodeld */,
 				5171D97B2A5BA8B400A962A4 /* Preview Content */,
@@ -162,6 +163,13 @@
 				51F8EF2F2A68076E008758ED /* InjectionModel.swift */,
 			);
 			path = temp;
+			sourceTree = "<group>";
+		};
+		A35BF6082A6BC25200B2478C /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		A381AE092A67B306000AE8E8 /* MC3 */ = {

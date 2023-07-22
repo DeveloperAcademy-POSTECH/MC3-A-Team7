@@ -25,10 +25,8 @@ struct CardView: View {
                             Spacer()
                             Text("아래").font(.system(size: 17, weight: .semibold))
                             LazyVGrid(columns: viewModel.columns, spacing: 20) {
-                                ForEach(Array(page == 0 ? viewModel.arr0.indices : viewModel.arr1.indices)
-                                        , id: \.self) { iNumber in
-                                    let index = page == 0 ? viewModel.arr0[iNumber] : viewModel.arr1[iNumber]
-                                    
+                                ForEach(viewModel.leftArray, id: \.self) { iNumber in
+                                    let index = page == 0 ? viewModel.leftArray[iNumber] : viewModel.rightArray[iNumber]
                                     ZStack {
                                         Button {
                                             print("hi")
@@ -79,10 +77,6 @@ struct CardView: View {
                 }
         }
         .frame(height: 428)
-        .onAppear {
-            viewModel.resetAllTabbedStates()
-            viewModel.randomeIntArrFunc()
-        }
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
     }
 }
