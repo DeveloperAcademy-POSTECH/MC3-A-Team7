@@ -12,27 +12,26 @@ struct ButtonComponentView: View {
 
     var body: some View {
         Button {
-            viewModel.nextNumRecom()
-            viewModel.isClicked = false
-            viewModel.resetAllTabbedStates()
-            if let pickedNumber = viewModel.pickedNum {
+            if let pickedNumber = viewModel.pickedPosition {
                 PersistenceController.shared
                     .addInjection(
                         time: Date(),
                         position: pickedNumber
                     )
             }
+            viewModel.pickedPosition = nil
+            viewModel.setRecommendedPosition()
 
         } label: {
             Rectangle()
-                .foregroundColor(Color(hex: viewModel.isNoTabSelected ? "CECECE" : "5887FF"))
+                .foregroundColor(Color(hex: viewModel.isPositionSelected ? "5887FF" : "CECECE"))
                 .frame(width: 350, height: 81)
                 .cornerRadius(50)
                 .overlay(
                     Text("기록").font(.system(size: 22, weight: .bold)).foregroundColor(.white)
                 )
         }
-        .disabled(viewModel.isNoTabSelected ? true : false)
+        .disabled(viewModel.isPositionSelected ? false : true)
     }
 }
 

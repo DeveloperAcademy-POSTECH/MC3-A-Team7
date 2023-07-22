@@ -13,14 +13,13 @@ struct TopMainTextView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             Spacer()
-            Text(viewModel.isNoTabSelected || !viewModel.isClicked ? "이번 권장 주사 부위는" : "선택하신 주사 부위는")
+            Text(viewModel.isPositionSelected ? "선택하신 주사 부위는" : "이번 권장 주사 부위는")
                 .font(.system(size: 22, weight: .semibold))
             HStack(alignment: .bottom) {
                 Text(String(viewModel.positionNumberToKnow))
                     .font(.system(size: 28, weight: .semibold)).foregroundColor(.blue)
                 Text("번 입니다.")
-                    .font(.system(size: 22, weight: .semibold)
-                    )
+                    .font(.system(size: 22, weight: .semibold))
             }
         }
     }

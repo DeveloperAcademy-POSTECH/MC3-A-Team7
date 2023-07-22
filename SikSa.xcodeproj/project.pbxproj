@@ -31,7 +31,7 @@
 		A381AE182A67B306000AE8E8 /* TabViewComponentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A381AE112A67B306000AE8E8 /* TabViewComponentsView.swift */; };
 		A381AE192A67B306000AE8E8 /* ButtonComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A381AE122A67B306000AE8E8 /* ButtonComponentView.swift */; };
 		A381AE1E2A67BFCF000AE8E8 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = A381AE1D2A67BFCF000AE8E8 /* Color.swift */; };
-		B281BEE92A67CA9F00889A29 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B281BEE82A67CA9F00889A29 /* CircleView.swift */; };
+		B281BEE92A67CA9F00889A29 /* TabViewCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B281BEE82A67CA9F00889A29 /* TabViewCircleView.swift */; };
 		B281BEEB2A67EDC700889A29 /* TopMainTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B281BEEA2A67EDC700889A29 /* TopMainTextView.swift */; };
 		B281BEEE2A67F38900889A29 /* NSPredicate+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B281BEED2A67F38900889A29 /* NSPredicate+.swift */; };
 		B281BEF02A67F4AD00889A29 /* NSSortDescriptor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B281BEEF2A67F4AD00889A29 /* NSSortDescriptor+.swift */; };
@@ -69,7 +69,7 @@
 		A381AE112A67B306000AE8E8 /* TabViewComponentsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabViewComponentsView.swift; sourceTree = "<group>"; };
 		A381AE122A67B306000AE8E8 /* ButtonComponentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonComponentView.swift; sourceTree = "<group>"; };
 		A381AE1D2A67BFCF000AE8E8 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		B281BEE82A67CA9F00889A29 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		B281BEE82A67CA9F00889A29 /* TabViewCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewCircleView.swift; sourceTree = "<group>"; };
 		B281BEEA2A67EDC700889A29 /* TopMainTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopMainTextView.swift; sourceTree = "<group>"; };
 		B281BEED2A67F38900889A29 /* NSPredicate+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSPredicate+.swift"; sourceTree = "<group>"; };
 		B281BEEF2A67F4AD00889A29 /* NSSortDescriptor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSSortDescriptor+.swift"; sourceTree = "<group>"; };
@@ -131,6 +131,7 @@
 				A381AE092A67B306000AE8E8 /* MC3 */,
 				5171D9772A5BA8B300A962A4 /* ContentView.swift */,
 				5171D9792A5BA8B400A962A4 /* Assets.xcassets */,
+				A35BF6082A6BC25200B2478C /* New Group */,
 				B2CBF8012A67B24C00E6202A /* data */,
 				5171D9802A5BA8B400A962A4 /* SikSa.xcdatamodeld */,
 				5171D97B2A5BA8B400A962A4 /* Preview Content */,
@@ -164,6 +165,13 @@
 			path = temp;
 			sourceTree = "<group>";
 		};
+		A35BF6082A6BC25200B2478C /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		A381AE092A67B306000AE8E8 /* MC3 */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,7 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				A381AE112A67B306000AE8E8 /* TabViewComponentsView.swift */,
-				B281BEE82A67CA9F00889A29 /* CircleView.swift */,
+				B281BEE82A67CA9F00889A29 /* TabViewCircleView.swift */,
 			);
 			path = TabView;
 			sourceTree = "<group>";
@@ -342,7 +350,7 @@
 				B2CEFBAA2A6975D300E19B72 /* CustomColor.swift in Sources */,
 				5171D9822A5BA8B400A962A4 /* SikSa.xcdatamodeld in Sources */,
 				3607189E2A67C5A000D492E8 /* DatePickerView.swift in Sources */,
-				B281BEE92A67CA9F00889A29 /* CircleView.swift in Sources */,
+				B281BEE92A67CA9F00889A29 /* TabViewCircleView.swift in Sources */,
 				A381AE1E2A67BFCF000AE8E8 /* Color.swift in Sources */,
 				360718A42A67C64E00D492E8 /* ModalTestView.swift in Sources */,
 				B281BEEB2A67EDC700889A29 /* TopMainTextView.swift in Sources */,

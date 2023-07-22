@@ -24,23 +24,19 @@ struct CardView: View {
                         VStack(alignment: .center, spacing: 20) {
                             Spacer()
                             Text("아래").font(.system(size: 17, weight: .semibold))
-                        
-                            
                             LazyVGrid(columns: viewModel.columns, spacing: 20) {
-                                ForEach(Array(page == 0 ? viewModel.leftArray.indices : viewModel.rightArray.indices)
-                                        , id: \.self) { iNumber in
+                                ForEach(viewModel.leftArray, id: \.self) { iNumber in
                                     let index = page == 0 ? viewModel.leftArray[iNumber] : viewModel.rightArray[iNumber]
-                                    
                                     ZStack {
                                         Button {
                                             print("hi")
                                             selectedIndex = index
                                         } label: {
-                                            UpdateCircleView(selected: selectedIndex == index, index: index, isPreviousNumber: selectedNum.selectedIndex == index)
-                                        }
+                                    UpdateCircleView(
+                                        selected: selectedIndex == index, index: index,
+                                        isPreviousNumber: selectedNum.selectedIndex == index
+                                    )}
                                     }
-                                    
-
 //                                    ZStack {
 //                                        Circle()
 //                                            .id(iNumber)
@@ -81,9 +77,6 @@ struct CardView: View {
                 }
         }
         .frame(height: 428)
-        .onAppear {
-            viewModel.resetAllTabbedStates()
-        }
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
     }
 }
