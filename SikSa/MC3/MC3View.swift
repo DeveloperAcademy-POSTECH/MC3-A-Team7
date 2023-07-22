@@ -10,20 +10,29 @@ struct MC3View: View {
     @StateObject private var viewModel = MC3ViewModel()
 
     var body: some View {
-        VStack(alignment: .center) {
-
-            HStack {
+        NavigationView {
+            VStack(alignment: .center, spacing: 32) {
                 TopMainTextView(viewModel: viewModel)
+                VStack(spacing: 12) {
+                    TabViewComponentsView(viewModel: viewModel)
+                    BottomTextLineView(viewModel: viewModel)
+                }
+                ButtonComponentView(viewModel: viewModel)
                 Spacer()
             }
-
-            TabViewComponentsView(viewModel: viewModel)
-            BottomTextLineView(viewModel: viewModel)
-            ButtonComponentView(viewModel: viewModel)
-        }
-        .padding(.horizontal)
-        .onAppear {
-            viewModel.tabViewIndicatorDot()
+            .padding(.horizontal)
+            .onAppear {
+                viewModel.tabViewIndicatorDot()
+            }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink {
+                        HistoryView()
+                    } label: {
+                        Label("주사기록", systemImage: "archivebox")
+                    }
+                }
+            }
         }
     }
 }

@@ -26,6 +26,7 @@ extension Color {
     static var mainViewRecommendationDateButtonStrokeColor: Color { Color(CustomColor.mainViewRecommendationDateButtonStrokeColor.rawValue) }
     static var mainViewTodayAndRecordButtonColor: Color { Color(CustomColor.mainViewTodayAndRecordButtonColor.rawValue) }
     static var mainViewTodayAndRecordTextColor: Color { Color(CustomColor.mainViewTodayAndRecordTextColor.rawValue) }
+    static var boxBackgroundColor: Color { Color(CustomColor.boxBackgroundColor.rawValue) }
     static var unselectedButtonColor: Color { Color(CustomColor.unselectedButtonColor.rawValue) }
     static var viewBackgroundBlueColor: Color { Color(CustomColor.viewBackgroundBlueColor.rawValue) }
 }
