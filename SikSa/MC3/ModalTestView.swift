@@ -32,8 +32,9 @@ struct ModalTestView: View {
                     .font(.system(size: 20))
                     .bold()
             }.sheet(isPresented: self.$showUpdateModal) {
-                UpdateView(selectedNum: selectedNum)
-                    .padding()
+                UpdateView(injection: PersistenceController.shared.onePositionInjection)
+//                UpdateView(selectedNum: selectedNum)
+//                    .padding()
             }
             
             Button {

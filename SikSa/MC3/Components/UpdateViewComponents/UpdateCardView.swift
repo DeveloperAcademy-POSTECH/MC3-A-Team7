@@ -9,8 +9,9 @@ import SwiftUI
 
 struct UpdateCardView: View {
     @ObservedObject var viewModel: MC3ViewModel
-    @ObservedObject var selectedNum: SelectedData
-    @State var selectedIndex: Int = 1
+//    @ObservedObject var selectedNum: SelectedData
+    @Binding var selectedPosition: Int
+    var originalPosition: Int
 
     var body: some View {
         TabView(selection: $viewModel.page) {
@@ -32,42 +33,12 @@ struct UpdateCardView: View {
                                     
                                     ZStack {
                                         Button {
-                                            print("hi")
-                                            selectedIndex = index
+                                            selectedPosition = index
                                         } label: {
-                                            UpdateCircleView(selected: selectedIndex == index, index: index, isPreviousNumber: selectedNum.selectedIndex == index)
+                                            UpdateCircleView(selected: selectedPosition == index, index: index, isPreviousNumber: originalPosition == index)
                                         }
                                     }
-                                    
 
-//                                    ZStack {
-//                                        Circle()
-//                                            .id(iNumber)
-//                                            .onTapGesture {
-//                                                func nextNumRecom() {
-//                                                    _ = page == 0 ? viewModel.isTabbed0[iNumber].toggle()
-//                                                    : viewModel.isTabbed1[iNumber].toggle()
-//
-//                                                    viewModel.pickedNum = index
-//                                                    viewModel.isClicked = true
-//                                                }
-//
-//                                                if viewModel.isNoTabSelected {
-//                                                    nextNumRecom()
-//                                                } else {
-//                                                    viewModel.resetAllTabbedStates()
-//                                                    nextNumRecom()
-//                                                }
-//                                            }
-//                                            .frame(width: 60, height: 60)
-//                                            .foregroundColor(
-//                                                Color(hex: viewModel.randomArr.contains(index) ?  "5AC8FA"
-//                                                      : viewModel.recomNum != index ?  "8E8E93" : "007AFF"))
-//                                            .overlay {
-//                                                Text(String(index))
-//                                            }
-//                                    }
-//                                    .padding(-8)
                                 }
                             }
                             .padding(.horizontal, 30)
@@ -80,15 +51,15 @@ struct UpdateCardView: View {
                 }
         }
         .frame(height: 428)
-        .onAppear {
-            viewModel.resetAllTabbedStates()
-        }
+//        .onAppear {
+//            viewModel.resetAllTabbedStates()
+//        }
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
     }
 }
 
 struct UpdateCardView_Previews: PreviewProvider {
     static var previews: some View {
-        UpdateCardView(viewModel: MC3ViewModel.preview, selectedNum: SelectedData())
+        UpdateCardView(viewModel: MC3ViewModel.preview, selectedPosition: .constant(1), originalPosition: 1)
     }
 }

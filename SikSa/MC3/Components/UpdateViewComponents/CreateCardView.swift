@@ -9,8 +9,8 @@ import SwiftUI
 
 struct CreateCardView: View {
     @ObservedObject var viewModel: MC3ViewModel
-    @State var selectedIndex: Int = 0
-    
+    @Binding var selectedIndex: Int
+
     var body: some View {
         TabView(selection: $viewModel.page) {
             ForEach((0..<2), id: \.self) { page in
@@ -23,12 +23,10 @@ struct CreateCardView: View {
                         VStack(alignment: .center, spacing: 20) {
                             Spacer()
                             Text("아래").font(.system(size: 17, weight: .semibold))
-                            
                             LazyVGrid(columns: viewModel.columns, spacing: 10) {
+
                                 ForEach(viewModel.leftArray.indices) { iNumber in
                                     let index = page == 0 ? viewModel.leftArray[iNumber] : viewModel.rightArray[iNumber]
-                                    
-                                    // TODO: - 처음 들어왔을 때 아무 버튼도 선택되어있지 않게 바꾸기
                                     ZStack {
                                         Button {
                                             selectedIndex = index
@@ -39,7 +37,6 @@ struct CreateCardView: View {
                             }
                         }
                         .padding(.horizontal, 30)
-                            
                         Text("위").font(.system(size: 17, weight: .semibold))
                         Spacer()
                     }.padding(.top, -20)
@@ -47,15 +44,15 @@ struct CreateCardView: View {
             }
         }
         .frame(height: 428)
-        .onAppear {
-            viewModel.resetAllTabbedStates()
-        }
+//        .onAppear {
+//            viewModel.resetAllTabbedStates()
+//        }
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
     }
 }
 
 struct CreateCardView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateCardView(viewModel: MC3ViewModel.preview)
+        CreateCardView(viewModel: MC3ViewModel.preview, selectedIndex: .constant(0))
     }
 }

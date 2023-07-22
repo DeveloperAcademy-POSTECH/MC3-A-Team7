@@ -8,6 +8,7 @@ import SwiftUI
 
 struct MC3View: View {
     @StateObject private var viewModel = MC3ViewModel()
+    @State private var showModal = false
 
     var body: some View {
         VStack(alignment: .center) {
@@ -16,7 +17,13 @@ struct MC3View: View {
                 TopMainTextView(viewModel: viewModel)
                 Spacer()
             }
-
+            .onTapGesture {
+                showModal = true
+            }
+            .sheet(isPresented: $showModal) {
+                CreateView()
+            }
+            
             TabViewComponentsView(viewModel: viewModel)
             BottomTextLineView(viewModel: viewModel)
             ButtonComponentView(viewModel: viewModel)
