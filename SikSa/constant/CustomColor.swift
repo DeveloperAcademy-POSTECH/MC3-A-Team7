@@ -23,6 +23,7 @@ enum CustomColor: String {
     case mainViewRecommendationDateButtonStrokeColor
     case mainViewTodayAndRecordButtonColor
     case mainViewTodayAndRecordTextColor
+    case boxBackgroundColor
     case unselectedButtonColor
     case viewBackgroundBlueColor
 }

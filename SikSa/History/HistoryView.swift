@@ -9,10 +9,26 @@ import SwiftUI
 
 struct HistoryView: View {
     @Environment(\.dismiss) private var dismiss
-    @State var previousSelectedDate = "2023년 07월 10일"
-    @State var previousSelectedPositions = [5, 6]
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \Injection.timestamp, ascending: true)]
+    )
+    private var injections: FetchedResults<Injection>
+    @State private var previousSelectedDate: String
+    @State private var previousSelectedPositions: [Int]
+    var injectionDictionary: [String: [Injection]]
+
+    init() {
+        injectionDictionary = Self.buildDictionary(using: PersistenceController.shared.injections)
+//        injectionDictionary = Self.buildDictionary(using: injections)
+        let firstKey = injectionDictionary.keys.sorted(by: >).first ?? "2023년 07월 22일"
+        _previousSelectedDate = State(initialValue: String(firstKey))
+        _previousSelectedPositions = State(initialValue: injectionDictionary[firstKey]?.map({ injection in
+            injection.wrappedPosition
+        }) ?? [5, 6])
+    }
 
     var body: some View {
+        let _ = print(injections)
         VStack {
             ScrollView {
                 LazyVStack(pinnedViews: [.sectionHeaders]) {
@@ -25,12 +41,12 @@ struct HistoryView: View {
                     .padding(.top)
                     .padding(.horizontal)
                     Section(header: SectionHeaderView(previousSelectedPositions: previousSelectedPositions)) {
-                        ForEach(InjectionModel.previewDataDictionary.keys.sorted(by: >), id: \.self) { key in
-                            if let value = InjectionModel.previewDataDictionary[key] {
+                        ForEach(injectionDictionary.keys.sorted(by: >), id: \.self) { key in
+                            if let value = injectionDictionary[key] {
                                 HistoryCardView(dateString: key,
-                                         injections: value,
-                                         previousSelectedDate: $previousSelectedDate,
-                                         previousSelectedPositions: $previousSelectedPositions
+                                                injections: .constant(value),
+                                                previousSelectedDate: $previousSelectedDate,
+                                                previousSelectedPositions: $previousSelectedPositions
                                 )
                             }
                         }
@@ -56,8 +72,19 @@ struct HistoryView: View {
         }
     }
     private func addRecord() {
-        print(InjectionModel.previewData)
         print("생성하기 모달 띄우기")
+    }
+    static func convertTimestampFormat (_ timestamp: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY년 MM월 dd일"
+        return dateFormatter.string(from: timestamp)
+    }
+
+    //    static func buildDictionary(using injections: FetchedResults<Injection>) -> [String: [Injection]] {
+    static func buildDictionary(using injections: [Injection]) -> [String: [Injection]] {
+        return Dictionary(grouping: injections) {
+            Self.convertTimestampFormat($0.wrappedTimestamp)
+        }
     }
 }
 
@@ -74,8 +101,8 @@ struct SectionHeaderView: View {
     }
 }
 
-struct HistoryView_Previews: PreviewProvider {
-    static var previews: some View {
-        HistoryView()
-    }
-}
+//struct HistoryView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HistoryView()
+//    }
+//}

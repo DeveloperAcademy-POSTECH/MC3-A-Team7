@@ -46,4 +46,10 @@ extension PersistenceController {
             return try? container.viewContext.fetch(injectionRequest).first
         }
     }
+
+    var injections: [Injection] {
+        let injectionRequest: NSFetchRequest<Injection> = Injection.fetchRequest()
+        injectionRequest.sortDescriptors = [.byTimestamp(ascending: false)]
+        return (try? container.viewContext.fetch(injectionRequest)) ?? []
+    }
 }

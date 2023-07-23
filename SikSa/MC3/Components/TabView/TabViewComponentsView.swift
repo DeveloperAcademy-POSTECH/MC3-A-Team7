@@ -15,7 +15,7 @@ struct TabViewComponentsView: View {
         TabView(selection: $viewModel.page) {
             ForEach((0..<2), id: \.self) { page in
                 Rectangle()
-                    .foregroundColor(Color(hex: "F6F6FB"))
+                    .foregroundColor(.boxBackgroundColor)
                     .frame(minWidth: 350)
                     .cornerRadius(12)
                     .overlay {
@@ -43,7 +43,6 @@ struct TabViewComponentsView: View {
                     }
             }
         }
-        .frame(height: 428)
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
     }
 }

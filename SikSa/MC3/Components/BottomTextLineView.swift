@@ -24,14 +24,12 @@ struct BottomTextLineView: View {
                 Text("\(viewModel.positionNumberToKnow)번 부위의 투여기록이 없습니다.")
             }
         }
-        .font(.system(size: 15))
+        .font(.subheadline)
         .foregroundColor(.black)
         .padding()
         .background(
             Rectangle()
-                .foregroundColor(Color(hex: "5987FE")).opacity(0.19)
-                .frame(minWidth: 350)
-                .cornerRadius(12)
-        )
+                .foregroundColor(.boxBackgroundColor)
+                .cornerRadius(12))
     }
 }

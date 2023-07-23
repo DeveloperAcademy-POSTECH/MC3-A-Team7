@@ -78,10 +78,10 @@ struct NumberingCircle: View {
     var body: some View {
         ZStack {
             Circle()
-                .foregroundColor(previousSelectedPositions.contains(number) ? .blue : Color(.systemGray5))
+                .foregroundColor(previousSelectedPositions.contains(number) ? .accentColor : .mainView7daysBeforeButtonColorUnselected)
             Text(String(number))
                 .font(.caption2)
-                .foregroundColor(previousSelectedPositions.contains(number) ? .white : Color(.systemGray2))
+                .foregroundColor(previousSelectedPositions.contains(number) ? .white : .mainView7daysBeforeTextColorUnselected)
         }
     }
 }
