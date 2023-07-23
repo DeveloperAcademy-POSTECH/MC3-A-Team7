@@ -19,6 +19,7 @@ struct ButtonComponentView: View {
                         position: pickedNumber
                     )
             }
+            viewModel.isToastOnApear.toggle()
             viewModel.pickedPosition = nil
             viewModel.setRecommendedPosition()
         } label: {

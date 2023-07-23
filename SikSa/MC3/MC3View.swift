@@ -10,20 +10,45 @@ struct MC3View: View {
     @StateObject private var viewModel = MC3ViewModel()
 
     var body: some View {
-        VStack(alignment: .center) {
+        NavigationView {
 
-            HStack {
-                TopMainTextView(viewModel: viewModel)
-                Spacer()
+            ZStack {
+                VStack(alignment: .center, spacing: 32) {
+                    TopMainTextView(viewModel: viewModel)
+                    VStack(spacing: 12) {
+                        TabViewComponentsView(viewModel: viewModel)
+                        BottomTextLineView(viewModel: viewModel)
+                    }
+                    ButtonComponentView(viewModel: viewModel)
+                    Spacer()
+
+                }
+                .padding(.horizontal)
+                .onAppear {
+                    viewModel.tabViewIndicatorDot()
+                }
+
+                VStack {
+                    Spacer()
+                    if viewModel.isToastOnApear {
+                        ButtonToastView(viewModel: viewModel)
+                            .onAppear {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                    viewModel.isToastOnApear.toggle()
+                                }
+                            }
+                    }
+                }
             }
-
-            TabViewComponentsView(viewModel: viewModel)
-            BottomTextLineView(viewModel: viewModel)
-            ButtonComponentView(viewModel: viewModel)
-        }
-        .padding(.horizontal)
-        .onAppear {
-            viewModel.tabViewIndicatorDot()
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink {
+                        HistoryView()
+                    } label: {
+                        Label("주사기록", systemImage: "archivebox")
+                    }
+                }
+            }
         }
     }
 }

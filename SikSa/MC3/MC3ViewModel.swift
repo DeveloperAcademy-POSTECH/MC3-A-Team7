@@ -14,6 +14,7 @@ class MC3ViewModel: ObservableObject {
     @Published var page = 0
     @Published var recommendedPosition: Int = 0
     @Published var pickedPosition: Int?
+    @Published var isToastOnApear: Bool = false
     @Published var under7DaysArrPositions: [Int16] = []
     @Published var under7DaysArrTimestamps: [Date] = []
     @Published var listOfDateArr: [Date] = []

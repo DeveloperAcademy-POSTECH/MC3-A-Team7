@@ -24,6 +24,7 @@ struct TabViewCircleView: View {
                     , lineWidth: 3)
                 .opacity(position == viewModel.pickedPosition ? 1 : 0)
                 .frame(width: 66, height: 66)
+                .animation(.easeInOut(duration: 0.3) )
 
             Circle()
                 .id(position)
@@ -54,6 +55,7 @@ struct TabViewCircleView: View {
                                 Color.mainView7daysBeforeTextColorUnselected
                         )
                 }
+                .animation(.easeInOut(duration: 0.3))
         }
     }
 }

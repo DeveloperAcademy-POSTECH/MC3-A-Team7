@@ -33,8 +33,9 @@ struct ButtonToastView: View {
                     }
                 }
                 .transition(.asymmetric(insertion: AnyTransition.move(edge: .bottom),
-                                        removal: AnyTransition.move(edge: .leading)))
-                .animation(.easeIn)
+                                        removal: AnyTransition.opacity.animation(.easeOut(duration: 2)))
+                )
+                .animation(.easeIn, value: viewModel.isToastOnApear)
         }
     }
 }
