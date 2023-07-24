@@ -16,7 +16,6 @@ struct UpdateView: View {
 
     init(injection: Injection) {
         self.injection = injection
-        let _ = print("UpdateView: \(injection)\n\n\n\n\n\n\n\n\n")
         //        self.date = Date()
         //        self.position = 0
         //        self.date = State(initialValue: injection.wrappedTimestamp)

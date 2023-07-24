@@ -70,7 +70,7 @@ struct NumberingButton: View {
     var isSelected: Bool
     var changeButtonColor: () -> Void
     var injection: Injection
-    @State var isUpdateModalPresented = false
+    @State private var isUpdateModalPresented = false
     var body: some View {
         Button {
             changeButtonColor()
@@ -84,13 +84,14 @@ struct NumberingButton: View {
                     .foregroundColor(isSelected ? .white : .mainView7daysBeforeTextColorUnselected)
                     .font(.headline)
             }
-            .sheet(isPresented: $isUpdateModalPresented) {
-                UpdateView(injection: injection)
-            }
+        }
+        .sheet(isPresented: $isUpdateModalPresented) {
+            UpdateView(injection: injection)
+                .presentationDetents([.fraction(0.99)])
         }
     }
 }
-//
+
 //struct HistoryCardView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        HistoryCardView(dateString: "2023년 07월 13일",

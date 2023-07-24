@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CreateView: View {
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) private var dismiss
     @StateObject private var viewModel = MC3ViewModel()
     @State var createNumber: Int = 0
     @State private var selectedIndex = 0
@@ -43,7 +43,7 @@ struct CreateView: View {
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         Button {
-                            self.presentationMode.wrappedValue.dismiss()
+                            dismiss()
                         } label: {
                             Text("취소")
                                 .foregroundColor(.red)
@@ -53,7 +53,7 @@ struct CreateView: View {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
                             PersistenceController.shared.addInjection(time: date, position: selectedIndex)
-                            self.presentationMode.wrappedValue.dismiss()
+                            dismiss()
                         } label: {
                             Text("추가")
                         }
@@ -65,8 +65,8 @@ struct CreateView: View {
     }
 }
 
-struct CreateView_Previews: PreviewProvider {
-    static var previews: some View {
-        CreateView()
-    }
-}
+//struct CreateView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CreateView()
+//    }
+//}
