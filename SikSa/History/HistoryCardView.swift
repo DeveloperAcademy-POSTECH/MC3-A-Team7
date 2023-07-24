@@ -11,8 +11,8 @@ struct HistoryCardView: View {
     var dateString: String
     @Binding var injections: [Injection]
     @Binding var previousSelectedDate: String
-    @Binding var previousSelectedPositions: [Int]
-    @State private var isNumberSelected = false
+    var previousSelectedPositions: [Int]
+
     var body: some View {
         VStack {
             let isSelected = previousSelectedDate == dateString
@@ -24,7 +24,8 @@ struct HistoryCardView: View {
                     ForEach($injections) { $injection in
                         NumberingButton(isSelected: isSelected,
                                         changeButtonColor: changeButtonColor,
-                                        injection: injection)
+                                        injection: injection
+                        )
                     }
                 }
                 .padding(.vertical, 7)
@@ -36,10 +37,10 @@ struct HistoryCardView: View {
         }
         .padding()
     }
+
     private func changeButtonColor () {
         if previousSelectedDate != dateString {
             previousSelectedDate = dateString
-            previousSelectedPositions = injections.map { $0.wrappedPosition }
         }
     }
 }
@@ -69,8 +70,10 @@ struct DateButton: View {
 struct NumberingButton: View {
     var isSelected: Bool
     var changeButtonColor: () -> Void
-    var injection: Injection
-    @State var isUpdateModalPresented = false
+    
+    @ObservedObject var injection: Injection
+    @State private var isUpdateModalPresented = false
+
     var body: some View {
         Button {
             changeButtonColor()
@@ -84,13 +87,14 @@ struct NumberingButton: View {
                     .foregroundColor(isSelected ? .white : .mainView7daysBeforeTextColorUnselected)
                     .font(.headline)
             }
-            .sheet(isPresented: $isUpdateModalPresented) {
-                UpdateView(injection: injection)
-            }
+        }
+        .sheet(isPresented: $isUpdateModalPresented) {
+            UpdateView(injection: injection)
+                .presentationDetents([.fraction(0.99)])
         }
     }
 }
-//
+
 //struct HistoryCardView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        HistoryCardView(dateString: "2023년 07월 13일",

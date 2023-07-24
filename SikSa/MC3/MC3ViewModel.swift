@@ -20,10 +20,7 @@ class MC3ViewModel: ObservableObject {
     @Published var under7DaysButtonActivate: Bool = false
     @Published var under7DaysArrPositions: [Int16] = []
     @Published var under7DaysArrTimestamps: [Date] = []
-    @Published var listOfDateArr: [Date] = []
     @Published var injectionsByPositionArray: [Injection?]
-    @Published var showUpeModal: Bool = false
-//    var injection: Injection
 
     var lastUpdatedInjection: Injection? {
         PersistenceController.shared.lastUpdatedInjection
@@ -151,7 +148,6 @@ class MC3ViewModel: ObservableObject {
     }
 
     func getCircleStatus(of position: Int, using injections: [Injection?]) -> TabViewCircleView.Status {
-        print(injections)
         if let injection = injections[position] {
             let oneWeekAgo = Date() - 7
             if injection.wrappedTimestamp < oneWeekAgo {
@@ -191,14 +187,23 @@ class MC3ViewModel: ObservableObject {
                 )
         }
         isToastOnApear.toggle()
-        injectionsByPositionArray = Self.buildInjectionsByPositionArray()
+        updateInjectionsByPositionArray()
         pickedPosition = nil
         setRecommendedPosition()
     }
 
-    func buttonDelete(injection: Injection) {
+    func delete(injection: Injection) {
         PersistenceController.shared.delete(injection: injection)
-        injectionsByPositionArray = Self.buildInjectionsByPositionArray()
+        updateInjectionsByPositionArray()
         NotificationCenter.default.post(name: NSNotification.Name("RefreshMainView"), object: nil)
+    }
+
+    func update(time: Date, position: Int, to injection: Injection) {
+        PersistenceController.shared.update(time: time, position: position, to: injection)
+        updateInjectionsByPositionArray()
+    }
+
+    func updateInjectionsByPositionArray() {
+        injectionsByPositionArray = Self.buildInjectionsByPositionArray()
     }
 }

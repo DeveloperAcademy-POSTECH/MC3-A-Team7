@@ -14,6 +14,7 @@ struct BottomTextLineView: View {
         let getDate =
         viewModel.getDateCalculator(of: viewModel.selectedInjectionInMainView)
         HStack(alignment: .center, spacing: 5) {
+            Spacer()
             switch getDate {
             case .some(let date): // 1일 이상 지난 것
                 let dateInfoText = date == 0 ?  "오늘" : "\(date)일 전"
@@ -23,15 +24,12 @@ struct BottomTextLineView: View {
             case .none: // 기록 없는 것
                 Text("\(viewModel.positionNumberToKnow)번 부위의 투여기록이 없습니다.")
             }
+            Spacer()
         }
         .font(.subheadline)
         .foregroundColor(.black)
         .padding()
-        .background(
-            Rectangle()
-            .foregroundColor(.boxBackgroundColor)
-            .cornerRadius(12)
-            .frame(width: 350, height: 48)
-        )
+        .background(Color.boxBackgroundColor)
+        .cornerRadius(12)
     }
 }

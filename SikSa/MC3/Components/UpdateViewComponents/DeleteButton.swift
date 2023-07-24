@@ -27,15 +27,11 @@ struct DeleteButton: View {
             Text("삭제하기")
                 .foregroundColor(.red)
                 .fontWeight(.semibold)
-                .font(.system(size: 17))
         }
-
-        // TODO: - 삭제 버튼 클릭 시 action: 데이터 삭제 -> 확인 필요
         .alert("이 기록을 삭제하시겠습니까?", isPresented: $showingAlert) {
             Button("취소", role: .cancel) {}
             Button {
                 deleteAction()
-//                viewModel.showUpdateModal = .constant(false)
 //                UpdateView(injection: injection).presentationMode.wrappedValue.dismiss()
             } label: {
                 Text("삭제")
@@ -45,7 +41,7 @@ struct DeleteButton: View {
         }
     }
 }
-//
+
 //struct DeleteButton_Previews: PreviewProvider {
 //    static var previews: some View {
 //

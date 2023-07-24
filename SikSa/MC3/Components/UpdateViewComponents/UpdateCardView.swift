@@ -9,12 +9,19 @@ import SwiftUI
 
 struct UpdateCardView: View {
     @ObservedObject var viewModel: MC3ViewModel
-//    @ObservedObject var selectedNum: SelectedData
     @Binding var selectedPosition: Int
     var originalPosition: Int
+    @State var pageIndex: Int
+
+    init(viewModel: MC3ViewModel, selectedPosition: Binding<Int>, originalPosition: Int) {
+        self.viewModel = viewModel
+        self._selectedPosition = selectedPosition
+        self.originalPosition = originalPosition
+        _pageIndex = State(initialValue: viewModel.leftArray.contains(originalPosition) ? 0 : 1)
+    }
 
     var body: some View {
-        TabView(selection: $viewModel.page) {
+        TabView(selection: $pageIndex) {
             ForEach((0..<2), id: \.self) { page in
                 Rectangle()
                     .foregroundColor(.clear)
@@ -27,18 +34,17 @@ struct UpdateCardView: View {
                             Text("아래").font(.system(size: 17, weight: .semibold))
 
                             LazyVGrid(columns: viewModel.columns, spacing: 10) {
-                                ForEach(viewModel.leftArray.indices, id: \.self) { iNumber in
-                                    let index = page == 0 ? viewModel.leftArray[iNumber] : viewModel.rightArray[iNumber]
+                                let array = page == 0 ? viewModel.leftArray : viewModel.rightArray
+                                ForEach(array, id: \.self) { position in
                                     ZStack {
                                         Button {
-                                            selectedPosition = index
+                                            selectedPosition = position
                                         } label: {
-                                            UpdateCircleView(selected: selectedPosition == index,
-                                                             index: index,
-                                                             isPreviousNumber: originalPosition == index)
+                                            UpdateCircleView(selected: selectedPosition == position,
+                                                             position: position,
+                                                             isPreviousNumber: originalPosition == position)
                                         }
                                     }
-
                                 }
                             }
                             .padding(.horizontal, 30)
@@ -57,10 +63,9 @@ struct UpdateCardView: View {
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
     }
 }
-
-struct UpdateCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        UpdateCardView(viewModel: MC3ViewModel.preview, selectedPosition: .constant(1), originalPosition: 1)
-    }
-}
-
+//
+//struct UpdateCardView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        UpdateCardView(viewModel: MC3ViewModel.preview, selectedPosition: .constant(1), originalPosition: 1)
+//    }
+//}
