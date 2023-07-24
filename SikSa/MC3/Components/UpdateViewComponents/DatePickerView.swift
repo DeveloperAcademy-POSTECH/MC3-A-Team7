@@ -8,18 +8,17 @@
 import SwiftUI
 
 struct DatePickerView: View {
-    @State private var date = Date()
-    
-    // TODO: - DatePicker 날짜 데이터 받아오는 값 수정
+    @Binding var date: Date
+
     let dateRange: ClosedRange<Date> = {
         let calendar = Calendar.current
         let startComponents = DateComponents(year: 2022, month: 7, day: 19)
         let endComponents = DateComponents(year: 2023, month: 12, day: 31, hour: 23, minute: 59, second: 59)
-        return calendar.date(from:startComponents)!
+        return calendar.date(from: startComponents)!
             ...
-            calendar.date(from:endComponents)!
+            calendar.date(from: endComponents)!
     }()
-    
+
     var body: some View {
         DatePicker(
             "맞은 날짜",
@@ -34,7 +33,6 @@ struct DatePickerView: View {
 
 struct DatePickerView_Previews: PreviewProvider {
     static var previews: some View {
-        DatePickerView()
+        DatePickerView(date: .constant(Date()))
     }
 }
-

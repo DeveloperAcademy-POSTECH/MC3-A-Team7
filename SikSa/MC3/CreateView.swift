@@ -11,8 +11,9 @@ struct CreateView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject private var viewModel = MC3ViewModel()
     @State var createNumber: Int = 0
-//    @Binding var selectedIndex: Int?
-    
+    @State private var selectedIndex = 0
+    @State private var date = Date()
+
     var body: some View {
         NavigationView {
             ScrollView {
@@ -23,33 +24,40 @@ struct CreateView: View {
                             .padding()
                         Spacer()
                     }
-                    
-                    CreateCardView(viewModel: viewModel)
-                    
+
+                    CreateCardView(viewModel: viewModel, selectedIndex: $selectedIndex)
+
                     Spacer()
-                    
+
                     HStack {
                         Text("날짜 선택")
                             .bold()
                             .padding()
                         Spacer()
                     }
-                   
-                    DatePickerView()
+
+                    DatePickerView(date: $date)
                 }
                 .navigationTitle("생성하기")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
-                        Button(action: {self.presentationMode.wrappedValue.dismiss()})
-                        {Text("취소")
+                        Button {
+                            self.presentationMode.wrappedValue.dismiss()
+                        } label: {
+                            Text("취소")
                                 .foregroundColor(.red)
                         }
                     }
-                    // TODO: - 추가 버튼 클릭 시 새로운 데이터 추가
+
                     ToolbarItem(placement: .navigationBarTrailing) {
-                        Button(action: {self.presentationMode.wrappedValue.dismiss()})
-                        {Text("추가")}   
+                        Button {
+                            PersistenceController.shared.addInjection(time: date, position: selectedIndex)
+                            self.presentationMode.wrappedValue.dismiss()
+                        } label: {
+                            Text("추가")
+                        }
+                        .disabled(selectedIndex == 0)
                     }
                 }
             }

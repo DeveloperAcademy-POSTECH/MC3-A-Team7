@@ -19,12 +19,14 @@ struct HistoryView: View {
 
     init() {
         injectionDictionary = Self.buildDictionary(using: PersistenceController.shared.injections)
-        let firstKey = injectionDictionary.keys.sorted(by: >).first ?? "2023년 07월 22일"
+        let firstKey = injectionDictionary.keys.sorted(by: >).first ?? ""
         _previousSelectedDate = State(initialValue: String(firstKey))
         _previousSelectedPositions = State(initialValue: injectionDictionary[firstKey]?.map({ injection in
             injection.wrappedPosition
-        }) ?? [5, 6])
+        }) ?? [])
     }
+    @State private var showCreateModal = false
+    @State private var isUpdateModalPresented = false
 
     var body: some View {
         VStack {
@@ -44,7 +46,8 @@ struct HistoryView: View {
                                 HistoryCardView(dateString: key,
                                                 injections: .constant(value),
                                                 previousSelectedDate: $previousSelectedDate,
-                                                previousSelectedPositions: $previousSelectedPositions
+                                                previousSelectedPositions: $previousSelectedPositions,
+                                                isUpdateModalPresented: $isUpdateModalPresented
                                 )
                             }
                         }
@@ -63,8 +66,16 @@ struct HistoryView: View {
                 }
             }
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: addRecord) {
-                    Label("생성하기", systemImage: "plus")
+                Button {
+                    addRecord()
+                    self.showCreateModal = true
+                } label: {
+                    Image(systemName: "plus")
+                        .resizable()
+                        .frame(width: 28, height: 28)
+                        .foregroundColor(.blue)
+                }.sheet(isPresented: self.$showCreateModal) {
+                    CreateView()
                 }
             }
         }

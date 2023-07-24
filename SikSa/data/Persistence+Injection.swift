@@ -10,7 +10,7 @@ import CoreData
 extension PersistenceController {
     func addInjection(time: Date, position: Int) {
         let context = container.viewContext
-///        context.perform { 얘랑 무슨 차이?
+        ///        context.perform { 얘랑 무슨 차이?
         context.performAndWait {
             let injection = Injection(context: context)
             injection.id = Int64(UUID().hashValue)
@@ -42,4 +42,17 @@ extension PersistenceController {
         injectionRequest.sortDescriptors = [.byTimestamp(ascending: false)]
         return (try? container.viewContext.fetch(injectionRequest)) ?? []
     }
+
+    var onePositionInjection: Injection {
+        var newInjection = Injection(context: container.viewContext)
+        newInjection.timestamp = Date()
+        newInjection.position = 1
+
+        let injectionRequest: NSFetchRequest<Injection> = Injection.fetchRequest()
+        injectionRequest.predicate = .injected(at: 1)
+        injectionRequest.sortDescriptors = [.byTimestamp(ascending: false)]
+        return (try? container.viewContext.fetch(injectionRequest).first) ?? newInjection
+
+    }
 }
+

@@ -9,7 +9,6 @@ import SwiftUI
 
 class SelectedData: ObservableObject {
     @Published var selectedIndex: Int = 1
-    // @Published var injectDate: [String] = ["2022", "07", "20"]
 }
 
 struct ModalTestView: View {
@@ -32,8 +31,9 @@ struct ModalTestView: View {
                     .font(.system(size: 20))
                     .bold()
             }.sheet(isPresented: self.$showUpdateModal) {
-                UpdateView(selectedNum: selectedNum)
-                    .padding()
+                UpdateView(injection: PersistenceController.shared.onePositionInjection)
+//                UpdateView(selectedNum: selectedNum)
+//                    .padding()
             }
             
             Button {

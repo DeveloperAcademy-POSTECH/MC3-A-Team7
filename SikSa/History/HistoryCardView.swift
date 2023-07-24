@@ -12,19 +12,21 @@ struct HistoryCardView: View {
     @Binding var injections: [Injection]
     @Binding var previousSelectedDate: String
     @Binding var previousSelectedPositions: [Int]
+    @Binding var isUpdateModalPresented: Bool
     @State private var isNumberSelected = false
     var body: some View {
         VStack {
             let isSelected = previousSelectedDate == dateString
             DateButton(dateString: dateString,
                        isSelected: isSelected,
-                       selectDate: changeButtonColor)
+                       changeButtonColor: changeButtonColor)
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 10) {
                     ForEach($injections) { $injection in
                         NumberingButton(isSelected: isSelected,
-                                        selectDate: changeButtonColor,
-                                        injection: injection)
+                                        changeButtonColor: changeButtonColor,
+                                        injection: injection,
+                                        isUpdateModalPresented: $isUpdateModalPresented)
                     }
                 }
                 .padding(.vertical, 7)
@@ -47,10 +49,10 @@ struct HistoryCardView: View {
 struct DateButton: View {
     var dateString: String
     var isSelected: Bool
-    var selectDate: () -> Void
+    var changeButtonColor: () -> Void
     var body: some View {
         Button {
-            selectDate()
+            changeButtonColor()
         } label: {
             HStack {
                 Text(dateString)
@@ -68,13 +70,13 @@ struct DateButton: View {
 
 struct NumberingButton: View {
     var isSelected: Bool
-    var selectDate: () -> Void
+    var changeButtonColor: () -> Void
     var injection: Injection
-    @State var isCircleSelected = false
+    @Binding var isUpdateModalPresented: Bool
     var body: some View {
         Button {
-            selectDate()
-            print("수정모달 띄우기")
+            changeButtonColor()
+            isUpdateModalPresented = true
         } label: {
             ZStack {
                 Circle()
@@ -83,6 +85,9 @@ struct NumberingButton: View {
                 Text(String(injection.wrappedPosition))
                     .foregroundColor(isSelected ? .white : .mainView7daysBeforeTextColorUnselected)
                     .font(.headline)
+            }
+            .sheet(isPresented: $isUpdateModalPresented) {
+                UpdateView(injection: injection)
             }
         }
     }
