@@ -9,11 +9,10 @@ import SwiftUI
 
 struct BottomTextLineView: View {
     @ObservedObject var viewModel: MC3ViewModel
-    let injections = PersistenceController.shared.injectionsByPositionArray
 
     var body: some View {
         let getDate =
-        viewModel.getDateCalculator(of: viewModel.positionNumberToKnow, using: injections)
+        viewModel.getDateCalculator(of: viewModel.selectedInjectionInMainView)
         HStack(alignment: .center, spacing: 5) {
             switch getDate {
             case .some(let date): // 1일 이상 지난 것

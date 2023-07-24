@@ -36,9 +36,11 @@ struct MC3View: View {
                     Text("기록을 누르면 마지막 투여일이 재기록됩니다.")
                 }
                 VStack {
-                    if viewModel.isToastOnApear {
+
+                    if viewModel.isToastOnApear,
+                       let currentInjection = viewModel.lastUpdatedInjection {
                         Spacer()
-                        ButtonToastView(viewModel: viewModel)
+                        ButtonToastView(viewModel: viewModel, injection: currentInjection)
                             .onAppear {
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                                     viewModel.isToastOnApear.toggle()

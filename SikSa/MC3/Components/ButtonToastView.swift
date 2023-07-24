@@ -9,13 +9,13 @@ import SwiftUI
 
 struct ButtonToastView: View {
     @ObservedObject var viewModel: MC3ViewModel
-    let injections = PersistenceController.shared.injectionsByPositionArray
+    let injection: Injection
 
     var body: some View {
         ZStack {
-            let getDate = injections[viewModel.positionNumberToKnow]?.timestamp
-            let getPosition = injections[viewModel.positionNumberToKnow]?.position
-            let dateFormatter = viewModel.formatDate(getDate ?? Date())
+            let timestamp = injection.wrappedTimestamp
+            let position = injection.wrappedPosition
+            let formattedDate = viewModel.formatDate(timestamp)
             ZStack(alignment: .leading) {
                 RoundedRectangle(cornerRadius: 10)
                     .foregroundColor(Color(hex: "F7F9FC"))
@@ -27,7 +27,7 @@ struct ButtonToastView: View {
                     VStack(alignment: .leading) {
                             Text("투여 기록을 완료했어요.")
                                 .font(.system(size: 16, weight: .semibold))
-                            Text("\(viewModel.positionNumberToKnow)번 \(dateFormatter) ")
+                            Text("\(position)번 \(formattedDate) ")
                                 .opacity(0.6).font(.system(size: 13))
                     }
                 }.padding()
@@ -42,6 +42,6 @@ struct ButtonToastView: View {
 
 struct ButtonToastView_Previews: PreviewProvider {
     static var previews: some View {
-        ButtonToastView(viewModel: MC3ViewModel())
+        ButtonToastView(viewModel: MC3ViewModel(), injection: PersistenceController.shared.onePositionInjection)
     }
 }

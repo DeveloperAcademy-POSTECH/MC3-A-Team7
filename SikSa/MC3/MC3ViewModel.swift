@@ -22,9 +22,21 @@ class MC3ViewModel: ObservableObject {
     @Published var listOfDateArr: [Date] = []
     @Published var injectionsByPositionArray: [Injection?]
 
+    var lastUpdatedInjection: Injection? {
+        PersistenceController.shared.lastUpdatedInjection
+    }
+
     init() {
         injectionsByPositionArray = Self.buildInjectionsByPositionArray()
         setRecommendedPosition()
+    }
+
+    var selectedInjectionInMainView: Injection? {
+        guard let pickedPosition,
+              let injection = injectionsByPositionArray[pickedPosition] else {
+            return nil
+        }
+        return injection
     }
 
     static func buildInjectionsByPositionArray() -> [Injection?] {
@@ -119,8 +131,8 @@ class MC3ViewModel: ObservableObject {
         return .over7days
     }
 
-    func getDateCalculator(of position: Int, using injections: [Injection?]) -> Int? {
-        if let injection = injections[position] {
+    func getDateCalculator(of injection: Injection?) -> Int? {
+        if let injection {
             let offsetComps =
             Calendar.current.dateComponents([.day], from: injection.timestamp ?? Date(), to: Date())
             if case let (day?) = (offsetComps.day) {
@@ -138,17 +150,16 @@ class MC3ViewModel: ObservableObject {
     }
 
     func buttonActionForRecord() {
-        if let pickedNumber = pickedPosition {
+        if let pickedPosition {
             PersistenceController.shared
                 .addInjection(
                     time: Date(),
-                    position: pickedNumber
+                    position: pickedPosition
                 )
         }
         isToastOnApear.toggle()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            self.pickedPosition = nil
-            self.setRecommendedPosition()
-        }
+        injectionsByPositionArray = Self.buildInjectionsByPositionArray()
+        pickedPosition = nil
+        setRecommendedPosition()
     }
 }
