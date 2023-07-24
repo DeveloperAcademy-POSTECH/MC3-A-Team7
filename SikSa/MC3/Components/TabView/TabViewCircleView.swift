@@ -24,12 +24,17 @@ struct TabViewCircleView: View {
                     , lineWidth: 3)
                 .opacity(position == viewModel.pickedPosition ? 1 : 0)
                 .frame(width: 66, height: 66)
-                .animation(.easeInOut(duration: 0.3) )
+                .animation(.easeInOut(duration: 0.3))
 
             Circle()
                 .id(position)
                 .onTapGesture {
                     viewModel.pickedPosition = position
+                    if status == Status.under7days {
+                        viewModel.isUnder7DaysTabbed = true
+                    } else {
+                        viewModel.isUnder7DaysTabbed = false
+                    }
                 }
                 .frame(width: 60, height: 60)
                 .foregroundColor(

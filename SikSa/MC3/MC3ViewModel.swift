@@ -15,6 +15,8 @@ class MC3ViewModel: ObservableObject {
     @Published var recommendedPosition: Int = 0
     @Published var pickedPosition: Int?
     @Published var isToastOnApear: Bool = false
+    @Published var isUnder7DaysTabbed: Bool = false
+    @Published var under7DaysButtonActivate: Bool = false
     @Published var under7DaysArrPositions: [Int16] = []
     @Published var under7DaysArrTimestamps: [Date] = []
     @Published var listOfDateArr: [Date] = []
@@ -30,7 +32,6 @@ class MC3ViewModel: ObservableObject {
     var positionNumberToKnow: Int {
         if pickedPosition == nil {
             return recommendedPosition
-
         } else {
             return pickedPosition ?? 1
         }
@@ -93,15 +94,15 @@ class MC3ViewModel: ObservableObject {
         return .over7days
     }
 
-    func getDateCalculator(of position: Int, using injections: [Injection?]) -> Int {
+    func getDateCalculator(of position: Int, using injections: [Injection?]) -> Int? {
         if let injection = injections[position] {
             let offsetComps =
-            Calendar.current.dateComponents([.year, .month, .day], from: injection.timestamp ?? Date(), to: Date())
+            Calendar.current.dateComponents([.day], from: injection.timestamp ?? Date(), to: Date())
             if case let (day?) = (offsetComps.day) {
                 return day
             }
        }
-        return 0
+        return nil
     }
 
     func formatDate(_ date: Date) -> String {
@@ -109,5 +110,20 @@ class MC3ViewModel: ObservableObject {
         dateFormatter.dateFormat = "yyyy.M.dd"
         dateFormatter.timeZone = TimeZone.current
         return dateFormatter.string(from: date)
+    }
+
+    func buttonActionForRecord() {
+        if let pickedNumber = pickedPosition {
+            PersistenceController.shared
+                .addInjection(
+                    time: Date(),
+                    position: pickedNumber
+                )
+        }
+        isToastOnApear.toggle()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            self.pickedPosition = nil
+            self.setRecommendedPosition()
+        }
     }
 }

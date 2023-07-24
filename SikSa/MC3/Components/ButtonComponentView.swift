@@ -12,16 +12,11 @@ struct ButtonComponentView: View {
 
     var body: some View {
         Button {
-            if let pickedNumber = viewModel.pickedPosition {
-                PersistenceController.shared
-                    .addInjection(
-                        time: Date(),
-                        position: pickedNumber
-                    )
+            if viewModel.isUnder7DaysTabbed {
+                viewModel.under7DaysButtonActivate.toggle()
+            } else if !viewModel.isUnder7DaysTabbed && !viewModel.under7DaysButtonActivate {
+                viewModel.buttonActionForRecord()
             }
-            viewModel.isToastOnApear.toggle()
-            viewModel.pickedPosition = nil
-            viewModel.setRecommendedPosition()
         } label: {
             Rectangle()
                 .foregroundColor(Color(hex: viewModel.isPositionSelected ? "5887FF" : "CECECE"))
