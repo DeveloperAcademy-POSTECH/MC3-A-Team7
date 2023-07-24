@@ -14,6 +14,7 @@ struct HistoryCardView: View {
     @Binding var previousSelectedPositions: [Int]
     @Binding var isUpdateModalPresented: Bool
     @State private var isNumberSelected = false
+
     var body: some View {
         VStack {
             let isSelected = previousSelectedDate == dateString

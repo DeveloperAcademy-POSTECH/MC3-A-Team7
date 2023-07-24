@@ -21,8 +21,7 @@ class MC3ViewModel: ObservableObject {
     @Published var under7DaysArrTimestamps: [Date] = []
     @Published var listOfDateArr: [Date] = []
     @Published var injectionsByPositionArray: [Injection?]
-    @Published var showUpeModal: Bool = false
-    @Published var injectiondatsByPositionArray: [Injection?]
+
     var lastUpdatedInjection: Injection? {
         PersistenceController.shared.lastUpdatedInjection
     }
@@ -31,7 +30,6 @@ class MC3ViewModel: ObservableObject {
         injectionsByPositionArray = Self.buildInjectionsByPositionArray()
         setRecommendedPosition()
     }
-
 
     var selectedInjectionInMainView: Injection? {
         guard let pickedPosition,
@@ -120,7 +118,6 @@ class MC3ViewModel: ObservableObject {
     }
 
     func getCircleStatus(of position: Int, using injections: [Injection?]) -> TabViewCircleView.Status {
-        print(injections)
         if let injection = injections[position] {
             let oneWeekAgo = Date() - 7
             if injection.wrappedTimestamp < oneWeekAgo {
