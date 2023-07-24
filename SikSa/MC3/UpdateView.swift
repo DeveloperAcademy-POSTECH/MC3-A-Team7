@@ -16,19 +16,15 @@ struct UpdateView: View {
 
     init(injection: Injection) {
         self.injection = injection
-        let _ = print("UpdateView: \(injection)\n\n\n\n\n\n\n\n\n")
-        //        self.date = Date()
-        //        self.position = 0
-        //        self.date = State(initialValue: injection.wrappedTimestamp)
-        //        self.position = State(initialValue: Int(injection.position))
         _selectedDate = State(initialValue: injection.wrappedTimestamp)
         _selectedPosition = State(initialValue: Int(injection.wrappedPosition))
     }
 
     func deleteInjection () {
-        PersistenceController.shared.delete(injection: injection)
+        viewModel.delete(injection: injection)
         dismiss()
     }
+
     var body: some View {
         NavigationView {
             ScrollView {
@@ -72,7 +68,11 @@ struct UpdateView: View {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
                             print("수정 \(selectedPosition)")
-                            PersistenceController.shared.update(time: selectedDate, position: selectedPosition, to: injection)
+                            viewModel.update(
+                                time: selectedDate,
+                                position: selectedPosition,
+                                to: injection
+                            )
                             dismiss()
                         } label: {
                             Text("완료")

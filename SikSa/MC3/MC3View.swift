@@ -8,11 +8,9 @@ import SwiftUI
 
 struct MC3View: View {
     @StateObject private var viewModel = MC3ViewModel()
-    @State private var showModal = false
 
     var body: some View {
         NavigationView {
-
             ZStack {
                 VStack(alignment: .center, spacing: 32) {
                     TopMainTextView(viewModel: viewModel)

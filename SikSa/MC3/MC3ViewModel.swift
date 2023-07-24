@@ -19,7 +19,6 @@ class MC3ViewModel: ObservableObject {
     @Published var under7DaysButtonActivate: Bool = false
     @Published var under7DaysArrPositions: [Int16] = []
     @Published var under7DaysArrTimestamps: [Date] = []
-    @Published var listOfDateArr: [Date] = []
     @Published var injectionsByPositionArray: [Injection?]
 
     var lastUpdatedInjection: Injection? {
@@ -156,9 +155,25 @@ class MC3ViewModel: ObservableObject {
                 )
         }
         isToastOnApear.toggle()
-        injectionsByPositionArray = Self.buildInjectionsByPositionArray()
+        updateInjectionsByPositionArray()
         pickedPosition = nil
         setRecommendedPosition()
     }
 
+    func delete(injection: Injection) {
+        PersistenceController.shared
+            .delete(injection: injection)
+        updateInjectionsByPositionArray()
+
+        dump(injectionsByPositionArray)
+    }
+
+    func update(time: Date, position: Int, to injection: Injection) {
+        PersistenceController.shared.update(time: time, position: position, to: injection)
+        updateInjectionsByPositionArray()
+    }
+
+    func updateInjectionsByPositionArray() {
+        injectionsByPositionArray = Self.buildInjectionsByPositionArray()
+    }
 }
