@@ -18,9 +18,25 @@ class MC3ViewModel: ObservableObject {
     @Published var under7DaysArrTimestamps: [Date] = []
     @Published var listOfDateArr: [Date] = []
     @Published var showUpdateModal: Bool = false
+    @Published var injectionsByPositionArray: [Injection?]
 
     init() {
+        injectionsByPositionArray = Self.buildInjectionsByPositionArray()
         setRecommendedPosition()
+    }
+
+    static func buildInjectionsByPositionArray() -> [Injection?] {
+        var resultArray: [Injection?] = Array(repeating: nil, count: 33)
+        PersistenceController.shared.injections.forEach { injection in
+            if resultArray[safe: injection.wrappedPosition] != nil,
+               let previousInjection = resultArray[safe: injection.wrappedPosition],
+               let prev = previousInjection,
+               prev.wrappedTimestamp > injection.wrappedTimestamp {
+                return
+            }
+            resultArray[injection.wrappedPosition] = injection
+        }
+        return resultArray
     }
 
     var isPositionSelected: Bool {
@@ -39,7 +55,7 @@ class MC3ViewModel: ObservableObject {
 
     var leftArray: [Int] {
         [1, 9, 17, 25].flatMap { number in
-             (0...3).map({ $0 + number })
+            (0...3).map({ $0 + number })
         }
     }
 
@@ -47,13 +63,13 @@ class MC3ViewModel: ObservableObject {
         [1, 9, 17, 25]
             .map({$0 + 4})
             .flatMap { number in
-             (0...3).map({ $0 + number })
-        }
+                (0...3).map({ $0 + number })
+            }
     }
 
     func setRecommendedPosition() {
         print(#function)
-        let injectionsArray = PersistenceController.shared.injectionsByPositionArray
+        let injectionsArray = injectionsByPositionArray
 
         if injectionsArray.contains(nil) {
             for (index, injection) in injectionsArray.enumerated() where index != 0 && injection == nil {
@@ -66,6 +82,15 @@ class MC3ViewModel: ObservableObject {
                 .sorted { $0.wrappedTimestamp > $1.wrappedTimestamp }
                 .first?.position ?? 1)
         }
+    }
+
+    func insertInjection(position: Int) {
+        PersistenceController.shared
+            .addInjection(
+                time: Date(),
+                position: position
+            )
+        injectionsByPositionArray = Self.buildInjectionsByPositionArray()
     }
 
     let columns = [
@@ -93,17 +118,4 @@ class MC3ViewModel: ObservableObject {
         }
         return .over7days
     }
-//
-//    var under7DayPositions: [Int] {
-//        let injectionsArray = PersistenceController.shared.injectionsByPositionArray
-//        let oneWeekAgo = Date() - 7
-//        let eventsWithin7Days = injectionsArray.filter { injection in
-//            if let injection {
-//                return injection.wrappedTimestamp >= oneWeekAgo
-//            }
-//            return false
-//        }
-//        NotificationCenter.default.post(name: NSNotification.Name("RefreshInjectionPoint"), object: nil)
-//        return eventsWithin7Days.compactMap { $0?.position } .map { Int($0) }
-//    }
 }

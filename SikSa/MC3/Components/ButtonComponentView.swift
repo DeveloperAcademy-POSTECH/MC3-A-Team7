@@ -13,11 +13,7 @@ struct ButtonComponentView: View {
     var body: some View {
         Button {
             if let pickedNumber = viewModel.pickedPosition {
-                PersistenceController.shared
-                    .addInjection(
-                        time: Date(),
-                        position: pickedNumber
-                    )
+                viewModel.insertInjection(position: pickedNumber)
             }
             viewModel.pickedPosition = nil
             viewModel.setRecommendedPosition()
