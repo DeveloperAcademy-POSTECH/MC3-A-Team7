@@ -78,16 +78,16 @@ struct NumberingCircle: View {
     var body: some View {
         ZStack {
             Circle()
-                .foregroundColor(previousSelectedPositions.contains(number) ? .blue : Color(.systemGray5))
+                .foregroundColor(previousSelectedPositions.contains(number) ? .accentColor : .mainView7daysBeforeButtonColorUnselected)
             Text(String(number))
                 .font(.caption2)
-                .foregroundColor(previousSelectedPositions.contains(number) ? .white : Color(.systemGray2))
+                .foregroundColor(previousSelectedPositions.contains(number) ? .white : .mainView7daysBeforeTextColorUnselected)
         }
     }
 }
 
-struct InjectionSitesView_Previews: PreviewProvider {
-    static var previews: some View {
-        InjectionSitesView(previousSelectedPositions: [1, 2, 3])
-    }
-}
+//struct InjectionSitesView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        InjectionSitesView(previousSelectedPositions: [1, 2, 3])
+//    }
+//}

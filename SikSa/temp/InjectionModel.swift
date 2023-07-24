@@ -26,14 +26,6 @@ extension InjectionModel {
             InjectionModel(id: UUID().hashValue, timestamp: Date() - dayDiff, position: position)
         }
     }
-//    static var previewDataDictionary: [String: [InjectionModel]] {
-//        [
-//            "2023년 07월 11일": (1...8).map { InjectionModel(position: $0) },
-//            "2023년 07월 10일": (5...6).map { InjectionModel(position: $0) },
-//            "2023년 07월 09일": (19...23).map { InjectionModel(position: $0) },
-//            "2023년 07월 08일": (11...15).map { InjectionModel(position: $0) }
-//        ]
-//    }
     static func convertTimestampFormat (_ timestamp: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY년 MM월 dd일"

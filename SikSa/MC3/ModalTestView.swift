@@ -15,7 +15,7 @@ struct ModalTestView: View {
     @StateObject var selectedNum = SelectedData()
     @State private var showUpdateModal = false
     @State private var showCreateModal = false
-    
+
     var body: some View {
         HStack {
             ZStack {

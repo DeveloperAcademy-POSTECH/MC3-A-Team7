@@ -24,7 +24,7 @@ extension Injection {
     }
 
     var wrappedPosition: Int {
-        Int(position) ?? 0
+        Int(position)
     }
 }
 

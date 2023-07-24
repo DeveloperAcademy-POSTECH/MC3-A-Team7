@@ -8,10 +8,6 @@
 import Foundation
 
 enum CustomColor: String {
-    case activeButtonColor
-    case disabledButtonColor
-    case historyViewSelectedDateButtonColor
-    case historyViewSelectedNumberButtonColor
     case mainView7daysAfterButtonColor
     case mainView7daysAfterButtonStrokeColor
     case mainView7daysAfterTextColor
@@ -23,6 +19,7 @@ enum CustomColor: String {
     case mainViewRecommendationDateButtonStrokeColor
     case mainViewTodayAndRecordButtonColor
     case mainViewTodayAndRecordTextColor
+    case boxBackgroundColor
     case unselectedButtonColor
     case viewBackgroundBlueColor
 }

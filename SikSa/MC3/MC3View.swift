@@ -11,26 +11,29 @@ struct MC3View: View {
     @State private var showModal = false
 
     var body: some View {
-        VStack(alignment: .center) {
-
-            HStack {
+        NavigationView {
+            VStack(alignment: .center, spacing: 32) {
                 TopMainTextView(viewModel: viewModel)
+                VStack(spacing: 12) {
+                    TabViewComponentsView(viewModel: viewModel)
+                    BottomTextLineView(viewModel: viewModel)
+                }
+                ButtonComponentView(viewModel: viewModel)
                 Spacer()
             }
-            .onTapGesture {
-                showModal = true
+            .padding(.horizontal)
+            .onAppear {
+                viewModel.tabViewIndicatorDot()
             }
-            .sheet(isPresented: $showModal) {
-                CreateView()
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink {
+                        HistoryView()
+                    } label: {
+                        Label("주사기록", systemImage: "archivebox")
+                    }
+                }
             }
-            
-            TabViewComponentsView(viewModel: viewModel)
-            BottomTextLineView(viewModel: viewModel)
-            ButtonComponentView(viewModel: viewModel)
-        }
-        .padding(.horizontal)
-        .onAppear {
-            viewModel.tabViewIndicatorDot()
         }
     }
 }
