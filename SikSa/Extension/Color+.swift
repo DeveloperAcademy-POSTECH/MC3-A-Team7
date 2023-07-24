@@ -25,4 +25,17 @@ extension Color {
     static var boxBackgroundColor: Color { Color(CustomColor.boxBackgroundColor.rawValue) }
     static var unselectedButtonColor: Color { Color(CustomColor.unselectedButtonColor.rawValue) }
     static var viewBackgroundBlueColor: Color { Color(CustomColor.viewBackgroundBlueColor.rawValue) }
+    static var selectedButtonBackground: Color {
+        Color(CustomColor.selectedButtonBackground.rawValue) }
+    static var createViewSelectedForeground: Color {
+        Color(CustomColor.createViewSelectedForeground.rawValue) }
+    static var createViewUnseletedForeground: Color {
+        Color(CustomColor.createViewUnseletedForeground.rawValue) }
+    static var updateViewSelectedIsPreviousBackground: Color {
+        Color(CustomColor.updateViewSelectedIsPreviousBackground.rawValue) }
+    static var updateViewUnselectedIsPreviousForeground: Color {
+        Color(CustomColor.updateViewUnselectedIsPreviousForeground.rawValue) }
+    static var updateViewUnselectedIsNotPreviousForeground: Color {
+        Color(CustomColor.updateViewUnselectedIsNotPreviousForeground.rawValue) }
+
 }
