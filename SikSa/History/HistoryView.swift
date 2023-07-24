@@ -20,12 +20,11 @@ struct HistoryView: View {
     @State private var isCreateModalPresented = false
 
     private var previousSelectedPositions: [Int] {
-        let firstKey = injectionDictionary.keys.sorted(by: >).first ?? ""
-        return injectionDictionary[firstKey]?.map({ injection in
+        injectionDictionary[previousSelectedDate]?.map({ injection in
             injection.wrappedPosition
         }) ?? []
     }
-        
+
     init() {
         let injectionDictionary = Self.buildDictionary(using: PersistenceController.shared.injections)
         let firstKey = injectionDictionary.keys.sorted(by: >).first ?? ""
