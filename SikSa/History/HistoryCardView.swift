@@ -9,22 +9,22 @@ import SwiftUI
 
 struct HistoryCardView: View {
     var dateString: String
-    var injections: [InjectionModel]
+    @Binding var injections: [Injection]
     @Binding var previousSelectedDate: String
     @Binding var previousSelectedPositions: [Int]
-    @State var isNumberSelected = false
+    @State private var isNumberSelected = false
     var body: some View {
         VStack {
+            let isSelected = previousSelectedDate == dateString
             DateButton(dateString: dateString,
-                       previsouSelectedDate: previousSelectedDate,
-                       selectDate: selectDate)
+                       isSelected: isSelected,
+                       selectDate: changeButtonColor)
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 10) {
-                    ForEach(injections) { injection in
-                        NumberingButton(dateString: dateString,
-                                        previsouSelectedDate: previousSelectedDate,
-                                        selectDate: selectDate,
-                                        position: injection.position)
+                    ForEach($injections) { $injection in
+                        NumberingButton(isSelected: isSelected,
+                                        selectDate: changeButtonColor,
+                                        injection: injection)
                     }
                 }
                 .padding(.vertical, 7)
@@ -36,17 +36,17 @@ struct HistoryCardView: View {
         }
         .padding()
     }
-    private func selectDate () {
+    private func changeButtonColor () {
         if previousSelectedDate != dateString {
             previousSelectedDate = dateString
-            previousSelectedPositions = injections.map { $0.position }
+            previousSelectedPositions = injections.map { $0.wrappedPosition }
         }
     }
 }
 
 struct DateButton: View {
     var dateString: String
-    var previsouSelectedDate: String
+    var isSelected: Bool
     var selectDate: () -> Void
     var body: some View {
         Button {
@@ -55,10 +55,10 @@ struct DateButton: View {
             HStack {
                 Text(dateString)
                     .font(.headline)
-                    .foregroundColor(previsouSelectedDate == dateString ? .white : .blue)
+                    .foregroundColor(isSelected ? .white : .accentColor)
                     .padding(.vertical, 10)
                     .padding(.horizontal, 15)
-                    .background(previsouSelectedDate == dateString ? .blue : Color(.systemGray5))
+                    .background(isSelected ? Color.accentColor : Color.mainView7daysBeforeButtonColorUnselected)
                     .cornerRadius(30)
                 Spacer()
             }
@@ -67,10 +67,9 @@ struct DateButton: View {
 }
 
 struct NumberingButton: View {
-    var dateString: String
-    var previsouSelectedDate: String
+    var isSelected: Bool
     var selectDate: () -> Void
-    var position: Int
+    var injection: Injection
     @State var isCircleSelected = false
     var body: some View {
         Button {
@@ -79,21 +78,21 @@ struct NumberingButton: View {
         } label: {
             ZStack {
                 Circle()
-                    .foregroundColor(previsouSelectedDate == dateString ? .blue : Color(.systemGray5))
+                    .foregroundColor(isSelected ? .accentColor : .unselectedButtonColor)
                     .frame(width: 60, height: 60)
-                Text(String(position))
-                    .foregroundColor(previsouSelectedDate == dateString ? .white : Color(.systemGray2))
+                Text(String(injection.wrappedPosition))
+                    .foregroundColor(isSelected ? .white : .mainView7daysBeforeTextColorUnselected)
                     .font(.headline)
             }
         }
     }
 }
-
-struct HistoryCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        HistoryCardView(dateString: "2023년 07월 13일",
-                 injections: [InjectionModel(id: UUID().hashValue, timestamp: Date(), position: 1)],
-                 previousSelectedDate: .constant("2023년 07월 13일"),
-                 previousSelectedPositions: .constant([5, 6]))
-        }
-}
+//
+//struct HistoryCardView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HistoryCardView(dateString: "2023년 07월 13일",
+//                 injections: [InjectionModel(id: UUID().hashValue, timestamp: Date(), position: 1)],
+//                 previousSelectedDate: .constant("2023년 07월 13일"),
+//                 previousSelectedPositions: .constant([5, 6]))
+//        }
+//}

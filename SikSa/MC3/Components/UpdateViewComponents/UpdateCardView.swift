@@ -80,9 +80,6 @@ struct UpdateCardView: View {
                 }
         }
         .frame(height: 428)
-        .onAppear {
-            viewModel.resetAllTabbedStates()
-        }
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
     }
 }

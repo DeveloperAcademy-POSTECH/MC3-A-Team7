@@ -12,18 +12,17 @@ struct BottomTextLineView: View {
     var body: some View {
         HStack(alignment: .center, spacing: 5) {
             Text("\(viewModel.positionNumberToKnow)번 부위의 마지막 투여일은")
-            Text("8일 전").font(.system(size: 15, weight: .bold))
+            Text("8일 전")
+                .bold()
             Text("입니다.")
         }
-        .font(.system(size: 15))
+        .font(.subheadline)
         .foregroundColor(.black)
         .padding()
         .background(
             Rectangle()
-                .foregroundColor(Color(hex: "5987FE")).opacity(0.19)
-                .frame(minWidth: 350)
-                .cornerRadius(12)
-        )
+                .foregroundColor(.boxBackgroundColor)
+                .cornerRadius(12))
     }
 }
 
