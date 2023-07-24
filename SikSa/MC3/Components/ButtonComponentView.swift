@@ -12,11 +12,10 @@ struct ButtonComponentView: View {
 
     var body: some View {
         Button {
-            if viewModel.isUnder7DaysTabbed {
+            if viewModel.isPickedPositionUnder7Days {
                 viewModel.under7DaysButtonActivate.toggle()
-            } else if !viewModel.isUnder7DaysTabbed && !viewModel.under7DaysButtonActivate {
+            } else if !viewModel.under7DaysButtonActivate {
                 viewModel.buttonActionForRecord()
-
             }
         } label: {
             Rectangle()

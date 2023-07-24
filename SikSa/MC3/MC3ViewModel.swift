@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import CoreData
 
 class MC3ViewModel: ObservableObject {
 
@@ -23,6 +24,24 @@ class MC3ViewModel: ObservableObject {
 
     var lastUpdatedInjection: Injection? {
         PersistenceController.shared.lastUpdatedInjection
+    }
+
+    var injectionOfPickedPosition: Injection? {
+        switch pickedPosition {
+        case .none:
+            return nil
+        case .some(let position):
+            return injectionsByPositionArray[position]
+        }
+    }
+
+    var isPickedPositionUnder7Days: Bool {
+        if let injectionOfPickedPosition,
+           let diffDays = getDateCalculator(of: injectionOfPickedPosition),
+           diffDays < 7 {
+            return true
+        }
+        return false
     }
 
     init() {
@@ -116,6 +135,18 @@ class MC3ViewModel: ObservableObject {
         UIPageControl.appearance().pageIndicatorTintColor = UIColor.black.withAlphaComponent(0.2)
     }
 
+    func getCircleStatus(of position: Int, injection: Injection?) -> TabViewCircleView.Status {
+        let oneWeekAgo = Date() - 7
+        switch (position, injection) {
+        case (recommendedPosition, _):
+                return .recommendation
+        case (_, .some(let injection)) where injection.wrappedTimestamp >= oneWeekAgo:
+            return .under7days
+        default:
+            return .over7days
+        }
+    }
+
     func getCircleStatus(of position: Int, using injections: [Injection?]) -> TabViewCircleView.Status {
         if let injection = injections[position] {
             let oneWeekAgo = Date() - 7
@@ -128,6 +159,7 @@ class MC3ViewModel: ObservableObject {
         }
         return .over7days
     }
+
     func getDateCalculator(of injection: Injection?) -> Int? {
         if let injection {
             let offsetComps =
@@ -161,9 +193,9 @@ class MC3ViewModel: ObservableObject {
     }
 
     func delete(injection: Injection) {
-        PersistenceController.shared
-            .delete(injection: injection)
+        PersistenceController.shared.delete(injection: injection)
         updateInjectionsByPositionArray()
+        NotificationCenter.default.post(name: NSNotification.Name("RefreshMainView"), object: nil)
     }
 
     func update(time: Date, position: Int, to injection: Injection) {
