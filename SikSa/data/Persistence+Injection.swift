@@ -45,7 +45,7 @@ extension PersistenceController {
     }
 
     var onePositionInjection: Injection {
-        var newInjection = Injection(context: container.viewContext)
+        let newInjection = Injection(context: container.viewContext)
         newInjection.timestamp = Date()
         newInjection.position = 1
 
@@ -56,4 +56,3 @@ extension PersistenceController {
 
     }
 }
-
