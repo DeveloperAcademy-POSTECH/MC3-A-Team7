@@ -24,7 +24,7 @@ struct HistoryCardView: View {
                     ForEach($injections) { $injection in
                         NumberingButton(isSelected: isSelected,
                                         selectDate: changeButtonColor,
-                                        position: injection.wrappedPosition)
+                                        injection: injection)
                     }
                 }
                 .padding(.vertical, 7)
@@ -69,7 +69,7 @@ struct DateButton: View {
 struct NumberingButton: View {
     var isSelected: Bool
     var selectDate: () -> Void
-    var position: Int
+    var injection: Injection
     @State var isCircleSelected = false
     var body: some View {
         Button {
@@ -80,7 +80,7 @@ struct NumberingButton: View {
                 Circle()
                     .foregroundColor(isSelected ? .accentColor : .unselectedButtonColor)
                     .frame(width: 60, height: 60)
-                Text(String(position))
+                Text(String(injection.wrappedPosition))
                     .foregroundColor(isSelected ? .white : .mainView7daysBeforeTextColorUnselected)
                     .font(.headline)
             }
