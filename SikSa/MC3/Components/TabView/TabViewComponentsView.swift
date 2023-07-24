@@ -23,7 +23,7 @@ struct TabViewComponentsView: View {
                             Text("아래").font(.system(size: 17, weight: .semibold))
 
                             LazyVGrid(columns: viewModel.columns) {
-                                let injections = PersistenceController.shared.injectionsByPositionArray
+                                let injections = viewModel.injectionsByPositionArray
                                 ForEach(page == 0 ? viewModel.leftArray : viewModel.rightArray,
                                         id: \.self) { position in
                                     let status = viewModel.getCircleStatus(of: position, using: injections)
