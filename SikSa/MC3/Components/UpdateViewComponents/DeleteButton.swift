@@ -32,6 +32,7 @@ struct DeleteButton: View {
             Button("취소", role: .cancel) {}
             Button {
                 deleteAction()
+//                UpdateView(injection: injection).presentationMode.wrappedValue.dismiss()
             } label: {
                 Text("삭제")
             }

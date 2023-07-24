@@ -22,4 +22,10 @@ enum CustomColor: String {
     case boxBackgroundColor
     case unselectedButtonColor
     case viewBackgroundBlueColor
+    case selectedButtonBackground
+    case createViewSelectedForeground
+    case createViewUnseletedForeground
+    case updateViewSelectedIsPreviousBackground
+    case updateViewUnselectedIsPreviousForeground
+    case updateViewUnselectedIsNotPreviousForeground
 }

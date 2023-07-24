@@ -12,7 +12,7 @@ struct HistoryCardView: View {
     @Binding var injections: [Injection]
     @Binding var previousSelectedDate: String
     @Binding var previousSelectedPositions: [Int]
-    @State private var isNumberSelected = false
+
     var body: some View {
         VStack {
             let isSelected = previousSelectedDate == dateString

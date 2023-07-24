@@ -9,19 +9,19 @@ import SwiftUI
 
 struct UpdateCircleView: View {
     var selected: Bool = false
-    var index: Int = 1
+    var position: Int
     var isPreviousNumber: Bool = false
 
     var body: some View {
-        let backgroundColor = selected ? "0055B1" :
-        isPreviousNumber ? "CECECE" : "E8E8EA"
-        let foregroundColor = selected ? "F2F2F7" :
-        isPreviousNumber ? "000000" : "ABA1A1"
+        let backgroundColor: Color = selected ? .selectedButtonBackground :
+        isPreviousNumber ? .updateViewSelectedIsPreviousBackground : .unselectedButtonColor
+        let foregroundColor: Color = selected ? .createViewSelectedForeground :
+        isPreviousNumber ? .updateViewUnselectedIsPreviousForeground : .updateViewUnselectedIsNotPreviousForeground
         ZStack {
             Circle()
-                .fill(Color(hex: backgroundColor))
-            Text(String(index))
-                .foregroundColor(Color(hex: foregroundColor))
+                .fill(backgroundColor)
+            Text(String(position))
+                .foregroundColor(foregroundColor)
                 .font(.title3)
                 .padding(20)
                 .bold()
@@ -32,8 +32,8 @@ struct UpdateCircleView: View {
 struct UpdateCircleView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            UpdateCircleView(isPreviousNumber: true)
-            UpdateCircleView(selected: true)
+            UpdateCircleView(position: 1, isPreviousNumber: true)
+            UpdateCircleView(selected: true, position: 10)
         }
     }
 }
