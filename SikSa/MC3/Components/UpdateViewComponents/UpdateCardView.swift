@@ -63,3 +63,4 @@ struct UpdateCardView_Previews: PreviewProvider {
         UpdateCardView(viewModel: MC3ViewModel.preview, selectedPosition: .constant(1), originalPosition: 1)
     }
 }
+

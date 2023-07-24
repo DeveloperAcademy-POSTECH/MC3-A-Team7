@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct DeleteButton: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @ObservedObject private var viewModel = MC3ViewModel()
@@ -36,7 +35,7 @@ struct DeleteButton: View {
             Button("취소", role: .cancel) {}
             Button {
                 deleteAction()
-                viewModel.showUpdateModal = false
+//                viewModel.showUpdateModal = .constant(false)
 //                UpdateView(injection: injection).presentationMode.wrappedValue.dismiss()
             } label: {
                 Text("삭제")

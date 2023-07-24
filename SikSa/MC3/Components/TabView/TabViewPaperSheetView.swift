@@ -16,8 +16,8 @@ struct TabViewPaperSheetView: View {
             let injections = viewModel.injectionsByPositionArray
             ForEach(page == 0 ? viewModel.leftArray : viewModel.rightArray,
                     id: \.self) { position in
-                let status = viewModel.getCircleStatus(of: position, using: injections)
-                TabViewCircleView(viewModel: viewModel, position: position, status: status)
+                let injection: Injection? = injections[position]
+                TabViewCircleView(viewModel: viewModel, injection: injection, position: position)
             }
         }.frame(maxWidth: .infinity)
     }

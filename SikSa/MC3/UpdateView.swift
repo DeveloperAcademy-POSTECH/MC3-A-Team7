@@ -26,9 +26,10 @@ struct UpdateView: View {
     }
 
     func deleteInjection () {
-        PersistenceController.shared.delete(injection: injection)
+        viewModel.buttonDelete(injection: injection)
         dismiss()
     }
+
     var body: some View {
         NavigationView {
             ScrollView {

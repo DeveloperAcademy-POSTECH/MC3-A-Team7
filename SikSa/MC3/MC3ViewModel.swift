@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import CoreData
 
 class MC3ViewModel: ObservableObject {
 
@@ -20,11 +21,30 @@ class MC3ViewModel: ObservableObject {
     @Published var under7DaysArrPositions: [Int16] = []
     @Published var under7DaysArrTimestamps: [Date] = []
     @Published var listOfDateArr: [Date] = []
-    @Published var showUpdateModal: Bool = false
     @Published var injectionsByPositionArray: [Injection?]
+    @Published var showUpeModal: Bool = false
+//    var injection: Injection
 
     var lastUpdatedInjection: Injection? {
         PersistenceController.shared.lastUpdatedInjection
+    }
+
+    var injectionOfPickedPosition: Injection? {
+        switch pickedPosition {
+        case .none:
+            return nil
+        case .some(let position):
+            return injectionsByPositionArray[position]
+        }
+    }
+
+    var isPickedPositionUnder7Days: Bool {
+        if let injectionOfPickedPosition,
+           let diffDays = getDateCalculator(of: injectionOfPickedPosition),
+           diffDays < 7 {
+            return true
+        }
+        return false
     }
 
     init() {
@@ -118,6 +138,18 @@ class MC3ViewModel: ObservableObject {
         UIPageControl.appearance().pageIndicatorTintColor = UIColor.black.withAlphaComponent(0.2)
     }
 
+    func getCircleStatus(of position: Int, injection: Injection?) -> TabViewCircleView.Status {
+        let oneWeekAgo = Date() - 7
+        switch (position, injection) {
+        case (recommendedPosition, _):
+                return .recommendation
+        case (_, .some(let injection)) where injection.wrappedTimestamp >= oneWeekAgo:
+            return .under7days
+        default:
+            return .over7days
+        }
+    }
+
     func getCircleStatus(of position: Int, using injections: [Injection?]) -> TabViewCircleView.Status {
         print(injections)
         if let injection = injections[position] {
@@ -162,5 +194,11 @@ class MC3ViewModel: ObservableObject {
         injectionsByPositionArray = Self.buildInjectionsByPositionArray()
         pickedPosition = nil
         setRecommendedPosition()
+    }
+
+    func buttonDelete(injection: Injection) {
+        PersistenceController.shared.delete(injection: injection)
+        injectionsByPositionArray = Self.buildInjectionsByPositionArray()
+        NotificationCenter.default.post(name: NSNotification.Name("RefreshMainView"), object: nil)
     }
 }
