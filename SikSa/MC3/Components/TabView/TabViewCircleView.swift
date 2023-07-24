@@ -16,27 +16,51 @@ struct TabViewCircleView: View {
         ZStack {
             Circle()
                 .stroke(
-                    Color(hex: status.strokeColor),
-                    lineWidth: 3)
+                    status == Status.under7days ?
+                    Color.mainView7daysBeforeButtonStrokeColor :
+                        status != Status.recommendation ?
+                    Color.mainView7daysAfterButtonStrokeColor :
+                        Color.mainViewRecommendationDateButtonStrokeColor
+                    , lineWidth: 3)
                 .opacity(position == viewModel.pickedPosition ? 1 : 0)
                 .frame(width: 66, height: 66)
+                .animation(.easeInOut(duration: 0.3))
 
             Circle()
                 .id(position)
                 .onTapGesture {
                     viewModel.pickedPosition = position
+                    if status == Status.under7days {
+                        viewModel.isUnder7DaysTabbed = true
+                    } else {
+                        viewModel.isUnder7DaysTabbed = false
+                    }
                 }
                 .frame(width: 60, height: 60)
                 .foregroundColor(
-                    Color(hex: status.backgroundColor))
+                    status == Status.recommendation ?
+                    Color.mainViewRecommendationDateButtonColor :
+                        status != Status.under7days ?
+                    Color.mainView7daysAfterButtonColor :
+                        viewModel.pickedPosition == position ?
+                    Color.mainView7daysBeforeButtonColorSelected :
+                        Color.mainView7daysBeforeButtonColorUnselected
+                )
                 .overlay {
                     Text(String(position))
-                        .font(Font.custom("SF Pro Text", size: 19))
+                        .font(Font.custom("SF Pro Text", size: 19).weight(.bold))
                         .multilineTextAlignment(.center)
                         .foregroundColor(
-                            Color(hex: status.textColor)
+                            status == Status.recommendation ?
+                            Color.white :
+                                status != Status.under7days ?
+                            Color.mainView7daysAfterTextColor :
+                                viewModel.pickedPosition == position ?
+                            Color.white :
+                                Color.mainView7daysBeforeTextColorUnselected
                         )
                 }
+                .animation(.easeInOut(duration: 0.3))
         }
     }
 }
@@ -46,46 +70,12 @@ extension TabViewCircleView {
         case recommendation
         case under7days
         case over7days
-
-        var backgroundColor: String {
-            switch self {
-            case .recommendation:
-                return "0055B1"
-            case .under7days:
-                return "000000"
-            case .over7days:
-                return "E8E8EA"
-            }
-        }
-
-        var strokeColor: String {
-            switch self {
-            case .recommendation:
-                return "326BFF"
-            case .under7days:
-                return "B3B3BF"
-            case .over7days:
-                return "A8C5FF"
-            }
-        }
-
-        var textColor: String {
-            switch self {
-            case .recommendation:
-                return "D2D2D6"
-            case .under7days:
-                return "ABA1A1"
-            case .over7days:
-                return "326BFF"
-            }
-        }
     }
 }
 
 struct TabViewCircleView_Previews: PreviewProvider {
     static var previews: some View {
         let viewModel = MC3ViewModel()
-
         TabViewCircleView(viewModel: viewModel, position: 3, status: .recommendation)
     }
 }

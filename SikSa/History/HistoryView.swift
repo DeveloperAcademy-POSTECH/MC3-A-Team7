@@ -26,7 +26,6 @@ struct HistoryView: View {
         }) ?? [])
     }
     @State private var showCreateModal = false
-    @State private var isUpdateModalPresented = false
 
     var body: some View {
         VStack {
@@ -46,9 +45,7 @@ struct HistoryView: View {
                                 HistoryCardView(dateString: key,
                                                 injections: .constant(value),
                                                 previousSelectedDate: $previousSelectedDate,
-                                                previousSelectedPositions: $previousSelectedPositions,
-                                                isUpdateModalPresented: $isUpdateModalPresented
-                                )
+                                                previousSelectedPositions: $previousSelectedPositions)
                             }
                         }
                     }

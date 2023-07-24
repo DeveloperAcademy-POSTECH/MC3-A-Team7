@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct DeleteButton: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @ObservedObject private var viewModel = MC3ViewModel()

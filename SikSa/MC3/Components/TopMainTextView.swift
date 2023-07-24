@@ -10,6 +10,7 @@ import SwiftUI
 struct TopMainTextView: View {
     @ObservedObject var viewModel: MC3ViewModel
     var body: some View {
+        Spacer()
         VStack(alignment: .leading, spacing: 0) {
             HStack {
                 Text(viewModel.isPositionSelected ? "선택하신 주사 부위는" : "이번 권장 주사 부위는")

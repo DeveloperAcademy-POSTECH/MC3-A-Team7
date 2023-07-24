@@ -17,6 +17,7 @@ extension PersistenceController {
             injection.timestamp = time
             injection.position = Int16(position)
             context.save(with: .addInjection)
+            lastUpdatedInjection = injection
         }
     }
 

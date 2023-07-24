@@ -12,12 +12,12 @@ struct ButtonComponentView: View {
 
     var body: some View {
         Button {
-            if let pickedNumber = viewModel.pickedPosition {
-                viewModel.insertInjection(position: pickedNumber)
-            }
-            viewModel.pickedPosition = nil
-            viewModel.setRecommendedPosition()
+            if viewModel.isUnder7DaysTabbed {
+                viewModel.under7DaysButtonActivate.toggle()
+            } else if !viewModel.isUnder7DaysTabbed && !viewModel.under7DaysButtonActivate {
+                viewModel.buttonActionForRecord()
 
+            }
         } label: {
             Rectangle()
                 .foregroundColor(Color(hex: viewModel.isPositionSelected ? "5887FF" : "CECECE"))
