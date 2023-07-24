@@ -24,11 +24,11 @@ struct CreateView: View {
                             .padding()
                         Spacer()
                     }
-                    
+
                     CreateCardView(viewModel: viewModel, selectedIndex: $selectedIndex)
-                    
+
                     Spacer()
-                    
+
                     HStack {
                         Text("날짜 선택")
                             .bold()

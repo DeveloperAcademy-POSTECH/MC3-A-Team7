@@ -20,6 +20,7 @@ class MC3ViewModel: ObservableObject {
     @Published var under7DaysArrPositions: [Int16] = []
     @Published var under7DaysArrTimestamps: [Date] = []
     @Published var listOfDateArr: [Date] = []
+    @Published var showUpdateModal: Bool = false
     @Published var injectionsByPositionArray: [Injection?]
 
     var lastUpdatedInjection: Injection? {

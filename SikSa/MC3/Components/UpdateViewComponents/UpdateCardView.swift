@@ -29,12 +29,13 @@ struct UpdateCardView: View {
                             LazyVGrid(columns: viewModel.columns, spacing: 10) {
                                 ForEach(viewModel.leftArray.indices, id: \.self) { iNumber in
                                     let index = page == 0 ? viewModel.leftArray[iNumber] : viewModel.rightArray[iNumber]
-
                                     ZStack {
                                         Button {
                                             selectedPosition = index
                                         } label: {
-                                            UpdateCircleView(selected: selectedPosition == index, index: index, isPreviousNumber: originalPosition == index)
+                                            UpdateCircleView(selected: selectedPosition == index,
+                                                             index: index,
+                                                             isPreviousNumber: originalPosition == index)
                                         }
                                     }
 
