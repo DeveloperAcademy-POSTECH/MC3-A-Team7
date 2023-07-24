@@ -11,7 +11,7 @@ struct UpdateCircleView: View {
     var selected: Bool = false
     var index: Int = 1
     var isPreviousNumber: Bool = false
-    
+
     var body: some View {
         let backgroundColor = selected ? "0055B1" :
         isPreviousNumber ? "CECECE" : "E8E8EA"

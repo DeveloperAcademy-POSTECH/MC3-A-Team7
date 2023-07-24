@@ -66,7 +66,7 @@ struct UpdateView: View {
                                     .foregroundColor(.red)
                         }
                     }
-                    // TODO: - 완료 버튼 클릭 시 해당 데이터 수정
+                    // TODO: - 완료 버튼 클릭 시 해당 데이터 수정 -> 확인 필요
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
                             self.presentationMode.wrappedValue.dismiss()

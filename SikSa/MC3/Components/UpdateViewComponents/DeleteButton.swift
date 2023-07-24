@@ -7,11 +7,17 @@
 
 import SwiftUI
 
+
 struct DeleteButton: View {
     @State private var showingAlert = false
     var injection: Injection
     @State var selectedDate: Date
     @State var selectedPosition: Int
+    static let dateformat: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YYYY년 M월 d일"
+        return formatter
+    }()
 
     var body: some View {
         Button {
@@ -23,8 +29,7 @@ struct DeleteButton: View {
                 .font(.system(size: 17))
         }
 
-        // TODO: - 삭제 버튼 클릭 시 action: 데이터 삭제
-        // TODO: - Button message 데이터 가져와서 보여주기
+        // TODO: - 삭제 버튼 클릭 시 action: 데이터 삭제 -> 확인 필요
         .alert("이 기록을 삭제하시겠습니까?", isPresented: $showingAlert) {
             Button("취소", role: .cancel) {}
             Button {
@@ -34,7 +39,7 @@ struct DeleteButton: View {
             }
 
         } message: {
-            Text("확인을 누르면 \(selectedDate)의 \(selectedPosition)번 기록을 삭제합니다.")
+            Text("확인을 누르면 \(selectedDate, formatter: DeleteButton.dateformat)의 \(selectedPosition)번 기록을 삭제합니다.")
         }
     }
 }

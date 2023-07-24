@@ -9,7 +9,6 @@ import SwiftUI
 
 class SelectedData: ObservableObject {
     @Published var selectedIndex: Int = 1
-    // @Published var injectDate: [String] = ["2022", "07", "20"]
 }
 
 struct ModalTestView: View {

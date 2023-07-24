@@ -11,6 +11,7 @@ struct HistoryView: View {
     @Environment(\.dismiss) private var dismiss
     @State var previousSelectedDate = "2023년 07월 10일"
     @State var previousSelectedPositions = [5, 6]
+    @State private var showCreateModal = false
 
     var body: some View {
         VStack {
@@ -49,15 +50,18 @@ struct HistoryView: View {
                 }
             }
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: addRecord) {
-                    Label("생성하기", systemImage: "plus")
+                Button {
+                    self.showCreateModal = true
+                } label: {
+                    Image(systemName: "plus")
+                        .resizable()
+                        .frame(width: 28, height: 28)
+                        .foregroundColor(.blue)
+                }.sheet(isPresented: self.$showCreateModal) {
+                    CreateView()
                 }
             }
         }
-    }
-    private func addRecord() {
-        print(InjectionModel.previewData)
-        print("생성하기 모달 띄우기")
     }
 }
 

@@ -25,12 +25,11 @@ struct UpdateCardView: View {
                         VStack(alignment: .center, spacing: 20) {
                             Spacer()
                             Text("아래").font(.system(size: 17, weight: .semibold))
-                        
-                            
+
                             LazyVGrid(columns: viewModel.columns, spacing: 10) {
                                 ForEach(viewModel.leftArray.indices, id: \.self) { iNumber in
                                     let index = page == 0 ? viewModel.leftArray[iNumber] : viewModel.rightArray[iNumber]
-                                    
+
                                     ZStack {
                                         Button {
                                             selectedPosition = index

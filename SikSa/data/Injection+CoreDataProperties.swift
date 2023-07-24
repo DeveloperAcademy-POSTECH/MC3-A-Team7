@@ -22,6 +22,10 @@ extension Injection {
     var wrappedTimestamp: Date {
         timestamp ?? Date()
     }
+
+    var wrappedPosition: Int {
+        Int(position) ?? 0
+    }
 }
 
 extension Injection: Identifiable {

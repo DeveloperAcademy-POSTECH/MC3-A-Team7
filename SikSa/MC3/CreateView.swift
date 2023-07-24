@@ -13,8 +13,7 @@ struct CreateView: View {
     @State var createNumber: Int = 0
     @State private var selectedIndex = 0
     @State private var date = Date()
-    //    @Binding var selectedIndex: Int?
-    
+
     var body: some View {
         NavigationView {
             ScrollView {
@@ -50,7 +49,7 @@ struct CreateView: View {
                                 .foregroundColor(.red)
                         }
                     }
-                    
+
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
                             PersistenceController.shared.addInjection(time: date, position: selectedIndex)

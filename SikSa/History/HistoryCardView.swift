@@ -72,10 +72,12 @@ struct NumberingButton: View {
     var selectDate: () -> Void
     var position: Int
     @State var isCircleSelected = false
+    @State private var showUpdateModal = false
+
     var body: some View {
         Button {
             selectDate()
-            print("수정모달 띄우기")
+            self.showUpdateModal = true
         } label: {
             ZStack {
                 Circle()
@@ -84,6 +86,8 @@ struct NumberingButton: View {
                 Text(String(position))
                     .foregroundColor(previsouSelectedDate == dateString ? .white : Color(.systemGray2))
                     .font(.headline)
+            }.sheet(isPresented: self.$showUpdateModal) {
+                UpdateView(injection: PersistenceController.shared.onePositionInjection)
             }
         }
     }
