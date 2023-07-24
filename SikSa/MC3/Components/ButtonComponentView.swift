@@ -19,13 +19,15 @@ struct ButtonComponentView: View {
 
             }
         } label: {
-            Rectangle()
-                .foregroundColor(Color(hex: viewModel.isPositionSelected ? "5887FF" : "CECECE"))
-                .frame(width: 350, height: 81)
-                .cornerRadius(50)
-                .overlay(
-                    Text("기록").font(.system(size: 22, weight: .bold)).foregroundColor(.white)
-                )
+            ZStack {
+                RoundedRectangle(cornerRadius: 50)
+                    .frame(height: 81)
+                    .foregroundColor(viewModel.isPositionSelected ? .accentColor : .mainViewDisabledRecord)
+                Text("기록하기")
+                    .bold()
+                    .font(.title2)
+                    .foregroundColor(.white)
+            }
         }
         .disabled(viewModel.isPositionSelected ? false : true)
     }

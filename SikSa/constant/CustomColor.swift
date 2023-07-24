@@ -28,4 +28,5 @@ enum CustomColor: String {
     case updateViewSelectedIsPreviousBackground
     case updateViewUnselectedIsPreviousForeground
     case updateViewUnselectedIsNotPreviousForeground
+    case mainViewDisabledRecord
 }
