@@ -9,8 +9,10 @@ import SwiftUI
 
 
 struct DeleteButton: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @ObservedObject private var viewModel = MC3ViewModel()
     @State private var showingAlert = false
-    var injection: Injection
+    var deleteAction: () -> Void
     @State var selectedDate: Date
     @State var selectedPosition: Int
     static let dateformat: DateFormatter = {
@@ -33,22 +35,23 @@ struct DeleteButton: View {
         .alert("이 기록을 삭제하시겠습니까?", isPresented: $showingAlert) {
             Button("취소", role: .cancel) {}
             Button {
-                PersistenceController.shared.delete(injection: injection)
+                deleteAction()
+                viewModel.showUpdateModal = false
+//                UpdateView(injection: injection).presentationMode.wrappedValue.dismiss()
             } label: {
                 Text("삭제")
             }
-
         } message: {
             Text("확인을 누르면 \(selectedDate, formatter: DeleteButton.dateformat)의 \(selectedPosition)번 기록을 삭제합니다.")
         }
     }
 }
-
-struct DeleteButton_Previews: PreviewProvider {
-    static var previews: some View {
-
-        let injection = Injection()
-
-        DeleteButton(injection: injection, selectedDate: Date(), selectedPosition: 0)
-    }
-}
+//
+//struct DeleteButton_Previews: PreviewProvider {
+//    static var previews: some View {
+//
+//        let injection = Injection()
+//
+//        DeleteButton(injection: injection, selectedDate: Date(), selectedPosition: 0)
+//    }
+//}

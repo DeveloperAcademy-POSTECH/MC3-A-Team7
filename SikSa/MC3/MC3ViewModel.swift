@@ -21,7 +21,8 @@ class MC3ViewModel: ObservableObject {
     @Published var under7DaysArrTimestamps: [Date] = []
     @Published var listOfDateArr: [Date] = []
     @Published var injectionsByPositionArray: [Injection?]
-
+    @Published var showUpeModal: Bool = false
+    @Published var injectiondatsByPositionArray: [Injection?]
     var lastUpdatedInjection: Injection? {
         PersistenceController.shared.lastUpdatedInjection
     }
@@ -30,6 +31,7 @@ class MC3ViewModel: ObservableObject {
         injectionsByPositionArray = Self.buildInjectionsByPositionArray()
         setRecommendedPosition()
     }
+
 
     var selectedInjectionInMainView: Injection? {
         guard let pickedPosition,
@@ -130,7 +132,6 @@ class MC3ViewModel: ObservableObject {
         }
         return .over7days
     }
-
     func getDateCalculator(of injection: Injection?) -> Int? {
         if let injection {
             let offsetComps =
@@ -162,4 +163,5 @@ class MC3ViewModel: ObservableObject {
         pickedPosition = nil
         setRecommendedPosition()
     }
+
 }
