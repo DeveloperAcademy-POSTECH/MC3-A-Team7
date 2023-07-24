@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import CoreData
 
 class MC3ViewModel: ObservableObject {
 
@@ -19,19 +20,34 @@ class MC3ViewModel: ObservableObject {
     @Published var under7DaysButtonActivate: Bool = false
     @Published var under7DaysArrPositions: [Int16] = []
     @Published var under7DaysArrTimestamps: [Date] = []
-    @Published var listOfDateArr: [Date] = []
     @Published var injectionsByPositionArray: [Injection?]
-    @Published var showUpeModal: Bool = false
-    
+
     var lastUpdatedInjection: Injection? {
         PersistenceController.shared.lastUpdatedInjection
+    }
+
+    var injectionOfPickedPosition: Injection? {
+        switch pickedPosition {
+        case .none:
+            return nil
+        case .some(let position):
+            return injectionsByPositionArray[position]
+        }
+    }
+
+    var isPickedPositionUnder7Days: Bool {
+        if let injectionOfPickedPosition,
+           let diffDays = getDateCalculator(of: injectionOfPickedPosition),
+           diffDays < 7 {
+            return true
+        }
+        return false
     }
 
     init() {
         injectionsByPositionArray = Self.buildInjectionsByPositionArray()
         setRecommendedPosition()
     }
-
 
     var selectedInjectionInMainView: Injection? {
         guard let pickedPosition,
@@ -119,8 +135,19 @@ class MC3ViewModel: ObservableObject {
         UIPageControl.appearance().pageIndicatorTintColor = UIColor.black.withAlphaComponent(0.2)
     }
 
+    func getCircleStatus(of position: Int, injection: Injection?) -> TabViewCircleView.Status {
+        let oneWeekAgo = Date() - 7
+        switch (position, injection) {
+        case (recommendedPosition, _):
+                return .recommendation
+        case (_, .some(let injection)) where injection.wrappedTimestamp >= oneWeekAgo:
+            return .under7days
+        default:
+            return .over7days
+        }
+    }
+
     func getCircleStatus(of position: Int, using injections: [Injection?]) -> TabViewCircleView.Status {
-        print(injections)
         if let injection = injections[position] {
             let oneWeekAgo = Date() - 7
             if injection.wrappedTimestamp < oneWeekAgo {
@@ -132,6 +159,7 @@ class MC3ViewModel: ObservableObject {
         }
         return .over7days
     }
+
     func getDateCalculator(of injection: Injection?) -> Int? {
         if let injection {
             let offsetComps =
@@ -159,9 +187,23 @@ class MC3ViewModel: ObservableObject {
                 )
         }
         isToastOnApear.toggle()
-        injectionsByPositionArray = Self.buildInjectionsByPositionArray()
+        updateInjectionsByPositionArray()
         pickedPosition = nil
         setRecommendedPosition()
     }
 
+    func delete(injection: Injection) {
+        PersistenceController.shared.delete(injection: injection)
+        updateInjectionsByPositionArray()
+        NotificationCenter.default.post(name: NSNotification.Name("RefreshMainView"), object: nil)
+    }
+
+    func update(time: Date, position: Int, to injection: Injection) {
+        PersistenceController.shared.update(time: time, position: position, to: injection)
+        updateInjectionsByPositionArray()
+    }
+
+    func updateInjectionsByPositionArray() {
+        injectionsByPositionArray = Self.buildInjectionsByPositionArray()
+    }
 }

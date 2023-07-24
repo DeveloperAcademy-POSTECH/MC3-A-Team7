@@ -23,7 +23,6 @@ struct TabViewComponentsView: View {
                             Spacer()
                             Text("아래").font(.system(size: 17, weight: .semibold))
 
-
                             HStack(spacing: 10) {
                                 if page == 0 {
                                     Spacer()

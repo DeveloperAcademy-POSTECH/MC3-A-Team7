@@ -9,8 +9,11 @@ import SwiftUI
 
 struct TabViewCircleView: View {
     @ObservedObject var viewModel: MC3ViewModel
+    var injection: Injection?
     var position: Int
-    var status: Status
+    var status: Status {
+        viewModel.getCircleStatus(of: position, injection: injection)
+    }
 
     var body: some View {
         ZStack {
@@ -30,11 +33,6 @@ struct TabViewCircleView: View {
                 .id(position)
                 .onTapGesture {
                     viewModel.pickedPosition = position
-                    if status == Status.under7days {
-                        viewModel.isUnder7DaysTabbed = true
-                    } else {
-                        viewModel.isUnder7DaysTabbed = false
-                    }
                 }
                 .frame(width: 60, height: 60)
                 .foregroundColor(
@@ -76,6 +74,6 @@ extension TabViewCircleView {
 struct TabViewCircleView_Previews: PreviewProvider {
     static var previews: some View {
         let viewModel = MC3ViewModel()
-        TabViewCircleView(viewModel: viewModel, position: 3, status: .recommendation)
+        TabViewCircleView(viewModel: viewModel, position: 3)
     }
 }

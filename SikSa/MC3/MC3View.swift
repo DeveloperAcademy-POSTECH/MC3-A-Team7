@@ -8,11 +8,9 @@ import SwiftUI
 
 struct MC3View: View {
     @StateObject private var viewModel = MC3ViewModel()
-    @State private var showModal = false
 
     var body: some View {
         NavigationView {
-
             ZStack {
                 VStack(alignment: .center, spacing: 32) {
                     TopMainTextView(viewModel: viewModel)
@@ -26,6 +24,9 @@ struct MC3View: View {
                 .padding(.horizontal)
                 .onAppear {
                     viewModel.tabViewIndicatorDot()
+                }
+                .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("RefreshMainView"))) { _ in
+                    self.viewModel.injectionsByPositionArray = MC3ViewModel.buildInjectionsByPositionArray()
                 }
                 .alert("이 부위는 투여후 일주일이 지나지 않았습니다.", isPresented: $viewModel.under7DaysButtonActivate) {
                     Button("취소", role: .cancel) {}
