@@ -164,8 +164,6 @@ class MC3ViewModel: ObservableObject {
         PersistenceController.shared
             .delete(injection: injection)
         updateInjectionsByPositionArray()
-
-        dump(injectionsByPositionArray)
     }
 
     func update(time: Date, position: Int, to injection: Injection) {
