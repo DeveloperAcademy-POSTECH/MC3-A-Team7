@@ -13,10 +13,10 @@ struct UpdateCircleView: View {
     var isPreviousNumber: Bool = false
 
     var body: some View {
-        let backgroundColor = selected ? "0055B1" :
-        isPreviousNumber ? "CECECE" : "E8E8EA"
-        let foregroundColor = selected ? "F2F2F7" :
-        isPreviousNumber ? "000000" : "ABA1A1"
+        let backgroundColor: Color = selected ? .selectedButtonBackground :
+        isPreviousNumber ? .updateViewSelectedIsPreviousBackground : .unselectedButtonColor
+        let foregroundColor: Color = selected ? .createViewSelectedForeground :
+        isPreviousNumber ? .updateViewUnselectedIsPreviousForeground : .updateViewUnselectedIsNotPreviousForeground
         ZStack {
             Circle()
                 .fill(Color(hex: backgroundColor))
