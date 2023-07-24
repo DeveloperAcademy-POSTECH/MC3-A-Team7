@@ -17,19 +17,20 @@ struct HistoryView: View {
         Self.buildDictionary(using: PersistenceController.shared.injections)
     }
     @State private var previousSelectedDate: String
+    @State private var isCreateModalPresented = false
+
     private var previousSelectedPositions: [Int] {
         let firstKey = injectionDictionary.keys.sorted(by: >).first ?? ""
         return injectionDictionary[firstKey]?.map({ injection in
             injection.wrappedPosition
         }) ?? []
     }
-
+        
     init() {
         let injectionDictionary = Self.buildDictionary(using: PersistenceController.shared.injections)
         let firstKey = injectionDictionary.keys.sorted(by: >).first ?? ""
         _previousSelectedDate = State(initialValue: String(firstKey))
     }
-    @State private var showCreateModal = false
 
     var body: some View {
         VStack {
@@ -69,21 +70,15 @@ struct HistoryView: View {
             }
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    addRecord()
-                    self.showCreateModal = true
+                    self.isCreateModalPresented = true
                 } label: {
-                    Image(systemName: "plus")
-                        .resizable()
-                        .frame(width: 28, height: 28)
-                        .foregroundColor(.blue)
-                }.sheet(isPresented: self.$showCreateModal) {
+                    Label("생성하기", systemImage: "plus")
+                }.sheet(isPresented: self.$isCreateModalPresented) {
                     CreateView()
+                    .presentationDetents([.fraction(0.99)])
                 }
             }
         }
-    }
-    private func addRecord() {
-        print("생성하기 모달 띄우기")
     }
     static func convertTimestampFormat (_ timestamp: Date) -> String {
         let dateFormatter = DateFormatter()
