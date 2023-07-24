@@ -86,8 +86,8 @@ struct NumberingCircle: View {
     }
 }
 
-struct InjectionSitesView_Previews: PreviewProvider {
-    static var previews: some View {
-        InjectionSitesView(previousSelectedPositions: [1, 2, 3])
-    }
-}
+//struct InjectionSitesView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        InjectionSitesView(previousSelectedPositions: [1, 2, 3])
+//    }
+//}

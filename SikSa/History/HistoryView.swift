@@ -13,13 +13,12 @@ struct HistoryView: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \Injection.timestamp, ascending: true)]
     )
     private var injections: FetchedResults<Injection>
+    private var injectionDictionary: [String: [Injection]]
     @State private var previousSelectedDate: String
     @State private var previousSelectedPositions: [Int]
-    var injectionDictionary: [String: [Injection]]
 
     init() {
         injectionDictionary = Self.buildDictionary(using: PersistenceController.shared.injections)
-//        injectionDictionary = Self.buildDictionary(using: injections)
         let firstKey = injectionDictionary.keys.sorted(by: >).first ?? "2023년 07월 22일"
         _previousSelectedDate = State(initialValue: String(firstKey))
         _previousSelectedPositions = State(initialValue: injectionDictionary[firstKey]?.map({ injection in
@@ -28,7 +27,6 @@ struct HistoryView: View {
     }
 
     var body: some View {
-        let _ = print(injections)
         VStack {
             ScrollView {
                 LazyVStack(pinnedViews: [.sectionHeaders]) {
@@ -54,7 +52,7 @@ struct HistoryView: View {
                 }
             }
         }
-        .background(Color(.systemGroupedBackground))
+        .background(Color.viewBackgroundBlueColor)
         .navigationBarBackButtonHidden()
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
@@ -79,8 +77,6 @@ struct HistoryView: View {
         dateFormatter.dateFormat = "YYYY년 MM월 dd일"
         return dateFormatter.string(from: timestamp)
     }
-
-    //    static func buildDictionary(using injections: FetchedResults<Injection>) -> [String: [Injection]] {
     static func buildDictionary(using injections: [Injection]) -> [String: [Injection]] {
         return Dictionary(grouping: injections) {
             Self.convertTimestampFormat($0.wrappedTimestamp)
@@ -97,7 +93,7 @@ struct SectionHeaderView: View {
                 .padding(.vertical, 10)
             Divider()
         }
-        .background(Color(.systemGroupedBackground))
+        .background(Color.viewBackgroundBlueColor)
     }
 }
 
