@@ -12,7 +12,7 @@ struct HistoryCardView: View {
     @Binding var injections: [Injection]
     @Binding var previousSelectedDate: String
     @Binding var previousSelectedPositions: [Int]
-    @State private var isNumberSelected = false
+
     var body: some View {
         VStack {
             let isSelected = previousSelectedDate == dateString
@@ -71,6 +71,7 @@ struct NumberingButton: View {
     var changeButtonColor: () -> Void
     var injection: Injection
     @State var isUpdateModalPresented = false
+
     var body: some View {
         Button {
             changeButtonColor()

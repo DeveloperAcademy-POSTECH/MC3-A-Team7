@@ -10,16 +10,16 @@ import SwiftUI
 struct CreateCircleView: View {
     var selected: Bool = false
     var index: Int = 1
-    
+
     var body: some View {
-        let backgroundColor = selected ? "0055B1" : "E8E8EA"
-        let foregroundColor = selected ? "F2F2F7" : "ABA1A1"
-        
+        var backgroundColor: Color = selected ? .selectedButtonBackground : .unselectedButtonColor
+        var foregroundColor: Color = selected ? .createViewSelectedForeground : .createViewUnseletedForeground
+
         ZStack {
             Circle()
-                .fill(Color(hex: backgroundColor))
+                .fill(backgroundColor)
             Text(String(index))
-                .foregroundColor(Color(hex: foregroundColor))
+                .foregroundColor(foregroundColor)
                 .font(.title3)
                 .padding(20)
                 .bold()
