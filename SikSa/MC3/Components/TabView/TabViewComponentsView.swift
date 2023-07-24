@@ -10,6 +10,7 @@ import SwiftUI
 struct TabViewComponentsView: View {
     @ObservedObject var viewModel: MC3ViewModel
     @State var clickedPosition: Int?
+
     var body: some View {
         TabView(selection: $viewModel.page) {
             ForEach((0..<2), id: \.self) { page in
@@ -18,22 +19,28 @@ struct TabViewComponentsView: View {
                     .frame(minWidth: 350)
                     .cornerRadius(12)
                     .overlay {
-                        VStack(alignment: .center, spacing: 20) {
+                        VStack(alignment: .center, spacing: 15) {
                             Spacer()
                             Text("아래").font(.system(size: 17, weight: .semibold))
 
-                            LazyVGrid(columns: viewModel.columns) {
-                                let injections = viewModel.injectionsByPositionArray
-                                ForEach(page == 0 ? viewModel.leftArray : viewModel.rightArray,
-                                        id: \.self) { position in
-                                    let status = viewModel.getCircleStatus(of: position, using: injections)
-                                    TabViewCircleView(viewModel: viewModel, position: position, status: status)
+
+                            HStack(spacing: 10) {
+                                if page == 0 {
+                                    Spacer()
+                                    TabViewPaperSheetView(viewModel: viewModel, page: page)
+                                    Spacer()
+                                    TabViewBellyButtonView(page: page)
+                                } else {
+                                    TabViewBellyButtonView(page: page)
+                                    Spacer()
+                                    TabViewPaperSheetView(viewModel: viewModel, page: page)
+                                    Spacer()
                                 }
                             }
-                            .padding(.horizontal, 30)
                             Text("위").font(.system(size: 17, weight: .semibold))
                             Spacer()
-                        }.padding(.top, -20)
+                            Spacer()
+                        }
                     }
             }
         }

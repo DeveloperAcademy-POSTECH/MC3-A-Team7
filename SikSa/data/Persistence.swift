@@ -13,6 +13,8 @@ class PersistenceController {
 
     static let shared = PersistenceController()
 
+    var lastUpdatedInjection: Injection?
+
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext

@@ -14,15 +14,31 @@ class MC3ViewModel: ObservableObject {
     @Published var page = 0
     @Published var recommendedPosition: Int = 0
     @Published var pickedPosition: Int?
+    @Published var isToastOnApear: Bool = false
+    @Published var isUnder7DaysTabbed: Bool = false
+    @Published var under7DaysButtonActivate: Bool = false
     @Published var under7DaysArrPositions: [Int16] = []
     @Published var under7DaysArrTimestamps: [Date] = []
     @Published var listOfDateArr: [Date] = []
-    @Published var showUpdateModal: Bool = false
     @Published var injectionsByPositionArray: [Injection?]
+    @Published var showUpeModal: Bool = false
+    @Published var injectiondatsByPositionArray: [Injection?]
+    var lastUpdatedInjection: Injection? {
+        PersistenceController.shared.lastUpdatedInjection
+    }
 
     init() {
         injectionsByPositionArray = Self.buildInjectionsByPositionArray()
         setRecommendedPosition()
+    }
+
+
+    var selectedInjectionInMainView: Injection? {
+        guard let pickedPosition,
+              let injection = injectionsByPositionArray[pickedPosition] else {
+            return nil
+        }
+        return injection
     }
 
     static func buildInjectionsByPositionArray() -> [Injection?] {
@@ -44,10 +60,8 @@ class MC3ViewModel: ObservableObject {
     }
 
     var positionNumberToKnow: Int {
-        print(#function)
         if pickedPosition == nil {
             return recommendedPosition
-
         } else {
             return pickedPosition ?? 1
         }
@@ -118,4 +132,36 @@ class MC3ViewModel: ObservableObject {
         }
         return .over7days
     }
+    func getDateCalculator(of injection: Injection?) -> Int? {
+        if let injection {
+            let offsetComps =
+            Calendar.current.dateComponents([.day], from: injection.timestamp ?? Date(), to: Date())
+            if case let (day?) = (offsetComps.day) {
+                return day
+            }
+       }
+        return nil
+    }
+
+    func formatDate(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy.M.dd"
+        dateFormatter.timeZone = TimeZone.current
+        return dateFormatter.string(from: date)
+    }
+
+    func buttonActionForRecord() {
+        if let pickedPosition {
+            PersistenceController.shared
+                .addInjection(
+                    time: Date(),
+                    position: pickedPosition
+                )
+        }
+        isToastOnApear.toggle()
+        injectionsByPositionArray = Self.buildInjectionsByPositionArray()
+        pickedPosition = nil
+        setRecommendedPosition()
+    }
+
 }
