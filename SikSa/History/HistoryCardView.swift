@@ -11,7 +11,7 @@ struct HistoryCardView: View {
     var dateString: String
     @Binding var injections: [Injection]
     @Binding var previousSelectedDate: String
-    @Binding var previousSelectedPositions: [Int]
+    var previousSelectedPositions: [Int]
     @State private var isNumberSelected = false
 
     var body: some View {
@@ -25,7 +25,8 @@ struct HistoryCardView: View {
                     ForEach($injections) { $injection in
                         NumberingButton(isSelected: isSelected,
                                         changeButtonColor: changeButtonColor,
-                                        injection: injection)
+                                        injection: injection
+                        )
                     }
                 }
                 .padding(.vertical, 7)
@@ -37,10 +38,10 @@ struct HistoryCardView: View {
         }
         .padding()
     }
+
     private func changeButtonColor () {
         if previousSelectedDate != dateString {
             previousSelectedDate = dateString
-            previousSelectedPositions = injections.map { $0.wrappedPosition }
         }
     }
 }
@@ -70,7 +71,7 @@ struct DateButton: View {
 struct NumberingButton: View {
     var isSelected: Bool
     var changeButtonColor: () -> Void
-    var injection: Injection
+    @ObservedObject var injection: Injection
     @State var isUpdateModalPresented = false
     var body: some View {
         Button {
@@ -91,12 +92,3 @@ struct NumberingButton: View {
         }
     }
 }
-//
-//struct HistoryCardView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        HistoryCardView(dateString: "2023년 07월 13일",
-//                 injections: [InjectionModel(id: UUID().hashValue, timestamp: Date(), position: 1)],
-//                 previousSelectedDate: .constant("2023년 07월 13일"),
-//                 previousSelectedPositions: .constant([5, 6]))
-//        }
-//}
