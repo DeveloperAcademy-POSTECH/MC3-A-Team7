@@ -9,12 +9,24 @@ import SwiftUI
 
 struct UpdateView: View {
     @Environment(\.presentationMode) var presentationMode
-    @ObservedObject var selectedNum: SelectedData
+//    @ObservedObject var selectedNum: SelectedData
     @StateObject private var viewModel = MC3ViewModel()
-    
-    
+    var injection: Injection
+    @State private var selectedDate: Date
+    @State private var selectedPosition: Int
+
+    init(injection: Injection) {
+        self.injection = injection
+//        self.date = Date()
+//        self.position = 0
+//        self.date = State(initialValue: injection.wrappedTimestamp)
+//        self.position = State(initialValue: Int(injection.position))
+        _selectedDate = State(initialValue: injection.wrappedTimestamp)
+        _selectedPosition = State(initialValue: Int(injection.position))
+    }
+
     var body: some View {
-        
+
         NavigationView {
             ScrollView {
                 VStack {
@@ -24,36 +36,44 @@ struct UpdateView: View {
                             .padding()
                         Spacer()
                     }
-                    
-                    UpdateCardView(viewModel: viewModel, selectedNum: selectedNum)
-                    
+
+                    UpdateCardView(
+                        viewModel: viewModel,
+                        selectedPosition: $selectedPosition,
+                        originalPosition: Int(injection.position)
+                    )
+
                     Spacer()
-                    
+
                     HStack {
                         Text("날짜 선택")
                             .bold()
                             .padding()
                         Spacer()
                     }
-                   
-                    DatePickerView()
-                    DeleteButton()
+
+                    DatePickerView(date: $selectedDate)
+                    DeleteButton(injection: injection, selectedDate: selectedDate, selectedPosition: Int(injection.position))
                 }
                 .navigationTitle("수정하기")
                 .navigationBarTitleDisplayMode(.inline)
-                .toolbar{
-                    ToolbarItem(placement: .navigationBarLeading){
-                        Button(action:
-                        {self.presentationMode.wrappedValue.dismiss()})
-                        {Text("취소")
-                                .foregroundColor(.red)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button {
+                            self.presentationMode.wrappedValue.dismiss()
+                        } label: {
+                            Text("취소")
+                                    .foregroundColor(.red)
                         }
                     }
-                    // TODO: - 완료 버튼 클릭 시 해당 데이터 수정
-                    ToolbarItem(placement: .navigationBarTrailing){
-                        Button(action:
-                                {self.presentationMode.wrappedValue.dismiss()})
-                        {Text("완료")}
+                    // TODO: - 완료 버튼 클릭 시 해당 데이터 수정 -> 확인 필요
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            self.presentationMode.wrappedValue.dismiss()
+                            PersistenceController.shared.update(time: selectedDate, position: selectedPosition, to: injection)
+                        } label: {
+                            Text("완료")
+                        }
                     }
                 }
             }
@@ -61,8 +81,8 @@ struct UpdateView: View {
     }
 }
 
-struct UpdateView_Previews: PreviewProvider {
-    static var previews: some View {
-        UpdateView(selectedNum: SelectedData())
-    }
-}
+//struct UpdateView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        UpdateView(injection: PersistenceController.preview)
+//    }
+//}

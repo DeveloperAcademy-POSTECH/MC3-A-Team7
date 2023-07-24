@@ -25,6 +25,7 @@ struct HistoryView: View {
             injection.wrappedPosition
         }) ?? [5, 6])
     }
+    @State private var showCreateModal = false
 
     var body: some View {
         VStack {
@@ -63,8 +64,15 @@ struct HistoryView: View {
                 }
             }
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: addRecord) {
-                    Label("생성하기", systemImage: "plus")
+                Button {
+                    self.showCreateModal = true
+                } label: {
+                    Image(systemName: "plus")
+                        .resizable()
+                        .frame(width: 28, height: 28)
+                        .foregroundColor(.blue)
+                }.sheet(isPresented: self.$showCreateModal) {
+                    CreateView()
                 }
             }
         }
