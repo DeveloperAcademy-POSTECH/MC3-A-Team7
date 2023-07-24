@@ -22,7 +22,7 @@ class MC3ViewModel: ObservableObject {
     @Published var listOfDateArr: [Date] = []
     @Published var injectionsByPositionArray: [Injection?]
     @Published var showUpeModal: Bool = false
-    @Published var injectiondatsByPositionArray: [Injection?]
+    
     var lastUpdatedInjection: Injection? {
         PersistenceController.shared.lastUpdatedInjection
     }
