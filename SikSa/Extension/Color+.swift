@@ -11,10 +11,6 @@ import SwiftUI
 /// viewModel.isNoTabSelected ? Color.disabledButtonColor : Color.activeButtonColor
 
 extension Color {
-    static var activeButtonColor: Color { Color(CustomColor.activeButtonColor.rawValue) }
-    static var disabledButtonColor: Color { Color(CustomColor.disabledButtonColor.rawValue) }
-    static var historyViewSelectedDateButtonColor: Color { Color(CustomColor.historyViewSelectedDateButtonColor.rawValue) }
-    static var historyViewSelectedNumberButtonColor: Color { Color(CustomColor.historyViewSelectedNumberButtonColor.rawValue) }
     static var mainView7daysAfterButtonColor: Color { Color(CustomColor.mainView7daysAfterButtonColor.rawValue) }
     static var mainView7daysAfterButtonStrokeColor: Color { Color(CustomColor.mainView7daysAfterButtonStrokeColor.rawValue) }
     static var mainView7daysAfterTextColor: Color { Color(CustomColor.mainView7daysAfterTextColor.rawValue) }
