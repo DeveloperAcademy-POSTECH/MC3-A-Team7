@@ -10,7 +10,6 @@
 		3607189C2A67C57D00D492E8 /* DeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3607189B2A67C57D00D492E8 /* DeleteButton.swift */; };
 		3607189E2A67C5A000D492E8 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3607189D2A67C5A000D492E8 /* DatePickerView.swift */; };
 		360718A02A67C5D600D492E8 /* UpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3607189F2A67C5D600D492E8 /* UpdateView.swift */; };
-		360718A22A67C5E800D492E8 /* UpdateCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360718A12A67C5E800D492E8 /* UpdateCardView.swift */; };
 		360718A42A67C64E00D492E8 /* ModalTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360718A32A67C64E00D492E8 /* ModalTestView.swift */; };
 		360718A82A6803C500D492E8 /* UpdateCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360718A72A6803C500D492E8 /* UpdateCircleView.swift */; };
 		360718AA2A68FDA200D492E8 /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360718A92A68FDA100D492E8 /* CreateView.swift */; };
@@ -18,11 +17,12 @@
 		360718AE2A69053000D492E8 /* CreateCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360718AD2A69053000D492E8 /* CreateCardView.swift */; };
 		5171D9762A5BA8B300A962A4 /* SikSaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5171D9752A5BA8B300A962A4 /* SikSaApp.swift */; };
 		5171D9782A5BA8B300A962A4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5171D9772A5BA8B300A962A4 /* ContentView.swift */; };
-		5171D97A2A5BA8B400A962A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5171D9792A5BA8B400A962A4 /* Assets.xcassets */; };
-		5171D97D2A5BA8B400A962A4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5171D97C2A5BA8B400A962A4 /* Preview Assets.xcassets */; };
 		5171D97F2A5BA8B400A962A4 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5171D97E2A5BA8B400A962A4 /* Persistence.swift */; };
-		5171D9822A5BA8B400A962A4 /* SikSa.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5171D9802A5BA8B400A962A4 /* SikSa.xcdatamodeld */; };
-		5171D98A2A5BAA9000A962A4 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 5171D9892A5BAA9000A962A4 /* .swiftlint.yml */; };
+		51A37E652A71608B00A098A0 /* SikSa.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 51A37E632A71608B00A098A0 /* SikSa.xcdatamodeld */; };
+		51A37E682A71610F00A098A0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51A37E672A71610F00A098A0 /* Preview Assets.xcassets */; };
+		51A37E6A2A7161BC00A098A0 /* UpdateCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A37E692A7161BC00A098A0 /* UpdateCardView.swift */; };
+		51A37E6C2A716EA900A098A0 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 51A37E6B2A716EA900A098A0 /* .swiftlint.yml */; };
+		51A37E6F2A716F7400A098A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51A37E6E2A716F7400A098A0 /* Assets.xcassets */; };
 		51F8EF292A6754C1008758ED /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F8EF282A6754C1008758ED /* HistoryView.swift */; };
 		51F8EF2B2A675538008758ED /* HistoryCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F8EF2A2A675538008758ED /* HistoryCardView.swift */; };
 		51F8EF2D2A6755B7008758ED /* InjectionSitesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F8EF2C2A6755B7008758ED /* InjectionSitesView.swift */; };
@@ -55,25 +55,25 @@
 
 /* Begin PBXFileReference section */
 		3607189B2A67C57D00D492E8 /* DeleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteButton.swift; sourceTree = "<group>"; };
-		3607189D2A67C5A000D492E8 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
+		3607189D2A67C5A000D492E8 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DatePickerView.swift; path = ../../../SikSa/MC3/Components/UpdateViewComponents/DatePickerView.swift; sourceTree = "<group>"; };
 		3607189F2A67C5D600D492E8 /* UpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateView.swift; sourceTree = "<group>"; };
-		360718A12A67C5E800D492E8 /* UpdateCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCardView.swift; sourceTree = "<group>"; };
-		360718A32A67C64E00D492E8 /* ModalTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalTestView.swift; sourceTree = "<group>"; };
+		360718A32A67C64E00D492E8 /* ModalTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ModalTestView.swift; path = ../SikSa/MC3/ModalTestView.swift; sourceTree = "<group>"; };
 		360718A72A6803C500D492E8 /* UpdateCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCircleView.swift; sourceTree = "<group>"; };
 		360718A92A68FDA100D492E8 /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
 		360718AB2A6900A200D492E8 /* CreateCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCircleView.swift; sourceTree = "<group>"; };
 		360718AD2A69053000D492E8 /* CreateCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCardView.swift; sourceTree = "<group>"; };
 		5171D9722A5BA8B300A962A4 /* SikSa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SikSa.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		5171D9752A5BA8B300A962A4 /* SikSaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SikSaApp.swift; sourceTree = "<group>"; };
-		5171D9772A5BA8B300A962A4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		5171D9792A5BA8B400A962A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		5171D97C2A5BA8B400A962A4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5171D9752A5BA8B300A962A4 /* SikSaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SikSaApp.swift; path = SikSa/SikSaApp.swift; sourceTree = "<group>"; };
+		5171D9772A5BA8B300A962A4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = SikSa/ContentView.swift; sourceTree = "<group>"; };
 		5171D97E2A5BA8B400A962A4 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		5171D9812A5BA8B400A962A4 /* SikSa.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SikSa.xcdatamodel; sourceTree = "<group>"; };
-		5171D9892A5BAA9000A962A4 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		51A37E642A71608B00A098A0 /* SikSa.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SikSa.xcdatamodel; sourceTree = "<group>"; };
+		51A37E672A71610F00A098A0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		51A37E692A7161BC00A098A0 /* UpdateCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateCardView.swift; sourceTree = "<group>"; };
+		51A37E6B2A716EA900A098A0 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		51A37E6E2A716F7400A098A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		51F8EF282A6754C1008758ED /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		51F8EF2A2A675538008758ED /* HistoryCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCardView.swift; sourceTree = "<group>"; };
-		51F8EF2C2A6755B7008758ED /* InjectionSitesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectionSitesView.swift; sourceTree = "<group>"; };
+		51F8EF2C2A6755B7008758ED /* InjectionSitesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InjectionSitesView.swift; path = ../SikSa/History/InjectionSitesView.swift; sourceTree = "<group>"; };
 		51F8EF2F2A68076E008758ED /* InjectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectionModel.swift; sourceTree = "<group>"; };
 		A35BF60B2A6C01A200B2478C /* TabViewBellyButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewBellyButtonView.swift; sourceTree = "<group>"; };
 		A35BF60D2A6C032E00B2478C /* TabViewPaperSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewPaperSheetView.swift; sourceTree = "<group>"; };
@@ -87,18 +87,18 @@
 		A381AE1D2A67BFCF000AE8E8 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		B281BEE82A67CA9F00889A29 /* TabViewCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewCircleView.swift; sourceTree = "<group>"; };
 		B281BEEA2A67EDC700889A29 /* TopMainTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopMainTextView.swift; sourceTree = "<group>"; };
-		B281BEED2A67F38900889A29 /* NSPredicate+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSPredicate+.swift"; sourceTree = "<group>"; };
-		B281BEEF2A67F4AD00889A29 /* NSSortDescriptor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSSortDescriptor+.swift"; sourceTree = "<group>"; };
-		B2C11C072A6E60CC002FB201 /* pre-injections.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "pre-injections.json"; sourceTree = "<group>"; };
+		B281BEED2A67F38900889A29 /* NSPredicate+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "NSPredicate+.swift"; path = "../SikSa/Extension/NSPredicate+.swift"; sourceTree = "<group>"; };
+		B281BEEF2A67F4AD00889A29 /* NSSortDescriptor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "NSSortDescriptor+.swift"; path = "../SikSa/Extension/NSSortDescriptor+.swift"; sourceTree = "<group>"; };
+		B2C11C072A6E60CC002FB201 /* pre-injections.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "pre-injections.json"; path = "../SikSa/data/pre-injections.json"; sourceTree = "<group>"; };
 		B2C11C0A2A6E61D0002FB201 /* InjectionProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectionProperties.swift; sourceTree = "<group>"; };
 		B2C11C0C2A6E6380002FB201 /* InjectionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectionError.swift; sourceTree = "<group>"; };
 		B2CBF8022A67B27500E6202A /* Persistence+Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Persistence+Injection.swift"; sourceTree = "<group>"; };
-		B2CBF8042A67B2A600E6202A /* Injection+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Injection+CoreDataClass.swift"; sourceTree = "<group>"; };
-		B2CBF8052A67B2A600E6202A /* Injection+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Injection+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		B2CBF8082A67B33500E6202A /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
+		B2CBF8042A67B2A600E6202A /* Injection+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Injection+CoreDataClass.swift"; path = "../SikSa/data/Injection+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B2CBF8052A67B2A600E6202A /* Injection+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Injection+CoreDataProperties.swift"; path = "../SikSa/data/Injection+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B2CBF8082A67B33500E6202A /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoreDataHelper.swift; path = ../SikSa/data/CoreDataHelper.swift; sourceTree = "<group>"; };
 		B2CEFBA92A6975D300E19B72 /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
 		B2CEFBAB2A69764400E19B72 /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
-		B2E8DB782A6E5DBD0084D27C /* Array+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+.swift"; sourceTree = "<group>"; };
+		B2E8DB782A6E5DBD0084D27C /* Array+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Array+.swift"; path = "../SikSa/Extension/Array+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,7 +115,7 @@
 		3607189A2A67C54C00D492E8 /* UpdateViewComponents */ = {
 			isa = PBXGroup;
 			children = (
-				360718A12A67C5E800D492E8 /* UpdateCardView.swift */,
+				51A37E692A7161BC00A098A0 /* UpdateCardView.swift */,
 				360718AD2A69053000D492E8 /* CreateCardView.swift */,
 				360718A72A6803C500D492E8 /* UpdateCircleView.swift */,
 				360718AB2A6900A200D492E8 /* CreateCircleView.swift */,
@@ -128,7 +128,7 @@
 		5171D9692A5BA8B300A962A4 = {
 			isa = PBXGroup;
 			children = (
-				5171D9892A5BAA9000A962A4 /* .swiftlint.yml */,
+				51A37E6B2A716EA900A098A0 /* .swiftlint.yml */,
 				5171D9742A5BA8B300A962A4 /* SikSa */,
 				5171D9732A5BA8B300A962A4 /* Products */,
 			);
@@ -145,26 +145,26 @@
 		5171D9742A5BA8B300A962A4 /* SikSa */ = {
 			isa = PBXGroup;
 			children = (
+				51A37E632A71608B00A098A0 /* SikSa.xcdatamodeld */,
+				5171D9752A5BA8B300A962A4 /* SikSaApp.swift */,
+				5171D9772A5BA8B300A962A4 /* ContentView.swift */,
+				51F8EF2E2A680760008758ED /* temp */,
+				B2CBF8012A67B24C00E6202A /* data */,
 				B2C11C092A6E61C2002FB201 /* Model */,
 				B2CEFBA82A6975C400E19B72 /* constant */,
-				51F8EF2E2A680760008758ED /* temp */,
-				51F8EF272A6754A5008758ED /* History */,
-				5171D9752A5BA8B300A962A4 /* SikSaApp.swift */,
 				B281BEEC2A67F37900889A29 /* Extension */,
 				A381AE092A67B306000AE8E8 /* MC3 */,
-				5171D9772A5BA8B300A962A4 /* ContentView.swift */,
-				5171D9792A5BA8B400A962A4 /* Assets.xcassets */,
-				B2CBF8012A67B24C00E6202A /* data */,
-				5171D9802A5BA8B400A962A4 /* SikSa.xcdatamodeld */,
-				5171D97B2A5BA8B400A962A4 /* Preview Content */,
+				51F8EF272A6754A5008758ED /* History */,
+				51A37E662A71610F00A098A0 /* Preview Content */,
+				51A37E6E2A716F7400A098A0 /* Assets.xcassets */,
 			);
 			path = SikSa;
 			sourceTree = "<group>";
 		};
-		5171D97B2A5BA8B400A962A4 /* Preview Content */ = {
+		51A37E662A71610F00A098A0 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				5171D97C2A5BA8B400A962A4 /* Preview Assets.xcassets */,
+				51A37E672A71610F00A098A0 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -184,7 +184,8 @@
 			children = (
 				51F8EF2F2A68076E008758ED /* InjectionModel.swift */,
 			);
-			path = temp;
+			name = temp;
+			path = SikSa/temp;
 			sourceTree = "<group>";
 		};
 		A381AE092A67B306000AE8E8 /* MC3 */ = {
@@ -230,7 +231,8 @@
 			children = (
 				A381AE1D2A67BFCF000AE8E8 /* Color.swift */,
 			);
-			path = Utils;
+			name = Utils;
+			path = ../SikSa/MC3/Utils;
 			sourceTree = "<group>";
 		};
 		B281BEEC2A67F37900889A29 /* Extension */ = {
@@ -251,7 +253,8 @@
 				B2C11C0A2A6E61D0002FB201 /* InjectionProperties.swift */,
 				B2C11C0C2A6E6380002FB201 /* InjectionError.swift */,
 			);
-			path = Model;
+			name = Model;
+			path = SikSa/Model;
 			sourceTree = "<group>";
 		};
 		B2CBF8012A67B24C00E6202A /* data */ = {
@@ -282,7 +285,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5171D9852A5BA8B400A962A4 /* Build configuration list for PBXNativeTarget "SikSa" */;
 			buildPhases = (
-				5171D9882A5BA9D600A962A4 /* SwiftLint Script */,
+				51A37E6D2A716EC000A098A0 /* SwiftLint Script */,
 				5171D96E2A5BA8B300A962A4 /* Sources */,
 				5171D96F2A5BA8B300A962A4 /* Frameworks */,
 				5171D9702A5BA8B300A962A4 /* Resources */,
@@ -334,19 +337,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5171D98A2A5BAA9000A962A4 /* .swiftlint.yml in Resources */,
+				51A37E6C2A716EA900A098A0 /* .swiftlint.yml in Resources */,
+				51A37E682A71610F00A098A0 /* Preview Assets.xcassets in Resources */,
+				51A37E6F2A716F7400A098A0 /* Assets.xcassets in Resources */,
 				B2C11C082A6E60CC002FB201 /* pre-injections.json in Resources */,
-				5171D97D2A5BA8B400A962A4 /* Preview Assets.xcassets in Resources */,
-				5171D97A2A5BA8B400A962A4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		5171D9882A5BA9D600A962A4 /* SwiftLint Script */ = {
+		51A37E6D2A716EC000A098A0 /* SwiftLint Script */ = {
 			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -361,7 +363,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nexport PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nexport PATH=\"$PATH:/opt/homebrew/bin\"\n\nif swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -384,7 +386,6 @@
 				B281BEEE2A67F38900889A29 /* NSPredicate+.swift in Sources */,
 				B2CEFBAA2A6975D300E19B72 /* CustomColor.swift in Sources */,
 				B2C11C0B2A6E61D0002FB201 /* InjectionProperties.swift in Sources */,
-				5171D9822A5BA8B400A962A4 /* SikSa.xcdatamodeld in Sources */,
 				3607189E2A67C5A000D492E8 /* DatePickerView.swift in Sources */,
 				A35BF6102A6C1CB200B2478C /* ButtonToastView.swift in Sources */,
 				B2E8DB792A6E5DBD0084D27C /* Array+.swift in Sources */,
@@ -393,8 +394,7 @@
 				360718A42A67C64E00D492E8 /* ModalTestView.swift in Sources */,
 				B281BEEB2A67EDC700889A29 /* TopMainTextView.swift in Sources */,
 				A381AE192A67B306000AE8E8 /* ButtonComponentView.swift in Sources */,
-				360718A22A67C5E800D492E8 /* UpdateCardView.swift in Sources */,
-				360718A22A67C5E800D492E8 /* UpdateCardView.swift in Sources */,
+				51A37E652A71608B00A098A0 /* SikSa.xcdatamodeld in Sources */,
 				B281BEF02A67F4AD00889A29 /* NSSortDescriptor+.swift in Sources */,
 				51F8EF292A6754C1008758ED /* HistoryView.swift in Sources */,
 				51F8EF302A68076E008758ED /* InjectionModel.swift in Sources */,
@@ -403,6 +403,7 @@
 				A381AE132A67B306000AE8E8 /* MC3ViewModel.swift in Sources */,
 				A381AE142A67B306000AE8E8 /* MC3View.swift in Sources */,
 				B2CBF8032A67B27500E6202A /* Persistence+Injection.swift in Sources */,
+				51A37E6A2A7161BC00A098A0 /* UpdateCardView.swift in Sources */,
 				A35BF60C2A6C01A200B2478C /* TabViewBellyButtonView.swift in Sources */,
 				360718AE2A69053000D492E8 /* CreateCardView.swift in Sources */,
 				A37D69382A6829D8006546FB /* Date+.swift in Sources */,
@@ -542,6 +543,8 @@
 				DEVELOPMENT_TEAM = PFTK9YA9R8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "꼭콕";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -552,7 +555,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.chaekie.SikSa;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jojosaekkie.ggokkkok;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -571,6 +574,8 @@
 				DEVELOPMENT_TEAM = PFTK9YA9R8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "꼭콕";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -581,7 +586,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.chaekie.SikSa;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jojosaekkie.ggokkkok;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -613,12 +618,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		5171D9802A5BA8B400A962A4 /* SikSa.xcdatamodeld */ = {
+		51A37E632A71608B00A098A0 /* SikSa.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				5171D9812A5BA8B400A962A4 /* SikSa.xcdatamodel */,
+				51A37E642A71608B00A098A0 /* SikSa.xcdatamodel */,
 			);
-			currentVersion = 5171D9812A5BA8B400A962A4 /* SikSa.xcdatamodel */;
+			currentVersion = 51A37E642A71608B00A098A0 /* SikSa.xcdatamodel */;
 			path = SikSa.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
