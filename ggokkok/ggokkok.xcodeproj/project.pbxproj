@@ -24,6 +24,9 @@
 		B27CAE572A739BC00010D0FE /* EditInjectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27CAE562A739BC00010D0FE /* EditInjectionView.swift */; };
 		B27CAE5A2A739BF80010D0FE /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27CAE592A739BF80010D0FE /* SettingView.swift */; };
 		B27CAE5C2A739E670010D0FE /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27CAE5B2A739E670010D0FE /* Date+.swift */; };
+		B27CAE5E2A73B49E0010D0FE /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27CAE5D2A73B49E0010D0FE /* CustomColor.swift */; };
+		B27CAE602A73B5B50010D0FE /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27CAE5F2A73B5B50010D0FE /* Color+.swift */; };
+		B27CAE632A73B6F80010D0FE /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27CAE622A73B6F80010D0FE /* OnboardingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +67,9 @@
 		B27CAE562A739BC00010D0FE /* EditInjectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInjectionView.swift; sourceTree = "<group>"; };
 		B27CAE592A739BF80010D0FE /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		B27CAE5B2A739E670010D0FE /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
+		B27CAE5D2A73B49E0010D0FE /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
+		B27CAE5F2A73B5B50010D0FE /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
+		B27CAE622A73B6F80010D0FE /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				B268F9992A7391FF0083A87A /* MainView.swift */,
+				B27CAE612A73B6120010D0FE /* OnboardingView */,
 				B27CAE452A7399C30010D0FE /* RecommendView */,
 				B27CAE4A2A739A800010D0FE /* HistoryView */,
 				B27CAE502A739B8D0010D0FE /* CreateEditView */,
@@ -184,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				B27CAE5B2A739E670010D0FE /* Date+.swift */,
+				B27CAE5F2A73B5B50010D0FE /* Color+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -191,6 +199,7 @@
 		B268F9CB2A7392890083A87A /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				B27CAE5D2A73B49E0010D0FE /* CustomColor.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -259,6 +268,14 @@
 				B27CAE592A739BF80010D0FE /* SettingView.swift */,
 			);
 			path = SettingView;
+			sourceTree = "<group>";
+		};
+		B27CAE612A73B6120010D0FE /* OnboardingView */ = {
+			isa = PBXGroup;
+			children = (
+				B27CAE622A73B6F80010D0FE /* OnboardingView.swift */,
+			);
+			path = OnboardingView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -394,9 +411,12 @@
 				B27CAE4C2A739A920010D0FE /* HistoryView.swift in Sources */,
 				B27CAE442A73986D0010D0FE /* CoredataExampleView.swift in Sources */,
 				B27CAE492A7399E60010D0FE /* RecommendView.swift in Sources */,
+				B27CAE632A73B6F80010D0FE /* OnboardingView.swift in Sources */,
 				B27CAE5C2A739E670010D0FE /* Date+.swift in Sources */,
+				B27CAE5E2A73B49E0010D0FE /* CustomColor.swift in Sources */,
 				B27CAE4F2A739B570010D0FE /* InjectionModel.swift in Sources */,
 				B268F9A12A7392000083A87A /* Persistence.swift in Sources */,
+				B27CAE602A73B5B50010D0FE /* Color+.swift in Sources */,
 				B27CAE552A739BB00010D0FE /* CreateInjectionView.swift in Sources */,
 				B27CAE572A739BC00010D0FE /* EditInjectionView.swift in Sources */,
 				B268F9A42A7392000083A87A /* GgokKok.xcdatamodeld in Sources */,
