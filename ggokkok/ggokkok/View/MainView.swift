@@ -24,7 +24,7 @@ struct MainView: View {
 
 extension MainView {
     private enum Views: String, CaseIterable {
-//        case coredataExampleView
+        case onboardingView
         case recommendView
         case historyView
         case editInjectionView
@@ -33,8 +33,8 @@ extension MainView {
 
         var view: some View {
             switch self {
-//            case .coredataExampleView:
-//                return AnyView(CoredataExampleView())
+            case .onboardingView:
+                return AnyView(OnboardingView())
             case .recommendView:
                 return AnyView(RecommendView())
             case .historyView:
