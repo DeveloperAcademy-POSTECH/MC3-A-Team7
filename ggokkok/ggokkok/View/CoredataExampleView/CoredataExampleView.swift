@@ -1,27 +1,28 @@
 //
-//  ContentView.swift
-//  SikSa
+//  CoredataExampleView.swift
+//  GgokKok
 //
-//  Created by chaekie on 2023/07/10.
+//  Created by sei on 2023/07/28.
 //
 
 import SwiftUI
 import CoreData
 
-struct ContentView: View {
+struct CoredataExampleView: View {
+
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \Injection.timestamp, ascending: true)],
         animation: .default)
-    private var items: FetchedResults<Item>
+    private var items: FetchedResults<Injection>
 
     var body: some View {
         NavigationView {
             List {
                 ForEach(items) { item in
                     NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+                        Text("Injection at \(item.timestamp!, formatter: itemFormatter)")
                     } label: {
                         Text(item.timestamp!, formatter: itemFormatter)
                     }
@@ -34,7 +35,7 @@ struct ContentView: View {
                 }
                 ToolbarItem {
                     Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
+                        Label("Add Injection", systemImage: "plus")
                     }
                 }
             }
@@ -44,7 +45,7 @@ struct ContentView: View {
 
     private func addItem() {
         withAnimation {
-            let newItem = Item(context: viewContext)
+            let newItem = Injection(context: viewContext)
             newItem.timestamp = Date()
 
             do {
@@ -81,8 +82,9 @@ private let itemFormatter: DateFormatter = {
     return formatter
 }()
 
-struct ContentView_Previews: PreviewProvider {
+struct CoredataExampleView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        MainView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
+

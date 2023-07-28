@@ -1,8 +1,8 @@
 //
 //  Persistence.swift
-//  SikSa
+//  GgokKok
 //
-//  Created by chaekie on 2023/07/10.
+//  Created by sei on 2023/07/28.
 //
 
 import CoreData
@@ -14,7 +14,7 @@ struct PersistenceController {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
         for _ in 0..<10 {
-            let newItem = Item(context: viewContext)
+            let newItem = Injection(context: viewContext)
             newItem.timestamp = Date()
         }
         do {
@@ -31,7 +31,7 @@ struct PersistenceController {
     let container: NSPersistentContainer
 
     init(inMemory: Bool = false) {
-        container = NSPersistentContainer(name: "SikSa")
+        container = NSPersistentContainer(name: "GgokKok")
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }

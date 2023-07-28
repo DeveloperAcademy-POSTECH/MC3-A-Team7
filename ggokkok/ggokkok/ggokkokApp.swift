@@ -1,19 +1,19 @@
 //
-//  SikSaApp.swift
-//  SikSa
+//  GgokKokApp.swift
+//  GgokKok
 //
-//  Created by chaekie on 2023/07/10.
+//  Created by sei on 2023/07/28.
 //
 
 import SwiftUI
 
 @main
-struct SikSaApp: App {
+struct GgokKokApp: App {
     let persistenceController = PersistenceController.shared
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
