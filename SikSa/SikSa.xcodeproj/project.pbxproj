@@ -16,6 +16,7 @@
 		360718AA2A68FDA200D492E8 /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360718A92A68FDA100D492E8 /* CreateView.swift */; };
 		360718AC2A6900A200D492E8 /* CreateCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360718AB2A6900A200D492E8 /* CreateCircleView.swift */; };
 		360718AE2A69053000D492E8 /* CreateCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360718AD2A69053000D492E8 /* CreateCardView.swift */; };
+		5130AE022A73B27A003A7C77 /* RecommendationExclusionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5130AE012A73B27A003A7C77 /* RecommendationExclusionView.swift */; };
 		5171D9762A5BA8B300A962A4 /* SikSaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5171D9752A5BA8B300A962A4 /* SikSaApp.swift */; };
 		5171D9782A5BA8B300A962A4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5171D9772A5BA8B300A962A4 /* ContentView.swift */; };
 		5171D97A2A5BA8B400A962A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5171D9792A5BA8B400A962A4 /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 		51F8EF2B2A675538008758ED /* HistoryCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F8EF2A2A675538008758ED /* HistoryCardView.swift */; };
 		51F8EF2D2A6755B7008758ED /* InjectionSitesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F8EF2C2A6755B7008758ED /* InjectionSitesView.swift */; };
 		51F8EF302A68076E008758ED /* InjectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F8EF2F2A68076E008758ED /* InjectionModel.swift */; };
+		51F916B72A7554A8002F95CF /* RecommendationExclusionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F916B62A7554A8002F95CF /* RecommendationExclusionViewModel.swift */; };
 		A35BF60C2A6C01A200B2478C /* TabViewBellyButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35BF60B2A6C01A200B2478C /* TabViewBellyButtonView.swift */; };
 		A35BF60E2A6C032E00B2478C /* TabViewPaperSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35BF60D2A6C032E00B2478C /* TabViewPaperSheetView.swift */; };
 		A35BF6102A6C1CB200B2478C /* ButtonToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35BF60F2A6C1CB200B2478C /* ButtonToastView.swift */; };
@@ -63,6 +65,7 @@
 		360718A92A68FDA100D492E8 /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
 		360718AB2A6900A200D492E8 /* CreateCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCircleView.swift; sourceTree = "<group>"; };
 		360718AD2A69053000D492E8 /* CreateCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCardView.swift; sourceTree = "<group>"; };
+		5130AE012A73B27A003A7C77 /* RecommendationExclusionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationExclusionView.swift; sourceTree = "<group>"; };
 		5171D9722A5BA8B300A962A4 /* SikSa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SikSa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5171D9752A5BA8B300A962A4 /* SikSaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SikSaApp.swift; sourceTree = "<group>"; };
 		5171D9772A5BA8B300A962A4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -75,6 +78,7 @@
 		51F8EF2A2A675538008758ED /* HistoryCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCardView.swift; sourceTree = "<group>"; };
 		51F8EF2C2A6755B7008758ED /* InjectionSitesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectionSitesView.swift; sourceTree = "<group>"; };
 		51F8EF2F2A68076E008758ED /* InjectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectionModel.swift; sourceTree = "<group>"; };
+		51F916B62A7554A8002F95CF /* RecommendationExclusionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationExclusionViewModel.swift; sourceTree = "<group>"; };
 		A35BF60B2A6C01A200B2478C /* TabViewBellyButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewBellyButtonView.swift; sourceTree = "<group>"; };
 		A35BF60D2A6C032E00B2478C /* TabViewPaperSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewPaperSheetView.swift; sourceTree = "<group>"; };
 		A35BF60F2A6C1CB200B2478C /* ButtonToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonToastView.swift; sourceTree = "<group>"; };
@@ -125,6 +129,15 @@
 			path = UpdateViewComponents;
 			sourceTree = "<group>";
 		};
+		5130AE002A73AF5C003A7C77 /* RecommendationExclusion */ = {
+			isa = PBXGroup;
+			children = (
+				51F916B62A7554A8002F95CF /* RecommendationExclusionViewModel.swift */,
+				5130AE012A73B27A003A7C77 /* RecommendationExclusionView.swift */,
+			);
+			path = RecommendationExclusion;
+			sourceTree = "<group>";
+		};
 		5171D9692A5BA8B300A962A4 = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +158,7 @@
 		5171D9742A5BA8B300A962A4 /* SikSa */ = {
 			isa = PBXGroup;
 			children = (
+				5130AE002A73AF5C003A7C77 /* RecommendationExclusion */,
 				B2C11C092A6E61C2002FB201 /* Model */,
 				B2CEFBA82A6975C400E19B72 /* constant */,
 				51F8EF2E2A680760008758ED /* temp */,
@@ -155,8 +169,8 @@
 				5171D9772A5BA8B300A962A4 /* ContentView.swift */,
 				5171D9792A5BA8B400A962A4 /* Assets.xcassets */,
 				B2CBF8012A67B24C00E6202A /* data */,
-				5171D9802A5BA8B400A962A4 /* SikSa.xcdatamodeld */,
 				5171D97B2A5BA8B400A962A4 /* Preview Content */,
+				5171D9802A5BA8B400A962A4 /* SikSa.xcdatamodeld */,
 			);
 			path = SikSa;
 			sourceTree = "<group>";
@@ -374,6 +388,7 @@
 				360718A82A6803C500D492E8 /* UpdateCircleView.swift in Sources */,
 				360718AC2A6900A200D492E8 /* CreateCircleView.swift in Sources */,
 				5171D97F2A5BA8B400A962A4 /* Persistence.swift in Sources */,
+				5130AE022A73B27A003A7C77 /* RecommendationExclusionView.swift in Sources */,
 				A381AE182A67B306000AE8E8 /* TabViewComponentsView.swift in Sources */,
 				360718AA2A68FDA200D492E8 /* CreateView.swift in Sources */,
 				A35BF60E2A6C032E00B2478C /* TabViewPaperSheetView.swift in Sources */,
@@ -381,6 +396,7 @@
 				360718A02A67C5D600D492E8 /* UpdateView.swift in Sources */,
 				B2C11C0D2A6E6380002FB201 /* InjectionError.swift in Sources */,
 				B2CBF8062A67B2A600E6202A /* Injection+CoreDataClass.swift in Sources */,
+				51F916B72A7554A8002F95CF /* RecommendationExclusionViewModel.swift in Sources */,
 				B281BEEE2A67F38900889A29 /* NSPredicate+.swift in Sources */,
 				B2CEFBAA2A6975D300E19B72 /* CustomColor.swift in Sources */,
 				B2C11C0B2A6E61D0002FB201 /* InjectionProperties.swift in Sources */,

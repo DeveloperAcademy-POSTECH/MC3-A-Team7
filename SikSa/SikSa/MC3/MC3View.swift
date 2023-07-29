@@ -8,6 +8,7 @@ import SwiftUI
 
 struct MC3View: View {
     @StateObject private var viewModel = MC3ViewModel()
+    @StateObject private var recommendationExclusion = RecommendationExclusion()
 
     var body: some View {
         NavigationView {
@@ -58,6 +59,14 @@ struct MC3View: View {
                         Label("주사기록", systemImage: "archivebox")
                     }
                 }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink {
+                        RecommendationExclusionView(recommendationExclusion: recommendationExclusion)
+                    } label: {
+                        Label("설정", systemImage: "gear")
+                    }
+                }
+
             }
         }
     }
