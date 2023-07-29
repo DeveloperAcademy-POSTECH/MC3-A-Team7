@@ -7,12 +7,6 @@
 
 import SwiftUI
 
-struct Duplicate: Identifiable {
-    let name: String
-    let error: String
-    let id = UUID()
-}
-
 struct RecommendationExclusionView: View {
     @ObservedObject var recommendationExclusion: RecommendationExclusion
     @Environment(\.dismiss) private var dismiss
