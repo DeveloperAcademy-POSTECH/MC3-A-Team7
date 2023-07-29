@@ -9,6 +9,8 @@ import SwiftUI
 import CoreData
 
 struct MainView: View {
+    @AppStorage("_isFirstLaunching") var isFirstLaunching: Bool = true
+
     var body: some View {
         TabView{
             ForEach(Views.allCases, id: \.self) { view in
@@ -19,12 +21,15 @@ struct MainView: View {
                     }
             }
         }
+        .fullScreenCover(isPresented: $isFirstLaunching) {
+            OnboardingView(isFirstLaunching: $isFirstLaunching)
+        }
     }
 }
 
 extension MainView {
     private enum Views: String, CaseIterable {
-        case onboardingView
+//        case onboardingView
         case recommendView
         case historyView
         case editInjectionView
@@ -33,8 +38,8 @@ extension MainView {
 
         var view: some View {
             switch self {
-            case .onboardingView:
-                return AnyView(OnboardingView())
+//            case .onboardingView:
+//                return AnyView(OnboardingView())
             case .recommendView:
                 return AnyView(RecommendView())
             case .historyView:
