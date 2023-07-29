@@ -74,7 +74,7 @@ struct RecommendationExclusionView: View {
                         isEditingMode.toggle()
                     }
                 }
-                if recommendationExclusion.exclusionPositions.isEmpty {
+                if recommendationExclusion.exclusionPositions.isEmpty || recommendationExclusion.newExclusionPositions.isEmpty {
                     ZStack {
                         RoundedRectangle(cornerRadius: 12)
                             .foregroundColor(.boxBackgroundColor)
@@ -97,6 +97,12 @@ struct RecommendationExclusionView: View {
                 }
             }
         }
+        .onTapGesture(perform: {
+            if isEditingMode {
+                recommendationExclusion.saveUpdatedPositions()
+                isEditingMode = false
+            }
+        })
         .padding()
         .navigationBarBackButtonHidden()
         .navigationTitle("추천 제외 부위")
@@ -152,4 +158,3 @@ struct RecommendationExclusionView_Previews: PreviewProvider {
         RecommendationExclusionView(recommendationExclusion: RecommendationExclusion())
     }
 }
-
