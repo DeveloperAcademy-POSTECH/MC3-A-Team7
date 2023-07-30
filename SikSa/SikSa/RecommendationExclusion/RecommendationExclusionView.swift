@@ -32,7 +32,7 @@ struct RecommendationExclusionView: View {
                     .cornerRadius(15)
                     .shadow(color: .gray, radius: 5, x: 0, y: 4)
                     Button(action: {
-                        if recommendationExclusion.exclusionPositions.contains(selectedPosition) {
+                        if recommendationExclusion.newExclusionPositions.contains(selectedPosition) {
                             isDuplicated = true
                         } else {
                             recommendationExclusion.addPositionToExclusion(selectedPosition)

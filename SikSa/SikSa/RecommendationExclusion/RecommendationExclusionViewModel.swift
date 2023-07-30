@@ -13,20 +13,19 @@ class RecommendationExclusion: ObservableObject {
     @Published var newExclusionPositions: [Int] = []
 
     init() {
-        self.newExclusionPositions = self.exclusionPositions
+        newExclusionPositions = exclusionPositions
     }
 
     func addPositionToExclusion(_ selectedPosition: Int ) {
-        self.exclusionPositions.append(selectedPosition)
-        self.exclusionPositions.sort()
-        self.newExclusionPositions = self.exclusionPositions
+        newExclusionPositions = (newExclusionPositions + [selectedPosition]).sorted()
+        exclusionPositions = newExclusionPositions
     }
     func removePositionFromExclusion(_ position: Int) {
-        self.newExclusionPositions = self.newExclusionPositions.filter { $0 != position }
+        newExclusionPositions = newExclusionPositions.filter { $0 != position }
     }
     func saveUpdatedPositions() {
-        if self.exclusionPositions != self.newExclusionPositions {
-            self.exclusionPositions = self.newExclusionPositions
+        if exclusionPositions != newExclusionPositions {
+            exclusionPositions = newExclusionPositions
         }
     }
 }
