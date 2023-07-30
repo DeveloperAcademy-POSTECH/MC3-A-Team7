@@ -61,7 +61,7 @@ struct RecommendationExclusionView: View {
                         .font(.title2)
                         .bold()
                     Spacer()
-                    Button(isEditingMode ? "완료" : "편집") {
+                    Button(isEditingMode ? "저장" : "편집") {
                         if isEditingMode {
                             recommendationExclusion.saveUpdatedPositions()
                         }
