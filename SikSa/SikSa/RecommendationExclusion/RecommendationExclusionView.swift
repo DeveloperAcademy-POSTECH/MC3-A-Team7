@@ -22,7 +22,7 @@ struct RecommendationExclusionView: View {
                     Spacer()
                 }
                 HStack(spacing: 20) {
-                    Picker("추천 제외 부위 선택", selection: $selectedPosition) {
+                    Picker("부위 선택", selection: $selectedPosition) {
                         ForEach(recommendationExclusion.positions, id: \.self) {
                             Text($0.description)
                         }
@@ -49,8 +49,8 @@ struct RecommendationExclusionView: View {
                     .alert("이미 추천에서 제외된 번호입니다", isPresented: $isDuplicated) {
                         Button("확인", role: .cancel) { }
                     }
-                    .padding(.horizontal, 30)
                 }
+                .padding(.horizontal, 30)
             }
             .font(.title2)
             .bold()
@@ -72,7 +72,7 @@ struct RecommendationExclusionView: View {
                     ZStack {
                         RoundedRectangle(cornerRadius: 12)
                             .foregroundColor(.boxBackgroundColor)
-                            .frame(height: 88)
+                            .frame(height: 110)
                         Text("추천 제외 부위가 없습니다")
                             .foregroundColor(.gray)
                     }
