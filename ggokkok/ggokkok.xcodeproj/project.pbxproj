@@ -28,6 +28,10 @@
 		B27CAE602A73B5B50010D0FE /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27CAE5F2A73B5B50010D0FE /* Color+.swift */; };
 		B27CAE632A73B6F80010D0FE /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27CAE622A73B6F80010D0FE /* OnboardingView.swift */; };
 		B27CAE692A74FA070010D0FE /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = B27CAE682A74FA070010D0FE /* .swiftlint.yml */; };
+		B27CAE6C2A7507FE0010D0FE /* Injection+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27CAE6A2A7507FE0010D0FE /* Injection+CoreDataClass.swift */; };
+		B27CAE6D2A7507FE0010D0FE /* Injection+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27CAE6B2A7507FE0010D0FE /* Injection+CoreDataProperties.swift */; };
+		B27CAE6F2A7508AB0010D0FE /* InsulinType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27CAE6E2A7508AB0010D0FE /* InsulinType.swift */; };
+		B27CAE712A7509740010D0FE /* TimeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27CAE702A7509740010D0FE /* TimeType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +76,10 @@
 		B27CAE5F2A73B5B50010D0FE /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		B27CAE622A73B6F80010D0FE /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		B27CAE682A74FA070010D0FE /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		B27CAE6A2A7507FE0010D0FE /* Injection+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Injection+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B27CAE6B2A7507FE0010D0FE /* Injection+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Injection+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B27CAE6E2A7508AB0010D0FE /* InsulinType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsulinType.swift; sourceTree = "<group>"; };
+		B27CAE702A7509740010D0FE /* TimeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +173,7 @@
 			children = (
 				B27CAE4D2A739B4C0010D0FE /* Temp */,
 				B268F9CC2A7392BC0083A87A /* Data */,
+				B27CAE702A7509740010D0FE /* TimeType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -212,6 +221,9 @@
 			children = (
 				B268F9A22A7392000083A87A /* GgokKok.xcdatamodeld */,
 				B268F9A02A7392000083A87A /* Persistence.swift */,
+				B27CAE6A2A7507FE0010D0FE /* Injection+CoreDataClass.swift */,
+				B27CAE6B2A7507FE0010D0FE /* Injection+CoreDataProperties.swift */,
+				B27CAE6E2A7508AB0010D0FE /* InsulinType.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -443,13 +455,17 @@
 				B27CAE5E2A73B49E0010D0FE /* CustomColor.swift in Sources */,
 				B27CAE4F2A739B570010D0FE /* InjectionModel.swift in Sources */,
 				B268F9A12A7392000083A87A /* Persistence.swift in Sources */,
+				B27CAE6D2A7507FE0010D0FE /* Injection+CoreDataProperties.swift in Sources */,
 				B27CAE602A73B5B50010D0FE /* Color+.swift in Sources */,
 				B27CAE552A739BB00010D0FE /* CreateInjectionView.swift in Sources */,
+				B27CAE712A7509740010D0FE /* TimeType.swift in Sources */,
 				B27CAE572A739BC00010D0FE /* EditInjectionView.swift in Sources */,
 				B268F9A42A7392000083A87A /* GgokKok.xcdatamodeld in Sources */,
 				B268F99A2A7391FF0083A87A /* MainView.swift in Sources */,
+				B27CAE6F2A7508AB0010D0FE /* InsulinType.swift in Sources */,
 				B268F9982A7391FF0083A87A /* GgokKokApp.swift in Sources */,
 				B27CAE5A2A739BF80010D0FE /* SettingView.swift in Sources */,
+				B27CAE6C2A7507FE0010D0FE /* Injection+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

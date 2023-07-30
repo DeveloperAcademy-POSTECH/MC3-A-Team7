@@ -22,9 +22,9 @@ struct CoredataExampleView: View {
             List {
                 ForEach(items) { item in
                     NavigationLink {
-                        Text("Injection at \(item.timestamp!, formatter: itemFormatter)")
+                        Text("Injection at \(item.timestamp, formatter: itemFormatter)")
                     } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
+                        Text(item.timestamp, formatter: itemFormatter)
                     }
                 }
                 .onDelete(perform: deleteItems)
