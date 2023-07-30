@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct SettingView: View {
+    @StateObject var viewModel = RecommendationExclusionViewModel()
     var body: some View {
-        Text("SettingView")
+        RecommendationExclusionView(viewModel: viewModel)
     }
 }
 
