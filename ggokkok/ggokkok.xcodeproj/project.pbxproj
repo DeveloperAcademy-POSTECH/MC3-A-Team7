@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		36EE4AF32A749664000CCCB7 /* InjectionSitePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EE4AF22A749664000CCCB7 /* InjectionSitePickerView.swift */; };
+		36EE4AF52A7496CC000CCCB7 /* DateTimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EE4AF42A7496CC000CCCB7 /* DateTimePickerView.swift */; };
+		36EE4AF72A7496F7000CCCB7 /* InsulinTypePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EE4AF62A7496F7000CCCB7 /* InsulinTypePickerView.swift */; };
+		36EE4AF92A749716000CCCB7 /* InsulinUnitPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EE4AF82A749716000CCCB7 /* InsulinUnitPickerView.swift */; };
+		36EE4AFB2A749730000CCCB7 /* DeleteButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EE4AFA2A749730000CCCB7 /* DeleteButtonView.swift */; };
 		5119EE422A763C4700DE60AD /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5119EE412A763C4700DE60AD /* UserDefaultsKey.swift */; };
 		511F85D92A7630F10061B700 /* ExclusionSiteCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511F85D82A7630F10061B700 /* ExclusionSiteCircle.swift */; };
 		51ACD62F2A762D2E005D8F2B /* RecommendationExclusionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ACD62E2A762D2E005D8F2B /* RecommendationExclusionView.swift */; };
@@ -52,6 +57,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		36EE4AF22A749664000CCCB7 /* InjectionSitePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InjectionSitePickerView.swift; path = "../../../../../../newGgok-Kok/newGgok-Kok/Components/InjectionSitePickerView.swift"; sourceTree = "<group>"; };
+		36EE4AF42A7496CC000CCCB7 /* DateTimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateTimePickerView.swift; path = "../../../../../../newGgok-Kok/newGgok-Kok/Components/DateTimePickerView.swift"; sourceTree = "<group>"; };
+		36EE4AF62A7496F7000CCCB7 /* InsulinTypePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InsulinTypePickerView.swift; path = "../../../../../../newGgok-Kok/newGgok-Kok/Components/InsulinTypePickerView.swift"; sourceTree = "<group>"; };
+		36EE4AF82A749716000CCCB7 /* InsulinUnitPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InsulinUnitPickerView.swift; path = "../../../../../../newGgok-Kok/newGgok-Kok/Components/InsulinUnitPickerView.swift"; sourceTree = "<group>"; };
+		36EE4AFA2A749730000CCCB7 /* DeleteButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DeleteButtonView.swift; path = "../../../../../../newGgok-Kok/newGgok-Kok/Components/DeleteButtonView.swift"; sourceTree = "<group>"; };
 		5119EE412A763C4700DE60AD /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDefaultsKey.swift; path = ggokkok/Common/UserDefaultsKey.swift; sourceTree = SOURCE_ROOT; };
 		511F85D82A7630F10061B700 /* ExclusionSiteCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExclusionSiteCircle.swift; path = GgokKok/View/SettingView/RecommendationExclusion/ExclusionSiteCircle.swift; sourceTree = SOURCE_ROOT; };
 		51ACD62E2A762D2E005D8F2B /* RecommendationExclusionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendationExclusionView.swift; sourceTree = "<group>"; };
@@ -107,6 +117,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		36EE4AF12A749653000CCCB7 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				36EE4AF22A749664000CCCB7 /* InjectionSitePickerView.swift */,
+				36EE4AF42A7496CC000CCCB7 /* DateTimePickerView.swift */,
+				36EE4AF62A7496F7000CCCB7 /* InsulinTypePickerView.swift */,
+				36EE4AF82A749716000CCCB7 /* InsulinUnitPickerView.swift */,
+				36EE4AFA2A749730000CCCB7 /* DeleteButtonView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		511F85DA2A7632350061B700 /* RecommendationExclusion */ = {
 			isa = PBXGroup;
 			children = (
@@ -271,18 +293,11 @@
 		B27CAE502A739B8D0010D0FE /* CreateEditView */ = {
 			isa = PBXGroup;
 			children = (
-				B27CAE512A739B950010D0FE /* Compoent */,
+				36EE4AF12A749653000CCCB7 /* Components */,
 				B27CAE542A739BB00010D0FE /* CreateInjectionView.swift */,
 				B27CAE562A739BC00010D0FE /* EditInjectionView.swift */,
 			);
 			path = CreateEditView;
-			sourceTree = "<group>";
-		};
-		B27CAE512A739B950010D0FE /* Compoent */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Compoent;
 			sourceTree = "<group>";
 		};
 		B27CAE582A739BEF0010D0FE /* SettingView */ = {
@@ -460,19 +475,24 @@
 				B27CAE442A73986D0010D0FE /* CoredataExampleView.swift in Sources */,
 				51ACD62F2A762D2E005D8F2B /* RecommendationExclusionView.swift in Sources */,
 				B27CAE492A7399E60010D0FE /* RecommendView.swift in Sources */,
+				36EE4AF72A7496F7000CCCB7 /* InsulinTypePickerView.swift in Sources */,
 				B27CAE632A73B6F80010D0FE /* OnboardingView.swift in Sources */,
 				B27CAE5C2A739E670010D0FE /* Date+.swift in Sources */,
+				36EE4AF92A749716000CCCB7 /* InsulinUnitPickerView.swift in Sources */,
 				B27CAE5E2A73B49E0010D0FE /* CustomColor.swift in Sources */,
 				B27CAE4F2A739B570010D0FE /* InjectionModel.swift in Sources */,
 				B268F9A12A7392000083A87A /* Persistence.swift in Sources */,
 				511F85D92A7630F10061B700 /* ExclusionSiteCircle.swift in Sources */,
 				B27CAE602A73B5B50010D0FE /* Color+.swift in Sources */,
 				B27CAE552A739BB00010D0FE /* CreateInjectionView.swift in Sources */,
+				36EE4AF32A749664000CCCB7 /* InjectionSitePickerView.swift in Sources */,
 				B27CAE572A739BC00010D0FE /* EditInjectionView.swift in Sources */,
+				36EE4AF52A7496CC000CCCB7 /* DateTimePickerView.swift in Sources */,
 				B268F9A42A7392000083A87A /* GgokKok.xcdatamodeld in Sources */,
 				B268F99A2A7391FF0083A87A /* MainView.swift in Sources */,
 				B268F9982A7391FF0083A87A /* GgokKokApp.swift in Sources */,
 				B27CAE5A2A739BF80010D0FE /* SettingView.swift in Sources */,
+				36EE4AFB2A749730000CCCB7 /* DeleteButtonView.swift in Sources */,
 				51ACD6312A762D3E005D8F2B /* RecommendationExclusionViewModel.swift in Sources */,
 				5119EE422A763C4700DE60AD /* UserDefaultsKey.swift in Sources */,
 			);
