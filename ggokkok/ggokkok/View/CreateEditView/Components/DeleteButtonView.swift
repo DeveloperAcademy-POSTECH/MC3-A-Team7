@@ -45,4 +45,3 @@ struct DeleteButtonView_Previews: PreviewProvider {
         DeleteButtonView()
     }
 }
-
