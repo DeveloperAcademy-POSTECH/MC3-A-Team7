@@ -5,27 +5,38 @@
 //  Created by chaekie on 2023/07/29.
 //
 
-import Foundation
+import SwiftUI
 
 class RecommendationExclusionViewModel: ObservableObject {
-    @Published var positions = Array(1...31)
-    @Published var exclusionPositions: [Int] = []
-    @Published var newExclusionPositions: [Int] = []
+    var sites: [Int]
+    static let udExclusionSites = UserDefaultsKey.exclusionSites.rawValue
+    var exclusionSites: [Int] {
+        get {
+            UserDefaults.standard.array(forKey: RecommendationExclusionViewModel.udExclusionSites) as? [Int] ?? []
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: Self.udExclusionSites)
+        }
+    }
+//    @Published var exclusionSites = UserDefaults.standard.array(forKey: RecommendationExclusionViewModel.udExclusionSites) as? [Int] ?? []
+    @Published var newExclusionSites: [Int] = []
 
-    init() {
-        newExclusionPositions = exclusionPositions
+    init(lastSiteNumber: Int) {
+        sites = Array(1...lastSiteNumber)
+        newExclusionSites = exclusionSites
     }
 
-    func addPositionToExclusion(_ selectedPosition: Int ) {
-        newExclusionPositions = (newExclusionPositions + [selectedPosition]).sorted()
-        exclusionPositions = newExclusionPositions
+    func addSiteToExclusion(_ selectedSite: Int ) {
+        newExclusionSites = (newExclusionSites + [selectedSite]).sorted()
+        exclusionSites = newExclusionSites
     }
-    func removePositionFromExclusion(_ position: Int) {
-        newExclusionPositions = newExclusionPositions.filter { $0 != position }
+    func removeSiteFromExclusion(_ site: Int) {
+        newExclusionSites = newExclusionSites.filter { $0 != site }
     }
-    func saveUpdatedPositions() {
-        if exclusionPositions != newExclusionPositions {
-            exclusionPositions = newExclusionPositions
+    func saveUpdatedSites() {
+        if exclusionSites != newExclusionSites {
+//            UserDefaults.standard.set(newexclusionSites, forKey: Self.udExclusionSites)
+            exclusionSites = newExclusionSites
         }
     }
 }

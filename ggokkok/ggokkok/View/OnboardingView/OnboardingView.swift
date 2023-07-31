@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct OnboardingView: View {
+
     var body: some View {
         Text("OnboardingView")
+            .onTapGesture {
+                UserDefaults.standard.set(16, forKey: "lastSiteNumber")
+            }
     }
 }
 

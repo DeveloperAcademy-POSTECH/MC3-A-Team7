@@ -1,5 +1,5 @@
 //
-//  ExclusionPositionCircle.swift
+//  ExclusionSiteCircle.swift
 //  GgokKok
 //
 //  Created by chaekie on 2023/07/30.
@@ -7,22 +7,22 @@
 
 import SwiftUI
 
-struct ExclusionPositionCircle: View {
+struct ExclusionSiteCircle: View {
     var viewModel: RecommendationExclusionViewModel
-    var position: Int
+    var site: Int
     var isEditingMode: Bool
 
     var body: some View {
         ZStack {
             Circle()
                 .foregroundColor(.gray300)
-            Text("\(position)")
+            Text("\(site)")
                 .font(.title3)
                 .fontWeight(.semibold)
                 .foregroundColor(.white)
             if isEditingMode {
                 Button {
-                    viewModel.removePositionFromExclusion(position)
+                    viewModel.removeSiteFromExclusion(site)
                 } label: {
                     GeometryReader { geometry in
                         ZStack {
@@ -42,9 +42,9 @@ struct ExclusionPositionCircle: View {
     }
 }
 
-struct ExclusionPositionCircle_Previews: PreviewProvider {
+struct ExclusionSiteCircle_Previews: PreviewProvider {
     static var previews: some View {
-        let viewModel = RecommendationExclusionViewModel()
-        ExclusionPositionCircle(viewModel: viewModel, position: 1, isEditingMode: true)
+        let viewModel = RecommendationExclusionViewModel(lastSiteNumber: 31)
+        ExclusionSiteCircle(viewModel: viewModel, site: 1, isEditingMode: true)
     }
 }
