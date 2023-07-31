@@ -6,8 +6,11 @@
 //
 
 import CoreData
+import OSLog
 
 struct PersistenceController {
+    let logger = Logger(subsystem: "com.jojosaekkie.GgokKok", category: "persistence")
+
     static let shared = PersistenceController()
 
     static var preview: PersistenceController = {
@@ -57,5 +60,76 @@ struct PersistenceController {
             }
         })
         container.viewContext.automaticallyMergesChangesFromParent = true
+    }
+}
+
+extension PersistenceController {
+    var fileName: String { "pre-injections" }
+    var fileExtension: String { "json" }
+
+    private func fetchInjections() async throws {
+        guard let fileUrl = Bundle.main.url(forResource: fileName, withExtension: fileExtension) else {
+            return
+        }
+        do {
+            let data = try Data(contentsOf: fileUrl)
+            // Decode the GeoJSON into a data model.
+            let jsonDecoder = JSONDecoder()
+            jsonDecoder.dateDecodingStrategy = .secondsSince1970
+            let injectionPropertiesList = try jsonDecoder.decode([InjectionProperties].self, from: data)
+            logger.debug("Received \(injectionPropertiesList.count) records.")
+
+            // Import the GeoJSON into Core Data.
+            logger.debug("Start importing data to the store...")
+            try await importInjections(from: injectionPropertiesList)
+            logger.debug("Finished importing data.")
+
+            container.viewContext.refreshAllObjects()
+        } catch {
+            throw InjectionError.wrongDataFormat(error: error)
+        }
+    }
+}
+
+
+extension PersistenceController {
+
+    /// Uses `NSBatchInsertRequest` (BIR) to import a JSON dictionary into the Core Data store on a private queue.
+    private func importInjections(from propertiesList: [InjectionProperties]) async throws {
+        guard !propertiesList.isEmpty else { return }
+
+        let context = container.viewContext
+        /// - Tag: performAndWait
+        try await context.perform {
+            // Execute the batch insert.
+            /// - Tag: batchInsertRequest
+            let batchInsertRequest = self.newBatchInsertRequest(with: propertiesList)
+
+            if let fetchInjectionResult = try? context.execute(batchInsertRequest),
+               let batchInjectionInsertResult = fetchInjectionResult as? NSBatchInsertResult,
+               let successInjection = batchInjectionInsertResult.result as? Bool,
+               successInjection {
+                return
+            }
+
+            self.logger.debug("Failed to execute batch insert request.")
+            throw InjectionError.batchInsertError
+        }
+
+        logger.debug("Successfully inserted data.")
+    }
+
+    private func newBatchInsertRequest(with propertyList: [InjectionProperties]) -> NSBatchInsertRequest {
+        var index = 0
+        let total = propertyList.count
+
+        // Provide one dictionary at a time when the closure is called.
+        let batchInsertRequest = NSBatchInsertRequest(entity: Injection.entity(), dictionaryHandler: { dictionary in
+            guard index < total else { return true }
+            dictionary.addEntries(from: propertyList[index].dictionaryValue)
+            index += 1
+            return false
+        })
+        return batchInsertRequest
     }
 }
