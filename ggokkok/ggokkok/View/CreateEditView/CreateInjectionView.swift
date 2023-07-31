@@ -19,10 +19,21 @@ struct CreateInjectionView: View {
     var body: some View {
         NavigationView {
             List {
-                InjectionSitePickerView()
-                DateTimePickerView(date: $date)
-                InsulinTypePickerView(selectedType: $selectedType, hasTypeValueChanged: $hasTypeValueChanged)
-                InsulinUnitPickerView(insulinUnit: $insulinUnit, hasDosesValueChanged: $hasDosesValueChanged)
+                Section(content: {
+                    InjectionSitePickerView()
+                }).listStyle(InsetGroupedListStyle())
+
+                Section(content: {
+                    DateTimePickerView(date: $date)
+                }).listStyle(InsetGroupedListStyle())
+
+                Section(content: {
+                    InsulinTypePickerView(selectedType: $selectedType, hasTypeValueChanged: $hasTypeValueChanged)
+                }).listStyle(InsetGroupedListStyle())
+
+                Section(content: {
+                    InsulinDosesPickerView(insulinUnit: $insulinUnit, hasDosesValueChanged: $hasDosesValueChanged)
+                }).listStyle(InsetGroupedListStyle())
             }
             .navigationTitle("생성하기")
             .navigationBarTitleDisplayMode(.inline)

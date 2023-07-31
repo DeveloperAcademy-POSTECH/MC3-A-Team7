@@ -14,7 +14,7 @@ struct OnboardingView: View {
 
 
     var body: some View {
-        let launchingButtonColor: String = lastNumber == "" ? "gray200" : "blue300"
+        let launchingButtonColor: String = lastNumber == "" ? "gray300" : "blue300"
 
         VStack {
             Spacer()

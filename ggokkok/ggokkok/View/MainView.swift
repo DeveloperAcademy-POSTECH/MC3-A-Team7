@@ -12,7 +12,7 @@ struct MainView: View {
     @AppStorage("_isFirstLaunching") var isFirstLaunching: Bool = true
 
     var body: some View {
-        TabView{
+        TabView {
             ForEach(Views.allCases, id: \.self) { view in
                 view.view
                     .tabItem {
@@ -61,4 +61,3 @@ struct ContentView_Previews: PreviewProvider {
         MainView()
     }
 }
-
