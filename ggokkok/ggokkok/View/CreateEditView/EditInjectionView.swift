@@ -11,14 +11,19 @@ struct EditInjectionView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var date = Date()
 
+    @State private var insulinUnit = 1 // noel's writing.
+    @State private var hasDosesValueChanged = false // noel's writing.
+    @State private var selectedType = "초속형"
+    @State private var hasTypeValueChanged = false
+
     var body: some View {
         NavigationView {
             VStack {
                 List {
                     InjectionSitePickerView()
                     DateTimePickerView(date: $date)
-                    InsulinTypePickerView()
-                    InsulinUnitPickerView()
+                    InsulinTypePickerView(selectedType: $selectedType, hasTypeValueChanged: $hasTypeValueChanged)
+                    InsulinUnitPickerView(insulinUnit: $insulinUnit, hasDosesValueChanged: $hasDosesValueChanged)
                 }
                 DeleteButtonView()
             }
