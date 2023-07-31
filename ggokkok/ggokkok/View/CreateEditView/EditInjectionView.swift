@@ -11,6 +11,11 @@ struct EditInjectionView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var date = Date()
 
+    @State private var insulinDoses = 1 // noel's writing.
+    @State private var hasDosesValueChanged = false // noel's writing.
+    @State private var selectedType = "초속형"
+    @State private var hasTypeValueChanged = false
+
     var body: some View {
         NavigationView {
             List {
@@ -23,11 +28,11 @@ struct EditInjectionView: View {
                 }).listStyle(InsetGroupedListStyle())
 
                 Section(content: {
-                    InsulinTypePickerView()
+                    InsulinTypePickerView(selectedType: $selectedType, hasTypeValueChanged: $hasTypeValueChanged)
                 }).listStyle(InsetGroupedListStyle())
 
                 Section(content: {
-                    InsulinDosesPickerView()
+                    InsulinDosesPickerView(insulinDoses: $insulinDoses, hasDosesValueChanged: $hasDosesValueChanged)
                 }).listStyle(InsetGroupedListStyle())
 
                 Section(content: {

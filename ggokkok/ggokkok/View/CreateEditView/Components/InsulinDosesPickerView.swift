@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct InsulinDosesPickerView: View {
-    @State private var insulinDoses = 1
+    @Binding var insulinDoses: Int
+    @Binding var hasDosesValueChanged: Bool
 
     var body: some View {
         VStack {
@@ -22,12 +23,19 @@ struct InsulinDosesPickerView: View {
             .padding()
             .background(Color("blue100"))
             .cornerRadius(10)
+            .onChange(of: insulinDoses.hashValue) { newValue in
+                if newValue != insulinDoses {
+                    hasDosesValueChanged = true
+                }
+            }
         }
     }
 }
 
 struct InsulinDosesPickerView_Previews: PreviewProvider {
     static var previews: some View {
-        InsulinDosesPickerView()
+        @State var insulinDoses = 1 // noel's writing
+        @State var hasValueChanged = false // noel's writing
+        InsulinDosesPickerView(insulinDoses: $insulinDoses, hasDosesValueChanged: $hasValueChanged)
     }
 }
