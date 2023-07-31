@@ -18,7 +18,6 @@ class RecommendationExclusionViewModel: ObservableObject {
             UserDefaults.standard.set(newValue, forKey: Self.udExclusionSites)
         }
     }
-//    @Published var exclusionSites = UserDefaults.standard.array(forKey: RecommendationExclusionViewModel.udExclusionSites) as? [Int] ?? []
     @Published var newExclusionSites: [Int] = []
 
     init(lastSiteNumber: Int) {
@@ -35,7 +34,6 @@ class RecommendationExclusionViewModel: ObservableObject {
     }
     func saveUpdatedSites() {
         if exclusionSites != newExclusionSites {
-//            UserDefaults.standard.set(newexclusionSites, forKey: Self.udExclusionSites)
             exclusionSites = newExclusionSites
         }
     }

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5119EE422A763C4700DE60AD /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5119EE412A763C4700DE60AD /* UserDefaultsKey.swift */; };
-		511F85D92A7630F10061B700 /* ExclusionPositionCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511F85D82A7630F10061B700 /* ExclusionPositionCircle.swift */; };
+		511F85D92A7630F10061B700 /* ExclusionSiteCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511F85D82A7630F10061B700 /* ExclusionSiteCircle.swift */; };
 		51ACD62F2A762D2E005D8F2B /* RecommendationExclusionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ACD62E2A762D2E005D8F2B /* RecommendationExclusionView.swift */; };
 		51ACD6312A762D3E005D8F2B /* RecommendationExclusionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ACD6302A762D3E005D8F2B /* RecommendationExclusionViewModel.swift */; };
 		B268F9982A7391FF0083A87A /* GgokKokApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B268F9972A7391FF0083A87A /* GgokKokApp.swift */; };
@@ -53,7 +53,7 @@
 
 /* Begin PBXFileReference section */
 		5119EE412A763C4700DE60AD /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDefaultsKey.swift; path = ggokkok/Common/UserDefaultsKey.swift; sourceTree = SOURCE_ROOT; };
-		511F85D82A7630F10061B700 /* ExclusionPositionCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExclusionPositionCircle.swift; path = GgokKok/View/SettingView/RecommendationExclusion/ExclusionPositionCircle.swift; sourceTree = SOURCE_ROOT; };
+		511F85D82A7630F10061B700 /* ExclusionSiteCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExclusionSiteCircle.swift; path = GgokKok/View/SettingView/RecommendationExclusion/ExclusionSiteCircle.swift; sourceTree = SOURCE_ROOT; };
 		51ACD62E2A762D2E005D8F2B /* RecommendationExclusionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendationExclusionView.swift; sourceTree = "<group>"; };
 		51ACD6302A762D3E005D8F2B /* RecommendationExclusionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendationExclusionViewModel.swift; sourceTree = "<group>"; };
 		B268F9942A7391FF0083A87A /* GgokKok.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GgokKok.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,7 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				51ACD62E2A762D2E005D8F2B /* RecommendationExclusionView.swift */,
-				511F85D82A7630F10061B700 /* ExclusionPositionCircle.swift */,
+				511F85D82A7630F10061B700 /* ExclusionSiteCircle.swift */,
 			);
 			path = RecommendationExclusion;
 			sourceTree = "<group>";
@@ -465,7 +465,7 @@
 				B27CAE5E2A73B49E0010D0FE /* CustomColor.swift in Sources */,
 				B27CAE4F2A739B570010D0FE /* InjectionModel.swift in Sources */,
 				B268F9A12A7392000083A87A /* Persistence.swift in Sources */,
-				511F85D92A7630F10061B700 /* ExclusionPositionCircle.swift in Sources */,
+				511F85D92A7630F10061B700 /* ExclusionSiteCircle.swift in Sources */,
 				B27CAE602A73B5B50010D0FE /* Color+.swift in Sources */,
 				B27CAE552A739BB00010D0FE /* CreateInjectionView.swift in Sources */,
 				B27CAE572A739BC00010D0FE /* EditInjectionView.swift in Sources */,
