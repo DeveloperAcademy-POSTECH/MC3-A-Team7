@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum InsulinType: Int16 {
+enum InsulinType: Int16, CaseIterable {
     case rapidActing = 0
     case mixedActing
     case longActing
@@ -20,6 +20,17 @@ enum InsulinType: Int16 {
             return Color.mixedActing
         case .longActing:
             return Color.longActing
+        }
+    }
+
+    var description: String {
+        switch self {
+        case .rapidActing:
+            return "초속형"
+        case .mixedActing:
+            return "혼합형"
+        case .longActing:
+            return "지속형"
         }
     }
 }
