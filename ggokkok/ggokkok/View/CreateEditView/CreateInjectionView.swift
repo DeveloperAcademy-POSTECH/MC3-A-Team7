@@ -1,15 +1,43 @@
 //
 //  CreateInjectionView.swift
-//  GgokKok
+//  newGgok-Kok
 //
-//  Created by sei on 2023/07/28.
+//  Created by 김수인 on 2023/07/28.
 //
 
 import SwiftUI
 
 struct CreateInjectionView: View {
+    @Environment(\.presentationMode) var presentationMode
+    @State private var date = Date()
+
     var body: some View {
-        Text("CreateInjectionView")
+        NavigationView {
+            List {
+                InjectionSitePickerView()
+                DateTimePickerView(date: $date)
+                InsulinTypePickerView()
+                InsulinUnitPickerView()
+            }
+            .navigationTitle("생성하기")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        self.presentationMode.wrappedValue.dismiss()
+                    } label: {
+                        Text("취소")
+                    }
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        self.presentationMode.wrappedValue.dismiss()
+                    } label: {
+                        Text("완료")
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -18,3 +46,4 @@ struct CreateInjectionView_Previews: PreviewProvider {
         CreateInjectionView()
     }
 }
+
