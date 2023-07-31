@@ -8,13 +8,26 @@
 import SwiftUI
 
 struct RecommendView: View {
+    @StateObject var recommendModel = RecommendViewModel()
+
     var body: some View {
-        Text("RecommendView")
+        VStack {
+            RecommendViewTopPartNavigationIcons()
+            RecommendViewTopPartText()
+            RecommendViewDisplayBoxView()
+            RecommendViewBottomPartTextBox()
+            RecommendViewButtonComponent(recommendModel: recommendModel, buttonLabel: "기록하기")
+        }
+        .padding(.horizontal)
+        .sheet(isPresented: $recommendModel.showSheet) {
+            RecommendViewSheetView(isPresented: $recommendModel.showSheet)
+        }
     }
 }
 
 struct RecommendView_Previews: PreviewProvider {
     static var previews: some View {
+//        let viewModel = RecommendViewModel()
         RecommendView()
     }
 }
