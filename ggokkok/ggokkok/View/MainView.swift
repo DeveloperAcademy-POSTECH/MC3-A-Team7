@@ -21,15 +21,15 @@ struct MainView: View {
                     }
             }
         }
-        .fullScreenCover(isPresented: $isFirstLaunching) {
-            OnboardingView(isFirstLaunching: $isFirstLaunching)
-        }
+//        .fullScreenCover(isPresented: $isFirstLaunching) {
+//            OnboardingView(isFirstLaunching: $isFirstLaunching)
+//        }
     }
 }
 
 extension MainView {
     private enum Views: String, CaseIterable {
-//        case onboardingView
+        case onboardingView
         case recommendView
         case historyView
         case editInjectionView
@@ -38,8 +38,8 @@ extension MainView {
 
         var view: some View {
             switch self {
-//            case .onboardingView:
-//                return AnyView(OnboardingView())
+            case .onboardingView:
+                return AnyView(OnboardingView(isFirstLaunching: MainView().$isFirstLaunching))
             case .recommendView:
                 return AnyView(RecommendView())
             case .historyView:
