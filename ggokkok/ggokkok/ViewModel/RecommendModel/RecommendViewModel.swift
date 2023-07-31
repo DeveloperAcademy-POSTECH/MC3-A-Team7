@@ -1,5 +1,5 @@
 //
-//  RecommendModel.swift
+//  RecommendViewModel.swift
 //  GgokKok
 //
 //  Created by 채영민 on 2023/07/29.
@@ -7,6 +7,6 @@
 
 import Foundation
 
-class RecommendModel: ObservableObject {
+final class RecommendViewModel: ObservableObject {
     @Published var showSheet: Bool = false
 }

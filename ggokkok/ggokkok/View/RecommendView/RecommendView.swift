@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RecommendView: View {
-    @StateObject var recommendModel = RecommendModel()
+    @StateObject var recommendModel = RecommendViewModel()
 
     var body: some View {
         VStack {
@@ -27,7 +27,7 @@ struct RecommendView: View {
 
 struct RecommendView_Previews: PreviewProvider {
     static var previews: some View {
-//        let viewModel = RecommendModel()
+//        let viewModel = RecommendViewModel()
         RecommendView()
     }
 }

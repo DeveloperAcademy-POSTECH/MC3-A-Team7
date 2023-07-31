@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RecommendViewButtonComponent: View {
-    @ObservedObject var recommendModel: RecommendModel
+    @ObservedObject var recommendModel: RecommendViewModel
     var buttonLabel: String
 
     var body: some View {
