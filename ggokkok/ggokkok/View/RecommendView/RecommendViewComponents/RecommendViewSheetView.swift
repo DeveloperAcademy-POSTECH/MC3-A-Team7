@@ -13,7 +13,7 @@ struct RecommendViewSheetView: View {
     @Binding var isPresented: Bool
     @State var showAlert: Bool = false
 
-    @State var insulinUnit = 1
+    @State var insulinDoses = 1
     @State var selectedType = "초속형"
     @State var hasDosesValueChanged = false
     @State var hasTypeValueChanged = false
@@ -24,7 +24,7 @@ struct RecommendViewSheetView: View {
         NavigationView {
             List {
                 InsulinTypePickerView(selectedType: $selectedType, hasTypeValueChanged: $hasTypeValueChanged)
-                InsulinUnitPickerView(insulinUnit: $insulinUnit, hasDosesValueChanged: $hasDosesValueChanged)
+                InsulinDosesPickerView(insulinDoses: $insulinDoses, hasDosesValueChanged: $hasDosesValueChanged)
             }
             .padding(.top, -30)
             .navigationBarItems(

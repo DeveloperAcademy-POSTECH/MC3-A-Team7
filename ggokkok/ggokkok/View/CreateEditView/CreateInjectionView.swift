@@ -11,7 +11,7 @@ struct CreateInjectionView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var date = Date()
 
-    @State private var insulinUnit = 1 // noel's writing
+    @State private var insulinDoses = 1 // noel's writing
     @State private var hasDosesValueChanged = false // noel's writing
     @State private var selectedType = "초속형"
     @State private var hasTypeValueChanged = false
@@ -32,7 +32,7 @@ struct CreateInjectionView: View {
                 }).listStyle(InsetGroupedListStyle())
 
                 Section(content: {
-                    InsulinDosesPickerView(insulinUnit: $insulinUnit, hasDosesValueChanged: $hasDosesValueChanged)
+                    InsulinDosesPickerView(insulinDoses: $insulinDoses, hasDosesValueChanged: $hasDosesValueChanged)
                 }).listStyle(InsetGroupedListStyle())
             }
             .navigationTitle("생성하기")
