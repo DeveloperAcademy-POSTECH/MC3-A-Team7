@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct OnboardingView: View {
+
     @Binding var isFirstLaunching: Bool
     @State var lastNumber: String = ""
 
@@ -45,6 +46,8 @@ struct OnboardingView: View {
             Spacer()
             Button {
                 print("시작하기")
+                // MARK: 유저 디폴트에 마지막 번호 저장하기
+                UserDefaults.standard.set(16, forKey: "lastSiteNumber")
                 isFirstLaunching.toggle()
             } label: {
                 Text("시작하기")
@@ -54,7 +57,10 @@ struct OnboardingView: View {
                     .foregroundColor(.white)
                     .background(Color(launchingButtonColor))
                     .cornerRadius(20)
+                    .onTapGesture {
+                UserDefaults.standard.set(16, forKey: "lastSiteNumber")
             }
+    }
             .padding()
             .disabled(lastNumber == "")
         }

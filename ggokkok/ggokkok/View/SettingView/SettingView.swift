@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct SettingView: View {
+    static let lastSiteNumber = UserDefaults.standard.integer(forKey: UserDefaultsKey.lastSiteNumber.rawValue)
+    @StateObject var viewModel = RecommendationExclusionViewModel(lastSiteNumber: Self.lastSiteNumber)
     var body: some View {
-        Text("SettingView")
+        RecommendationExclusionView(viewModel: viewModel)
     }
 }
 

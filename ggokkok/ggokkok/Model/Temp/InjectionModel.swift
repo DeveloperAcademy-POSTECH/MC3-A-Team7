@@ -26,7 +26,7 @@ extension InjectionModel {
 
     static var previewData: [InjectionModel] {
         [
-            // (dayDiff, position)
+            // (dayDiff, site)
             (1, 1, 3, 3),
             (2, 2, 5, 5),
             (3, 3, 8, 2),

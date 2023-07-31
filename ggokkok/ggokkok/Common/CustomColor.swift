@@ -8,7 +8,7 @@
 import Foundation
 
 enum CustomColor: String {
-    case black
+    case black100
     case blue100
     case blue200
     case blue300
@@ -18,6 +18,5 @@ enum CustomColor: String {
     case longActing
     case mixedActing
     case rapidActing
-    case red
-    case white
+    case red100
 }
