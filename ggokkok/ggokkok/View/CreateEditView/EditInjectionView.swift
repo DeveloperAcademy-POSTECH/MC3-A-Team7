@@ -13,14 +13,26 @@ struct EditInjectionView: View {
 
     var body: some View {
         NavigationView {
-            VStack {
-                List {
+            List {
+                Section(content: {
                     InjectionSitePickerView()
+                }).listStyle(InsetGroupedListStyle())
+
+                Section(content: {
                     DateTimePickerView(date: $date)
+                }).listStyle(InsetGroupedListStyle())
+
+                Section(content: {
                     InsulinTypePickerView()
-                    InsulinUnitPickerView()
-                }
-                DeleteButtonView()
+                }).listStyle(InsetGroupedListStyle())
+
+                Section(content: {
+                    InsulinDosesPickerView()
+                }).listStyle(InsetGroupedListStyle())
+
+                Section(content: {
+                    DeleteButtonView()
+                }).listStyle(InsetGroupedListStyle())
             }
             .navigationTitle("수정하기")
             .navigationBarTitleDisplayMode(.inline)

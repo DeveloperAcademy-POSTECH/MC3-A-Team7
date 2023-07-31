@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct InsulinTypePickerView: View {
-    @State var selectedType = "Type"
+    @State var selectedType = "초속형"
     var types = ["지속형", "초속형", "혼합형"]
 
     var body: some View {

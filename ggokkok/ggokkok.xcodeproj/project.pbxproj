@@ -10,7 +10,7 @@
 		36EE4AF32A749664000CCCB7 /* InjectionSitePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EE4AF22A749664000CCCB7 /* InjectionSitePickerView.swift */; };
 		36EE4AF52A7496CC000CCCB7 /* DateTimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EE4AF42A7496CC000CCCB7 /* DateTimePickerView.swift */; };
 		36EE4AF72A7496F7000CCCB7 /* InsulinTypePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EE4AF62A7496F7000CCCB7 /* InsulinTypePickerView.swift */; };
-		36EE4AF92A749716000CCCB7 /* InsulinUnitPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EE4AF82A749716000CCCB7 /* InsulinUnitPickerView.swift */; };
+		36EE4AF92A749716000CCCB7 /* InsulinDosesPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EE4AF82A749716000CCCB7 /* InsulinDosesPickerView.swift */; };
 		36EE4AFB2A749730000CCCB7 /* DeleteButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EE4AFA2A749730000CCCB7 /* DeleteButtonView.swift */; };
 		5119EE422A763C4700DE60AD /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5119EE412A763C4700DE60AD /* UserDefaultsKey.swift */; };
 		511F85D92A7630F10061B700 /* ExclusionSiteCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511F85D82A7630F10061B700 /* ExclusionSiteCircle.swift */; };
@@ -75,7 +75,7 @@
 		36EE4AF22A749664000CCCB7 /* InjectionSitePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InjectionSitePickerView.swift; path = ../../../../ggokkok/View/CreateEditView/Components/InjectionSitePickerView.swift; sourceTree = "<group>"; };
 		36EE4AF42A7496CC000CCCB7 /* DateTimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateTimePickerView.swift; path = ../../../../ggokkok/View/CreateEditView/Components/DateTimePickerView.swift; sourceTree = "<group>"; };
 		36EE4AF62A7496F7000CCCB7 /* InsulinTypePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InsulinTypePickerView.swift; path = ../../../../ggokkok/View/CreateEditView/Components/InsulinTypePickerView.swift; sourceTree = "<group>"; };
-		36EE4AF82A749716000CCCB7 /* InsulinUnitPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InsulinUnitPickerView.swift; path = ../../../../ggokkok/View/CreateEditView/Components/InsulinUnitPickerView.swift; sourceTree = "<group>"; };
+		36EE4AF82A749716000CCCB7 /* InsulinDosesPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InsulinDosesPickerView.swift; path = ../../../../ggokkok/View/CreateEditView/Components/InsulinDosesPickerView.swift; sourceTree = "<group>"; };
 		36EE4AFA2A749730000CCCB7 /* DeleteButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DeleteButtonView.swift; path = ../../../../ggokkok/View/CreateEditView/Components/DeleteButtonView.swift; sourceTree = "<group>"; };
 		5119EE412A763C4700DE60AD /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDefaultsKey.swift; path = ggokkok/Common/UserDefaultsKey.swift; sourceTree = SOURCE_ROOT; };
 		511F85D82A7630F10061B700 /* ExclusionSiteCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExclusionSiteCircle.swift; path = GgokKok/View/SettingView/RecommendationExclusion/ExclusionSiteCircle.swift; sourceTree = SOURCE_ROOT; };
@@ -153,7 +153,7 @@
 				36EE4AF22A749664000CCCB7 /* InjectionSitePickerView.swift */,
 				36EE4AF42A7496CC000CCCB7 /* DateTimePickerView.swift */,
 				36EE4AF62A7496F7000CCCB7 /* InsulinTypePickerView.swift */,
-				36EE4AF82A749716000CCCB7 /* InsulinUnitPickerView.swift */,
+				36EE4AF82A749716000CCCB7 /* InsulinDosesPickerView.swift */,
 				36EE4AFA2A749730000CCCB7 /* DeleteButtonView.swift */,
 			);
 			path = Components;
@@ -543,7 +543,7 @@
 				B2E5D6012A7785F8001BE12D /* NSManagedObjectContext+.swift in Sources */,
 				A3A05B452A7507E500E68FE5 /* RecommendViewBottomPartTextBox.swift in Sources */,
 				B27CAE5C2A739E670010D0FE /* Date+.swift in Sources */,
-				36EE4AF92A749716000CCCB7 /* InsulinUnitPickerView.swift in Sources */,
+				36EE4AF92A749716000CCCB7 /* InsulinDosesPickerView.swift in Sources */,
 				B27CAE5E2A73B49E0010D0FE /* CustomColor.swift in Sources */,
 				A3A05B472A7507E500E68FE5 /* RecommendViewTopPartText.swift in Sources */,
 				A3A05B4A2A7507E500E68FE5 /* RecommendViewTopPartNavigationIcons.swift in Sources */,

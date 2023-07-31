@@ -29,6 +29,8 @@ struct DateTimePickerView: View {
             )
             .datePickerStyle(.compact)
 
+            Divider()
+
             DatePicker(
                 "시간",
                 selection: $date,
@@ -45,4 +47,3 @@ struct DatePickerView_Previews: PreviewProvider {
         DateTimePickerView(date: .constant(Date()))
     }
 }
-
