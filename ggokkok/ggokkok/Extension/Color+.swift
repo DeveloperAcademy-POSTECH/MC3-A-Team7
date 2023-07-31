@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension Color {
-    static var black: Color { Color(CustomColor.black.rawValue) }
+    static var black100: Color { Color(CustomColor.black100.rawValue) }
     static var blue100: Color { Color(CustomColor.blue100.rawValue) }
     static var blue200: Color { Color(CustomColor.blue200.rawValue) }
     static var blue300: Color { Color(CustomColor.blue300.rawValue) }
@@ -18,6 +18,5 @@ extension Color {
     static var longActing: Color { Color(CustomColor.longActing.rawValue) }
     static var mixedActing: Color { Color(CustomColor.mixedActing.rawValue) }
     static var rapidActing: Color { Color(CustomColor.rapidActing.rawValue) }
-    static var red: Color { Color(CustomColor.red.rawValue) }
-    static var white: Color { Color(CustomColor.white.rawValue) }
+    static var red100: Color { Color(CustomColor.red100.rawValue) }
 }

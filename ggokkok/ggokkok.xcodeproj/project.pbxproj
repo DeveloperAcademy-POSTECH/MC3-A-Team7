@@ -14,6 +14,9 @@
 		A3A05B492A7507E500E68FE5 /* RecommendViewSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A05B422A7507E500E68FE5 /* RecommendViewSheetView.swift */; };
 		A3A05B4A2A7507E500E68FE5 /* RecommendViewTopPartNavigationIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A05B432A7507E500E68FE5 /* RecommendViewTopPartNavigationIcons.swift */; };
 		A3A05B4E2A75087D00E68FE5 /* RecommendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A05B4D2A75087D00E68FE5 /* RecommendModel.swift */; };
+		511F85D92A7630F10061B700 /* ExclusionPositionCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511F85D82A7630F10061B700 /* ExclusionPositionCircle.swift */; };
+		51ACD62F2A762D2E005D8F2B /* RecommendationExclusionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ACD62E2A762D2E005D8F2B /* RecommendationExclusionView.swift */; };
+		51ACD6312A762D3E005D8F2B /* RecommendationExclusionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ACD6302A762D3E005D8F2B /* RecommendationExclusionViewModel.swift */; };
 		B268F9982A7391FF0083A87A /* GgokKokApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B268F9972A7391FF0083A87A /* GgokKokApp.swift */; };
 		B268F99A2A7391FF0083A87A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B268F9992A7391FF0083A87A /* MainView.swift */; };
 		B268F99C2A7392000083A87A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B268F99B2A7392000083A87A /* Assets.xcassets */; };
@@ -62,6 +65,9 @@
 		A3A05B422A7507E500E68FE5 /* RecommendViewSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendViewSheetView.swift; sourceTree = "<group>"; };
 		A3A05B432A7507E500E68FE5 /* RecommendViewTopPartNavigationIcons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendViewTopPartNavigationIcons.swift; sourceTree = "<group>"; };
 		A3A05B4D2A75087D00E68FE5 /* RecommendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RecommendModel.swift; path = ggokkok/View/RecommendView/RecommendModel/RecommendModel.swift; sourceTree = SOURCE_ROOT; };
+		511F85D82A7630F10061B700 /* ExclusionPositionCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExclusionPositionCircle.swift; path = GgokKok/View/SettingView/RecommendationExclusion/ExclusionPositionCircle.swift; sourceTree = SOURCE_ROOT; };
+		51ACD62E2A762D2E005D8F2B /* RecommendationExclusionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendationExclusionView.swift; sourceTree = "<group>"; };
+		51ACD6302A762D3E005D8F2B /* RecommendationExclusionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendationExclusionViewModel.swift; sourceTree = "<group>"; };
 		B268F9942A7391FF0083A87A /* GgokKok.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GgokKok.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B268F9972A7391FF0083A87A /* GgokKokApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GgokKokApp.swift; sourceTree = "<group>"; };
 		B268F9992A7391FF0083A87A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -133,6 +139,15 @@
 				A3A05B4D2A75087D00E68FE5 /* RecommendModel.swift */,
 			);
 			path = RecommendModel;
+			sourceTree = "<group>";
+		};
+		511F85DA2A7632350061B700 /* RecommendationExclusion */ = {
+			isa = PBXGroup;
+			children = (
+				51ACD62E2A762D2E005D8F2B /* RecommendationExclusionView.swift */,
+				511F85D82A7630F10061B700 /* ExclusionPositionCircle.swift */,
+			);
+			path = RecommendationExclusion;
 			sourceTree = "<group>";
 		};
 		B268F98B2A7391FF0083A87A = {
@@ -222,8 +237,10 @@
 		B268F9C82A73921F0083A87A /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				51ACD6302A762D3E005D8F2B /* RecommendationExclusionViewModel.swift */,
 			);
-			path = ViewModel;
+			name = ViewModel;
+			path = ../ggokkok/ViewModel;
 			sourceTree = "<group>";
 		};
 		B268F9C92A73922E0083A87A /* Extension */ = {
@@ -306,6 +323,7 @@
 		B27CAE582A739BEF0010D0FE /* SettingView */ = {
 			isa = PBXGroup;
 			children = (
+				511F85DA2A7632350061B700 /* RecommendationExclusion */,
 				B27CAE592A739BF80010D0FE /* SettingView.swift */,
 			);
 			path = SettingView;
@@ -476,6 +494,7 @@
 				B27CAE4C2A739A920010D0FE /* HistoryView.swift in Sources */,
 				B27CAE442A73986D0010D0FE /* CoredataExampleView.swift in Sources */,
 				A3A05B492A7507E500E68FE5 /* RecommendViewSheetView.swift in Sources */,
+				51ACD62F2A762D2E005D8F2B /* RecommendationExclusionView.swift in Sources */,
 				B27CAE492A7399E60010D0FE /* RecommendView.swift in Sources */,
 				B27CAE632A73B6F80010D0FE /* OnboardingView.swift in Sources */,
 				A3A05B452A7507E500E68FE5 /* RecommendViewBottomPartTextBox.swift in Sources */,
@@ -486,6 +505,7 @@
 				B27CAE4F2A739B570010D0FE /* InjectionModel.swift in Sources */,
 				A3A05B482A7507E500E68FE5 /* RecommendViewDisplayBoxView.swift in Sources */,
 				B268F9A12A7392000083A87A /* Persistence.swift in Sources */,
+				511F85D92A7630F10061B700 /* ExclusionPositionCircle.swift in Sources */,
 				B27CAE602A73B5B50010D0FE /* Color+.swift in Sources */,
 				B27CAE552A739BB00010D0FE /* CreateInjectionView.swift in Sources */,
 				B27CAE572A739BC00010D0FE /* EditInjectionView.swift in Sources */,
@@ -495,6 +515,7 @@
 				B268F9982A7391FF0083A87A /* GgokKokApp.swift in Sources */,
 				A3A05B462A7507E500E68FE5 /* RecommendViewButtonComponent.swift in Sources */,
 				B27CAE5A2A739BF80010D0FE /* SettingView.swift in Sources */,
+				51ACD6312A762D3E005D8F2B /* RecommendationExclusionViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
