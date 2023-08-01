@@ -24,6 +24,8 @@
 		A3A05B492A7507E500E68FE5 /* RecommendViewSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A05B422A7507E500E68FE5 /* RecommendViewSheetView.swift */; };
 		A3A05B4A2A7507E500E68FE5 /* RecommendViewTopPartNavigationIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A05B432A7507E500E68FE5 /* RecommendViewTopPartNavigationIcons.swift */; };
 		A3A05B4E2A75087D00E68FE5 /* RecommendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A05B4D2A75087D00E68FE5 /* RecommendViewModel.swift */; };
+		B259CEC62A78DF9A00F9E5E3 /* HistoryListTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B259CEC52A78DF9A00F9E5E3 /* HistoryListTitleView.swift */; };
+		B259CEC92A78E47A00F9E5E3 /* HistoryDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B259CEC82A78E47A00F9E5E3 /* HistoryDatePickerView.swift */; };
 		B268F9982A7391FF0083A87A /* GgokKokApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B268F9972A7391FF0083A87A /* GgokKokApp.swift */; };
 		B268F99A2A7391FF0083A87A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B268F9992A7391FF0083A87A /* MainView.swift */; };
 		B268F99C2A7392000083A87A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B268F99B2A7392000083A87A /* Assets.xcassets */; };
@@ -53,6 +55,11 @@
 		B2E5D6012A7785F8001BE12D /* NSManagedObjectContext+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E5D6002A7785F8001BE12D /* NSManagedObjectContext+.swift */; };
 		B2E5D6032A778762001BE12D /* NSPredicate+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E5D6022A778762001BE12D /* NSPredicate+.swift */; };
 		B2E5D6052A77879B001BE12D /* NSSortDescriptor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E5D6042A77879B001BE12D /* NSSortDescriptor+.swift */; };
+		EB89C69F2A779D1B00F41CA3 /* DateScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB89C69E2A779D1B00F41CA3 /* DateScroll.swift */; };
+		EB89C6A12A779D3500F41CA3 /* DayOfMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB89C6A02A779D3500F41CA3 /* DayOfMonth.swift */; };
+		EB89C6A32A779D6800F41CA3 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB89C6A22A779D6800F41CA3 /* HistoryViewModel.swift */; };
+		EB89C6A72A779F9800F41CA3 /* HistoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB89C6A62A779F9800F41CA3 /* HistoryListView.swift */; };
+		EB89C6A92A77CC7C00F41CA3 /* HistoryListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB89C6A82A77CC7C00F41CA3 /* HistoryListRowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +97,8 @@
 		A3A05B422A7507E500E68FE5 /* RecommendViewSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendViewSheetView.swift; sourceTree = "<group>"; };
 		A3A05B432A7507E500E68FE5 /* RecommendViewTopPartNavigationIcons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendViewTopPartNavigationIcons.swift; sourceTree = "<group>"; };
 		A3A05B4D2A75087D00E68FE5 /* RecommendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RecommendViewModel.swift; path = ggokkok/ViewModel/RecommendModel/RecommendViewModel.swift; sourceTree = SOURCE_ROOT; };
+		B259CEC52A78DF9A00F9E5E3 /* HistoryListTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryListTitleView.swift; sourceTree = "<group>"; };
+		B259CEC82A78E47A00F9E5E3 /* HistoryDatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryDatePickerView.swift; sourceTree = "<group>"; };
 		B268F9942A7391FF0083A87A /* GgokKok.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GgokKok.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B268F9972A7391FF0083A87A /* GgokKokApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GgokKokApp.swift; sourceTree = "<group>"; };
 		B268F9992A7391FF0083A87A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -122,6 +131,11 @@
 		B2E5D6002A7785F8001BE12D /* NSManagedObjectContext+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+.swift"; sourceTree = "<group>"; };
 		B2E5D6022A778762001BE12D /* NSPredicate+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSPredicate+.swift"; sourceTree = "<group>"; };
 		B2E5D6042A77879B001BE12D /* NSSortDescriptor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSSortDescriptor+.swift"; sourceTree = "<group>"; };
+		EB89C69E2A779D1B00F41CA3 /* DateScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateScroll.swift; path = ggokkok/View/HistoryView/DateScroll.swift; sourceTree = SOURCE_ROOT; };
+		EB89C6A02A779D3500F41CA3 /* DayOfMonth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DayOfMonth.swift; path = ggokkok/View/HistoryView/DayOfMonth.swift; sourceTree = SOURCE_ROOT; };
+		EB89C6A22A779D6800F41CA3 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
+		EB89C6A62A779F9800F41CA3 /* HistoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HistoryListView.swift; path = GgokKok/View/HistoryView/HistoryListView.swift; sourceTree = SOURCE_ROOT; };
+		EB89C6A82A77CC7C00F41CA3 /* HistoryListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HistoryListRowView.swift; path = ggokkok/View/HistoryView/HistoryListRowView.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -289,6 +303,7 @@
 			children = (
 				A3A05B4C2A75085C00E68FE5 /* RecommendModel */,
 				51ACD6302A762D3E005D8F2B /* RecommendationExclusionViewModel.swift */,
+				EB89C6A22A779D6800F41CA3 /* HistoryViewModel.swift */,
 				5119EE442A77D72D00DE60AD /* OnboardingViewModel.swift */,
 			);
 			name = ViewModel;
@@ -350,6 +365,12 @@
 			isa = PBXGroup;
 			children = (
 				B27CAE4B2A739A920010D0FE /* HistoryView.swift */,
+				EB89C6A62A779F9800F41CA3 /* HistoryListView.swift */,
+				EB89C6A82A77CC7C00F41CA3 /* HistoryListRowView.swift */,
+				EB89C69E2A779D1B00F41CA3 /* DateScroll.swift */,
+				EB89C6A02A779D3500F41CA3 /* DayOfMonth.swift */,
+				B259CEC52A78DF9A00F9E5E3 /* HistoryListTitleView.swift */,
+				B259CEC82A78E47A00F9E5E3 /* HistoryDatePickerView.swift */,
 			);
 			path = HistoryView;
 			sourceTree = "<group>";
@@ -470,7 +491,7 @@
 					};
 				};
 			};
-			buildConfigurationList = B268F98F2A7391FF0083A87A /* Build configuration list for PBXProject "ggokkok" */;
+			buildConfigurationList = B268F98F2A7391FF0083A87A /* Build configuration list for PBXProject "GgokKok" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -552,31 +573,38 @@
 				B27CAE492A7399E60010D0FE /* RecommendView.swift in Sources */,
 				36EE4AF72A7496F7000CCCB7 /* InsulinTypePickerView.swift in Sources */,
 				B27CAE632A73B6F80010D0FE /* OnboardingView.swift in Sources */,
+				EB89C6A12A779D3500F41CA3 /* DayOfMonth.swift in Sources */,
 				B2E5D6012A7785F8001BE12D /* NSManagedObjectContext+.swift in Sources */,
 				A3A05B452A7507E500E68FE5 /* RecommendViewBottomPartTextBox.swift in Sources */,
 				B27CAE5C2A739E670010D0FE /* Date+.swift in Sources */,
 				36EE4AF92A749716000CCCB7 /* InsulinDosesPickerView.swift in Sources */,
 				B27CAE5E2A73B49E0010D0FE /* CustomColor.swift in Sources */,
+				EB89C6A32A779D6800F41CA3 /* HistoryViewModel.swift in Sources */,
 				A3A05B472A7507E500E68FE5 /* RecommendViewTopPartText.swift in Sources */,
+				B259CEC92A78E47A00F9E5E3 /* HistoryDatePickerView.swift in Sources */,
 				A3A05B4A2A7507E500E68FE5 /* RecommendViewTopPartNavigationIcons.swift in Sources */,
 				B27CAE4F2A739B570010D0FE /* InjectionModel.swift in Sources */,
 				A3A05B482A7507E500E68FE5 /* RecommendViewDisplayBoxView.swift in Sources */,
 				B268F9A12A7392000083A87A /* Persistence.swift in Sources */,
 				B27CAE6D2A7507FE0010D0FE /* Injection+CoreDataProperties.swift in Sources */,
 				511F85D92A7630F10061B700 /* ExclusionSiteCircle.swift in Sources */,
+				EB89C6A92A77CC7C00F41CA3 /* HistoryListRowView.swift in Sources */,
 				B27CAE602A73B5B50010D0FE /* Color+.swift in Sources */,
 				B27CAE552A739BB00010D0FE /* CreateInjectionView.swift in Sources */,
 				B27CAE712A7509740010D0FE /* TimeType.swift in Sources */,
 				36EE4AF32A749664000CCCB7 /* InjectionSitePickerView.swift in Sources */,
 				B27CAE572A739BC00010D0FE /* EditInjectionView.swift in Sources */,
 				B2E5D5FF2A7784BB001BE12D /* Persistence+Injection.swift in Sources */,
+				EB89C6A72A779F9800F41CA3 /* HistoryListView.swift in Sources */,
 				A3A05B4E2A75087D00E68FE5 /* RecommendViewModel.swift in Sources */,
+				B259CEC62A78DF9A00F9E5E3 /* HistoryListTitleView.swift in Sources */,
 				36EE4AF52A7496CC000CCCB7 /* DateTimePickerView.swift in Sources */,
 				B268F9A42A7392000083A87A /* GgokKok.xcdatamodeld in Sources */,
 				B2E5D6032A778762001BE12D /* NSPredicate+.swift in Sources */,
 				B268F99A2A7391FF0083A87A /* MainView.swift in Sources */,
 				B27CAE6F2A7508AB0010D0FE /* InsulinType.swift in Sources */,
 				B268F9982A7391FF0083A87A /* GgokKokApp.swift in Sources */,
+				EB89C69F2A779D1B00F41CA3 /* DateScroll.swift in Sources */,
 				A3A05B462A7507E500E68FE5 /* RecommendViewButtonComponent.swift in Sources */,
 				B27CAE5A2A739BF80010D0FE /* SettingView.swift in Sources */,
 				B2E5D6052A77879B001BE12D /* NSSortDescriptor+.swift in Sources */,
@@ -871,7 +899,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B268F98F2A7391FF0083A87A /* Build configuration list for PBXProject "ggokkok" */ = {
+		B268F98F2A7391FF0083A87A /* Build configuration list for PBXProject "GgokKok" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B268F9BB2A7392000083A87A /* Debug */,
