@@ -55,6 +55,8 @@
 		B2E5D6012A7785F8001BE12D /* NSManagedObjectContext+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E5D6002A7785F8001BE12D /* NSManagedObjectContext+.swift */; };
 		B2E5D6032A778762001BE12D /* NSPredicate+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E5D6022A778762001BE12D /* NSPredicate+.swift */; };
 		B2E5D6052A77879B001BE12D /* NSSortDescriptor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E5D6042A77879B001BE12D /* NSSortDescriptor+.swift */; };
+		B2E5D6092A77B586001BE12D /* InjectionProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E5D6082A77B586001BE12D /* InjectionProperties.swift */; };
+		B2E5D60B2A77B5C8001BE12D /* InjectionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E5D60A2A77B5C8001BE12D /* InjectionError.swift */; };
 		EB89C69F2A779D1B00F41CA3 /* DateScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB89C69E2A779D1B00F41CA3 /* DateScroll.swift */; };
 		EB89C6A12A779D3500F41CA3 /* DayOfMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB89C6A02A779D3500F41CA3 /* DayOfMonth.swift */; };
 		EB89C6A32A779D6800F41CA3 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB89C6A22A779D6800F41CA3 /* HistoryViewModel.swift */; };
@@ -136,6 +138,8 @@
 		EB89C6A22A779D6800F41CA3 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		EB89C6A62A779F9800F41CA3 /* HistoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HistoryListView.swift; path = GgokKok/View/HistoryView/HistoryListView.swift; sourceTree = SOURCE_ROOT; };
 		EB89C6A82A77CC7C00F41CA3 /* HistoryListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HistoryListRowView.swift; path = ggokkok/View/HistoryView/HistoryListRowView.swift; sourceTree = SOURCE_ROOT; };
+		B2E5D6082A77B586001BE12D /* InjectionProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectionProperties.swift; sourceTree = "<group>"; };
+		B2E5D60A2A77B5C8001BE12D /* InjectionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectionError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -280,6 +284,8 @@
 				B27CAE4D2A739B4C0010D0FE /* Temp */,
 				B268F9CC2A7392BC0083A87A /* Data */,
 				B27CAE702A7509740010D0FE /* TimeType.swift */,
+				B2E5D6082A77B586001BE12D /* InjectionProperties.swift */,
+				B2E5D60A2A77B5C8001BE12D /* InjectionError.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -585,6 +591,7 @@
 				A3A05B4A2A7507E500E68FE5 /* RecommendViewTopPartNavigationIcons.swift in Sources */,
 				B27CAE4F2A739B570010D0FE /* InjectionModel.swift in Sources */,
 				A3A05B482A7507E500E68FE5 /* RecommendViewDisplayBoxView.swift in Sources */,
+				B2E5D60B2A77B5C8001BE12D /* InjectionError.swift in Sources */,
 				B268F9A12A7392000083A87A /* Persistence.swift in Sources */,
 				B27CAE6D2A7507FE0010D0FE /* Injection+CoreDataProperties.swift in Sources */,
 				511F85D92A7630F10061B700 /* ExclusionSiteCircle.swift in Sources */,
@@ -609,6 +616,7 @@
 				B27CAE5A2A739BF80010D0FE /* SettingView.swift in Sources */,
 				B2E5D6052A77879B001BE12D /* NSSortDescriptor+.swift in Sources */,
 				B27CAE6C2A7507FE0010D0FE /* Injection+CoreDataClass.swift in Sources */,
+				B2E5D6092A77B586001BE12D /* InjectionProperties.swift in Sources */,
 				36EE4AFB2A749730000CCCB7 /* DeleteButtonView.swift in Sources */,
 				51ACD6312A762D3E005D8F2B /* RecommendationExclusionViewModel.swift in Sources */,
 				5119EE422A763C4700DE60AD /* UserDefaultsKey.swift in Sources */,
