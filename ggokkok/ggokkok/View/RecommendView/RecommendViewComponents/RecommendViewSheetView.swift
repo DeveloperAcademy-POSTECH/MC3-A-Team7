@@ -9,37 +9,46 @@ import SwiftUI
 import UIKit
 
 struct RecommendViewSheetView: View {
+    @ObservedObject var recommendModel: RecommendViewModel
     @Environment(\.dismiss) private var dismiss
     @Binding var isPresented: Bool
     @State var showAlert: Bool = false
 
     @State var insulinDoses = 1
-    @State var selectedType = "초속형"
+    @State var selectedType = Int(InsulinType.rapidActing.rawValue)
     @State var hasDosesValueChanged = false
     @State var hasTypeValueChanged = false
 
     @State var attempToDismiss = UUID() // for UIKit
 
     var body: some View {
+//        var recommendSiteNumber = recommendModel.recommendSiteNumber
+        let insulinTypeVariant: InsulinType = InsulinType(rawValue: Int16(selectedType)) ?? InsulinType.rapidActing
         NavigationView {
             List {
                 InsulinTypePickerView(selectedType: $selectedType, hasTypeValueChanged: $hasTypeValueChanged)
                 InsulinDosesPickerView(insulinDoses: $insulinDoses, hasDosesValueChanged: $hasDosesValueChanged)
-            }
-            .padding(.top, -30)
+            }.padding(.top, -30)
+
             .navigationBarItems(
+
                 leading: Button("취소", action: {
                     if hasDosesValueChanged || hasTypeValueChanged { showAlert.toggle()
                     } else { dismiss() }
                 }).padding(.leading, 10),
+
                 trailing: Button("저장", action: {
+                    PersistenceController.shared.addInjection(
+                        doses: insulinDoses, insulinType: insulinTypeVariant,
+                        site: recommendModel.recommendSiteNumber, time: Date())
+                    recommendModel.recommendSiteNumber = recommendModel.getRecommendSiteArray().sorted(by: <)[0]
+                    dismiss()
 
                 }).padding(.trailing, 10)
             )
             .navigationBarTitle("기록하기", displayMode: .inline)
         }
-        .presentationDetents([.height(UIScreen.main.bounds.height/3)])
-        .presentationDragIndicator(.hidden)
+        .presentationDetents([.height(UIScreen.main.bounds.height/3)]).presentationDragIndicator(.hidden)
         .actionSheet(isPresented: $showAlert, content: getActionSheet)
         .interactiveDismissDisabled(hasDosesValueChanged || hasTypeValueChanged, attempToDismiss: $attempToDismiss)
         .onChange(of: attempToDismiss) { _ in
@@ -55,7 +64,6 @@ struct RecommendViewSheetView: View {
         return ActionSheet(title: title, buttons: [destructiveButton, cancelButton])
     }
 }
-
 
 // UIKit Codes, Via Internet.
 struct SetSheetDelegate: UIViewRepresentable {

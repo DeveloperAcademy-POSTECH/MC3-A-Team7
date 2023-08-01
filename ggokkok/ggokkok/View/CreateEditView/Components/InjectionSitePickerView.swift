@@ -17,21 +17,16 @@ import SwiftUI
 //}
 
 struct InjectionSitePickerView: View {
-    @State var injectionSiteNumber: String = ""
+    @Binding var injectionSiteNumber: Int32
+    let siteNumber: Int
 
     var body: some View {
         HStack {
             Text("주사 부위")
-            TextField("-", text: $injectionSiteNumber)
+            TextField(siteNumber == 0 ? "-" : String(injectionSiteNumber), value: $injectionSiteNumber, format: .number)
                 .keyboardType(.decimalPad)
                 .multilineTextAlignment(.trailing)
 //                .textFieldStyle(RectangleTextFieldStyle())
         }
-    }
-}
-
-struct InjectionSitePickerView_Previews: PreviewProvider {
-    static var previews: some View {
-        InjectionSitePickerView()
     }
 }

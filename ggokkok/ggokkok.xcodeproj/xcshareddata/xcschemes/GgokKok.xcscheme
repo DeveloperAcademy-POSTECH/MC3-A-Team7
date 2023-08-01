@@ -17,7 +17,7 @@
                BlueprintIdentifier = "B268F9932A7391FF0083A87A"
                BuildableName = "GgokKok.app"
                BlueprintName = "GgokKok"
-               ReferencedContainer = "container:GgokKok.xcodeproj">
+               ReferencedContainer = "container:ggokkok.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -37,7 +37,7 @@
                BlueprintIdentifier = "B268F9A82A7392000083A87A"
                BuildableName = "GgokKokTests.xctest"
                BlueprintName = "GgokKokTests"
-               ReferencedContainer = "container:GgokKok.xcodeproj">
+               ReferencedContainer = "container:ggokkok.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -48,7 +48,7 @@
                BlueprintIdentifier = "B268F9B22A7392000083A87A"
                BuildableName = "GgokKokUITests.xctest"
                BlueprintName = "GgokKokUITests"
-               ReferencedContainer = "container:GgokKok.xcodeproj">
+               ReferencedContainer = "container:ggokkok.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -70,9 +70,19 @@
             BlueprintIdentifier = "B268F9932A7391FF0083A87A"
             BuildableName = "GgokKok.app"
             BlueprintName = "GgokKok"
-            ReferencedContainer = "container:GgokKok.xcodeproj">
+            ReferencedContainer = "container:ggokkok.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = "-com.apple.CoreData.SQLDebug 1"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-com.apple.CoreData.Logging.stderr 1"
+            isEnabled = "YES">
+         </CommandLineArgument>
+      </CommandLineArguments>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -87,7 +97,7 @@
             BlueprintIdentifier = "B268F9932A7391FF0083A87A"
             BuildableName = "GgokKok.app"
             BlueprintName = "GgokKok"
-            ReferencedContainer = "container:GgokKok.xcodeproj">
+            ReferencedContainer = "container:ggokkok.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
