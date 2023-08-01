@@ -47,7 +47,7 @@ enum InjectionSiteItems: CaseIterable {
 }
 
 let injectionSiteItems: [SettingItem] = InjectionSiteItems.allCases.map { SettingItem(name: $0.name
-//                                                                                      , destination: $0.destination()
+//  , destination: $0.destination()
 ) }
 
 enum SettingCategories: CaseIterable, Identifiable {
@@ -76,7 +76,8 @@ enum SettingCategories: CaseIterable, Identifiable {
 
 struct SettingView: View {
     static let lastSiteNumber = UserDefaults.standard.integer(forKey: UserDefaultsKey.lastSiteNumber.rawValue)
-    @StateObject var viewModel = RecommendationExclusionViewModel(lastSiteNumber: Self.lastSiteNumber)
+    @StateObject var recommendationExclusionViewModel = RecommendationExclusionViewModel(lastSiteNumber: Self.lastSiteNumber)
+    @StateObject var onboardingViewModel = OnboardingViewModel()
     let settingCategories: [SettingCategory] = SettingCategories.allCases.map { SettingCategory(title: $0.title, settingItems: $0.settingItems) }
     @State private var singleSelection: UUID?
 
@@ -98,9 +99,9 @@ struct SettingView: View {
     func getDestination(from name: String) -> AnyView {
         switch name {
         case "주사부위표 마지막 번호":
-            return AnyView(OnboardingView(isFirstLaunching: .constant(true)))
+            return AnyView(OnboardingView(isFirstLaunching: .constant(false), viewModel: onboardingViewModel))
         case "추천 제외 부위":
-            return AnyView(RecommendationExclusionView(viewModel: viewModel))
+            return AnyView(RecommendationExclusionView(viewModel: recommendationExclusionViewModel))
         default:
             return AnyView(SettingView())
         }

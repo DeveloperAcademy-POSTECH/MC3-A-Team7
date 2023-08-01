@@ -7,68 +7,77 @@
 
 import SwiftUI
 
+
 struct OnboardingView: View {
-
     @Binding var isFirstLaunching: Bool
-    @State var lastNumber: String = ""
+    @ObservedObject var viewModel: OnboardingViewModel
+    @FocusState private var isFocused: Bool
+    @State var lastSite: String = ""
 
+    init(isFirstLaunching: Binding<Bool>, viewModel: OnboardingViewModel) {
+        self._isFirstLaunching = isFirstLaunching
+        self.viewModel = viewModel
+        _lastSite = State(initialValue: viewModel.lastSiteNumber.description)
+    }
 
     var body: some View {
-        let launchingButtonColor: String = lastNumber == "" ? "gray200" : "blue300"
-
         VStack {
-            Spacer()
-                .frame(height: 140)
-
-            Text("가지고 있는 주사부위표의")
-                .font(.system(size: 22))
-                .fontWeight(.semibold)
-            HStack {
-                Text("마지막 번호")
-                    .font(.system(size: 22))
-                    .fontWeight(.semibold)
-                    .foregroundColor(Color("blue300"))
-                Text("를 입력해 주세요")
-                    .font(.system(size: 22))
-                    .fontWeight(.semibold)
+            GeometryReader { geometry in
+                VStack {
+                    VStack {
+                        Spacer()
+                        Text("가지고 있는 주사부위표의")
+                        HStack(spacing: 0) {
+                            Text("마지막 번호")
+                                .foregroundColor(.blue300)
+                            Text("를 입력해 주세요")
+                        }
+                    }
+                    .frame(height: geometry.size.height * 0.30)
+                    Spacer()
+                    TextField("마지막 번호", text: $lastSite)
+                        .font(.system(size: 48))
+                        .foregroundColor(.black100)
+                        .multilineTextAlignment(.center)
+                        .keyboardType(.decimalPad)
+                        .focused($isFocused)
+                }
+                .frame(height: geometry.size.height * 0.60)
             }
-            Spacer()
-                .frame(height: 100)
-
-            TextField("마지막 번호", text: $lastNumber)
-                .padding()
-                .keyboardType(.decimalPad)
-                .font(.system(size: 48))
-                .fontWeight(.bold)
-                .multilineTextAlignment(.center)
-                .foregroundColor(Color.black)
-
             Spacer()
             Button {
-                print("시작하기")
-                // MARK: 유저 디폴트에 마지막 번호 저장하기
-                UserDefaults.standard.set(16, forKey: "lastSiteNumber")
-                isFirstLaunching.toggle()
+                viewModel.setLastSiteNumber(Int(lastSite) ?? 31)
+                isFocused = false
+                if isFirstLaunching {
+                    isFirstLaunching = false
+                }
             } label: {
-                Text("시작하기")
-                    .frame(width: 350, height: 54)
-                    .font(.system(size: 22))
-                    .fontWeight(.semibold)
-                    .foregroundColor(.white)
-                    .background(Color(launchingButtonColor))
-                    .cornerRadius(20)
-                    .onTapGesture {
-                UserDefaults.standard.set(16, forKey: "lastSiteNumber")
+                ZStack {
+                    RoundedRectangle(cornerRadius: 20)
+                        .frame(height: 54)
+                    Text(isFirstLaunching ? "시작하기" : "저장하기")
+                        .foregroundColor(.white)
+                }
+                .padding(.vertical)
             }
-    }
-            .padding()
-            .disabled(lastNumber == "")
+            .disabled(lastSite == "0")
+        }
+        .font(.title2)
+        .fontWeight(.semibold)
+        .padding()
+        .contentShape(Rectangle())
+        .onTapGesture {
+            isFocused = false
         }
     }
 }
 
 //struct OnboardingView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        OnboardingView()
+//        OnboardingView(isFirstLaunching: .constant(true), lastNumber: "")
 //    }
 //}
+
+
+
+
