@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct RecommendViewBottomPartTextBox: View {
+    @ObservedObject var recommendModel: RecommendViewModel
 
     var body: some View {
+        var siteNumberToString = String(recommendModel.recommendSiteNumber)
         HStack(alignment: .center, spacing: 5) {
             Spacer()
-            Text("18번 부위의 마지막 투여일은 \(Text("8일 전").font(.system(size: 15, weight: .bold)))입니다.")
+            Text("\(siteNumberToString)번 부위의 마지막 투여일은 \(Text("\(18)일 전").font(.system(size: 15, weight: .bold)))입니다.")
 //            switch getDate {
 //            case .some(let date): // 1일 이상 지난 것
 //                let dateInfoText = date == 0 ?  "오늘" : "\(date)일 전"
@@ -28,5 +30,14 @@ struct RecommendViewBottomPartTextBox: View {
         .padding()
         .background(Color.blue200)
         .cornerRadius(12)
+    }
+
+    func getDateCalculator(of injection: Injection) -> Int? {
+        let offsetComps =
+        Calendar.current.dateComponents([.day], from: injection.timestamp, to: Date())
+        if case let (day?) = (offsetComps.day) {
+            return day
+        }
+        return nil
     }
 }

@@ -11,16 +11,18 @@ struct EditInjectionView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var date = Date()
 
+    @State var injectionSiteNumber:Int32 = 18
     @State private var insulinDoses = 1 // noel's writing.
     @State private var hasDosesValueChanged = false // noel's writing.
-    @State private var selectedType = "초속형"
+    @State private var selectedType = Int(InsulinType.rapidActing.rawValue)
     @State private var hasTypeValueChanged = false
 
     var body: some View {
+        var insulinTypeVariant: InsulinType = InsulinType(rawValue: Int16(selectedType)) ?? InsulinType.rapidActing
         NavigationView {
             List {
                 Section(content: {
-                    InjectionSitePickerView()
+                    InjectionSitePickerView(injectionSiteNumber: $injectionSiteNumber, siteNumber: Int(injectionSiteNumber))
                 }).listStyle(InsetGroupedListStyle())
 
                 Section(content: {
@@ -44,6 +46,7 @@ struct EditInjectionView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
+//                        PersistenceController.shared.update(doses: <#T##Int#>, insulinType: <#T##InsulinType#>, site: <#T##Int#>, time: <#T##Date#>, to: <#T##Injection#>)
                         self.presentationMode.wrappedValue.dismiss()
                     } label: {
                         Text("취소")
