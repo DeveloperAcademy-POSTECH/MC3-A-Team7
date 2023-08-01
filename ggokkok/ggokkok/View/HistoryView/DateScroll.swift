@@ -14,7 +14,7 @@ struct DateScroll: View {
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
-                ForEach(Date.datesRange(from:selectedDate.startDateOfMonth, to: endDateOfMonth), id: \.timeIntervalSince1970) { page in
+                ForEach(Date.datesRange(from:selectedDate.startDateOfMonth, to: selectedDate.endDateOfMonth), id: \.timeIntervalSince1970) { page in
                     DayOfMonth(selectedDate: $selectedDate, currentDate: page)
                 }
             }
