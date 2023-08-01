@@ -8,6 +8,8 @@
 import Foundation
 
 class OnboardingViewModel: ObservableObject {
+    static let shared = OnboardingViewModel()
+
     static let udLastSiteNumber = UserDefaultsKey.lastSiteNumber.rawValue
     var lastSiteNumber: Int {
         get {

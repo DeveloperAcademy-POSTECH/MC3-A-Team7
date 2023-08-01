@@ -14,7 +14,7 @@ struct RecommendViewSheetView: View {
     @State var showAlert: Bool = false
 
     @State var insulinDoses = 1
-    @State var selectedType = Int(InsulinType.rapidActing.rawValue)
+    @State var selectedType = InsulinType.rapidActing
     @State var hasDosesValueChanged = false
     @State var hasTypeValueChanged = false
 

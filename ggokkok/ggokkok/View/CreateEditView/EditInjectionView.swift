@@ -9,37 +9,40 @@ import SwiftUI
 
 struct EditInjectionView: View {
     @Environment(\.presentationMode) var presentationMode
-    @State private var date = Date()
+//    @State private var date: Date
+    @State private var showingExceptionAlert = false
 
-    @State var injectionSiteNumber: Int32 = 18
-    @State private var insulinDoses = 1 // noel's writing.
+//    @State var injectionSiteNumber: Int
+//    @State private var insulinDoses: Int
     @State private var hasDosesValueChanged = false // noel's writing.
-    @State private var selectedType = Int(InsulinType.rapidActing.rawValue)
+//    @State private var selectedType: InsulinType
     @State private var hasTypeValueChanged = false
-//    var injection: Injection
+    @State var injection: Injection
+    private var lastSiteNumber: Int { OnboardingViewModel.shared.lastSiteNumber }
 //
-//    init(injection: Injection) {
-//        self.injection = injection
+    init(injection: Injection) {
+
+        _injection = State(initialValue: injection)
 //        _injectionSiteNumber = State(initialValue: injection.wrappedSite)
 //        _insulinDoses = State(initialValue: injection.wrappedDoses)
 //        _selectedType = State(initialValue: injection.wrappedInsulinType)
-//    }
+    }
 
 
     var body: some View {
         NavigationView {
             List {
                 Section(content: {
-                    InjectionSitePickerView(injectionSiteNumber: $injectionSiteNumber)
+                    InjectionSitePickerView(injectionSiteNumber: $injection.wrappedSite)
                 }).listStyle(InsetGroupedListStyle())
 
                 Section(content: {
-                    DateTimePickerView(date: $date)
+                    DateTimePickerView(date: $injection.timestamp)
                 }).listStyle(InsetGroupedListStyle())
 
                 Section(content: {
-                    InsulinTypePickerView(selectedType: $selectedType, hasTypeValueChanged: $hasTypeValueChanged)
-                    InsulinDosesPickerView(insulinDoses: $insulinDoses, hasDosesValueChanged: $hasDosesValueChanged)
+                    InsulinTypePickerView(selectedType: $injection.wrappedInsulinType, hasTypeValueChanged: $hasTypeValueChanged)
+                    InsulinDosesPickerView(insulinDoses: $injection.wrappedDoses, hasDosesValueChanged: $hasDosesValueChanged)
                 }).listStyle(InsetGroupedListStyle())
 
                 Section(content: {
@@ -60,10 +63,18 @@ struct EditInjectionView: View {
                     Button {
                         // TODO: - 수정 기능 추가
                         // TODO: - 마지막 번호보다 클 경우 alert
-//                        PersistenceController.shared.update(doses: insulinDoses, insulinType: selectedType, site: injectionSiteNumber, time: date, to: injection)
-                        self.presentationMode.wrappedValue.dismiss()
+                        if injection.wrappedSite > lastSiteNumber {
+                            showingExceptionAlert = true
+                        }
+                        else {
+                            //                        PersistenceController.shared.update(doses: insulinDoses, insulinType: selectedType, site: injectionSiteNumber, time: date, to: injection)
+                            self.presentationMode.wrappedValue.dismiss()
+                        }
                     } label: {
                         Text("완료")
+                    }
+                    .alert("주사부위표의 범위를 벗어난 값입니다.", isPresented: $showingExceptionAlert) {
+                        Button("확인", role: .cancel) {}
                     }
                 }
             }
@@ -73,6 +84,7 @@ struct EditInjectionView: View {
 
 struct EditInjectionView_Previews: PreviewProvider {
     static var previews: some View {
-        EditInjectionView()
+        let injection = PersistenceController.shared.onePositionInjection
+        EditInjectionView(injection: injection)
     }
 }

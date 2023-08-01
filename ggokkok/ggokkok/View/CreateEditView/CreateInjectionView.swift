@@ -10,14 +10,17 @@ import SwiftUI
 struct CreateInjectionView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var showingExceptionAlert = false
-    @State var lastNumber: String
 
     @State private var date = Date()
-    @State var injectionSiteNumber: Int32 = 0
+    @State var injectionSiteNumber = 0
     @State private var insulinDoses = 5 // noel's writing
     @State private var hasDosesValueChanged = false // noel's writing
-    @State private var selectedType = Int(InsulinType.rapidActing.rawValue)
+    @State private var selectedType = InsulinType.rapidActing
     @State private var hasTypeValueChanged = false
+
+    private var lastSiteNumber: Int {
+        OnboardingViewModel.shared.lastSiteNumber
+    }
 
     var body: some View {
         NavigationView {
@@ -50,11 +53,11 @@ struct CreateInjectionView: View {
                     Button {
                         // TODO: - 생성 addInjection 기능 추가
                         // TODO: - 마지막 번호보다 클 경우 alert
-                        if injectionSiteNumber > Int(lastNumber) {
+                        if injectionSiteNumber > lastSiteNumber {
                             showingExceptionAlert = true
                         }
                         else {
-                            //                        PersistenceController.shared.addInjection(doses: insulinDoses, insulinType: selectedType, site: injectionSiteNumber, time: date)
+                            PersistenceController.shared.addInjection(doses: insulinDoses, insulinType: selectedType, site: injectionSiteNumber, time: date)
                             self.presentationMode.wrappedValue.dismiss()
                         }
                     } label: {
