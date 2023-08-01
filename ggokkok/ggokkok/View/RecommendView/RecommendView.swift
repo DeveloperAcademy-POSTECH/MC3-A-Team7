@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RecommendView: View {
     @StateObject var recommendModel = RecommendViewModel()
-    
+
     var body: some View {
         VStack {
             RecommendViewTopPartNavigationIcons()

@@ -11,14 +11,13 @@ struct CreateInjectionView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var date = Date()
 
-    @State var injectionSiteNumber: Int32 = 0
+    @State var injectionSiteNumber: Int = 0
     @State private var insulinDoses = 1 // noel's writing
     @State private var hasDosesValueChanged = false // noel's writing
-    @State private var selectedType = Int(InsulinType.rapidActing.rawValue)
+    @State private var selectedType = InsulinType.rapidActing
     @State private var hasTypeValueChanged = false
 
     var body: some View {
-        var insulinTypeVariant: InsulinType = InsulinType(rawValue: Int16(selectedType)) ?? InsulinType.rapidActing
         NavigationView {
             List {
                 Section(content: {
@@ -50,7 +49,7 @@ struct CreateInjectionView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         PersistenceController.shared.addInjection(
-                            doses: insulinDoses, insulinType: insulinTypeVariant, site: 10, time: Date())
+                            doses: insulinDoses, insulinType: selectedType, site: 10, time: Date())
                         self.presentationMode.wrappedValue.dismiss()
                     } label: {
                         Text("완료")
@@ -66,4 +65,3 @@ struct CreateInjectionView_Previews: PreviewProvider {
         CreateInjectionView()
     }
 }
-

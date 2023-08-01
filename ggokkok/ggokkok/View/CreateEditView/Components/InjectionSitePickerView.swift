@@ -17,7 +17,7 @@ import SwiftUI
 //}
 
 struct InjectionSitePickerView: View {
-    @Binding var injectionSiteNumber: Int32
+    @Binding var injectionSiteNumber: Int
     let siteNumber: Int
 
     var body: some View {

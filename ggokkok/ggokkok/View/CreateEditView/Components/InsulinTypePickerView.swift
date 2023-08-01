@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct InsulinTypePickerView: View {
-    @Binding var selectedType: Int
+    @Binding var selectedType: InsulinType
     @Binding var hasTypeValueChanged: Bool
     var types = InsulinType.allCases.map { $0.description }
 
@@ -26,7 +26,7 @@ struct InsulinTypePickerView: View {
             }
             .pickerStyle(.segmented)
             .onChange(of: selectedType) { newValue in
-                if newValue != InsulinType.rapidActing.rawValue {
+                if newValue != InsulinType.rapidActing {
                     hasTypeValueChanged = true
                 }
             }

@@ -11,14 +11,13 @@ struct EditInjectionView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var date = Date()
 
-    @State var injectionSiteNumber:Int32 = 18
+    @State var injectionSiteNumber = 18
     @State private var insulinDoses = 1 // noel's writing.
     @State private var hasDosesValueChanged = false // noel's writing.
-    @State private var selectedType = Int(InsulinType.rapidActing.rawValue)
+    @State private var selectedType = InsulinType.rapidActing
     @State private var hasTypeValueChanged = false
 
     var body: some View {
-        var insulinTypeVariant: InsulinType = InsulinType(rawValue: Int16(selectedType)) ?? InsulinType.rapidActing
         NavigationView {
             List {
                 Section(content: {
