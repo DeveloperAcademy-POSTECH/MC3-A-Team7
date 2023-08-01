@@ -12,25 +12,52 @@ struct ListView: View {
     @State private var showModal: Bool = false
     @Binding var selectedDate: Date
 
-    var aList = [History(site: 1, insulinType: 2, doses: 3), History(site: 2, insulinType: 3, doses: 4)]
+    struct ListItem: Hashable {
+        let someObject: TimeType
+        let valueObjects: [History]
+    }
+
+    var myList: [ListItem] {
+        let bList = aList.filter {
+            $0.timestamp.day == selectedDate.day
+        }
+        let aDictionary = Dictionary(grouping: bList) { TimeType(time: $0.timestamp) }
+
+        var list = [ListItem]()
+        for key in TimeType.allCases {
+            list.append(ListItem(someObject: key, valueObjects: aDictionary[key]!))
+        }
+        return list
+
+
+    }
+
+    let aList = [
+        History(site: 1, insulinType: .rapidActing, doses: 3, timestamp: Date.from(hour: 1)),
+        History(site: 2, insulinType: .longActing, doses: 4, timestamp: Date.from(hour: 5)),
+        History(site: 2, insulinType: .mixedActing, doses: 4, timestamp: Date.from(hour: 10)),
+        History(site: 2, insulinType: .longActing, doses: 4, timestamp: Date.from(hour: 15)),
+        History(site: 2, insulinType: .longActing, doses: 4, timestamp: Date.from(hour: 20)),
+        History(site: 2, insulinType: .longActing, doses: 4, timestamp: Date.from(hour: 22))
+    ]
 
     var body: some View {
 
-        let bList = aList.filter { $0.timestamp.day == selectedDate.day }
-
         List {
-            Section(header: Text("기상직후")) {
-                ForEach(bList, id: \.self) { list in
-                    Button {
-                        showModal = true
-                    } label: {
-                        
+            ForEach(myList, id: \.self) { listItem in
+                Section(header: Text(listItem.someObject.description)) {
+                    ForEach(listItem.valueObjects, id: \.self) { history in
+                        Button {
+                            showModal = true
+                        } label: {
+                            HistoryListRowView(history: history)
+                        }
+                    }
+                    .sheet(isPresented: $showModal) {
+                        Text("Hello world")
                     }
                 }
-                .sheet(isPresented: $showModal) {
-                    Text("Hello world")
-                }
-            }.listStyle(InsetGroupedListStyle())
+            }
         }
     }
 }
@@ -41,10 +68,4 @@ struct ListView_Previews: PreviewProvider {
     }
 }
 
-struct History: Hashable {
-    var id = UUID()
-    var site: Int
-    var insulinType: Int
-    var doses: Int
-    var timestamp: Date = Date()
-}
+

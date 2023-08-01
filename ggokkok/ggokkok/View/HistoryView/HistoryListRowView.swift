@@ -7,14 +7,40 @@
 
 import SwiftUI
 
-struct HistoryListRow: View {
+struct HistoryListRowView: View {
+    let history: History
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            Circle()
+                .frame(width: 34, height: 38)
+                .foregroundColor(.gray300)
+                .overlay {
+                    Text("\(history.site)")
+                        .foregroundColor(.white)
+                        .font(.system(size: 17, weight: .semibold))
+                }
+            Text(history.insulinType.description)
+                .foregroundColor(history.insulinType.color)
+                .font(.system(size: 17, weight: .semibold))
+            Text("\(history.doses)단위")
+                .foregroundColor(.black)
+                .font(.system(size: 17, weight: .semibold))
+        }
     }
 }
 
 struct HistoryListRow_Previews: PreviewProvider {
     static var previews: some View {
-        HistoryListRow()
+        let history = History(site: 1, insulinType: .longActing, doses: 5)
+        HistoryListRowView(history: history)
     }
+}
+
+struct History: Hashable {
+    var id = UUID()
+    var site: Int
+    var insulinType: InsulinType
+    var doses: Int
+    var timestamp: Date = Date()
 }

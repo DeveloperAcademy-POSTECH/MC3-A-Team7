@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum TimeType {
+enum TimeType: CaseIterable {
     case wakeUp
     case morning
     case lunch
@@ -22,6 +22,21 @@ enum TimeType {
         case 17...21: self = .dinner
         case 0...2, 22...23: self = .goToBed
         default: return nil
+        }
+    }
+    
+    var description: String {
+        switch self {
+        case .wakeUp:
+            return "기상 직후"
+        case .morning:
+            return "아침"
+        case .lunch:
+            return "점심"
+        case .dinner:
+            return "저녁"
+        case .goToBed:
+            return "취침 전"
         }
     }
 }
