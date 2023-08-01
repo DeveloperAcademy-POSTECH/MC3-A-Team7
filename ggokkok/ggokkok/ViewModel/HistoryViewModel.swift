@@ -7,30 +7,19 @@
 
 import SwiftUI
 
-class HistoryViewModel: ObservableObject {
-    @Published var word = "Hi"
-    @Published var date = Date()
-    func getStringDayOfWeek(date: Date) -> String {
-        let nowDate = date
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "Ko")
-        dateFormatter.dateFormat = "EEEEEE"
-        let dayOfWeek = dateFormatter.string(from: nowDate)
-        return dayOfWeek }
-    func getStringDate(date: Date) -> String {
-        let nowDate = date
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "Ko")
-        dateFormatter.dateFormat = "dd"
-        let dayOfDate = dateFormatter.string(from: nowDate)
-        return dayOfDate }
+final class HistoryViewModel: ObservableObject {
+    @Published var selectedDate = Date().start
+    @Published var selectedInjection: Injection?
+    @Published var showPickerSheet = false
+    @Published var showInjectionEditModal = false
 
-    func getStringDayOfMonth(date: Date) -> String {
-        let nowDate = date
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "Ko")
-        dateFormatter.dateFormat = "yyyy월M월"
-        let dateOfMonth = dateFormatter.string(from: nowDate)
+    var dateScrollRange: [Date] {
+        print(Date.datesRange(from: selectedDate.startDateOfMonth, to: selectedDate.endDateOfMonth))
+        return Date.datesRange(from: selectedDate.startDateOfMonth, to: selectedDate.endDateOfMonth)
+    }
 
-        return dateOfMonth }
+    var rangeDates: (first: Date, last: Date) {
+        let dates = dateScrollRange
+        return (first: dates.first ?? Date().startDateOfMonth, last: dates.last ?? Date().endDateOfMonth)
+    }
 }
