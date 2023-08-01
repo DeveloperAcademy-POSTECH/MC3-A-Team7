@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HistoryListRowView: View {
-    let history: History
+    let injection: Injection
 
     var body: some View {
         HStack {
@@ -16,31 +16,23 @@ struct HistoryListRowView: View {
                 .frame(width: 34, height: 38)
                 .foregroundColor(.gray300)
                 .overlay {
-                    Text("\(history.site)")
+                    Text("\(injection.wrappedSite)")
                         .foregroundColor(.white)
-                        .font(.system(size: 17, weight: .semibold))
+                        .font(.headline).fontWeight(.semibold)
                 }
-            Text(history.insulinType.description)
-                .foregroundColor(history.insulinType.color)
-                .font(.system(size: 17, weight: .semibold))
-            Text("\(history.doses)단위")
+            Text(injection.wrappedInsulinType.description)
+                .foregroundColor(injection.wrappedInsulinType.color)
+                .font(.headline).fontWeight(.semibold)
+            Text("\(injection.wrappedDoses)단위")
                 .foregroundColor(.black)
-                .font(.system(size: 17, weight: .semibold))
+                .font(.headline).fontWeight(.semibold)
         }
     }
 }
 
 struct HistoryListRow_Previews: PreviewProvider {
     static var previews: some View {
-        let history = History(site: 1, insulinType: .longActing, doses: 5)
-        HistoryListRowView(history: history)
+        let injection = PersistenceController.shared.onePositionInjection
+        HistoryListRowView(injection: injection)
     }
-}
-
-struct History: Hashable {
-    var id = UUID()
-    var site: Int
-    var insulinType: InsulinType
-    var doses: Int
-    var timestamp: Date = Date()
 }
