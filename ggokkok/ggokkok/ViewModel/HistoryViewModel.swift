@@ -14,12 +14,6 @@ final class HistoryViewModel: ObservableObject {
     @Published var showInjectionEditModal = false
 
     var dateScrollRange: [Date] {
-        print(Date.datesRange(from: selectedDate.startDateOfMonth, to: selectedDate.endDateOfMonth))
-        return Date.datesRange(from: selectedDate.startDateOfMonth, to: selectedDate.endDateOfMonth)
-    }
-
-    var rangeDates: (first: Date, last: Date) {
-        let dates = dateScrollRange
-        return (first: dates.first ?? Date().startDateOfMonth, last: dates.last ?? Date().endDateOfMonth)
+        Date.datesRange(from: selectedDate.startDateOfMonth, to: selectedDate.endDateOfMonth)
     }
 }
