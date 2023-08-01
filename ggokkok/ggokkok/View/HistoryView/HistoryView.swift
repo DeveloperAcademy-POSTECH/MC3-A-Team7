@@ -8,28 +8,19 @@
 import SwiftUI
 
 struct HistoryView: View {
-    @State private var showCreateModal = false
-    @State private var showUpdateModal = false
+    @StateObject private var viewModel = HistoryViewModel()
 
     var body: some View {
-        HStack {
-            Button {
-                self.showCreateModal = true
-            } label: {
-                Image(systemName: "plus")
-            }
-            .sheet(isPresented: self.$showCreateModal) {
-                CreateInjectionView()
-            }
-
-            Button {
-                self.showUpdateModal = true
-            } label: {
-                Text("수정")
-            }
-            .sheet(isPresented: self.$showUpdateModal) {
-                EditInjectionView()
-            }
+        VStack {
+            HistoryListTitleView(viewModel: viewModel)
+            DateScroll(viewModel: viewModel)
+            HistoryListView(viewModel: viewModel)
+        }
+        .padding()
+        .background(Color.blue100)
+        .sheet(isPresented: $viewModel.showPickerSheet) {
+            HistoryDatePickerView(viewModel: viewModel)
+                .presentationDetents([.height(UIScreen.main.bounds.height/3)])
         }
     }
 }
@@ -39,4 +30,3 @@ struct HistoryView_Previews: PreviewProvider {
         HistoryView()
     }
 }
-
