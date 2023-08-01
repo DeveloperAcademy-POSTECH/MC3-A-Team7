@@ -17,7 +17,8 @@ struct OnboardingView: View {
     init(isFirstLaunching: Binding<Bool>, viewModel: OnboardingViewModel) {
         self._isFirstLaunching = isFirstLaunching
         self.viewModel = viewModel
-        _lastSite = State(initialValue: viewModel.lastSiteNumber.description)
+
+        _lastSite = State(initialValue: viewModel.lastSiteNumber == 0 ? "" : viewModel.lastSiteNumber.description)
     }
 
     var body: some View {
