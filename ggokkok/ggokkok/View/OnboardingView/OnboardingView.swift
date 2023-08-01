@@ -12,7 +12,7 @@ struct OnboardingView: View {
     @Binding var isFirstLaunching: Bool
     @ObservedObject var viewModel: OnboardingViewModel
     @FocusState private var isFocused: Bool
-    @State var lastSite: String = ""
+    @State var lastSite = ""
 
     init(isFirstLaunching: Binding<Bool>, viewModel: OnboardingViewModel) {
         self._isFirstLaunching = isFirstLaunching
@@ -24,43 +24,14 @@ struct OnboardingView: View {
         VStack {
             GeometryReader { geometry in
                 VStack {
-                    VStack {
-                        Spacer()
-                        Text("가지고 있는 주사부위표의")
-                        HStack(spacing: 0) {
-                            Text("마지막 번호")
-                                .foregroundColor(.blue300)
-                            Text("를 입력해 주세요")
-                        }
-                    }
-                    .frame(height: geometry.size.height * 0.30)
+                    header(height: geometry.size.height * 0.30)
                     Spacer()
-                    TextField("마지막 번호", text: $lastSite)
-                        .font(.system(size: 48))
-                        .foregroundColor(.black100)
-                        .multilineTextAlignment(.center)
-                        .keyboardType(.decimalPad)
-                        .focused($isFocused)
+                    textField
                 }
                 .frame(height: geometry.size.height * 0.60)
             }
             Spacer()
-            Button {
-                viewModel.setLastSiteNumber(Int(lastSite) ?? 31)
-                isFocused = false
-                if isFirstLaunching {
-                    isFirstLaunching = false
-                }
-            } label: {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 20)
-                        .frame(height: 54)
-                    Text(isFirstLaunching ? "시작하기" : "저장하기")
-                        .foregroundColor(.white)
-                }
-                .padding(.vertical)
-            }
-            .disabled(lastSite == "0")
+            button
         }
         .font(.title2)
         .fontWeight(.semibold)
@@ -70,13 +41,54 @@ struct OnboardingView: View {
             isFocused = false
         }
     }
+
+    func header(height: CGFloat?) -> some View {
+        return VStack {
+            Spacer()
+            Text("가지고 있는 주사부위표의")
+            HStack(spacing: 0) {
+                Text("마지막 번호")
+                    .foregroundColor(.blue300)
+                Text("를 입력해 주세요")
+            }
+        }.frame(height: height)
+    }
+
+    var textField: some View {
+        TextField("마지막 번호", text: $lastSite)
+            .font(.system(size: 48))
+            .foregroundColor(.black100)
+            .multilineTextAlignment(.center)
+            .keyboardType(.decimalPad)
+            .focused($isFocused)
+    }
+
+    var button: some View {
+        Button {
+            viewModel.setLastSiteNumber(Int(lastSite) ?? 31)
+            isFocused = false
+            if isFirstLaunching {
+                isFirstLaunching = false
+            }
+        } label: {
+            ZStack {
+                RoundedRectangle(cornerRadius: 20)
+                    .frame(height: 54)
+                Text(isFirstLaunching ? "시작하기" : "저장하기")
+                    .foregroundColor(.white)
+            }
+            .padding(.vertical)
+        }
+        .disabled(lastSite == "0")
+    }
 }
 
-//struct OnboardingView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        OnboardingView(isFirstLaunching: .constant(true), lastNumber: "")
-//    }
-//}
+
+struct OnboardingView_Previews: PreviewProvider {
+    static var previews: some View {
+        OnboardingView(isFirstLaunching: .constant(true), viewModel: OnboardingViewModel())
+    }
+}
 
 
 

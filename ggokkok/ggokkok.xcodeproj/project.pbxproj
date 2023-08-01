@@ -14,7 +14,6 @@
 		36EE4AFB2A749730000CCCB7 /* DeleteButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EE4AFA2A749730000CCCB7 /* DeleteButtonView.swift */; };
 		5119EE422A763C4700DE60AD /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5119EE412A763C4700DE60AD /* UserDefaultsKey.swift */; };
 		5119EE452A77D72D00DE60AD /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5119EE442A77D72D00DE60AD /* OnboardingViewModel.swift */; };
-		5119EE472A77E33200DE60AD /* OnboardingStartButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5119EE462A77E33200DE60AD /* OnboardingStartButtonView.swift */; };
 		511F85D92A7630F10061B700 /* ExclusionSiteCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511F85D82A7630F10061B700 /* ExclusionSiteCircle.swift */; };
 		51ACD62F2A762D2E005D8F2B /* RecommendationExclusionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ACD62E2A762D2E005D8F2B /* RecommendationExclusionView.swift */; };
 		51ACD6312A762D3E005D8F2B /* RecommendationExclusionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ACD6302A762D3E005D8F2B /* RecommendationExclusionViewModel.swift */; };
@@ -73,7 +72,6 @@
 		36EE4AFA2A749730000CCCB7 /* DeleteButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DeleteButtonView.swift; path = ../../../../ggokkok/View/CreateEditView/Components/DeleteButtonView.swift; sourceTree = "<group>"; };
 		5119EE412A763C4700DE60AD /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDefaultsKey.swift; path = ggokkok/Common/UserDefaultsKey.swift; sourceTree = SOURCE_ROOT; };
 		5119EE442A77D72D00DE60AD /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
-		5119EE462A77E33200DE60AD /* OnboardingStartButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OnboardingStartButtonView.swift; path = ggokkok/View/OnboardingView/OnboardingStartButtonView.swift; sourceTree = SOURCE_ROOT; };
 		511F85D82A7630F10061B700 /* ExclusionSiteCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExclusionSiteCircle.swift; path = GgokKok/View/SettingView/RecommendationExclusion/ExclusionSiteCircle.swift; sourceTree = SOURCE_ROOT; };
 		51ACD62E2A762D2E005D8F2B /* RecommendationExclusionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendationExclusionView.swift; sourceTree = "<group>"; };
 		51ACD6302A762D3E005D8F2B /* RecommendationExclusionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendationExclusionViewModel.swift; sourceTree = "<group>"; };
@@ -364,7 +362,6 @@
 			isa = PBXGroup;
 			children = (
 				B27CAE622A73B6F80010D0FE /* OnboardingView.swift */,
-				5119EE462A77E33200DE60AD /* OnboardingStartButtonView.swift */,
 			);
 			path = OnboardingView;
 			sourceTree = "<group>";
@@ -539,7 +536,6 @@
 				A3A05B4A2A7507E500E68FE5 /* RecommendViewTopPartNavigationIcons.swift in Sources */,
 				B27CAE4F2A739B570010D0FE /* InjectionModel.swift in Sources */,
 				A3A05B482A7507E500E68FE5 /* RecommendViewDisplayBoxView.swift in Sources */,
-				5119EE472A77E33200DE60AD /* OnboardingStartButtonView.swift in Sources */,
 				B268F9A12A7392000083A87A /* Persistence.swift in Sources */,
 				511F85D92A7630F10061B700 /* ExclusionSiteCircle.swift in Sources */,
 				B27CAE602A73B5B50010D0FE /* Color+.swift in Sources */,
