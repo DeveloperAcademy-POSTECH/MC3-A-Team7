@@ -11,7 +11,7 @@ struct RecommendViewBottomPartTextBox: View {
     @ObservedObject var recommendModel: RecommendViewModel
 
     var body: some View {
-        var siteNumberToString = String(recommendModel.recommendSiteNumber)
+        let siteNumberToString = String(recommendModel.recommendSiteNumber)
         HStack(alignment: .center, spacing: 5) {
             Spacer()
             Text("\(siteNumberToString)번 부위의 마지막 투여일은 \(Text("\(18)일 전").font(.system(size: 15, weight: .bold)))입니다.")
@@ -30,6 +30,7 @@ struct RecommendViewBottomPartTextBox: View {
         .padding()
         .background(Color.blue200)
         .cornerRadius(12)
+
     }
 
     func getDateCalculator(of injection: Injection) -> Int? {

@@ -22,6 +22,7 @@ struct RecommendViewSheetView: View {
     @State var attempToDismiss = UUID() // for UIKit
 
     var body: some View {
+        var recommendSiteNumber = recommendModel.recommendSiteNumber
         let insulinTypeVariant: InsulinType = InsulinType(rawValue: Int16(selectedType)) ?? InsulinType.rapidActing
         NavigationView {
             List {
@@ -30,22 +31,19 @@ struct RecommendViewSheetView: View {
             }.padding(.top, -30)
 
             .navigationBarItems(
+
                 leading: Button("취소", action: {
                     if hasDosesValueChanged || hasTypeValueChanged { showAlert.toggle()
                     } else { dismiss() }
                 }).padding(.leading, 10),
+
                 trailing: Button("저장", action: {
                     PersistenceController.shared.addInjection(
                         doses: insulinDoses, insulinType: insulinTypeVariant,
                         site: recommendModel.recommendSiteNumber, time: Date())
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                        if recommendModel.getRecommendSiteArray().contains(recommendModel.recommendSiteNumber + 1) {
-                            recommendModel.recommendSiteNumber += 1
-                        } else {
-                            recommendModel.recommendSiteNumber = recommendModel.getRecommendSiteNumber()
-                        }
-                    }
+                    recommendSiteNumber = recommendModel.getRecommendSiteArray().sorted(by: <)[0]
                     dismiss()
+
                 }).padding(.trailing, 10)
             )
             .navigationBarTitle("기록하기", displayMode: .inline)
@@ -68,7 +66,6 @@ struct RecommendViewSheetView: View {
         return ActionSheet(title: title, buttons: [destructiveButton, cancelButton])
     }
 }
-
 
 // UIKit Codes, Via Internet.
 struct SetSheetDelegate: UIViewRepresentable {
