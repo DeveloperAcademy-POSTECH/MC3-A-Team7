@@ -12,6 +12,7 @@ struct RecommendViewBottomPartTextBox: View {
 
     var body: some View {
         let siteNumberToString = String(recommendModel.recommendSiteNumber)
+        let filteredInjections = PersistenceController.shared.injections.filter { $0.site == recommendModel.recommendSiteNumber }
         HStack(alignment: .center, spacing: 5) {
             Spacer()
             Text("\(siteNumberToString)번 부위의 마지막 투여일은 \(Text("\(18)일 전").font(.system(size: 15, weight: .bold)))입니다.")

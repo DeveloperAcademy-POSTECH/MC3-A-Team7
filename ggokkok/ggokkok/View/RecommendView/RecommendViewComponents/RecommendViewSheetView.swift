@@ -48,8 +48,7 @@ struct RecommendViewSheetView: View {
             )
             .navigationBarTitle("기록하기", displayMode: .inline)
         }
-        .presentationDetents([.height(UIScreen.main.bounds.height/3)])
-        .presentationDragIndicator(.hidden)
+        .presentationDetents([.height(UIScreen.main.bounds.height/3)]).presentationDragIndicator(.hidden)
         .actionSheet(isPresented: $showAlert, content: getActionSheet)
         .interactiveDismissDisabled(hasDosesValueChanged || hasTypeValueChanged, attempToDismiss: $attempToDismiss)
         .onChange(of: attempToDismiss) { _ in
