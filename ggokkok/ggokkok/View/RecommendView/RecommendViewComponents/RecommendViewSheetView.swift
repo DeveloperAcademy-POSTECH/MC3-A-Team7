@@ -22,7 +22,7 @@ struct RecommendViewSheetView: View {
     @State var attempToDismiss = UUID() // for UIKit
 
     var body: some View {
-        var recommendSiteNumber = recommendModel.recommendSiteNumber
+//        var recommendSiteNumber = recommendModel.recommendSiteNumber
         let insulinTypeVariant: InsulinType = InsulinType(rawValue: Int16(selectedType)) ?? InsulinType.rapidActing
         NavigationView {
             List {
@@ -41,7 +41,7 @@ struct RecommendViewSheetView: View {
                     PersistenceController.shared.addInjection(
                         doses: insulinDoses, insulinType: insulinTypeVariant,
                         site: recommendModel.recommendSiteNumber, time: Date())
-                    recommendSiteNumber = recommendModel.getRecommendSiteArray().sorted(by: <)[0]
+                    recommendModel.recommendSiteNumber = recommendModel.getRecommendSiteArray().sorted(by: <)[0]
                     dismiss()
 
                 }).padding(.trailing, 10)
@@ -52,7 +52,6 @@ struct RecommendViewSheetView: View {
         .presentationDragIndicator(.hidden)
         .actionSheet(isPresented: $showAlert, content: getActionSheet)
         .interactiveDismissDisabled(hasDosesValueChanged || hasTypeValueChanged, attempToDismiss: $attempToDismiss)
-
         .onChange(of: attempToDismiss) { _ in
             showAlert.toggle()
         }
