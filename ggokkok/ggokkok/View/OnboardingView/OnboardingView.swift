@@ -17,7 +17,6 @@ struct OnboardingView: View {
     init(isFirstLaunching: Binding<Bool>, viewModel: OnboardingViewModel) {
         self._isFirstLaunching = isFirstLaunching
         self.viewModel = viewModel
-
         _lastSite = State(initialValue: viewModel.lastSiteNumber == 0 ? "" : viewModel.lastSiteNumber.description)
     }
 
@@ -40,6 +39,9 @@ struct OnboardingView: View {
         .contentShape(Rectangle())
         .onTapGesture {
             isFocused = false
+        }
+        .onAppear {
+            lastSite = viewModel.lastSiteNumber.description
         }
     }
 
@@ -66,7 +68,7 @@ struct OnboardingView: View {
 
     var button: some View {
         Button {
-            viewModel.setLastSiteNumber(Int(lastSite) ?? 31)
+            viewModel.lastSiteNumber = Int(lastSite) ?? 31
             isFocused = false
             if isFirstLaunching {
                 isFirstLaunching = false

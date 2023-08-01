@@ -9,13 +9,13 @@ import Foundation
 
 class OnboardingViewModel: ObservableObject {
     static let udLastSiteNumber = UserDefaultsKey.lastSiteNumber.rawValue
-    @Published var lastSiteNumber: Int
-
-    init() {
-        lastSiteNumber = UserDefaults.standard.integer(forKey: OnboardingViewModel.udLastSiteNumber)
-    }
-
-    func setLastSiteNumber(_ number: Int) {
-        UserDefaults.standard.set(number, forKey: Self.udLastSiteNumber)
+    var lastSiteNumber: Int {
+        get {
+            print("hehe", UserDefaults.standard.integer(forKey: OnboardingViewModel.udLastSiteNumber))
+            return UserDefaults.standard.integer(forKey: OnboardingViewModel.udLastSiteNumber)
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: Self.udLastSiteNumber)
+        }
     }
 }
