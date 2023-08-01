@@ -22,33 +22,8 @@ struct RecommendationExclusionView: View {
                     Spacer()
                 }
                 HStack(spacing: 20) {
-                    Picker("부위 선택", selection: $selectedSite) {
-                        ForEach(viewModel.sites, id: \.self) {
-                            Text($0.description)
-                        }
-                    }
-                    .background(Color.blue100)
-                    .pickerStyle(.wheel)
-                    .cornerRadius(15)
-                    .shadow(color: .black100.opacity(0.25), radius: 5, x: 0, y: 4)
-                    Button(action: {
-                        if viewModel.newExclusionSites.contains(selectedSite) {
-                            isDuplicated = true
-                        } else {
-                            viewModel.addSiteToExclusion(selectedSite)
-                        }
-                    }, label: {
-                        ZStack {
-                            Circle()
-                                .shadow(color: .black100.opacity(0.25), radius: 16, y: 4)
-                                .frame(width: 100)
-                            Text("추가")
-                                .foregroundColor(.white)
-                        }
-                    })
-                    .alert("이미 추천에서 제외된 번호입니다", isPresented: $isDuplicated) {
-                        Button("확인", role: .cancel) { }
-                    }
+                    picker
+                    addButton
                 }
                 .padding(.horizontal, 30)
             }
@@ -61,33 +36,12 @@ struct RecommendationExclusionView: View {
                         .font(.title2)
                         .bold()
                     Spacer()
-                    Button(isEditingMode ? "저장" : "편집") {
-                        if isEditingMode {
-                            viewModel.saveUpdatedSites()
-                        }
-                        isEditingMode.toggle()
-                    }
+                    editButton
                 }
                 if viewModel.exclusionSites.isEmpty || viewModel.newExclusionSites.isEmpty {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 12)
-                            .foregroundColor(.blue100)
-                            .frame(height: 110)
-                        Text("추천 제외 부위가 없습니다")
-                            .foregroundColor(.gray)
-                    }
+                    emptyView
                 } else {
-                    LazyVGrid(columns: columns) {
-                        ForEach(isEditingMode ? viewModel.newExclusionSites : viewModel.exclusionSites,
-                                id: \.self) { site in
-                            ExclusionSiteCircle(viewModel: viewModel,
-                                                    site: site,
-                                                    isEditingMode: isEditingMode)
-                        }
-                    }
-                    .padding()
-                    .background(Color.blue100)
-                    .cornerRadius(10)
+                    exclusionListView
                 }
             }
         }
@@ -102,12 +56,82 @@ struct RecommendationExclusionView: View {
         .navigationTitle("추천 제외 부위")
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-                Button {
-                    dismiss()
-                } label: {
-                    Label("뒤로가기", systemImage: "chevron.backward")
-                }
+                goBackButton
             }
+        }
+    }
+
+    var picker: some View {
+        Picker("부위 선택", selection: $selectedSite) {
+            ForEach(viewModel.sites, id: \.self) {
+                Text($0.description)
+            }
+        }
+        .background(Color.blue100)
+        .pickerStyle(.wheel)
+        .cornerRadius(15)
+        .shadow(color: .black100.opacity(0.25), radius: 5, x: 0, y: 4)
+    }
+
+    var addButton: some View {
+        Button(action: {
+            if viewModel.newExclusionSites.contains(selectedSite) {
+                isDuplicated = true
+            } else {
+                viewModel.addSiteToExclusion(selectedSite)
+            }
+        }, label: {
+            ZStack {
+                Circle()
+                    .shadow(color: .black100.opacity(0.25), radius: 16, y: 4)
+                    .frame(width: 100)
+                Text("추가")
+                    .foregroundColor(.white)
+            }
+        })
+        .alert("이미 추천에서 제외된 번호입니다", isPresented: $isDuplicated) {
+            Button("확인", role: .cancel) { }
+        }
+    }
+
+    var editButton: some View {
+        Button(isEditingMode ? "저장" : "편집") {
+            if isEditingMode {
+                viewModel.saveUpdatedSites()
+            }
+            isEditingMode.toggle()
+        }
+    }
+
+    var emptyView: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 12)
+                .foregroundColor(.blue100)
+                .frame(height: 110)
+            Text("추천 제외 부위가 없습니다")
+                .foregroundColor(.gray)
+        }
+    }
+
+    var exclusionListView: some View {
+        LazyVGrid(columns: columns) {
+            ForEach(isEditingMode ? viewModel.newExclusionSites : viewModel.exclusionSites,
+                    id: \.self) { site in
+                ExclusionSiteCircle(viewModel: viewModel,
+                                    site: site,
+                                    isEditingMode: isEditingMode)
+            }
+        }
+        .padding()
+        .background(Color.blue100)
+        .cornerRadius(10)
+    }
+
+    var goBackButton: some View {
+        Button {
+            dismiss()
+        } label: {
+            Label("뒤로가기", systemImage: "chevron.backward")
         }
     }
 }

@@ -32,13 +32,6 @@ extension PersistenceController {
         context.save(with: .deleteInjection)
     }
 
-    private func setted(_ injection: Injection, doses: Int, insulinType: InsulinType, site: Int, time: Date) {
-        injection.wrappedDoses = doses
-        injection.wrappedInsulinType = insulinType
-        injection.wrappedSite = site
-        injection.timestamp = time
-    }
-
     func update(doses: Int, insulinType: InsulinType, site: Int, time: Date, to injection: Injection) {
         if let context = injection.managedObjectContext {
             context.performAndWait {
@@ -46,6 +39,13 @@ extension PersistenceController {
                 context.save(with: .updateInjection)
             }
         }
+    }
+
+    private func setted(_ injection: Injection, doses: Int, insulinType: InsulinType, site: Int, time: Date) {
+        injection.wrappedDoses = doses
+        injection.wrappedInsulinType = insulinType
+        injection.wrappedSite = site
+        injection.timestamp = time
     }
 
     // TODO: - 아래의 computed property는 추후 필요 없으면 삭제하자
