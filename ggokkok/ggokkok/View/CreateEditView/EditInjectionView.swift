@@ -11,16 +11,33 @@ struct EditInjectionView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var date = Date()
 
+    @State private var insulinDoses = 1 // noel's writing.
+    @State private var hasDosesValueChanged = false // noel's writing.
+    @State private var selectedType = "초속형"
+    @State private var hasTypeValueChanged = false
+
     var body: some View {
         NavigationView {
-            VStack {
-                List {
+            List {
+                Section(content: {
                     InjectionSitePickerView()
+                }).listStyle(InsetGroupedListStyle())
+
+                Section(content: {
                     DateTimePickerView(date: $date)
-                    InsulinTypePickerView()
-                    InsulinUnitPickerView()
-                }
-                DeleteButtonView()
+                }).listStyle(InsetGroupedListStyle())
+
+                Section(content: {
+                    InsulinTypePickerView(selectedType: $selectedType, hasTypeValueChanged: $hasTypeValueChanged)
+                }).listStyle(InsetGroupedListStyle())
+
+                Section(content: {
+                    InsulinDosesPickerView(insulinDoses: $insulinDoses, hasDosesValueChanged: $hasDosesValueChanged)
+                }).listStyle(InsetGroupedListStyle())
+
+                Section(content: {
+                    DeleteButtonView()
+                }).listStyle(InsetGroupedListStyle())
             }
             .navigationTitle("수정하기")
             .navigationBarTitleDisplayMode(.inline)

@@ -12,27 +12,36 @@ struct RecommendViewSheetView: View {
     @Environment(\.dismiss) private var dismiss
     @Binding var isPresented: Bool
     @State var showAlert: Bool = false
-    @State var isToggled: Bool = false
-    @State var attempToDismiss = UUID()
+
+    @State var insulinDoses = 1
+    @State var selectedType = "초속형"
+    @State var hasDosesValueChanged = false
+    @State var hasTypeValueChanged = false
+
+    @State var attempToDismiss = UUID() // for UIKit
 
     var body: some View {
         NavigationView {
-            VStack {
-                Toggle("Accept", isOn: $isToggled)
+            List {
+                InsulinTypePickerView(selectedType: $selectedType, hasTypeValueChanged: $hasTypeValueChanged)
+                InsulinDosesPickerView(insulinDoses: $insulinDoses, hasDosesValueChanged: $hasDosesValueChanged)
             }
+            .padding(.top, -30)
             .navigationBarItems(
                 leading: Button("취소", action: {
-                    if isToggled { showAlert.toggle() }
-                    else { dismiss() }
-                }),
-                trailing: Button("저장", action: {})
+                    if hasDosesValueChanged || hasTypeValueChanged { showAlert.toggle()
+                    } else { dismiss() }
+                }).padding(.leading, 10),
+                trailing: Button("저장", action: {
+
+                }).padding(.trailing, 10)
             )
             .navigationBarTitle("기록하기", displayMode: .inline)
         }
         .presentationDetents([.height(UIScreen.main.bounds.height/3)])
         .presentationDragIndicator(.hidden)
-        .interactiveDismissDisabled(isToggled, attempToDismiss: $attempToDismiss)
         .actionSheet(isPresented: $showAlert, content: getActionSheet)
+        .interactiveDismissDisabled(hasDosesValueChanged || hasTypeValueChanged, attempToDismiss: $attempToDismiss)
         .onChange(of: attempToDismiss) { _ in
             showAlert.toggle()
         }
@@ -48,12 +57,11 @@ struct RecommendViewSheetView: View {
 }
 
 
-
-
+// UIKit Codes, Via Internet.
 struct SetSheetDelegate: UIViewRepresentable {
-    let delegate:SheetDelegate
+    let delegate: SheetDelegate
 
-    init(isDisable:Bool,attempToDismiss:Binding<UUID>){
+    init(isDisable: Bool, attempToDismiss: Binding<UUID>) {
         self.delegate = SheetDelegate(isDisable, attempToDismiss: attempToDismiss)
     }
 
@@ -88,7 +96,7 @@ final class SheetDelegate: NSObject, UIAdaptivePresentationControllerDelegate {
 }
 
 public extension View {
-    func interactiveDismissDisabled(_ isDisable: Bool, attempToDismiss:Binding<UUID>) -> some View{
+    func interactiveDismissDisabled(_ isDisable: Bool, attempToDismiss: Binding<UUID>) -> some View {
         background(SetSheetDelegate(isDisable: isDisable, attempToDismiss: attempToDismiss))
     }
 }

@@ -13,7 +13,7 @@ struct MainView: View {
     @StateObject var onboardingViewModel = OnboardingViewModel()
 
     var body: some View {
-        TabView{
+        TabView {
             ForEach(Views.allCases, id: \.self) { view in
                 view.view
                     .tabItem {
@@ -64,4 +64,3 @@ struct ContentView_Previews: PreviewProvider {
         MainView()
     }
 }
-
