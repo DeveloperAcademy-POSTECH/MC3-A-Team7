@@ -10,6 +10,7 @@ import CoreData
 
 struct MainView: View {
     @AppStorage("_isFirstLaunching") var isFirstLaunching: Bool = true
+    @StateObject var onboardingViewModel = OnboardingViewModel()
 
     var body: some View {
         TabView {
@@ -39,7 +40,9 @@ extension MainView {
         var view: some View {
             switch self {
             case .onboardingView:
-                return AnyView(OnboardingView(isFirstLaunching: MainView().$isFirstLaunching))
+                let mainView = MainView()
+                return AnyView(OnboardingView(isFirstLaunching: mainView.$isFirstLaunching,
+                                              viewModel: mainView.onboardingViewModel))
             case .recommendView:
                 return AnyView(RecommendView())
             case .historyView:
