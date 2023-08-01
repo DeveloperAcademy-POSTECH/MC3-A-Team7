@@ -67,6 +67,7 @@ struct EditInjectionView: View {
                             showingExceptionAlert = true
                         }
                         else {
+                            // 수정모달에서 시간을 수정하고 완료 버튼을 누르면 모달이 dismiss 되지 않고 있습니다.
                             //                        PersistenceController.shared.update(doses: insulinDoses, insulinType: selectedType, site: injectionSiteNumber, time: date, to: injection)
                             self.presentationMode.wrappedValue.dismiss()
                         }
