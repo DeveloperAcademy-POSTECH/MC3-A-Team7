@@ -8,36 +8,42 @@
 import SwiftUI
 
 struct DayOfMonth: View {
-    @StateObject private var viewModel = HistoryViewModel()
-    @Binding var selectedDate: Date
-    @State var currentDate: Date
+    @ObservedObject var viewModel: HistoryViewModel
+    var currentDate: Date
+    var isSelected: Bool { viewModel.selectedDate == currentDate }
+
     var body: some View {
-        let stringDayOfWeek = viewModel.getStringDayOfWeek(date: currentDate)
-        let stringDate = viewModel.getStringDate(date: currentDate)
         Button {
-            selectedDate = currentDate
+            viewModel.selectedDate = currentDate
         } label: {
-            let isSelected = selectedDate == currentDate
             Rectangle()
                 .frame(width: 50, height: 70)
-                .foregroundColor(isSelected ? Color.blue : Color.red)
+                .foregroundColor(isSelected ? Color.blue : Color.white)
                 .cornerRadius(10)
                 .overlay(
                     VStack {
-                        Text(stringDayOfWeek)
-                            .font(.system(size: 22, weight: .bold))
-                            .foregroundColor(isSelected ? Color.white : Color.black)
-                        Text(stringDate)
-                            .font(.system(size: 22, weight: .bold))
-                            .foregroundColor(isSelected ? Color.white : Color.black)
+                        stringDayOfWeekText
+                        stringDateText
                     }
+                    .foregroundColor(isSelected ? Color.white : Color.black)
                 )
         }
+    }
+
+    var stringDayOfWeekText: some View {
+        Text(currentDate.dayOfWeekString)
+            .font(.body.bold())
+    }
+
+    var stringDateText: some View {
+        Text(currentDate.dayString)
+            .font(.title2.bold())
     }
 }
 
 struct DayOfMonth_Previews: PreviewProvider {
     static var previews: some View {
-        DayOfMonth(selectedDate: .constant(Date()), currentDate: Date())
+        let viewModel = HistoryViewModel()
+        DayOfMonth(viewModel: viewModel, currentDate: Date())
     }
 }
