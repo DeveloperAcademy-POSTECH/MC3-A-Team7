@@ -11,16 +11,26 @@ struct EditInjectionView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var date = Date()
 
+    @State var injectionSiteNumber: Int32 = 18
     @State private var insulinDoses = 1 // noel's writing.
     @State private var hasDosesValueChanged = false // noel's writing.
-    @State private var selectedType = "초속형"
+    @State private var selectedType = Int(InsulinType.rapidActing.rawValue)
     @State private var hasTypeValueChanged = false
+//    var injection: Injection
+//
+//    init(injection: Injection) {
+//        self.injection = injection
+//        _injectionSiteNumber = State(initialValue: injection.wrappedSite)
+//        _insulinDoses = State(initialValue: injection.wrappedDoses)
+//        _selectedType = State(initialValue: injection.wrappedInsulinType)
+//    }
+
 
     var body: some View {
         NavigationView {
             List {
                 Section(content: {
-                    InjectionSitePickerView()
+                    InjectionSitePickerView(injectionSiteNumber: $injectionSiteNumber)
                 }).listStyle(InsetGroupedListStyle())
 
                 Section(content: {
@@ -29,9 +39,6 @@ struct EditInjectionView: View {
 
                 Section(content: {
                     InsulinTypePickerView(selectedType: $selectedType, hasTypeValueChanged: $hasTypeValueChanged)
-                }).listStyle(InsetGroupedListStyle())
-
-                Section(content: {
                     InsulinDosesPickerView(insulinDoses: $insulinDoses, hasDosesValueChanged: $hasDosesValueChanged)
                 }).listStyle(InsetGroupedListStyle())
 
@@ -51,6 +58,9 @@ struct EditInjectionView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
+                        // TODO: - 수정 기능 추가
+                        // TODO: - 마지막 번호보다 클 경우 alert
+//                        PersistenceController.shared.update(doses: insulinDoses, insulinType: selectedType, site: injectionSiteNumber, time: date, to: injection)
                         self.presentationMode.wrappedValue.dismiss()
                     } label: {
                         Text("완료")

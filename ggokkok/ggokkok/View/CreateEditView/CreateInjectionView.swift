@@ -9,29 +9,30 @@ import SwiftUI
 
 struct CreateInjectionView: View {
     @Environment(\.presentationMode) var presentationMode
-    @State private var date = Date()
+    @State private var showingExceptionAlert = false
+    @State var lastNumber: String
 
-    @State private var insulinDoses = 1 // noel's writing
+    @State private var date = Date()
+    @State var injectionSiteNumber: Int32 = 0
+    @State private var insulinDoses = 5 // noel's writing
     @State private var hasDosesValueChanged = false // noel's writing
-    @State private var selectedType = "초속형"
+    @State private var selectedType = Int(InsulinType.rapidActing.rawValue)
     @State private var hasTypeValueChanged = false
 
     var body: some View {
         NavigationView {
             List {
                 Section(content: {
-                    InjectionSitePickerView()
+                    // TODO: - 주사 부위 초깃값을 0에서 빈 값으로 바꾸기
+                    InjectionSitePickerView(injectionSiteNumber: $injectionSiteNumber)
                 }).listStyle(InsetGroupedListStyle())
-
+                
                 Section(content: {
                     DateTimePickerView(date: $date)
                 }).listStyle(InsetGroupedListStyle())
-
+                
                 Section(content: {
                     InsulinTypePickerView(selectedType: $selectedType, hasTypeValueChanged: $hasTypeValueChanged)
-                }).listStyle(InsetGroupedListStyle())
-
-                Section(content: {
                     InsulinDosesPickerView(insulinDoses: $insulinDoses, hasDosesValueChanged: $hasDosesValueChanged)
                 }).listStyle(InsetGroupedListStyle())
             }
@@ -47,14 +48,27 @@ struct CreateInjectionView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        self.presentationMode.wrappedValue.dismiss()
+                        // TODO: - 생성 addInjection 기능 추가
+                        // TODO: - 마지막 번호보다 클 경우 alert
+                        if injectionSiteNumber > Int(lastNumber) {
+                            showingExceptionAlert = true
+                        }
+                        else {
+                            //                        PersistenceController.shared.addInjection(doses: insulinDoses, insulinType: selectedType, site: injectionSiteNumber, time: date)
+                            self.presentationMode.wrappedValue.dismiss()
+                        }
                     } label: {
                         Text("완료")
+                    }
+                    .disabled(injectionSiteNumber == 0)
+                    .alert("주사부위표의 범위를 벗어난 값입니다.", isPresented: $showingExceptionAlert) {
+                        Button("확인", role: .cancel) {}
                     }
                 }
             }
         }
     }
+
 }
 
 struct CreateInjectionView_Previews: PreviewProvider {

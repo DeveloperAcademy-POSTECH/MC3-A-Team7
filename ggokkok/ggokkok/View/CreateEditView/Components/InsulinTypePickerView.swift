@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct InsulinTypePickerView: View {
-    @Binding var selectedType: String
+    @Binding var selectedType: Int
     @Binding var hasTypeValueChanged: Bool
-    var types = ["지속형", "초속형", "혼합형"]
+    var types = InsulinType.allCases.map { $0.description }
 
     var body: some View {
         VStack {
@@ -26,18 +26,18 @@ struct InsulinTypePickerView: View {
             }
             .pickerStyle(.segmented)
             .onChange(of: selectedType) { newValue in
-                if newValue != "초속형" {
+                if newValue != InsulinType.rapidActing.rawValue {
                     hasTypeValueChanged = true
                 }
             }
         }
     }
 }
-
-struct InsulinTypeUnitPickerView_Previews: PreviewProvider {
-    static var previews: some View {
-        @State var selectedType = "초속형"
-        @State var hasValueChanged = false // noel's writing
-        InsulinTypePickerView(selectedType: $selectedType, hasTypeValueChanged: $hasValueChanged)
-    }
-}
+//
+//struct InsulinTypeUnitPickerView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        @State var selectedType = "초속형"
+//        @State var hasValueChanged = false // noel's writing
+//        InsulinTypePickerView(selectedType: $selectedType, hasTypeValueChanged: $hasValueChanged)
+//    }
+//}
