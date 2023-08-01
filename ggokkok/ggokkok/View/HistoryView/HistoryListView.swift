@@ -6,54 +6,68 @@
 //
 
 import SwiftUI
+import CoreData
 
-struct ListView: View {
-    @State private var selectedInjection = 0
-    @State private var showModal: Bool = false
-    @Binding var selectedDate: Date
+struct HistoryListView: View {
+    @ObservedObject var viewModel: HistoryViewModel
+    private var injections: [Injection]
 
-    struct ListItem: Hashable {
-        let someObject: TimeType
-        let valueObjects: [History]
+    init(viewModel: HistoryViewModel) {
+        self.viewModel = viewModel
+        let injectionRequest: NSFetchRequest<Injection> = Injection.fetchRequest()
+        injectionRequest.sortDescriptors = [.byTimestamp(ascending: false)]
+        injectionRequest.predicate = .timestampIn(
+            between: viewModel.selectedDate.start,
+            and: viewModel.selectedDate.end
+        )
+        injections = (try? PersistenceController.shared.container.viewContext.fetch(injectionRequest)) ?? []
     }
 
-    var myList: [ListItem] {
-        let bList = aList.filter {
-            $0.timestamp.day == selectedDate.day
-        }
-        let aDictionary = Dictionary(grouping: bList) { TimeType(time: $0.timestamp) }
-
-        var list = [ListItem]()
-        for key in TimeType.allCases {
-            list.append(ListItem(someObject: key, valueObjects: aDictionary[key]!))
-        }
-        return list
-
-
+    private struct ListItem: Hashable {
+        let timeType: TimeType
+        let injections: [Injection]
     }
 
-    let aList = [
-        History(site: 1, insulinType: .rapidActing, doses: 3, timestamp: Date.from(hour: 1)),
-        History(site: 2, insulinType: .longActing, doses: 4, timestamp: Date.from(hour: 5)),
-        History(site: 2, insulinType: .mixedActing, doses: 4, timestamp: Date.from(hour: 10)),
-        History(site: 2, insulinType: .longActing, doses: 4, timestamp: Date.from(hour: 15)),
-        History(site: 2, insulinType: .longActing, doses: 4, timestamp: Date.from(hour: 20)),
-        History(site: 2, insulinType: .longActing, doses: 4, timestamp: Date.from(hour: 22))
-    ]
+    private var listItems: [ListItem] {
+        let injectionDictionary = Dictionary(grouping: injections) { TimeType(time: $0.timestamp) }
+
+        return injectionDictionary.reduce(into: []) { (partialResult: inout [ListItem], dictionary: (key: TimeType?, value: [Injection])) in
+            if let key = dictionary.key {
+                partialResult.append(ListItem(timeType: key, injections: dictionary.value))
+            }
+        }
+    }
 
     var body: some View {
+        if listItems.isEmpty {
+            emptyView
+        } else {
+            historyList
+        }
+    }
 
+    var emptyView: some View {
+        VStack {
+            Spacer()
+            Text("이 날의 기록이 없습니다")
+                .foregroundColor(.gray500)
+            Spacer()
+        }
+
+    }
+
+    var historyList: some View {
         List {
-            ForEach(myList, id: \.self) { listItem in
-                Section(header: Text(listItem.someObject.description)) {
-                    ForEach(listItem.valueObjects, id: \.self) { history in
+            ForEach(listItems, id: \.self) { listItem in
+                Section(header: Text(listItem.timeType.description)) {
+                    ForEach(listItem.injections, id: \.self) { injection in
                         Button {
-                            showModal = true
+                            viewModel.showInjectionEditModal = true
                         } label: {
-                            HistoryListRowView(history: history)
+                            HistoryListRowView(injection: injection)
                         }
                     }
-                    .sheet(isPresented: $showModal) {
+                    .sheet(isPresented: $viewModel.showInjectionEditModal) {
                         Text("Hello world")
                     }
                 }
@@ -64,8 +78,7 @@ struct ListView: View {
 
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
-        ListView(selectedDate: .constant(Date()))
+        let viewModel = HistoryViewModel()
+        HistoryListView(viewModel: viewModel)
     }
 }
-
-
