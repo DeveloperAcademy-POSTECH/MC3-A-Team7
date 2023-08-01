@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Date: Hashable {
+extension Date {
     var year: Int {
         return Calendar.current.component(.year, from: self)
     }
@@ -36,8 +36,24 @@ extension Date: Hashable {
         "\(year)년 \(String(format: "%02d", month))월 \(String(format: "%02d", day))일"
     }
 
+    var yearMonthString: String {
+        "\(year)년 \(String(format: "%02d", month))월"
+    }
+
     var numberOnlyString: String {
         "\(year)\(String(format: "%02d", month))\(String(format: "%02d", day))"
+    }
+
+    var dayString: String {
+        "\(String(format: "%02d", day))"
+    }
+
+    var dayOfWeekString: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "Ko")
+        dateFormatter.dateFormat = "EEEEEE"
+        let dayOfWeek = dateFormatter.string(from: self)
+        return dayOfWeek
     }
 
     var start: Date {
@@ -52,17 +68,17 @@ extension Date: Hashable {
     }
 
     var startDateOfMonth: Date {
-        let components = Calendar.current.dateComponents([.year, .month], from: Date())
+        let components = Calendar.current.dateComponents([.year, .month], from: self)
         let startOfMonth = Calendar.current.date(from: components)!
-        return startOfMonth
+        return startOfMonth.start
     }
 
     var endDateOfMonth: Date {
-        var components = Calendar.current.dateComponents([.year, .month], from: Date())
+        var components = Calendar.current.dateComponents([.year, .month], from: self)
         components.month = (components.month ?? 0) + 1
         components.hour = (components.hour ?? 0) - 1
         let endOfMonth = Calendar.current.date(from: components)!
-        return endOfMonth
+        return endOfMonth.start
     }
 }
 
@@ -76,14 +92,14 @@ extension Date {
     static func + (lhs: Date, rhs: Int) -> Date {
         return Calendar.current.date(byAdding: .day, value: rhs, to: lhs)!
     }
-    
+
     static func datesRange(from: Date, to: Date) -> [Date] {
         if from > to { return [Date]() }
 
         var tempDate = from
         var array = [tempDate]
 
-        while tempDate < to-1 {
+        while tempDate < to - 1 {
             tempDate = Calendar.current.date(byAdding: .day, value: 1, to: tempDate)!
             array.append(tempDate)
         }
@@ -91,7 +107,12 @@ extension Date {
         return array
     }
 
-    static func from(year: Int = Date().year, month: Int = Date().month, day: Int = Date().day, hour: Int = Date().hour) -> Date {
+    static func from(
+        year: Int = Date().year,
+        month: Int = Date().month,
+        day: Int = Date().day,
+        hour: Int = Date().hour
+    ) -> Date {
         let calendar = Calendar(identifier: .gregorian)
 
         var dateComponents = DateComponents()
