@@ -18,12 +18,6 @@ final class RecommendViewModel: ObservableObject {
     var exclusionViewModel: RecommendationExclusionViewModel
     static var lastSite: Int { OnboardingViewModel.shared.lastSiteNumber }
 
-    enum Status {
-        case noneRecord
-        case under7days
-        case over7days
-    }
-
     init() {
         exclusionViewModel = RecommendationExclusionViewModel(lastSiteNumber: RecommendViewModel.lastSite)
         injectionsBySiteArray = Self.buildInjectionsBySiteArray()
@@ -45,39 +39,26 @@ final class RecommendViewModel: ObservableObject {
     }
 
     var recommend: (site: Int, injection: Injection?) {
-        let notExclusionSites = (injectionsBySiteArray.filter { injection in
-            if let injection {
-                return !exclusionSites.contains(injection.wrappedSite)
-            }
-            return false
-        })
+        let notExclusionSite = injectionsBySiteArray.enumerated()
+            .compactMap({ (site, injection) -> (site: Int, injection: Injection?)? in
+                if site == 0 || exclusionSites.contains(site) {
+                    return nil
+                }
+                return (site, injection)
+            })
 
-        // nil이 있다면, index가 가장 낮은 친구를 반환한다.
-        if injectionsBySiteArray[1...].contains(nil) {
-            for (index, injection) in injectionsBySiteArray.enumerated() where index != 0 && injection == nil {
-                return (index, nil)
-            }
-        } else {
-            // nil이 아닐 시,injectionsArray중 가장 오래된 포지션을 리턴
-            let injection = (injectionsBySiteArray.compactMap { $0 }
-                .sorted { $0.timestamp < $1.timestamp }
-                .first!)
+        if notExclusionSite.allSatisfy({ $0.injection != nil }) { // 모두 nil이 아닐 때
+            let notExclusionInjections = notExclusionSite.compactMap { $0.injection }
+            let injection = notExclusionInjections.sorted { $0.timestamp < $1.timestamp }.first!
             return (injection.wrappedSite, injection)
+        } else { // 하나라도 nil이 있을 때,
+            let sortedSites = notExclusionSite.sorted { $0.site < $1.site }
+            for (site, injection) in sortedSites where injection == nil {
+                return (site, nil)
+            }
         }
         return (0, nil)
     }
-
-//    func getCircleStatus(of injection: Injection?) -> Status {
-//        let oneWeekAgo = Date() - 7
-//        switch (injection) {
-//        case (.some(let injection)) where injection.timestamp == nil:
-//                return .noneRecord
-//        case (.some(let injection)) where injection.timestamp >= oneWeekAgo:
-//            return .under7days
-//        default:
-//            return .over7days
-//        }
-//    }
 
     func insertInjection(_ injection: RecommendViewSheetView.InjectionModel) {
         PersistenceController.shared.addInjection(
