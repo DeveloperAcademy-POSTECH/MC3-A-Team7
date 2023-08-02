@@ -24,8 +24,8 @@ struct RecommendViewSheetView: View {
     var body: some View {
         NavigationView {
             List {
-                InsulinTypePickerView(selectedType: $injectionModel.insulinType, hasTypeValueChanged: $hasTypeValueChanged)
-                InsulinDosesPickerView(insulinDoses: $injectionModel.doses, hasDosesValueChanged: $hasDosesValueChanged)
+                InsulinTypePickerView(selectedType: $recommendModel.injectionModel.insulinType, hasTypeValueChanged: $hasTypeValueChanged)
+                InsulinDosesPickerView(insulinDoses: $recommendModel.injectionModel.doses, hasDosesValueChanged: $hasDosesValueChanged)
             }.padding(.top, -30)
 
             .navigationBarItems(
@@ -36,7 +36,7 @@ struct RecommendViewSheetView: View {
                 }).padding(.leading, 10),
 
                 trailing: Button("저장", action: {
-                    recommendModel.insertInjection(injectionModel)
+                    recommendModel.insertInjection()
                     dismiss()
 
                 }).padding(.trailing, 10)

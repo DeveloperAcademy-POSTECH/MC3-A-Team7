@@ -11,6 +11,7 @@ final class RecommendViewModel: ObservableObject {
     @Published var showSheet: Bool = false
     @Published var exclusionArray: [Int] = []
     @Published var injectionsBySiteArray: [Injection?] = []
+    @Published var injectionModel: InjectionModel = InjectionModel(site: 0, insulinType: .rapidActing, doses: 5)
 
     var exclusion: Exclusion
     var exclusionSites: [Int]
@@ -55,6 +56,7 @@ final class RecommendViewModel: ObservableObject {
         // nil이 있다면, index가 가장 낮은 친구를 반환한다.
         if injectionsBySiteArray[1...].contains(nil) {
             for (index, injection) in injectionsBySiteArray.enumerated() where index != 0 && injection == nil {
+                injectionModel.site = index
                 return (index, nil)
             }
         } else {
@@ -62,6 +64,7 @@ final class RecommendViewModel: ObservableObject {
             let injection = (injectionsBySiteArray.compactMap { $0 }
                 .sorted { $0.timestamp < $1.timestamp }
                 .first!)
+            injectionModel.site = injection.wrappedSite
             return (injection.wrappedSite, injection)
         }
         return (0, nil)
@@ -79,7 +82,17 @@ final class RecommendViewModel: ObservableObject {
 //        }
 //    }
 
-    func insertInjection(_ injection: RecommendViewSheetView.InjectionModel) {
+    func insertInjection() {
+        PersistenceController.shared.addInjection(
+            doses: injectionModel.doses,
+            insulinType: injectionModel.insulinType,
+            site: injectionModel.site,
+            time: injectionModel.timestamp
+        )
+        injectionsBySiteArray = Self.buildInjectionsBySiteArray()
+    }
+
+    func insertInjection(_ injection: InjectionModel) {
         PersistenceController.shared.addInjection(
             doses: injection.doses, insulinType: injection.insulinType, site: injection.site, time: Date())
         injectionsBySiteArray = Self.buildInjectionsBySiteArray()

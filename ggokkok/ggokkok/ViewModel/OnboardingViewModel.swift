@@ -11,7 +11,6 @@ class OnboardingViewModel: ObservableObject {
     static let shared = OnboardingViewModel()
 
     static let udLastSiteNumber = UserDefaultsKey.lastSiteNumber.rawValue
-    static let shared = OnboardingViewModel()
 
     var lastSiteNumber: Int {
         get {
