@@ -9,32 +9,29 @@ import SwiftUI
 
 class RecommendationExclusionViewModel: ObservableObject {
     var sites: [Int]
-    static let udExclusionSites = UserDefaultsKey.exclusionSites.rawValue
-    var exclusionSites: [Int] {
-        get {
-            UserDefaults.standard.array(forKey: RecommendationExclusionViewModel.udExclusionSites) as? [Int] ?? []
-        }
-        set {
-            UserDefaults.standard.set(newValue, forKey: Self.udExclusionSites)
-        }
-    }
+    var exclusion: Exclusion
+    var exclusionSites: [Int]
     @Published var newExclusionSites: [Int] = []
 
     init(lastSiteNumber: Int) {
         sites = Array(1...lastSiteNumber)
-        newExclusionSites = exclusionSites
+        exclusion = Exclusion()
+        exclusionSites = exclusion.exclusionSites
+        newExclusionSites = exclusion.exclusionSites
     }
 
     func addSiteToExclusion(_ selectedSite: Int ) {
         newExclusionSites = (newExclusionSites + [selectedSite]).sorted()
         exclusionSites = newExclusionSites
+        exclusion.exclusionSites = newExclusionSites
     }
     func removeSiteFromExclusion(_ site: Int) {
         newExclusionSites = newExclusionSites.filter { $0 != site }
     }
     func saveUpdatedSites() {
-        if exclusionSites != newExclusionSites {
+        if exclusion.exclusionSites != newExclusionSites {
             exclusionSites = newExclusionSites
+            exclusion.exclusionSites = newExclusionSites
         }
     }
 }

@@ -12,6 +12,9 @@ final class RecommendViewModel: ObservableObject {
     @Published var exclusionArray: [Int] = []
     @Published var injectionsBySiteArray: [Injection?] = []
 
+    var exclusion: Exclusion
+    var exclusionSites: [Int]
+
     var exclusionViewModel: RecommendationExclusionViewModel
     static var lastSite: Int { OnboardingViewModel.shared.lastSiteNumber }
 
@@ -24,6 +27,8 @@ final class RecommendViewModel: ObservableObject {
     init() {
         exclusionViewModel = RecommendationExclusionViewModel(lastSiteNumber: RecommendViewModel.lastSite)
         injectionsBySiteArray = Self.buildInjectionsBySiteArray()
+        exclusion = Exclusion()
+        exclusionSites = exclusion.exclusionSites
     }
 
     static func buildInjectionsBySiteArray() -> [Injection?] {
@@ -40,7 +45,6 @@ final class RecommendViewModel: ObservableObject {
     }
 
     var recommend: (site: Int, injection: Injection?) {
-        let exclusionSites = exclusionViewModel.exclusionSites
         let notExclusionSites = (injectionsBySiteArray.filter { injection in
             if let injection {
                 return !exclusionSites.contains(injection.wrappedSite)

@@ -13,7 +13,6 @@ class OnboardingViewModel: ObservableObject {
 
     var lastSiteNumber: Int {
         get {
-            print("hehe", UserDefaults.standard.integer(forKey: OnboardingViewModel.udLastSiteNumber))
             return UserDefaults.standard.integer(forKey: OnboardingViewModel.udLastSiteNumber)
         }
         set {
