@@ -63,20 +63,21 @@ final class RecommendViewModel: ObservableObject {
         return (0, nil)
     }
 
-    func getCircleStatus(of injection: Injection?) -> Status {
-        let oneWeekAgo = Date() - 7
-        switch (injection) {
-        case (.some(let injection)) where injection.timestamp == nil:
-                return .noneRecord
-        case (.some(let injection)) where injection.timestamp >= oneWeekAgo:
-            return .under7days
-        default:
-            return .over7days
-        }
-    }
+//    func getCircleStatus(of injection: Injection?) -> Status {
+//        let oneWeekAgo = Date() - 7
+//        switch (injection) {
+//        case (.some(let injection)) where injection.timestamp == nil:
+//                return .noneRecord
+//        case (.some(let injection)) where injection.timestamp >= oneWeekAgo:
+//            return .under7days
+//        default:
+//            return .over7days
+//        }
+//    }
 
     func insertInjection(_ injection: RecommendViewSheetView.InjectionModel) {
-        PersistenceController.shared.addInjection(doses: injection.doses, insulinType: injection.insulinType, site: injection.site, time: Date())
+        PersistenceController.shared.addInjection(
+            doses: injection.doses, insulinType: injection.insulinType, site: injection.site, time: Date())
         injectionsBySiteArray = Self.buildInjectionsBySiteArray()
     }
 }
