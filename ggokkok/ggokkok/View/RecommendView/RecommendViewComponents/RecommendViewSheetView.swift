@@ -14,20 +14,33 @@ struct RecommendViewSheetView: View {
     @Binding var isPresented: Bool
     @State var showAlert: Bool = false
 
-    @State var insulinDoses = 1
-    @State var selectedType = Int(InsulinType.rapidActing.rawValue)
+    struct InjectionModel {
+        var doses: Int = 1
+        var insulinType: InsulinType = .rapidActing
+        let timestamp: Date = Date()
+        let site: Int
+    }
+    @State var injectionModel: InjectionModel
+
+    init(recommendModel: RecommendViewModel, isPresented: Binding<Bool>) {
+        self.recommendModel = recommendModel
+        _isPresented = isPresented
+        _injectionModel = State(initialValue: InjectionModel(site: recommendModel.recommend.site))
+    }
+
+
+//    @State var insulinDoses = 1
+//    @State var selectedType = Int(InsulinType.rapidActing.rawValue)
     @State var hasDosesValueChanged = false
     @State var hasTypeValueChanged = false
 
     @State var attempToDismiss = UUID() // for UIKit
 
     var body: some View {
-//        var recommendSiteNumber = recommendModel.recommendSiteNumber
-        let insulinTypeVariant: InsulinType = InsulinType(rawValue: Int16(selectedType)) ?? InsulinType.rapidActing
         NavigationView {
             List {
-                InsulinTypePickerView(selectedType: $selectedType, hasTypeValueChanged: $hasTypeValueChanged)
-                InsulinDosesPickerView(insulinDoses: $insulinDoses, hasDosesValueChanged: $hasDosesValueChanged)
+                InsulinTypePickerView(selectedType: $injectionModel.insulinType, hasTypeValueChanged: $hasTypeValueChanged)
+                InsulinDosesPickerView(insulinDoses: $injectionModel.doses, hasDosesValueChanged: $hasDosesValueChanged)
             }.padding(.top, -30)
 
             .navigationBarItems(
@@ -38,10 +51,7 @@ struct RecommendViewSheetView: View {
                 }).padding(.leading, 10),
 
                 trailing: Button("저장", action: {
-                    PersistenceController.shared.addInjection(
-                        doses: insulinDoses, insulinType: insulinTypeVariant,
-                        site: recommendModel.recommendSiteNumber, time: Date())
-                    recommendModel.recommendSiteNumber = recommendModel.getRecommendSiteArray().sorted(by: <)[0]
+                    recommendModel.insertInjection(injectionModel)
                     dismiss()
 
                 }).padding(.trailing, 10)

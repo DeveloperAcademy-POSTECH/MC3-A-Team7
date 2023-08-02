@@ -23,7 +23,7 @@ struct RecommendViewDisplayBoxView: View {
                             .foregroundColor(Color.blue300)
                             .shadow(color: .black.opacity(0.2), radius: 4.5, x: 0, y: 4)
                             .overlay {
-                               Text(String(recommendModel.recommendSiteNumber))
+                                Text(String(recommendModel.recommend.site))
                                     .font(.system(size: 140, weight: .bold)).foregroundColor(.white)
                             }
                     }.padding()
