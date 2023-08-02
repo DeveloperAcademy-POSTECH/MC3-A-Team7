@@ -9,31 +9,31 @@ import SwiftUI
 
 struct CreateInjectionView: View {
     @Environment(\.presentationMode) var presentationMode
-    @State private var date = Date()
 
-    @State var injectionSiteNumber: Int = 0
-    @State private var insulinDoses = 1 // noel's writing
-    @State private var hasDosesValueChanged = false // noel's writing
-    @State private var selectedType = InsulinType.rapidActing
+    @StateObject private var viewModel: CreateEditViewModel = CreateEditViewModel(injectionModel: InjectionModel(site: 0, insulinType: .rapidActing, doses: 5))
+
+    @State private var showingExceptionAlert = false
+    @State private var hasDosesValueChanged = false
     @State private var hasTypeValueChanged = false
+
+    private var lastSiteNumber: Int {
+        OnboardingViewModel.shared.lastSiteNumber
+    }
 
     var body: some View {
         NavigationView {
             List {
                 Section(content: {
-                    InjectionSitePickerView(injectionSiteNumber: $injectionSiteNumber, siteNumber: 0)
+                    InjectionSitePickerView(siteString: $viewModel.injectionSitePickerString)
                 }).listStyle(InsetGroupedListStyle())
-
+                
                 Section(content: {
-                    DateTimePickerView(date: $date)
+                    DateTimePickerView(date: $viewModel.injectionModel.timestamp)
                 }).listStyle(InsetGroupedListStyle())
-
+                
                 Section(content: {
-                    InsulinTypePickerView(selectedType: $selectedType, hasTypeValueChanged: $hasTypeValueChanged)
-                }).listStyle(InsetGroupedListStyle())
-
-                Section(content: {
-                    InsulinDosesPickerView(insulinDoses: $insulinDoses, hasDosesValueChanged: $hasDosesValueChanged)
+                    InsulinTypePickerView(selectedType: $viewModel.injectionModel.insulinType, hasTypeValueChanged: $hasTypeValueChanged)
+                    InsulinDosesPickerView(insulinDoses: $viewModel.injectionModel.doses, hasDosesValueChanged: $hasDosesValueChanged)
                 }).listStyle(InsetGroupedListStyle())
             }
             .navigationTitle("생성하기")
@@ -48,16 +48,40 @@ struct CreateInjectionView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        PersistenceController.shared.addInjection(
-                            doses: insulinDoses, insulinType: selectedType, site: 10, time: Date())
-                        self.presentationMode.wrappedValue.dismiss()
+                        // TODO: - 생성하고 Refresh
+                        if viewModel.injectionModel.site > lastSiteNumber {
+                            showingExceptionAlert = true
+                        }
+                        else {
+                            addInjection()
+                            self.presentationMode.wrappedValue.dismiss()
+                        }
                     } label: {
                         Text("완료")
+                    }
+                    .disabled(isDoneDisabled)
+                    .alert("주사부위표의 범위를 벗어난 값입니다.", isPresented: $showingExceptionAlert) {
+                        Button("확인", role: .cancel) {}
                     }
                 }
             }
         }
     }
+
+    func addInjection() {
+        let injection = viewModel.injectionModel
+        PersistenceController.shared.addInjection(
+            doses: injection.doses,
+            insulinType: injection.insulinType,
+            site: injection.site,
+            time: injection.timestamp
+        )
+    }
+
+    var isDoneDisabled: Bool {
+        viewModel.injectionModel.site == 0
+    }
+
 }
 
 struct CreateInjectionView_Previews: PreviewProvider {

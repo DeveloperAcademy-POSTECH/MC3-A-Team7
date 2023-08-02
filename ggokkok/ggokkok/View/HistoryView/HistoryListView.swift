@@ -23,20 +23,6 @@ struct HistoryListView: View {
         injections = (try? PersistenceController.shared.container.viewContext.fetch(injectionRequest)) ?? []
     }
 
-    private struct ListItem: Hashable {
-        let timeType: TimeType
-        let injections: [Injection]
-    }
-
-    private var listItems: [ListItem] {
-        let injectionDictionary = Dictionary(grouping: injections) { TimeType(time: $0.timestamp) }
-
-        return injectionDictionary.reduce(into: []) { (partialResult: inout [ListItem], dictionary: (key: TimeType?, value: [Injection])) in
-            if let key = dictionary.key {
-                partialResult.append(ListItem(timeType: key, injections: dictionary.value))
-            }
-        }
-    }
 
     var body: some View {
         if listItems.isEmpty {
@@ -62,15 +48,33 @@ struct HistoryListView: View {
                 Section(header: Text(listItem.timeType.description)) {
                     ForEach(listItem.injections, id: \.self) { injection in
                         Button {
+                            viewModel.selectedInjection = injection
                             viewModel.showInjectionEditModal = true
                         } label: {
                             HistoryListRowView(injection: injection)
                         }
                     }
                     .sheet(isPresented: $viewModel.showInjectionEditModal) {
-                        Text("Hello world")
+                        EditInjectionView(injection: viewModel.selectedInjection!)
                     }
                 }
+            }
+        }
+    }
+}
+
+extension HistoryListView {
+    private struct ListItem: Hashable {
+        let timeType: TimeType
+        let injections: [Injection]
+    }
+
+    private var listItems: [ListItem] {
+        let injectionDictionary = Dictionary(grouping: injections) { TimeType(time: $0.timestamp) }
+
+        return injectionDictionary.reduce(into: []) { (partialResult: inout [ListItem], dictionary: (key: TimeType?, value: [Injection])) in
+            if let key = dictionary.key {
+                partialResult.append(ListItem(timeType: key, injections: dictionary.value))
             }
         }
     }

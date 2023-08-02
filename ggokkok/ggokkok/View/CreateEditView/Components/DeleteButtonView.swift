@@ -8,7 +8,18 @@
 import SwiftUI
 
 struct DeleteButtonView: View {
+    @Environment(\.presentationMode) var presentationMode
     @State private var showingAlert = false
+    let deleteAction: () -> Void
+    let injection: InjectionModel
+
+    var timeString: String {
+        injection.timestamp.fullString
+    }
+
+    var site: Int {
+        injection.site
+    }
 
     var body: some View {
         ZStack {
@@ -29,19 +40,19 @@ struct DeleteButtonView: View {
             .alert("이 기록을 삭제하시겠습니까?", isPresented: $showingAlert) {
                 Button("취소", role: .cancel) {}
                 Button {
-                    print("삭제")
+                    deleteAction()
                 } label: {
                     Text("확인")
                 }
             } message: {
-                Text("확인을 누르면 xxxx년 x월 x일의 n번 기록을 삭제합니다.")
+                Text("확인을 누르면 \(timeString)의 \(site)번 기록을 삭제합니다.")
             }
         }
     }
 }
 
-struct DeleteButtonView_Previews: PreviewProvider {
-    static var previews: some View {
-        DeleteButtonView()
-    }
-}
+//struct DeleteButtonView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        DeleteButtonView()
+//    }
+//}

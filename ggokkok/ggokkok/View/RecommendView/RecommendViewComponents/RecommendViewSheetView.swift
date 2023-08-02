@@ -14,23 +14,8 @@ struct RecommendViewSheetView: View {
     @Binding var isPresented: Bool
     @State var showAlert: Bool = false
 
-    struct InjectionModel {
-        var doses: Int = 1
-        var insulinType: InsulinType = .rapidActing
-        let timestamp: Date = Date()
-        let site: Int
-    }
-    @State var injectionModel: InjectionModel
-
-    init(recommendModel: RecommendViewModel, isPresented: Binding<Bool>) {
-        self.recommendModel = recommendModel
-        _isPresented = isPresented
-        _injectionModel = State(initialValue: InjectionModel(site: recommendModel.recommend.site))
-    }
-
-
-//    @State var insulinDoses = 1
-//    @State var selectedType = Int(InsulinType.rapidActing.rawValue)
+    @State var insulinDoses = 1
+    @State var selectedType = InsulinType.rapidActing
     @State var hasDosesValueChanged = false
     @State var hasTypeValueChanged = false
 
@@ -39,8 +24,8 @@ struct RecommendViewSheetView: View {
     var body: some View {
         NavigationView {
             List {
-                InsulinTypePickerView(selectedType: $injectionModel.insulinType, hasTypeValueChanged: $hasTypeValueChanged)
-                InsulinDosesPickerView(insulinDoses: $injectionModel.doses, hasDosesValueChanged: $hasDosesValueChanged)
+                InsulinTypePickerView(selectedType: $recommendModel.injectionModel.insulinType, hasTypeValueChanged: $hasTypeValueChanged)
+                InsulinDosesPickerView(insulinDoses: $recommendModel.injectionModel.doses, hasDosesValueChanged: $hasDosesValueChanged)
             }.padding(.top, -30)
 
             .navigationBarItems(
@@ -51,7 +36,7 @@ struct RecommendViewSheetView: View {
                 }).padding(.leading, 10),
 
                 trailing: Button("저장", action: {
-                    recommendModel.insertInjection(injectionModel)
+                    recommendModel.insertInjection()
                     dismiss()
 
                 }).padding(.trailing, 10)
