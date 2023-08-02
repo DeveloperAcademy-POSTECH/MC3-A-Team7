@@ -8,24 +8,20 @@
 import SwiftUI
 
 struct EditInjectionView: View {
+    @StateObject var viewModel: CreateEditViewModel
+
     @Environment(\.presentationMode) var presentationMode
-//    @State private var date: Date
     @State private var showingExceptionAlert = false
-
-//    @State var injectionSiteNumber: Int
-//    @State private var insulinDoses: Int
-    @State private var hasDosesValueChanged = false // noel's writing.
-//    @State private var selectedType: InsulinType
+    @State private var injectionModel: InjectionModel
+    @State private var hasDosesValueChanged = false
     @State private var hasTypeValueChanged = false
-    @State var injection: Injection
+    var injection: Injection
     private var lastSiteNumber: Int { OnboardingViewModel.shared.lastSiteNumber }
-//
-    init(injection: Injection) {
 
-        _injection = State(initialValue: injection)
-//        _injectionSiteNumber = State(initialValue: injection.wrappedSite)
-//        _insulinDoses = State(initialValue: injection.wrappedDoses)
-//        _selectedType = State(initialValue: injection.wrappedInsulinType)
+    init(injection: Injection) {
+        self.injection = injection
+        _injectionModel = State(initialValue: InjectionModel(injection: injection))
+        _viewModel = StateObject(wrappedValue: CreateEditViewModel(injection: injection))
     }
 
 
@@ -33,20 +29,20 @@ struct EditInjectionView: View {
         NavigationView {
             List {
                 Section(content: {
-                    InjectionSitePickerView(injectionSiteNumber: $injection.wrappedSite)
+                    InjectionSitePickerView(siteString: $viewModel.injectionSitePickerString)
                 }).listStyle(InsetGroupedListStyle())
 
                 Section(content: {
-                    DateTimePickerView(date: $injection.timestamp)
+                    DateTimePickerView(date: $viewModel.injectionModel.timestamp)
                 }).listStyle(InsetGroupedListStyle())
 
                 Section(content: {
-                    InsulinTypePickerView(selectedType: $injection.wrappedInsulinType, hasTypeValueChanged: $hasTypeValueChanged)
-                    InsulinDosesPickerView(insulinDoses: $injection.wrappedDoses, hasDosesValueChanged: $hasDosesValueChanged)
+                    InsulinTypePickerView(selectedType: $viewModel.injectionModel.insulinType, hasTypeValueChanged: $hasTypeValueChanged)
+                    InsulinDosesPickerView(insulinDoses: $viewModel.injectionModel.doses, hasDosesValueChanged: $hasDosesValueChanged)
                 }).listStyle(InsetGroupedListStyle())
 
                 Section(content: {
-                    DeleteButtonView()
+                    DeleteButtonView(deleteAction: deleteInjection, injection: viewModel.injectionModel)
                 }).listStyle(InsetGroupedListStyle())
             }
             .navigationTitle("수정하기")
@@ -54,22 +50,20 @@ struct EditInjectionView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
-                        self.presentationMode.wrappedValue.dismiss()
+                        dismiss()
                     } label: {
                         Text("취소")
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        // TODO: - 수정 기능 추가
-                        // TODO: - 마지막 번호보다 클 경우 alert
-                        if injection.wrappedSite > lastSiteNumber {
+                        // TODO: - 수정 후 Refresh
+                        if viewModel.injectionModel.site > lastSiteNumber {
                             showingExceptionAlert = true
                         }
                         else {
-                            // 수정모달에서 시간을 수정하고 완료 버튼을 누르면 모달이 dismiss 되지 않고 있습니다.
-                            //                        PersistenceController.shared.update(doses: insulinDoses, insulinType: selectedType, site: injectionSiteNumber, time: date, to: injection)
-                            self.presentationMode.wrappedValue.dismiss()
+                            update(injection, using: viewModel.injectionModel)
+                            dismiss()
                         }
                     } label: {
                         Text("완료")
@@ -80,6 +74,25 @@ struct EditInjectionView: View {
                 }
             }
         }
+    }
+
+    private func update(_ injection: Injection, using injectionModel: InjectionModel) {
+        PersistenceController.shared.update(
+            doses: injectionModel.doses,
+            insulinType: injectionModel.insulinType,
+            site: injectionModel.site,
+            time: injectionModel.timestamp,
+            to: injection
+        )
+    }
+
+    func deleteInjection() {
+        PersistenceController.shared.delete(injection: injection)
+        dismiss()
+    }
+
+    private func dismiss() {
+        self.presentationMode.wrappedValue.dismiss()
     }
 }
 

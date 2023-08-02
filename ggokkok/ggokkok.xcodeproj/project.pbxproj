@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		36A610342A7A373100BEA187 /* CreateEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A610332A7A373100BEA187 /* CreateEditViewModel.swift */; };
 		36EE4AF32A749664000CCCB7 /* InjectionSitePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EE4AF22A749664000CCCB7 /* InjectionSitePickerView.swift */; };
 		36EE4AF52A7496CC000CCCB7 /* DateTimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EE4AF42A7496CC000CCCB7 /* DateTimePickerView.swift */; };
 		36EE4AF72A7496F7000CCCB7 /* InsulinTypePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EE4AF62A7496F7000CCCB7 /* InsulinTypePickerView.swift */; };
@@ -81,6 +82,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		36A610332A7A373100BEA187 /* CreateEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEditViewModel.swift; sourceTree = "<group>"; };
 		36EE4AF22A749664000CCCB7 /* InjectionSitePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InjectionSitePickerView.swift; path = ../../../../ggokkok/View/CreateEditView/Components/InjectionSitePickerView.swift; sourceTree = "<group>"; };
 		36EE4AF42A7496CC000CCCB7 /* DateTimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateTimePickerView.swift; path = ../../../../ggokkok/View/CreateEditView/Components/DateTimePickerView.swift; sourceTree = "<group>"; };
 		36EE4AF62A7496F7000CCCB7 /* InsulinTypePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InsulinTypePickerView.swift; path = ../../../../ggokkok/View/CreateEditView/Components/InsulinTypePickerView.swift; sourceTree = "<group>"; };
@@ -279,7 +281,6 @@
 		B268F9C62A7392140083A87A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B27CAE4D2A739B4C0010D0FE /* Temp */,
 				B268F9CC2A7392BC0083A87A /* Data */,
 				B27CAE702A7509740010D0FE /* TimeType.swift */,
 				B2E5D6082A77B586001BE12D /* InjectionProperties.swift */,
@@ -308,6 +309,7 @@
 				51ACD6302A762D3E005D8F2B /* RecommendationExclusionViewModel.swift */,
 				EB89C6A22A779D6800F41CA3 /* HistoryViewModel.swift */,
 				5119EE442A77D72D00DE60AD /* OnboardingViewModel.swift */,
+				36A610332A7A373100BEA187 /* CreateEditViewModel.swift */,
 			);
 			name = ViewModel;
 			path = ../ggokkok/ViewModel;
@@ -337,6 +339,7 @@
 		B268F9CC2A7392BC0083A87A /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				B27CAE4E2A739B570010D0FE /* InjectionModel.swift */,
 				B268F9A22A7392000083A87A /* GgokKok.xcdatamodeld */,
 				B268F9A02A7392000083A87A /* Persistence.swift */,
 				B2E5D5FE2A7784BB001BE12D /* Persistence+Injection.swift */,
@@ -368,14 +371,6 @@
 				B259CEC82A78E47A00F9E5E3 /* HistoryDatePickerView.swift */,
 			);
 			path = HistoryView;
-			sourceTree = "<group>";
-		};
-		B27CAE4D2A739B4C0010D0FE /* Temp */ = {
-			isa = PBXGroup;
-			children = (
-				B27CAE4E2A739B570010D0FE /* InjectionModel.swift */,
-			);
-			path = Temp;
 			sourceTree = "<group>";
 		};
 		B27CAE502A739B8D0010D0FE /* CreateEditView */ = {
@@ -594,6 +589,7 @@
 				A3A05B4E2A75087D00E68FE5 /* RecommendViewModel.swift in Sources */,
 				B259CEC62A78DF9A00F9E5E3 /* HistoryListTitleView.swift in Sources */,
 				36EE4AF52A7496CC000CCCB7 /* DateTimePickerView.swift in Sources */,
+				36A610342A7A373100BEA187 /* CreateEditViewModel.swift in Sources */,
 				B268F9A42A7392000083A87A /* GgokKok.xcdatamodeld in Sources */,
 				B2E5D6032A778762001BE12D /* NSPredicate+.swift in Sources */,
 				B268F99A2A7391FF0083A87A /* MainView.swift in Sources */,
