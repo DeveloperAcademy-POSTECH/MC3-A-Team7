@@ -83,7 +83,7 @@ struct SettingView: View {
     func getDestination(from name: String) -> AnyView {
         switch name {
         case "주사부위표 마지막 번호":
-            return AnyView(OnboardingView(isFirstLaunching: .constant(false), viewModel: onboardingViewModel))
+            return AnyView(OnboardingView(isFirstLaunching: .constant(false)))
         case "추천 제외 부위":
             return AnyView(RecommendationExclusionView(viewModel: recommendationExclusionViewModel))
         default:

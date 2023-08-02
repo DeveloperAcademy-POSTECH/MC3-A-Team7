@@ -3,31 +3,23 @@
 //  GgokKok
 //
 //  Created by sei on 2023/07/28.
-//
-//
-//import SwiftUI
-//import CoreData
-//
-//struct MainView: View {
-//    @AppStorage("_isFirstLaunching") var isFirstLaunching: Bool = true
-//    @StateObject var onboardingViewModel = OnboardingViewModel()
-//
-//    var body: some View {
-//        TabView {
-//            ForEach(Views.allCases, id: \.self) { view in
-//                view.view
-//                    .tabItem {
-//                        Image("circle")
-//                        Text(view.rawValue.prefix(3))
-//                    }
-//            }
-//        }
-////        .fullScreenCover(isPresented: $isFirstLaunching) {
-////            OnboardingView(isFirstLaunching: $isFirstLaunching)
-////        }
-//    }
-//}
-//
+
+import SwiftUI
+import CoreData
+
+struct MainView: View {
+    @AppStorage("_isFirstLaunching") var isFirstLaunching: Bool = true
+
+    var body: some View {
+        if isFirstLaunching {
+            OnboardingView(isFirstLaunching: $isFirstLaunching)
+        } else {
+            HistoryView()
+//            RecommendView()
+        }
+    }
+}
+
 //extension MainView {
 //    private enum Views: String, CaseIterable {
 //        case onboardingView
@@ -58,7 +50,7 @@
 //    }
 //
 //}
-//
+
 //struct ContentView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        MainView()

@@ -10,14 +10,13 @@ import SwiftUI
 
 struct OnboardingView: View {
     @Binding var isFirstLaunching: Bool
-    @ObservedObject var viewModel: OnboardingViewModel
+    let userInfo = UserInfo.shared
     @FocusState private var isFocused: Bool
     @State var lastSite = ""
 
-    init(isFirstLaunching: Binding<Bool>, viewModel: OnboardingViewModel) {
+    init(isFirstLaunching: Binding<Bool>) {
         self._isFirstLaunching = isFirstLaunching
-        self.viewModel = viewModel
-        _lastSite = State(initialValue: viewModel.lastSiteNumber == 0 ? "" : viewModel.lastSiteNumber.description)
+        _lastSite = State(initialValue: userInfo.lastSiteNumber == 0 ? "" : userInfo.lastSiteNumber.description)
     }
 
     var body: some View {
@@ -41,7 +40,7 @@ struct OnboardingView: View {
             isFocused = false
         }
         .onAppear {
-            lastSite = viewModel.lastSiteNumber == 0 ? "" : viewModel.lastSiteNumber.description
+            lastSite = userInfo.lastSiteNumber == 0 ? "" : userInfo.lastSiteNumber.description
         }
     }
 
@@ -68,7 +67,7 @@ struct OnboardingView: View {
 
     var button: some View {
         Button {
-            viewModel.lastSiteNumber = Int(lastSite) ?? 31
+            userInfo.lastSiteNumber = Int(lastSite) ?? 31
             isFocused = false
             if isFirstLaunching {
                 isFirstLaunching = false
@@ -89,7 +88,7 @@ struct OnboardingView: View {
 
 struct OnboardingView_Previews: PreviewProvider {
     static var previews: some View {
-        OnboardingView(isFirstLaunching: .constant(true), viewModel: OnboardingViewModel())
+        OnboardingView(isFirstLaunching: .constant(true))
     }
 }
 
