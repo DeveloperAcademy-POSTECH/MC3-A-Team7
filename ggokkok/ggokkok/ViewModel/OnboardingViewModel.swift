@@ -11,9 +11,10 @@ class OnboardingViewModel: ObservableObject {
     static let shared = OnboardingViewModel()
 
     static let udLastSiteNumber = UserDefaultsKey.lastSiteNumber.rawValue
+    static let shared = OnboardingViewModel()
+
     var lastSiteNumber: Int {
         get {
-            print("hehe", UserDefaults.standard.integer(forKey: OnboardingViewModel.udLastSiteNumber))
             return UserDefaults.standard.integer(forKey: OnboardingViewModel.udLastSiteNumber)
         }
         set {

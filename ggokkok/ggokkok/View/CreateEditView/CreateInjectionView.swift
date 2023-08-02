@@ -89,4 +89,3 @@ struct CreateInjectionView_Previews: PreviewProvider {
         CreateInjectionView()
     }
 }
-

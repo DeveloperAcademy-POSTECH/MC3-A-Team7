@@ -19,9 +19,3 @@ struct InjectionSitePickerView: View {
         }
     }
 }
-//
-//struct InjectionSitePickerView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        InjectionSitePickerView()
-//    }
-//}

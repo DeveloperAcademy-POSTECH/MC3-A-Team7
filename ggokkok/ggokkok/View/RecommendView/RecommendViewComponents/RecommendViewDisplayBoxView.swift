@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct RecommendViewDisplayBoxView: View {
+    @ObservedObject var recommendModel: RecommendViewModel
+
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 12)
@@ -21,7 +23,8 @@ struct RecommendViewDisplayBoxView: View {
                             .foregroundColor(Color.blue300)
                             .shadow(color: .black.opacity(0.2), radius: 4.5, x: 0, y: 4)
                             .overlay {
-                                Text("18").font(.system(size: 140, weight: .bold)).foregroundColor(.white)
+                                Text(String(recommendModel.recommend.site))
+                                    .font(.system(size: 140, weight: .bold)).foregroundColor(.white)
                             }
                     }.padding()
                 }

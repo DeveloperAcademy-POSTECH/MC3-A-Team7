@@ -41,7 +41,7 @@ struct OnboardingView: View {
             isFocused = false
         }
         .onAppear {
-            lastSite = viewModel.lastSiteNumber.description
+            lastSite = viewModel.lastSiteNumber == 0 ? "" : viewModel.lastSiteNumber.description
         }
     }
 
@@ -82,7 +82,7 @@ struct OnboardingView: View {
             }
             .padding(.vertical)
         }
-        .disabled(lastSite == "0")
+        .disabled(lastSite == "")
     }
 }
 

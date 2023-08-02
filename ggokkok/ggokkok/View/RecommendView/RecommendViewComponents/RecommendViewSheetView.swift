@@ -9,6 +9,7 @@ import SwiftUI
 import UIKit
 
 struct RecommendViewSheetView: View {
+    @ObservedObject var recommendModel: RecommendViewModel
     @Environment(\.dismiss) private var dismiss
     @Binding var isPresented: Bool
     @State var showAlert: Bool = false
@@ -23,23 +24,26 @@ struct RecommendViewSheetView: View {
     var body: some View {
         NavigationView {
             List {
-                InsulinTypePickerView(selectedType: $selectedType, hasTypeValueChanged: $hasTypeValueChanged)
-                InsulinDosesPickerView(insulinDoses: $insulinDoses, hasDosesValueChanged: $hasDosesValueChanged)
-            }
-            .padding(.top, -30)
+                InsulinTypePickerView(selectedType: $injectionModel.insulinType, hasTypeValueChanged: $hasTypeValueChanged)
+                InsulinDosesPickerView(insulinDoses: $injectionModel.doses, hasDosesValueChanged: $hasDosesValueChanged)
+            }.padding(.top, -30)
+
             .navigationBarItems(
+
                 leading: Button("취소", action: {
                     if hasDosesValueChanged || hasTypeValueChanged { showAlert.toggle()
                     } else { dismiss() }
                 }).padding(.leading, 10),
+
                 trailing: Button("저장", action: {
+                    recommendModel.insertInjection(injectionModel)
+                    dismiss()
 
                 }).padding(.trailing, 10)
             )
             .navigationBarTitle("기록하기", displayMode: .inline)
         }
-        .presentationDetents([.height(UIScreen.main.bounds.height/3)])
-        .presentationDragIndicator(.hidden)
+        .presentationDetents([.height(UIScreen.main.bounds.height/3)]).presentationDragIndicator(.hidden)
         .actionSheet(isPresented: $showAlert, content: getActionSheet)
         .interactiveDismissDisabled(hasDosesValueChanged || hasTypeValueChanged, attempToDismiss: $attempToDismiss)
         .onChange(of: attempToDismiss) { _ in
@@ -55,7 +59,6 @@ struct RecommendViewSheetView: View {
         return ActionSheet(title: title, buttons: [destructiveButton, cancelButton])
     }
 }
-
 
 // UIKit Codes, Via Internet.
 struct SetSheetDelegate: UIViewRepresentable {
