@@ -9,15 +9,17 @@ import SwiftUI
 
 struct RecommendViewTopPartNavigationIcons: View {
     var body: some View {
-        NavigationView {
-            HStack {
-                Spacer()
+        HStack {
+            Spacer()
+            NavigationLink(destination: HistoryView(), label: {
                 Image(systemName: "calendar")
-                    .font(.system(size: 24))
+            })
+            NavigationLink(destination: SettingView(), label: {
                 Image(systemName: "gearshape")
-                    .font(.system(size: 24))
-            }.foregroundColor(Color.blue300)
+            })
         }
+        .font(.title2)
         .padding(.vertical)
+        .foregroundColor(.blue300)
     }
 }

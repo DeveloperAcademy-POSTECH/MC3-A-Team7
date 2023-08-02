@@ -7,7 +7,7 @@
 
 import Foundation
 
-class UserInfo {
+class UserInfo: ObservableObject {
     static let shared = UserInfo()
 
     static let udExclusionSites = UserDefaultsKey.exclusionSites.rawValue
@@ -15,15 +15,17 @@ class UserInfo {
 
     var exclusionSites: [Int] {
         get {
-            UserDefaults.standard.array(forKey: Exclusion.udExclusionSites) as? [Int] ?? []
+            UserDefaults.standard.array(forKey: Self.udExclusionSites) as? [Int] ?? []
         }
         set {
             UserDefaults.standard.set(newValue, forKey: Self.udExclusionSites)
+            objectWillChange.send()
         }
     }
+
     var lastSiteNumber: Int {
         get {
-            return UserDefaults.standard.integer(forKey: OnboardingViewModel.udLastSiteNumber)
+            return UserDefaults.standard.integer(forKey: Self.udLastSiteNumber)
         }
         set {
             UserDefaults.standard.set(newValue, forKey: Self.udLastSiteNumber)

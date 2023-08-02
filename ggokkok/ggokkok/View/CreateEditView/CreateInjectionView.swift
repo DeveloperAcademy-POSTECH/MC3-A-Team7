@@ -17,7 +17,7 @@ struct CreateInjectionView: View {
     @State private var hasTypeValueChanged = false
 
     private var lastSiteNumber: Int {
-        OnboardingViewModel.shared.lastSiteNumber
+        UserInfo.shared.lastSiteNumber
     }
 
     var body: some View {

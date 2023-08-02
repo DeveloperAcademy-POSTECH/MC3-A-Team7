@@ -62,7 +62,6 @@ enum SettingCategories: CaseIterable, Identifiable {
 struct SettingView: View {
     static let lastSiteNumber = UserDefaults.standard.integer(forKey: UserDefaultsKey.lastSiteNumber.rawValue)
     @StateObject var recommendationExclusionViewModel = RecommendationExclusionViewModel(lastSiteNumber: Self.lastSiteNumber)
-    @StateObject var onboardingViewModel = OnboardingViewModel()
     let settingCategories: [SettingCategory] = SettingCategories.allCases.map { SettingCategory(title: $0.title, settingItems: $0.settingItems) }
     @State private var singleSelection: UUID?
     

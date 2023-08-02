@@ -13,17 +13,11 @@ final class RecommendViewModel: ObservableObject {
     @Published var injectionsBySiteArray: [Injection?] = []
     @Published var injectionModel: InjectionModel = InjectionModel(site: 0, insulinType: .rapidActing, doses: 5)
 
-    var exclusion: Exclusion
-    var exclusionSites: [Int]
-
-    var exclusionViewModel: RecommendationExclusionViewModel
-    static var lastSite: Int { OnboardingViewModel.shared.lastSiteNumber }
+    var exclusionSites: [Int] { UserInfo.shared.exclusionSites }
+    static var lastSite: Int { UserInfo.shared.lastSiteNumber }
 
     init() {
-        exclusionViewModel = RecommendationExclusionViewModel(lastSiteNumber: RecommendViewModel.lastSite)
         injectionsBySiteArray = Self.buildInjectionsBySiteArray()
-        exclusion = Exclusion()
-        exclusionSites = exclusion.exclusionSites
     }
 
     static func buildInjectionsBySiteArray() -> [Injection?] {

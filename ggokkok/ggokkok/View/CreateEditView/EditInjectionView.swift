@@ -16,7 +16,8 @@ struct EditInjectionView: View {
     @State private var hasDosesValueChanged = false
     @State private var hasTypeValueChanged = false
     var injection: Injection
-    private var lastSiteNumber: Int { OnboardingViewModel.shared.lastSiteNumber }
+    private var lastSiteNumber: Int {
+        UserInfo.shared.lastSiteNumber }
 
     init(injection: Injection) {
         self.injection = injection
