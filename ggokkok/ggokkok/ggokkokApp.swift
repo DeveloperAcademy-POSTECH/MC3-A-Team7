@@ -13,7 +13,7 @@ struct GgokKokApp: App {
 
     var body: some Scene {
         WindowGroup {
-            MainView()
+            HistoryView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

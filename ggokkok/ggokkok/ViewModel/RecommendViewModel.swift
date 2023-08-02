@@ -11,6 +11,7 @@ final class RecommendViewModel: ObservableObject {
     @Published var showSheet: Bool = false
     @Published var exclusionArray: [Int] = []
     @Published var injectionsBySiteArray: [Injection?] = []
+    @Published var injectionModel: InjectionModel = InjectionModel(site: 0, insulinType: .rapidActing, doses: 5)
 
     var exclusion: Exclusion
     var exclusionSites: [Int]
@@ -60,9 +61,13 @@ final class RecommendViewModel: ObservableObject {
         return (0, nil)
     }
 
-    func insertInjection(_ injection: RecommendViewSheetView.InjectionModel) {
+    func insertInjection() {
         PersistenceController.shared.addInjection(
-            doses: injection.doses, insulinType: injection.insulinType, site: injection.site, time: Date())
+            doses: injectionModel.doses,
+            insulinType: injectionModel.insulinType,
+            site: injectionModel.site,
+            time: Date()
+        )
         injectionsBySiteArray = Self.buildInjectionsBySiteArray()
     }
 }
